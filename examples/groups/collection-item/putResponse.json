@@ -1,0 +1,17 @@
+{
+  "id": "5e16ee938fbb652ab878cbbb",
+  "type": "group",
+  "name": "Offices",
+  "created_at": 1581101541,
+  "updated_at": 1581102010,
+  "description": "Internet availability of our offices.",
+  "description_html": "<p>Internet availability of our offices.</p>",
+  "collapsed": true,
+  "position": 10,
+  "components": {
+    "type": "paged_array",
+    "total_count": 0,
+    "has_more": false,
+    "data": []
+  }
+}

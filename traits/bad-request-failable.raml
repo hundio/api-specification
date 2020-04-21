@@ -1,0 +1,14 @@
+#%RAML 1.0 Trait
+
+usage: |
+  Methods of this trait can fail with a `400 Bad Request` error, due to a given
+  reason.
+
+responses:
+  400:
+    description: <<description>>
+    body:
+      application/vnd.error+json:
+        examples:
+          "<<methodName|!uppercase>> <<resourcePath>> (400)": <<errorBadRequestExample>>
+        type: core.Error

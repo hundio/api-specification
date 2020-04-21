@@ -1,0 +1,15 @@
+{
+  "instances": [
+    {
+      "id": "5e16ee938cca652ab8780011",
+      "deleted": true
+    },
+    {
+      "definition_slug": "request_rate",
+      "enabled": true,
+      "top_level_enabled": false,
+      "title": "Request Rate (Hz)",
+      "y_supremum": 500
+    }
+  ]
+}

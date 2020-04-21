@@ -1,0 +1,16 @@
+{
+  "watchdog": "5a06ee938fbb652ab878c000",
+  "instances": [
+    {
+      "definition_slug": "platform_errors",
+      "enabled": true,
+      "top_level_enabled": true,
+      "title": "Platform Errors",
+      "y_supremum": 4,
+      "plot_type": "bar"
+    }
+  ],
+  "service": {
+    "type": "webhook"
+  }
+}

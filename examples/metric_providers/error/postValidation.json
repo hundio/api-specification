@@ -1,0 +1,11 @@
+{
+  "message": "Validation failed",
+  "logref": "046af021-2d3d-43c5-97c6-6395964aa7a5",
+  "_embedded": {
+    "errors": [
+      {
+        "message": "Watchdog must reference an existing object"
+      }
+    ]
+  }
+}

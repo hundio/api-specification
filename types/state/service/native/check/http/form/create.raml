@@ -1,0 +1,37 @@
+#%RAML 1.0 DataType
+
+uses:
+  core: /libraries/core.raml
+  native: /libraries/service/native.raml
+
+displayName: HTTP
+description: |
+  Hund Native Monitoring HTTP Check creation form.
+type: native.Check/Form/Create
+properties:
+  method:
+    enum: [http]
+  username?:
+    type: core.maybe-string
+    default: null
+  password?:
+    type: core.maybe-string
+    default: null
+  response_body_must_contain?:
+    type: core.maybe-string
+    default: null
+  response_body_must_contain_mode?:
+    type: core.NATIVE_STRING_CONTAINMENT_MODE
+    default: exact
+  response_code_must_be?:
+    type: nil | integer
+    default: null
+  headers?:
+    type: native.HTTP/Headers
+    default: {}
+  follow_redirects?:
+    type: boolean
+    default: true
+  ssl_verify_peer?:
+    type: boolean
+    default: true

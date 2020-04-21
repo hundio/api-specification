@@ -1,0 +1,26 @@
+id: |
+  The ObjectId of this Component.
+created_at: |
+  The UNIX timestamp at which this Component was created.
+updated_at: |
+  The UNIX timestamp at which this Component was last updated.
+name: |
+  The name of this Component.
+description: |
+  A description of this Component, potentially with markdown formatting.
+description_html: |
+  An HTML rendering of the markdown-formatted `description`.
+exclude_from_global_uptime: |
+  Exclude this Component's uptime percentage from being factored into the global
+  percent uptime calculation.
+exclude_from_global_history: |
+  Exclude this Component from appearing in the global history.
+last_event_at: |
+  A UNIX timestamp at which the last event for this Component occurred. This
+  includes automated status changes, as well as issue creation and update.
+percent_uptime: |
+  The rolling 30-day percent uptime of this Component.
+watchdog: |
+  The Watchdog that supplies the current status and metrics for this Component.
+group: |
+  The Group that this Component belongs to.

@@ -1,0 +1,16 @@
+#%RAML 1.0 DataType
+
+uses:
+  prelude: /libraries/prelude.raml
+  core: /libraries/core.raml
+  native: /libraries/service/native.raml
+
+displayName: ICMP
+description: |
+  A Hund Native Monitoring ICMP Check.
+type: native.Check
+properties:
+  method:
+    enum: [icmp]
+  percentage_failed_threshold: core.percentage
+  ip_version: core.NATIVE_IP_VERSION

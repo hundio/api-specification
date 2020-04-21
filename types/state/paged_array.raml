@@ -1,0 +1,34 @@
+#%RAML 1.0 DataType
+
+uses:
+  prelude: /libraries/prelude.raml
+
+displayName: PagedArray
+description: |
+  A cursor-like array object that allows paging through an array of objects.
+type: [prelude.TypedObject, prelude.HAL/Linkable]
+properties:
+  type:
+    enum: [paged_array]
+  total_count:
+    description: |
+      The total number of objects in `data`.
+    type: integer
+    minimum: 0
+  data:
+    description: |
+      An array of the objects in this page.
+    type: array
+    uniqueItems: true
+  has_more:
+    description: |
+      Whether or not there are more objects after this page in descending order.
+      When false, this page is the final page of objects in descending order.
+    type: boolean
+  _links?:
+    properties:
+      self: prelude.HAL/Link
+      next: prelude.HAL/Link
+      prev: prelude.HAL/Link
+      beginning: prelude.HAL/Link
+      end: prelude.HAL/Link

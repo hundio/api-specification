@@ -1,0 +1,16 @@
+#%RAML 1.0 DataType
+
+uses:
+  prelude: /libraries/prelude.raml
+  core: /libraries/core.raml
+
+(prelude.common):
+(core.fieldDescriptions): !include /documentation/fieldDescriptions/service/webhook.yml
+displayName: Webhook
+description: |
+  Webhook service creation form.
+type: core.Form
+properties:
+  type:
+    enum: [webhook]
+  webhook_key?: string

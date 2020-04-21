@@ -1,0 +1,11 @@
+#%RAML 1.0 DataType
+
+uses:
+  prelude: /libraries/prelude.raml
+
+(prelude.common):
+displayName: ObjectId
+description: |
+  A 12-byte hexadecimal encoded BSON ObjectId.
+type: string
+pattern: ^[a-fA-F0-9]{24}$

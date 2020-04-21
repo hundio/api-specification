@@ -1,0 +1,37 @@
+{
+  "type": "paged_array",
+  "total_count": 2,
+  "has_more": false,
+  "data": [
+    {
+      "id": "5c06ee938fbb652ab878c2a2",
+      "type": "component",
+      "created_at": 1543958163,
+      "updated_at": 1543958164,
+      "last_event_at": 1580352001,
+      "exclude_from_global_uptime": false,
+      "exclude_from_global_history": false,
+      "name": "Component 65",
+      "description": "My **description**",
+      "description_html": "<p>My <strong>description</strong></p>",
+      "group": "5c06ee938fbb652ab878c2a1",
+      "watchdog": "5c06ee938fbb652ab878c2a0",
+      "percent_uptime": 99.123
+    },
+    {
+      "id": "5c06ee938fbb652ab878c2aa",
+      "type": "component",
+      "created_at": 1543958163,
+      "updated_at": 1543958164,
+      "last_event_at": 1580358022,
+      "exclude_from_global_uptime": true,
+      "exclude_from_global_history": false,
+      "name": "Component 66",
+      "description": null,
+      "description_html": "",
+      "group": "5c06ee938fbb652ab878c2a9",
+      "watchdog": "5c06ee938fbb652ab878c212",
+      "percent_uptime": 100
+    }
+  ]
+}

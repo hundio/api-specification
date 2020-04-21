@@ -1,0 +1,21 @@
+#%RAML 1.0 DataType
+
+uses:
+  prelude: /libraries/prelude.raml
+  core: /libraries/core.raml
+  native: /libraries/service/native.raml
+
+displayName: HTTP
+description: |
+  A Hund Native Monitoring HTTP Check.
+type: native.Check
+properties:
+  method:
+    enum: [http]
+  username: core.maybe-string
+  response_body_must_contain: core.maybe-string
+  response_body_must_contain_mode: core.NATIVE_STRING_CONTAINMENT_MODE
+  response_code_must_be: nil | integer
+  headers: native.HTTP/Headers
+  follow_redirects: boolean
+  ssl_verify_peer: boolean

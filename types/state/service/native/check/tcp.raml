@@ -1,0 +1,20 @@
+#%RAML 1.0 DataType
+
+uses:
+  prelude: /libraries/prelude.raml
+  core: /libraries/core.raml
+  native: /libraries/service/native.raml
+
+displayName: TCP
+description: |
+  A Hund Native Monitoring TCP Check.
+type: native.Check
+properties:
+  method:
+    enum: [tcp]
+  port: core.port
+  send_data: core.maybe-string
+  response_must_contain: core.maybe-string
+  response_must_contain_mode: core.NATIVE_STRING_CONTAINMENT_MODE
+  wait_for_initial_response: boolean
+  ip_version: core.NATIVE_IP_VERSION

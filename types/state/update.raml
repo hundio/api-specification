@@ -1,0 +1,26 @@
+#%RAML 1.0 DataType
+
+uses:
+  prelude: /libraries/prelude.raml
+  core: /libraries/core.raml
+
+(prelude.common):
+(core.fieldDescriptions): !include /documentation/fieldDescriptions/update.yml
+displayName: Update
+description: |
+  Issue Updates describe a particular phase in the evolution of an issue. Updates
+  have their own bodies and label, and can also change the current state override
+  of the Issue. Updates are also responsible for resolving/reopening Issues, as
+  well as adding addendums/postmortems to the end of an Issue.
+type: [core.TypedObject, core.Timestamps, core.IssueContentable, core.HAL/Linkable]
+properties:
+  id: core.ObjectId
+  type:
+    enum: [update]
+  label: nil | core.UPDATE_LABEL
+  reopening: boolean
+  _links?:
+    properties:
+      self: core.HAL/Link
+      update-form: core.HAL/Link
+      issue: core.HAL/Link

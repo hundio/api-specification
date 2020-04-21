@@ -1,0 +1,17 @@
+#%RAML 1.0 DataType
+
+uses:
+  prelude: /libraries/prelude.raml
+  core: /libraries/core.raml
+
+(prelude.common):
+(core.fieldDescriptions): !include /documentation/fieldDescriptions/service/pagerduty.yml
+displayName: PagerDuty
+description: |
+  PagerDuty update form.
+type: core.Form
+properties:
+  api_key?: string
+  suppress_future_issues?: boolean
+  issue_templates?: core.WatchdogIssueTemplates
+  services?: string[]

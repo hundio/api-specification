@@ -1,0 +1,13 @@
+#%RAML 1.0 DataType
+
+uses:
+  core: /libraries/core.raml
+  service: /libraries/service.raml
+
+(core.fieldDescriptions): !include /documentation/fieldDescriptions/watchdog.yml
+description: |
+  The Watchdog update form object.
+type: core.Form
+properties:
+  high_frequency?: boolean
+  service: service.Form/Watchdog/Update

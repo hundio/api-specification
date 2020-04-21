@@ -1,0 +1,30 @@
+#%RAML 1.0 DataType
+
+uses:
+  prelude: /libraries/prelude.raml
+  core: /libraries/core.raml
+
+(prelude.common):
+(core.fieldDescriptions): !include /documentation/fieldDescriptions/metric_instance.yml
+displayName: Updated MetricInstance
+description: |
+  MetricInstance embedded update form, for use in MetricProvider updates.
+type: core.Form
+properties:
+  id: core.ObjectId
+  deleted?:
+    description: |
+      If this field is set to true, then this MetricInstance given by `id` will
+      be deleted from the MetricProvider.
+    type: boolean
+    default: false
+  enabled?: boolean
+  top_level_enabled?: boolean
+  title?: core.i18n-string
+  x_title?: core.i18n-string
+  y_title?: core.i18n-string
+  x_type?: core.METRIC_AXIS_TYPE
+  y_type?: core.METRIC_AXIS_TYPE
+  y_supremum?: core.nonnegative-number
+  plot_type?: core.METRIC_PLOT_TYPE
+  aggregation?: core.METRIC_AGGREGATION

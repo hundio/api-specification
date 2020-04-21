@@ -1,0 +1,21 @@
+#%RAML 1.0 Library
+
+usage: |
+  Defines the Issue Update type and forms.
+
+uses:
+  core: /libraries/core.raml
+
+types:
+  Base: !include /types/state/update.raml
+
+  Update:
+    (core.fieldDescriptions): !include /documentation/fieldDescriptions/update.yml
+    type: Base
+    properties:
+      issue: 
+        (core.expandable):
+        type: core.ObjectId
+
+  Update/Form/Create: !include /types/state/update/form/create.raml
+  Update/Form/Update: !include /types/state/update/form/update.raml

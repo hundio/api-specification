@@ -1,0 +1,18 @@
+#%RAML 1.0 DataType
+
+uses:
+  prelude: /libraries/prelude.raml
+  core: /libraries/core.raml
+
+(prelude.common):
+(core.fieldDescriptions): !include /documentation/fieldDescriptions/service/pingdom.yml
+displayName: Pingdom
+description: |
+  Pingdom service update form.
+type: core.Form
+properties:
+  api_token?: string
+  check_id?: string
+  check_type?:
+    type: core.PINGDOM_CHECK_TYPE
+    default: check

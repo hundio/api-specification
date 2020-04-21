@@ -1,0 +1,19 @@
+#%RAML 1.0 DataType
+
+uses:
+  core: /libraries/core.raml
+  native: /libraries/service/native.raml
+
+displayName: ICMP
+description: |
+  Hund Native Monitoring ICMP Check creation form.
+type: native.Check/Form/Create
+properties:
+  method:
+    enum: [icmp]
+  percentage_failed_threshold?:
+    type: core.percentage
+    default: 0.5
+  ip_version?:
+    type: core.NATIVE_IP_VERSION
+    default: inet

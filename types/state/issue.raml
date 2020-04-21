@@ -1,0 +1,53 @@
+#%RAML 1.0 DataType
+
+uses:
+  prelude: /libraries/prelude.raml
+  core: /libraries/core.raml
+  component: /libraries/component.raml
+  schedule: /libraries/schedule.raml
+  update: /libraries/update.raml
+
+(prelude.common):
+(core.fieldDescriptions): !include /documentation/fieldDescriptions/issue.yml
+displayName: Issue
+description: |
+  Issues represent an evolving incident in time. Issues have updates, which
+  describe the evolution of an issue, often up to resolution. Issues may also
+  set a schedule, which allows automatically starting and ending the issue.
+type: [core.TypedObject, core.Timestamps, core.IssueContentable, core.HAL/Linkable]
+properties:
+  id: core.ObjectId
+  type:
+    enum: [issue]
+  title: string
+  body: string
+  label: nil | core.ISSUE_LABEL
+  priority: core.ISSUE_PRIORITY
+  open_graph_image_url: core.maybe-string
+  specialization: core.ISSUE_SPECIALIZATION
+  retrospective: boolean
+  scheduled: boolean
+  standing: boolean
+  resolved: boolean
+  cancelled: core.maybe-boolean
+  began_at: core.timestamp
+  ended_at: core.maybe-timestamp
+  cancelled_at: core.maybe-timestamp
+  schedule: nil | schedule.Schedule
+  updates:
+    type: core.PagedArray
+    properties:
+      data:
+        items: update.Update
+  components:
+    type: core.PagedArray
+    properties:
+      data:
+        items: component.Component
+  _links?:
+    properties:
+      self: core.HAL/Link
+      self-view: core.HAL/Link
+      update-form: core.HAL/Link
+      components: core.HAL/Link
+      updates: core.HAL/Link

@@ -1,0 +1,23 @@
+#%RAML 1.0 DataType
+
+uses:
+  core: /libraries/core.raml
+  native: /libraries/service/native.raml
+
+displayName: DNS
+description: |
+  Hund Native Monitoring DNS Check creation form.
+type: native.Check/Form/Create
+properties:
+  method:
+    enum: [dns]
+  record_type: core.NATIVE_DNS_RECORD_TYPE
+  nameservers?:
+    type: string[]
+    default: []
+  responses_must_contain?:
+    type: string[]
+    default: []
+  response_containment?:
+    type: core.NATIVE_DNS_RESPONSE_CONTAINMENT
+    default: any

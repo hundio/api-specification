@@ -1,0 +1,19 @@
+#%RAML 1.0 DataType
+
+uses:
+  prelude: /libraries/prelude.raml
+  core: /libraries/core.raml
+  native: /libraries/service/native.raml
+
+displayName: DNS
+description: |
+  A Hund Native Monitoring DNS Check.
+type: native.Check
+properties:
+  method:
+    enum: [dns]
+  target:
+  record_type: core.NATIVE_DNS_RECORD_TYPE
+  nameservers: string[]
+  responses_must_contain: string[]
+  response_containment: core.NATIVE_DNS_RESPONSE_CONTAINMENT

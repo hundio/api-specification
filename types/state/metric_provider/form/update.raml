@@ -1,0 +1,17 @@
+#%RAML 1.0 DataType
+
+uses:
+  prelude: /libraries/prelude.raml
+  core: /libraries/core.raml
+  service: /libraries/service.raml
+  metric_instance: /libraries/metric_instance.raml
+
+(prelude.common):
+(core.fieldDescriptions): !include /documentation/fieldDescriptions/metric_provider.yml
+displayName: MetricProvider
+description: |
+  MetricProvider update form.
+type: core.Form
+properties:
+  instances?: (metric_instance.MetricInstance/Form/Create | metric_instance.MetricInstance/Form/EmbeddedUpdate)[]
+  service?: service.Form/MetricProvider/Update

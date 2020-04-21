@@ -1,0 +1,14 @@
+#%RAML 1.0 Trait
+
+usage: |
+  Methods of this trait can fail with a `404 Not Found` error.
+
+responses:
+  404:
+    description: |
+      <<resourcePathName|!singularize|!uppercamelcase>> not found.
+    body:
+      application/vnd.error+json:
+        type: core.Error
+        examples:
+          "<<methodName|!uppercase>> <<resourcePath>> (404)": <<errorNotFoundExample>>

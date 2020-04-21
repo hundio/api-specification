@@ -1,0 +1,21 @@
+#%RAML 1.0 DataType
+
+uses:
+  prelude: /libraries/prelude.raml
+  core: /libraries/core.raml
+
+(prelude.common):
+(core.fieldDescriptions): !include /documentation/fieldDescriptions/issue_template.yml
+displayName: IssueTemplate
+description: |
+  IssueTemplate creation form.
+type: core.Form
+properties:
+  name: string
+  kind?:
+    type: core.ISSUE_TEMPLATE_KIND
+    default: generic
+  title?: string
+  label?: core.ISSUE_TEMPLATE_LABEL
+  body?: string
+  components?: core.ObjectId[]

@@ -1,0 +1,21 @@
+#%RAML 1.0 DataType
+
+uses:
+  prelude: /libraries/prelude.raml
+  core: /libraries/core.raml
+
+(prelude.common):
+(core.fieldDescriptions): !include /documentation/fieldDescriptions/service/newrelic.yml
+displayName: New Relic
+description: |
+  A [New Relic Alerts](https://docs.newrelic.com/docs/alerts) service. This watchdog can
+  create/resolve issues based on New Relic Alerts.
+type: core.Service
+properties:
+  type:
+    enum: [newrelic]
+  api_region: core.NEWRELIC_API_REGION
+  suppress_warning_violations: boolean
+  suppress_future_issues: boolean
+  issue_templates: core.WatchdogIssueTemplates
+  alert_policies: string[]

@@ -1,0 +1,23 @@
+#%RAML 1.0 DataType
+
+uses:
+  prelude: /libraries/prelude.raml
+  core: /libraries/core.raml
+
+(prelude.common):
+(core.fieldDescriptions): !include /documentation/fieldDescriptions/schedule.yml
+displayName: Schedule
+description: |
+  An Issue Schedule, which describes the schedule of an issue, including start
+  and end times, in addition to an optional "upcoming" notification.
+type: core.TypedObject
+properties:
+  id: core.ObjectId
+  type:
+    enum: [schedule]
+  starts_at: core.timestamp
+  ends_at: core.timestamp
+  notify_subscribers_at: core.maybe-timestamp
+  started: boolean
+  ended: boolean
+  notified: boolean

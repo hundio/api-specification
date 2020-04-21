@@ -1,0 +1,13 @@
+#%RAML 1.0 DataType
+
+uses:
+  core: /libraries/core.raml
+  native: /libraries/service/native.raml
+
+displayName: ICMP
+description: |
+  Hund Native Monitoring ICMP Check update form.
+type: native.Check/Form/Update
+properties:
+  percentage_failed_threshold?: core.percentage
+  ip_version?: core.NATIVE_IP_VERSION

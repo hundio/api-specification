@@ -1,0 +1,2 @@
+webhook_key: |
+  The key to use for this webhook, expected in request headers.

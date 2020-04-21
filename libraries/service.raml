@@ -1,0 +1,59 @@
+#%RAML 1.0 Library
+
+usage: |
+  Defines Service types and forms.
+
+types:
+  Builtin: !include /types/state/service/builtin.raml
+  Builtin/Form/Create: !include /types/state/service/builtin/form/create.raml
+  Builtin/Form/Update: !include /types/state/service/builtin/form/update.raml
+
+  Manual: !include /types/state/service/manual.raml
+  Manual/Form/Create: !include /types/state/service/manual/form/create.raml
+  Manual/Form/Update: !include /types/state/service/manual/form/update.raml
+
+  Native: !include /types/state/service/native.raml
+  Native/Form/Create: !include /types/state/service/native/form/create.raml
+  Native/Form/Update: !include /types/state/service/native/form/update.raml
+
+  Cloudwatch: !include /types/state/service/cloudwatch.raml
+  Cloudwatch/Form/Create: !include /types/state/service/cloudwatch/form/create.raml
+  Cloudwatch/Form/Update: !include /types/state/service/cloudwatch/form/update.raml
+
+  Newrelic: !include /types/state/service/newrelic.raml
+  Newrelic/Form/Create: !include /types/state/service/newrelic/form/create.raml
+  Newrelic/Form/Update: !include /types/state/service/newrelic/form/update.raml
+
+  Pagerduty: !include /types/state/service/pagerduty.raml
+  Pagerduty/Form/Create: !include /types/state/service/pagerduty/form/create.raml
+  Pagerduty/Form/Update: !include /types/state/service/pagerduty/form/update.raml
+
+  Pingdom: !include /types/state/service/pingdom.raml
+  Pingdom/Form/Create: !include /types/state/service/pingdom/form/create.raml
+  Pingdom/Form/Update: !include /types/state/service/pingdom/form/update.raml
+
+  PingdomLegacyV2: !include /types/state/service/pingdom_legacy_v2.raml
+  PingdomLegacyV2/Form/Update: !include /types/state/service/pingdom_legacy_v2/form/update.raml
+
+  Updown: !include /types/state/service/updown.raml
+  Updown/Form/Create: !include /types/state/service/updown/form/create.raml
+  Updown/Form/Update: !include /types/state/service/updown/form/update.raml
+
+  Uptimerobot: !include /types/state/service/uptimerobot.raml
+  Uptimerobot/Form/Create: !include /types/state/service/uptimerobot/form/create.raml
+  Uptimerobot/Form/Update: !include /types/state/service/uptimerobot/form/update.raml
+
+  Webhook: !include /types/state/service/webhook.raml
+  Webhook/Form/Create: !include /types/state/service/webhook/form/create.raml
+  Webhook/Form/Update: !include /types/state/service/webhook/form/update.raml
+
+  Form/Watchdog/Create: Manual/Form/Create | Updown/Form/Create | Uptimerobot/Form/Create | Webhook/Form/Create | Pingdom/Form/Create | Cloudwatch/Form/Create | Newrelic/Form/Create | Pagerduty/Form/Create | Native/Form/Create
+  Form/Watchdog/Update: Manual/Form/Update | Updown/Form/Update | Uptimerobot/Form/Update | Webhook/Form/Update | Pingdom/Form/Update | Cloudwatch/Form/Update | Newrelic/Form/Update | Pagerduty/Form/Update | Native/Form/Update | PingdomLegacyV2/Form/Update
+
+  Form/MetricProvider/Create: Builtin/Form/Create | Updown/Form/Create | Uptimerobot/Form/Create | Webhook/Form/Create | Pingdom/Form/Create | Native/Form/Create
+  Form/MetricProvider/Update: Builtin/Form/Update | Updown/Form/Update | Uptimerobot/Form/Update | Webhook/Form/Update | Pingdom/Form/Update | Native/Form/Update | PingdomLegacyV2/Form/Update
+
+  # Services: Updown | Uptimerobot | Webhook
+
+  Services/Watchdog: Manual | Updown | Uptimerobot | Webhook | Pingdom | PingdomLegacyV2 | Cloudwatch | Newrelic | Pagerduty | Native
+  Services/MetricProvider: Builtin | Updown | Uptimerobot | Webhook | Pingdom | PingdomLegacyV2 | Native

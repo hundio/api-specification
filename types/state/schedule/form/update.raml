@@ -1,0 +1,16 @@
+#%RAML 1.0 DataType
+
+uses:
+  prelude: /libraries/prelude.raml
+  core: /libraries/core.raml
+
+(prelude.common):
+(core.fieldDescriptions): !include /documentation/fieldDescriptions/schedule.yml
+displayName: Schedule
+description: |
+  Issue Schedule update form.
+type: core.Form
+properties:
+  starts_at?: core.timestamp
+  ends_at?: core.timestamp
+  notify_subscribers_at?: core.timestamp

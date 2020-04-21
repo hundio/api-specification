@@ -1,0 +1,22 @@
+#%RAML 1.0 DataType
+
+uses:
+  prelude: /libraries/prelude.raml
+  core: /libraries/core.raml
+
+(prelude.common):
+(core.fieldDescriptions): !include /documentation/fieldDescriptions/service/webhook.yml
+displayName: Webhook
+description: |
+  A [webhook](https://hund.io/help/integrations/webhooks) service.
+type: core.Service
+properties:
+  type:
+    enum: [webhook]
+  webhook_key?:
+    description: |
+      The key to use for this webhook, expected in request headers.
+      <br />
+      **Note:** this field is only emitted upon service creation. It will not be
+      returned in retrievals nor updates.
+    type: string

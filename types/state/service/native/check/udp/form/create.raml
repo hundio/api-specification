@@ -1,0 +1,24 @@
+#%RAML 1.0 DataType
+
+uses:
+  core: /libraries/core.raml
+  native: /libraries/service/native.raml
+
+displayName: UDP
+description: |
+  Hund Native Monitoring UDP Check creation form.
+type: native.Check/Form/Create
+properties:
+  method:
+    enum: [udp]
+  port: core.port
+  send_data: string
+  response_must_contain?:
+    type: core.maybe-string
+    default: null
+  response_must_contain_mode?:
+    type: core.NATIVE_STRING_CONTAINMENT_MODE
+    default: exact
+  ip_version?:
+    type: core.NATIVE_IP_VERSION
+    default: inet

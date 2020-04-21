@@ -1,0 +1,19 @@
+#%RAML 1.0 DataType
+
+uses:
+  prelude: /libraries/prelude.raml
+  core: /libraries/core.raml
+  native: /libraries/service/native.raml
+
+displayName: UDP
+description: |
+  A Hund Native Monitoring UDP Check.
+type: native.Check
+properties:
+  method:
+    enum: [udp]
+  port: core.port
+  send_data: string
+  response_must_contain: core.maybe-string
+  response_must_contain_mode: core.NATIVE_STRING_CONTAINMENT_MODE
+  ip_version: core.NATIVE_IP_VERSION

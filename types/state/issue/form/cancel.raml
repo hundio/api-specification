@@ -1,0 +1,16 @@
+#%RAML 1.0 DataType
+
+uses:
+  prelude: /libraries/prelude.raml
+  core: /libraries/core.raml
+
+(prelude.common):
+displayName: Issue
+description: |
+  Issue cancellation form.
+type: core.Form
+properties:
+  body?:
+    description: |
+      An optional Issue Update body describing the cancellation.
+    type: string

@@ -1,0 +1,31 @@
+{
+  "type": "paged_array",
+  "total_count": 2,
+  "has_more": false,
+  "data": [
+    {
+      "id": "5e751f8d8fbb6523f805e5b8",
+      "type": "issue_template",
+      "created_at": 1584308660,
+      "updated_at": 1584308660,
+      "name": "Maintenance (Weekly)",
+      "kind": "generic",
+      "title": "Weekly Systems Maintenance",
+      "body": "The following components are currently undergoing our weekly maintenance routines:\n\n{% for component in components %}\n  * *{{ component.group.name }}* / {{ component.name }}\n{% endfor %}",
+      "label": "maintenance",
+      "components": []
+    },
+    {
+      "id": "5e751f8d8fbb6523f805e5b8",
+      "type": "issue_template",
+      "created_at": 1584395163,
+      "updated_at": 1584395163,
+      "name": "Maintenance Concluded (Weekly)",
+      "kind": "generic",
+      "title": null,
+      "body": "Our weekly systems maintenance has now concluded. Thank you for your patience.",
+      "label": "resolved",
+      "components": []
+    }
+  ]
+}

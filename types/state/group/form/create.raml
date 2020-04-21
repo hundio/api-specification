@@ -1,0 +1,19 @@
+#%RAML 1.0 DataType
+
+uses:
+  prelude: /libraries/prelude.raml
+  core: /libraries/core.raml
+
+(prelude.common):
+(core.fieldDescriptions): !include /documentation/fieldDescriptions/group.yml
+displayName: Group
+description: |
+  Group creation form.
+type: core.Form
+properties:
+  name: string
+  description?: string
+  position?: integer
+  collapsed?:
+    type: boolean
+    default: false

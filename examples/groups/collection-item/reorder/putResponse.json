@@ -1,0 +1,63 @@
+{
+  "id": "5e16ee938fbb652ab878caa9",
+  "type": "group",
+  "name": "Regions",
+  "created_at": 1543958163,
+  "updated_at": 1543958564,
+  "description": "My **description**",
+  "description_html": "<p>My <strong>description</strong></p>",
+  "collapsed": false,
+  "position": 3,
+  "components": {
+    "type": "paged_array",
+    "total_count": 2,
+    "has_more": false,
+    "data": [
+      {
+        "id": "5e16ee938fbb652ab878cacc",
+        "type": "component",
+        "group": "5e16ee938fbb652ab878caa9",
+        "name": "Amsterdam",
+        "created_at": 1543958100,
+        "updated_at": 1543958169,
+        "last_event_at": 1580353042,
+        "exclude_from_global_uptime": false,
+        "exclude_from_global_history": false,
+        "description": "My **description**",
+        "description_html": "<p>My <strong>description</strong></p>",
+        "percent_uptime": 100,
+        "watchdog": "5e16ee938fbb652ab878cac9"
+      },
+      {
+        "id": "5e16ee938fbb652ab878caee",
+        "type": "component",
+        "group": "5e16ee938fbb652ab878caa9",
+        "name": "Rochester, NY",
+        "created_at": 1543958200,
+        "updated_at": 1543958200,
+        "last_event_at": 1580359002,
+        "exclude_from_global_uptime": false,
+        "exclude_from_global_history": false,
+        "description": "My **description**",
+        "description_html": "<p>My <strong>description</strong></p>",
+        "percent_uptime": 100,
+        "watchdog": "5e16ee938fbb652ab878cae9"
+      },
+      {
+        "id": "5e16ee938fbb652ab878cabb",
+        "type": "component",
+        "group": "5e16ee938fbb652ab878caa9",
+        "name": "Singapore",
+        "created_at": 1543958163,
+        "updated_at": 1543958164,
+        "last_event_at": 1580352001,
+        "exclude_from_global_uptime": false,
+        "exclude_from_global_history": false,
+        "description": "My **description**",
+        "description_html": "<p>My <strong>description</strong></p>",
+        "percent_uptime": 100,
+        "watchdog": "5e06ee938fbb652ab878cab9"
+      }
+    ]
+  }
+}

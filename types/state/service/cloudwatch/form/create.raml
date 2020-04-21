@@ -1,0 +1,17 @@
+#%RAML 1.0 DataType
+
+uses:
+  prelude: /libraries/prelude.raml
+  core: /libraries/core.raml
+
+(prelude.common):
+(core.fieldDescriptions): !include /documentation/fieldDescriptions/service/cloudwatch.yml
+displayName: AWS CloudWatch
+description: |
+  AWS Cloudwatch creation form.
+type: core.Form
+properties:
+  instance_id: string
+  region: core.CLOUDWATCH_REGION
+  access_key_id: string
+  secret_access_key: string

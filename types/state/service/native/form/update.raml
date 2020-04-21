@@ -1,0 +1,13 @@
+#%RAML 1.0 DataType
+
+uses:
+  prelude: /libraries/prelude.raml
+  core: /libraries/core.raml
+  check: /libraries/service/native/check.raml
+
+(prelude.common):
+(core.fieldDescriptions): !include /documentation/fieldDescriptions/service/native/check.yml
+displayName: Hund Native Monitoring
+description: |
+  Hund Native Monitoring service update form.
+type: check.Checks/Form/Update

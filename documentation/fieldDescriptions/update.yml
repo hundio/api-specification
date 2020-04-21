@@ -1,0 +1,23 @@
+id: |
+  The ObjectId of this Update.
+created_at: |
+  The UNIX timestamp at which this Update was created.
+updated_at: |
+  The UNIX timestamp at which this Update was last revised.
+label: |
+  The label applied to this update, as well as the issue at large when this
+  Update is the *latest* Update in the Issue. The label can be thought of as the
+  "state" of the Issue as of this Update (e.g. "Problem Identified", "Monitoring",
+  "Resolved").
+body: |
+  The body text of this Update in raw markdown.
+body_html: |
+  An HTML rendered view of the markdown in `body`.
+state_override: |
+  The integer state which overrides the state of affected Components in
+  `component`. A value of `null` indicates no override is present.
+issue: |
+  The Issue that this Update pertains to.
+reopening: |
+  Whether this Update reopened the Issue if it was already resolved in an Update
+  before this one.

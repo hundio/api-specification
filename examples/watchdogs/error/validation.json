@@ -1,0 +1,11 @@
+{
+  "message": "Validation failed",
+  "logref": "c5f96ac2-4101-47b4-9dbf-dcaadc4284e0",
+  "_embedded": {
+    "errors": [
+      {
+        "message": "Monitor token must be present"
+      }
+    ]
+  }
+}

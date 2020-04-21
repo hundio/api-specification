@@ -1,0 +1,11 @@
+{
+  "message": "Validation failed",
+  "logref": "b6b99fdc-9d26-4e98-ac68-244df8f9526e",
+  "_embedded": {
+    "errors": [
+      {
+        "message": "Name must be present"
+      }
+    ]
+  }
+}

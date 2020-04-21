@@ -1,0 +1,30 @@
+#%RAML 1.0 DataType
+
+uses:
+  prelude: /libraries/prelude.raml
+  core: /libraries/core.raml
+
+(prelude.common):
+(core.fieldDescriptions): !include /documentation/fieldDescriptions/metric_instance.yml
+displayName: MetricInstance
+description: |
+  MetricInstances describe the particular structure and options for a metric
+  provided by a MetricProvider.
+type: core.TypedObject
+properties:
+  id: core.ObjectId
+  type:
+    enum: [metric_instance]
+  slug: string
+  definition_slug: core.namespaced-slug
+  enabled: boolean
+  top_level_enabled: boolean
+  title: core.i18n-string
+  x_title: core.i18n-string
+  y_title: core.i18n-string
+  x_type: core.METRIC_AXIS_TYPE
+  y_type: core.METRIC_AXIS_TYPE
+  y_supremum: core.nonnegative-number
+  plot_type: core.METRIC_PLOT_TYPE
+  interpolation: core.METRIC_INTERPOLATION
+  aggregation: core.METRIC_AGGREGATION

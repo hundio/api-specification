@@ -1,0 +1,9 @@
+#%RAML 1.0 Library
+
+usage: |
+  Defines IssueTemplate type and forms.
+
+types:
+  IssueTemplate: !include /types/state/issue_template.raml
+  IssueTemplate/Form/Create: !include /types/state/issue_template/form/create.raml
+  IssueTemplate/Form/Update: !include /types/state/issue_template/form/update.raml

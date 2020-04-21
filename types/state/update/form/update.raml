@@ -1,0 +1,16 @@
+#%RAML 1.0 DataType
+
+uses:
+  prelude: /libraries/prelude.raml
+  core: /libraries/core.raml
+
+(prelude.common):
+(core.fieldDescriptions): !include /documentation/fieldDescriptions/update.yml
+displayName: Update
+description: |
+  Issue Updates update form.
+type: core.Form
+properties:
+  body?: core.maybe-string
+  label?: nil | core.UPDATE_LABEL
+  state_override?: nil | core.integer-state

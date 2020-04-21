@@ -1,0 +1,341 @@
+#%RAML 1.0
+
+title: Hund API
+version: v1
+baseUri: https://{domain}/v1
+baseUriParameters:
+  domain:
+    description: |
+      The domain of the status page or global dashboard to access the API from.
+      By default this uses the generic `api.hund.io` domain, which requires the
+      use of the `Hund-Context` header to set the context of the API request.
+      Without this header, the global context is assumed.
+    default: api.hund.io
+
+description: !include /documentation/topLevel.md
+
+uses:
+  core: /libraries/core.raml
+  group: /libraries/group.raml
+  component: /libraries/component.raml
+  component-expansionary: /libraries/component/expansionary.raml
+  issue: /libraries/issue.raml
+  issue_template: /libraries/issue_template.raml
+  metric_provider: /libraries/metric_provider.raml
+  update: /libraries/update.raml
+  update-expansionary: /libraries/update/expansionary.raml
+  watchdog: /libraries/watchdog.raml
+
+securedBy: [basic, bearer]
+securitySchemes:
+  basic:
+    description: |
+      This API supports HTTP Basic Authentication, with the API key given as the username. No password should be given.
+    type: Basic Authentication
+  bearer:
+    description: |
+      The API supports token authentication via the `Authorization: Bearer` header.
+    type: Pass Through
+    describedBy:
+      headers:
+        Authorization:
+          type: string
+          pattern: ^Bearer [A-Za-z0-9_]+$
+
+(core.tags):
+  - name: component
+    x-displayName: Components
+  - name: watchdog
+    x-displayName: Watchdogs
+  - name: metric_provider
+    x-displayName: MetricProviders
+  - name: group
+    x-displayName: Groups
+  - name: issue
+    x-displayName: Issues
+  - name: update
+    x-displayName: Issue Updates
+  - name: issue_template
+    x-displayName: IssueTemplates
+
+(core.tagGroups):
+  - name: Monitoring
+    tags: [component, group, metric_provider, watchdog]
+  - name: Incident Reporting
+    tags: [issue, update, issue_template]
+
+/components:
+  (core.tags): [component]
+  type:
+    core.collection:
+      itemType: component-expansionary.Component-Expansionary
+      postParamsType: component.Component/Form/Create
+      getResponseExample: !include /examples/components/collection.json
+      postRequestExample: !include /examples/components/collection/postRequest.json
+      postResponseExample: !include /examples/components/collection/postResponse.json
+      postErrorExample: !include /examples/components/error/validation.json
+  /{component_id}:
+    (core.tags): [component]
+    type:
+      core.collection-item:
+        itemType: component-expansionary.Component-Expansionary
+        putParamsType: component.Component/Form/Update
+        getResponseExample: !include /examples/components/collection-item.json
+        putRequestExample: !include /examples/components/collection-item/putRequest.json
+        putResponseExample: !include /examples/components/collection-item/putResponse.json
+        errorNotFoundExample: !include /examples/components/error/notFound.json
+        putErrorExample: !include /examples/components/error/validation.json
+    delete:
+
+/watchdogs/{watchdog_id}:
+  (core.tags): [watchdog]
+  type:
+    core.collection-item:
+      itemType: watchdog.Watchdog
+      putParamsType: watchdog.Watchdog/Form/Update
+      getResponseExample: !include /examples/watchdogs/collection-item.json
+      putRequestExample: !include /examples/watchdogs/collection-item/putRequest.json
+      putResponseExample: !include /examples/watchdogs/collection-item/putResponse.json
+      errorNotFoundExample: !include /examples/watchdogs/error/notFound.json
+      putErrorExample: !include /examples/watchdogs/error/validation.json
+  /convert:
+    (core.tags): [watchdog]
+    type:
+      core.action:
+        displayName: Convert a Watchdog's Service Type
+        description: |
+          Convert the service type of a watchdog to another service type. This
+          operation does not affect the component, nor the watchdog's statuses nor
+          metrics (unless specified). Useful for switching status providers in a
+          single low-friction request.
+        idPrefix: watchdog
+        itemType: watchdog.Watchdog
+        paramsType: watchdog.Watchdog/Form/Convert
+        successDescription: |
+          Succesfully converted watchdog service.
+        notFoundDescription: |
+          Watchdog not found.
+        requestExample: !include /examples/watchdogs/convert/putRequest.json
+        responseExample: !include /examples/watchdogs/convert/putResponse.json
+        errorNotFoundExample: !include /examples/watchdogs/error/notFound.json
+    put:
+      is:
+      - core.validation-failable:
+          errorExample: !include /examples/watchdogs/error/validation.json
+      responses:
+        400:
+          description: |
+            Failed to convert watchdog service.
+
+/groups:
+  (core.tags): [group]
+  type:
+    core.collection:
+      itemType: group.Group
+      postParamsType: group.Group/Form/Create
+      getResponseExample: !include /examples/groups/collection.json
+      postRequestExample: !include /examples/groups/collection/postRequest.json
+      postResponseExample: !include /examples/groups/collection/postResponse.json
+      postErrorExample: !include /examples/groups/error/validation.json
+  /{group_id}:
+    (core.tags): [group]
+    type:
+      core.collection-item:
+        itemType: group.Group
+        putParamsType: group.Group/Form/Update
+        getResponseExample: !include /examples/groups/collection-item.json
+        putRequestExample: !include /examples/groups/collection-item/putRequest.json
+        putResponseExample: !include /examples/groups/collection-item/putResponse.json
+        errorNotFoundExample: !include /examples/groups/error/notFound.json
+        putErrorExample: !include /examples/groups/error/validation.json
+    delete:
+      is:
+      - core.bad-request-failable:
+          description: |
+            Group is not empty.
+          errorBadRequestExample: !include /examples/groups/error/nonempty.json
+    /reorder:
+      (core.tags): [group]
+      type:
+        core.action:
+          displayName: Reorder a Group's Components
+          description: |
+            Reorder the components of the given group by listing the complete
+            new ordering of component ObjectIds. The listing must not remove nor
+            add components.
+          idPrefix: group
+          itemType: group.Group
+          paramsType: core.ObjectId[]
+          successDescription: |
+            Succesfully reordered group components.
+          notFoundDescription: |
+            Group not found.
+          requestExample: !include /examples/groups/collection-item/reorder/putRequest.json
+          responseExample: !include /examples/groups/collection-item/reorder/putResponse.json
+          errorNotFoundExample: !include /examples/groups/error/notFound.json
+      put:
+        is:
+        - core.bad-request-failable:
+            description: |
+              Incomplete listing of group components given.
+            errorBadRequestExample: !include /examples/groups/error/incompleteComponentListing.json
+
+/metric_providers:
+  (core.tags): [metric_provider]
+  type:
+    core.collection:
+      itemType: metric_provider.MetricProvider
+      postParamsType: metric_provider.MetricProvider/Form/Create
+      getResponseExample: !include /examples/metric_providers/collection.json
+      postRequestExample: !include /examples/metric_providers/collection/postRequest.json
+      postResponseExample: !include /examples/metric_providers/collection/postResponse.json
+      postErrorExample: !include /examples/metric_providers/error/postValidation.json
+  get:
+    queryParameters:
+      watchdog?:
+        description: |
+          ObjectId for a particular Watchdog to retrieve MetricProviders on.
+        type: core.ObjectId
+  /{metric_provider_id}:
+    (core.tags): [metric_provider]
+    type:
+      core.collection-item:
+        itemType: metric_provider.MetricProvider
+        putParamsType: metric_provider.MetricProvider/Form/Update
+        getResponseExample: !include /examples/metric_providers/collection-item.json
+        putRequestExample: !include /examples/metric_providers/collection-item/putRequest.json
+        putResponseExample: !include /examples/metric_providers/collection-item/putResponse.json
+        errorNotFoundExample: !include /examples/metric_providers/error/notFound.json
+        putErrorExample: !include /examples/metric_providers/error/putValidation.json
+    delete:
+      is:
+      - core.bad-request-failable:
+          description: |
+            Cannot delete a Watchdog's default MetricProvider.
+          errorBadRequestExample: !include /examples/metric_providers/error/defaultForWatchdog.json
+
+/issues:
+  (core.tags): [issue]
+  type:
+    core.collection:
+      itemType: issue.Issue
+      postParamsType: issue.Issue/Form/Create | issue.RetrospectiveIssue/Form/Create
+      getResponseExample: !include /examples/issues/collection.json
+      postRequestExample: !include /examples/issues/collection/postRequest.json
+      postResponseExample: !include /examples/issues/collection/postResponse.json
+      postErrorExample: !include /examples/issues/error/validation.json
+  get:
+    queryParameters:
+      components[]?:
+        description: |
+          One or more Components to return Issues for. To use this query parameter,
+          supply `components[]={component_id}` for each `{component_id}` you are
+          requesting Issues for.
+        type: core.ObjectId[]
+      component?:
+        description: |
+          A single Component to return Issues for. This field is ignored if
+          `components[]` is supplied.
+        type: core.ObjectId
+  /{issue_id}:
+    (core.tags): [issue]
+    type:
+      core.collection-item:
+        itemType: issue.Issue
+        putParamsType: issue.Issue/Form/Update
+        getResponseExample: !include /examples/issues/collection-item.json
+        putRequestExample: !include /examples/issues/collection-item/putRequest.json
+        putResponseExample: !include /examples/issues/collection-item/putResponse.json
+        errorNotFoundExample: !include /examples/issues/error/notFound.json
+        putErrorExample: !include /examples/issues/error/validation.json
+    put:
+      displayName: Revise an Issue
+      description: |
+        Revise an Issue by ObjectId.
+
+        **Note:** this endpoint does not create Isuse Updates, but merely revises
+        the properties of the original Issue.
+    delete:
+    /cancel:
+      (core.tags): [issue]
+      type:
+        core.action:
+          displayName: Cancel a Scheduled Issue
+          description: |
+            Cancel a scheduled issue, before or after it starts. Scheduled issues
+            that have already ended cannot be cancelled.
+          idPrefix: issue
+          itemType: issue.Issue
+          paramsType: issue.Issue/Form/Cancel
+          successDescription: |
+            Succesfully cancelled issue.
+          notFoundDescription: |
+            Issue not found.
+          requestExample: !include /examples/issues/collection-item/cancel/request.json
+          responseExample: !include /examples/issues/collection-item/cancel/response.json
+          errorNotFoundExample: !include /examples/issues/error/notFound.json
+      put:
+        is:
+        - core.bad-request-failable:
+            description: |
+              Invalid update body or unscheduled issue.
+            errorBadRequestExample: !include /examples/issues/error/unscheduledIssue.json
+    /updates:
+      (core.tags): [update]
+      uriParameters:
+        issue_id:
+          description: |
+            The ObjectId of the of the Issue.
+          type: core.ObjectId
+      type:
+        core.collection:
+          itemType: update-expansionary.Update-Expansionary
+          postParamsType: update.Update/Form/Create
+          getResponseExample: !include /examples/updates/collection.json
+          postRequestExample: !include /examples/updates/collection/postRequest.json
+          postResponseExample: !include /examples/updates/collection/postResponse.json
+          postErrorExample: !include /examples/updates/error/validation.json
+      /{update_id}:
+        (core.tags): [update]
+        uriParameters:
+          issue_id:
+            description: |
+              The ObjectId of the of the Issue that this Update pertains to.
+            type: core.ObjectId
+        type:
+          core.collection-item:
+            itemType: update-expansionary.Update-Expansionary
+            putParamsType: update.Update/Form/Update
+            getResponseExample: !include /examples/updates/collection-item.json
+            putRequestExample: !include /examples/updates/collection-item/putRequest.json
+            putResponseExample: !include /examples/updates/collection-item/putResponse.json
+            errorNotFoundExample: !include /examples/updates/error/notFound.json
+            putErrorExample: !include /examples/updates/error/validation.json
+        put:
+          displayName: Revise an Update
+          description: |
+            Revise an Update by ObjectId.
+        delete:
+
+/issue_templates:
+  (core.tags): [issue_template]
+  type:
+    core.collection:
+      itemType: issue_template.IssueTemplate
+      postParamsType: issue_template.IssueTemplate/Form/Create
+      getResponseExample: !include /examples/issue_templates/collection.json
+      postRequestExample: !include /examples/issue_templates/collection/postRequest.json
+      postResponseExample: !include /examples/issue_templates/collection/postResponse.json
+      postErrorExample: !include /examples/issue_templates/error/postValidation.json
+  /{issue_template_id}:
+    (core.tags): [issue_template]
+    type:
+      core.collection-item:
+        itemType: issue_template.IssueTemplate
+        putParamsType: issue_template.IssueTemplate/Form/Update
+        getResponseExample: !include /examples/issue_templates/collection-item.json
+        putRequestExample: !include /examples/issue_templates/collection-item/putRequest.json
+        putResponseExample: !include /examples/issue_templates/collection-item/putResponse.json
+        errorNotFoundExample: !include /examples/issue_templates/error/notFound.json
+        putErrorExample: !include /examples/issue_templates/error/putValidation.json
+    delete:

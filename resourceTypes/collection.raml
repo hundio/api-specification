@@ -1,0 +1,66 @@
+#%RAML 1.0 ResourceType
+
+description: Collection of <<resourcePathName>> in this context.
+get:
+  displayName: Get All <<resourcePathName|!uppercamelcase>>
+  description: |
+    Index of <<resourcePathName|!uppercamelcase>> collection. Returns a PagedArray.
+  queryParameters:
+    limit?:
+      description: |
+        The number of <<resourcePathName|!uppercamelcase>> to return per page.
+      default: 10
+      type: integer
+      minimum: 1
+      maximum: 100
+      example: 3
+    starting_after?:
+      description: |
+        A <<resourcePathName|!uppercamelcase|!singularize>> ObjectId after which the returned array of
+        <<resourcePathName|!uppercamelcase>> will begin. Use this as a cursor for pagination in
+        descending order.
+      type: core.ObjectId
+    ending_before?:
+      description: |
+        A <<resourcePathName|!uppercamelcase|!singularize>> ObjectId before which the returned array of
+        <<resourcePathName|!uppercamelcase>> will end. Use this as a cursor for pagination in
+        ascending order.
+      type: core.ObjectId
+  responses:
+    200:
+      description: |
+        Succesfully retrieved index.
+      body:
+        application/hal+json:
+          examples:
+            "GET <<resourcePath>> (200)": <<getResponseExample>>
+          type: core.PagedArray
+          properties:
+            data: <<itemType>>[]
+            _links?:
+              properties:
+                create-form: core.HAL/Link
+post:
+  is:
+    core.validation-failable:
+      errorExample: <<postErrorExample>>
+  displayName: Create a <<resourcePathName|!singularize|!uppercamelcase>>
+  description: |
+    Create a new <<resourcePathName|!uppercamelcase|!singularize>>. Returns the newly created <<resourcePathName|!uppercamelcase|!singularize>>.
+  body:
+    application/json:
+      type: <<postParamsType>>
+      examples:
+        "POST <<resourcePath>>": <<postRequestExample>>
+  responses:
+    201:
+      description: |
+        Succesfully created a new <<resourcePathName|!uppercamelcase|!singularize>>.
+      body:
+        application/hal+json:
+          type: <<itemType>>
+          examples:
+            "POST <<resourcePath>> (201)": <<postResponseExample>>
+    400:
+      description: |
+        Failed to create a new <<resourcePathName|!uppercamelcase|!singularize>>.

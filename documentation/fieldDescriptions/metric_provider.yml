@@ -1,0 +1,16 @@
+id: |
+  The ObjectId of this MetricProvider.
+watchdog: |
+  The Watchdog that owns this MetricProvider.
+default: |
+  When true, denotes that this MetricProvider is the default MetricProvider of
+  the Watchdog. This means that they share the same service configuration, which
+  the MetricProvider inherits from the Watchdog. This MetricProvider is created
+  automatically depending on the Watchdog, and cannot be deleted without also
+  deleting the Watchdog.
+instances: |
+  An array of MetricInstances, which describe each Metric that the
+  MetricProvider provides.
+service: |
+  The service configuration for this MetricProvider, which describes how the
+  given `instances` are provided.

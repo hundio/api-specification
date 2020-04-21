@@ -1,0 +1,7 @@
+api_token: |
+  The Pingdom API v3 key.
+check_id: |
+  The ID of the check to pull status from on Pingdom.
+check_type: |
+  The type of the Pingdom check. `check` denotes a normal Pingdom uptime check,
+  and `transactional` denotes a Pingdom TMS check.

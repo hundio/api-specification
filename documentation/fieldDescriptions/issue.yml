@@ -1,0 +1,65 @@
+id: |
+  The ObjectId of this Issue.
+created_at: |
+  The UNIX timestamp at which this Issue was created.
+updated_at: |
+  The UNIX timestamp at which this Issue was last updated.
+label: |
+  The initial label applied to the issue. The "current" label of the entire
+  issue may be updated by the labels of Issue Updates, though this must be taken
+  from the latest Update in `updates`.
+body: |
+  The initial body text of the issue in raw markdown.
+body_html: |
+  An HTML rendered view of the markdown in `body`.
+state_override: |
+  The integer state which overrides the state of affected Components in
+  `component`. A value of `null` indicates no override is present.
+title: |
+  The title of the Issue.
+priority: |
+  The integer priority of the Issue. Priority pertains to how notifications are
+  triggered for this Issue: -1 indicates **low priority**, meaning no
+  notifications whatsoever will be triggered for this issue; 0 indicates
+  **normal priority**, which is the default behavior; and, 1 indicates
+  **high priority**, meaning all subscriptions across all notifiers will receive
+  notifications for this Issue regardless of their notification preferences.
+open_graph_image_url: |
+  The URL to an image which will be displayed alongside this issue when shared
+  on social media websites.
+components: |
+  The Components affected by this Issue.
+specialization: |
+  Whether this Issue has special abilities or connotations. `general` is the
+  default behavior, indicating no specialization. Other values include
+  `maintenance`, which indicates an Issue shows affected components as
+  "under maintenance," and `information`, which indicates that the Issue is an
+  informational bulletin.
+retrospective: |
+  Whether this is a retrospective, backdated Issue.
+scheduled: |
+  Whether this Issue has a Schedule.
+standing: |
+  Whether this Issue is currently active and affecting its given Components.
+resolved: |
+  Whether this Issue is currently resolved, thus no longer affecting its given
+  Components.
+cancelled: |
+  Whether this Issue has been cancelled. Note that this field is `null` if the
+  Issue is not scheduled.
+began_at: |
+  The time at which this Issue began affecting its given Components.
+ended_at: |
+  The time at which this Issue stopped affecting its given Components. This
+  field is `null` if it has not ended yet.
+cancelled_at: |
+  The time at which this Issue was cancelled. This field is `null` if the Issue
+  has not been cancelled or is not scheduled.
+schedule: |
+  An object detailing the Schedule of this issue if it is scheduled. This field
+  is `null` if the Issue is not Scheduled.
+updates: |
+  A PagedArray whose `data` field contains an array of Issue Update objects.
+  This PagedArray will always be completely paged in, so expect `has_more` to
+  always be `false`. The first element of this array is the *latest* Update for
+  this Issue, and should be considered the current status of this Issue.

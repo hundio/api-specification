@@ -1,0 +1,19 @@
+#%RAML 1.0 DataType
+
+uses:
+  prelude: /libraries/prelude.raml
+  core: /libraries/core.raml
+
+(prelude.common):
+(core.fieldDescriptions): !include /documentation/fieldDescriptions/service/pingdom_legacy_v2.yml
+displayName: Pingdom v2
+description: |
+  Pingdom (legacy API v2) update form.
+type: core.Form
+properties:
+  check_id?: string
+  check_type?: core.PINGDOM_CHECK_TYPE
+  username?: string
+  password?: string
+  account_email?: string
+  application_key?: string

@@ -1,0 +1,35 @@
+#!/usr/bin/env node
+
+const fs = require('fs')
+const path = require('path')
+const wap = require('webapi-parser').WebApiParser
+const colors = require('colors')
+
+const { postProcess } = require("./lib/post-processing")
+
+const ramlPath = process.argv[2]
+
+async function main () {
+  const raml = fs.readFileSync(ramlPath).toString()
+  const ramlDir = path.resolve(ramlPath)
+
+  const model = await wap.raml10.parse(raml, `file://${ramlDir}`)
+  const resolved = await wap.raml10.resolve(model)
+
+  // wap.raml10.generateString(resolved).then(console.log)
+  // console.log(resolved.encodes.endPoints[0].operations[0].responses[0].payloads[0].schema.toJsonSchema)
+
+  // postProcess(resolved)
+
+  const report = await wap.raml10.validate(resolved)
+  // const report = await wap.oas30.generateString(resolved).then((r) => wap.oas30.parse(r)).then((p) => wap.oas30.validate(p))
+
+  const reportStr = report
+    .toString()
+    .replace("Conforms? true", "$&".green)
+    .replace("Conforms? false", "$&".red)
+
+  console.log(reportStr)
+}
+
+main()

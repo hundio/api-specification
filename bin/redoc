@@ -1,0 +1,91 @@
+#!/usr/bin/env node
+
+const fs = require('fs')
+const path = require('path')
+const wap = require('webapi-parser').WebApiParser
+
+const { postProcess } = require("./lib/post-processing")
+
+function normalizeSecuritySchemes(spec) {
+  spec = JSON.parse(spec)
+
+  var basic = spec.components.securitySchemes.basic
+  basic["type"] = "http"
+  basic["scheme"] = "basic"
+
+  var bearer = spec["components"]["x-amf-securitySchemes"]["bearer"]
+  delete spec["components"]["x-amf-securitySchemes"]
+
+  bearer["type"] = "http"
+  bearer["scheme"] = "bearer"
+  bearer["bearerFormat"] = bearer["x-amf-describedBy"].headers.Authorization.pattern.replace("Bearer ", "^") + "$"
+  delete bearer["x-amf-describedBy"]
+
+  spec.components.securitySchemes.bearer = bearer
+
+  return JSON.stringify(spec)
+}
+
+function redoc(spec) {
+  spec = normalizeSecuritySchemes(spec)
+    .replace(/x-amf-union/g, "anyOf")
+    .replace(/x-core\.tags/g, "tags")
+    .replace(/x-core\.tagGroups/g, "x-tagGroups")
+    .replace(/x-core\.expandable/g, "x-expandable")
+    .replace(/("x-expandable":)null/g, "$1true")
+    .replace(/,"x-(prelude\.)?common":( )?null/g, "")
+    .replace(/,"anyOf":\[{"\$ref":"[^"]+"}]/g, "")
+
+  return `
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <script src="https://cdn.jsdelivr.net/npm/redoc@2.0.0-rc.26/bundles/redoc.standalone.js"> </script>
+
+      <style>
+        strong code {
+          font-weight: bold !important;
+        }
+
+        h4 code {
+          font-size: 14px !important;
+          font-weight: bold !important;
+        }
+
+        label[role=menuitem] {
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+      </style>
+    </head>
+
+    <body>
+      <div id="redoc-container"></div>
+
+      <script>
+        const spec = ${JSON.stringify(JSON.parse(spec), null, " ")};
+        Redoc.init(spec, {jsonSampleExpandLevel: 4, expandResponses: "200,201", showExtensions: ["x-expandable"], hideSingleRequestSampleTab: true, requiredPropsFirst: true, sortPropsAlphabetically: false}, document.getElementById("redoc-container"))
+      </script>
+    </body>
+    </html>
+  `
+}
+
+const ramlPath = process.argv[2]
+
+async function main () {
+  const raml = fs.readFileSync(ramlPath).toString()
+  const ramlDir = path.resolve(ramlPath)
+
+  const model = await wap.raml10.parse(raml, `file://${ramlDir}`)
+
+  var resolved = await wap.raml10.resolve(model)
+
+  postProcess(resolved)
+
+  const spec = await wap.oas30.generateString(resolved)
+
+  console.log(redoc(spec))
+}
+
+main()

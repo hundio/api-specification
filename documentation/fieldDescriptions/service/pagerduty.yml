@@ -1,0 +1,19 @@
+api_key: |
+  The PagerDuty API key.
+suppress_future_issues: |
+  When `true`, suppresses newly triggered incidents when a PagerDuty issue is
+  already ongoing for the component.
+issue_templates: |
+  An object of IssueTemplate IDs to create Issues/Updates whenever this Watchdog
+  changes state. This Watchdog will create Issues from the `degraded` template
+  for incidents with low urgency, and `outage` for those with high urgency.
+
+  When multiple incidents are present, the highest urgency of the incidents will be used.
+
+  Once a Watchdog in degraded/outage finds that there are no longer unresolved
+  incidents, it will resolve Issues via the `operational` template.
+
+  If any of the given templates are `null`, then the Watchdog will not create
+  an Issue/Update in that case.
+services: |
+  An array of PagerDuty service IDs to track on this Watchdog.

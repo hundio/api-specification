@@ -1,0 +1,19 @@
+id: |
+  The ObjectId of this Group.
+created_at: |
+  The UNIX timestamp at which this Group was created.
+updated_at: |
+  The UNIX timestamp at which this Group was last updated.
+description: |
+  A description of this Group, potentially with markdown formatting.
+description_html: |
+  An HTML rendering of the markdown-formatted `description`.
+name: |
+  The name of this Group.
+collapsed: |
+  Whether or not this group is displayed collapsed by default on the status page.
+position: |
+  An integer representing the position of this Group. Groups are displayed on
+  the status page in ascending order according to this value.
+components: |
+  A PagedArray of the Components contained within this Group.

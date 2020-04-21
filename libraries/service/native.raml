@@ -1,0 +1,19 @@
+#%RAML 1.0 Library
+
+usage: |
+  Defines Hund Native Monitoring Check type and ancillary types
+
+uses:
+  prelude: /libraries/prelude.raml
+
+types:
+  HTTP/Headers:
+    (prelude.common):
+    type: object
+    additionalProperties: true
+    properties:
+      /\A[\Q!#$%&'*+-.^_`|~\E0-9A-Za-z]+\Z/: string
+
+  Check: !include /types/state/service/native/check.raml
+  Check/Form/Create: !include /types/state/service/native/check/form/create.raml
+  Check/Form/Update: !include /types/state/service/native/check/form/update.raml

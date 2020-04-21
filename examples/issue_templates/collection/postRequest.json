@@ -1,0 +1,7 @@
+{
+  "name": "New PD Incidents",
+  "kind": "pagerduty",
+  "title": "{{ pagerduty.incidents.first.summary }}",
+  "body": "**Incidents detected:**\n\n{% for incident in pagerduty.incidents %}\n  * {{ incident.description }}\n{% endfor %}",
+  "label": "assessed"
+}

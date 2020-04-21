@@ -1,0 +1,13 @@
+check_id: |
+  The ID of the check to pull status from on Pingdom.
+check_type: |
+  The type of the Pingdom check. `check` denotes a normal Pingdom uptime check,
+  and `transactional` denotes a Pingdom TMS check.
+username: |
+  The Pingdom username to log into.
+password: |
+  The Pingdom password for the given username.
+account_email: |
+  The "Team Email" for the given username, if one exists.
+application_key: |
+  The Pingdom API v2 application key.

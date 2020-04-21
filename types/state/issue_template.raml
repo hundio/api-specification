@@ -1,0 +1,26 @@
+#%RAML 1.0 DataType
+
+uses:
+  prelude: /libraries/prelude.raml
+  core: /libraries/core.raml
+
+(prelude.common):
+(core.fieldDescriptions): !include /documentation/fieldDescriptions/issue_template.yml
+displayName: IssueTemplate
+description: |
+  A template for creating Issues, as well as Issue Updates.
+type: [core.TypedObject, core.Timestamps, core.HAL/Linkable]
+properties:
+  id: core.ObjectId
+  type:
+    enum: [issue_template]
+  name: string
+  kind: core.ISSUE_TEMPLATE_KIND
+  title: core.maybe-string
+  label: core.ISSUE_TEMPLATE_LABEL | nil
+  body: core.maybe-string
+  components: core.ObjectId[]
+  _links?:
+    properties:
+      self: core.HAL/Link
+      update-form: core.HAL/Link

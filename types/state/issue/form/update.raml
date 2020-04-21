@@ -1,0 +1,22 @@
+#%RAML 1.0 DataType
+
+uses:
+  prelude: /libraries/prelude.raml
+  core: /libraries/core.raml
+  schedule: /libraries/schedule.raml
+
+(prelude.common):
+(core.fieldDescriptions): !include /documentation/fieldDescriptions/issue.yml
+displayName: Issue
+description: |
+  Issue update form.
+type: core.Form
+properties:
+  title?: string
+  body?: string
+  label?: core.ISSUE_LABEL
+  state_override?: nil | core.integer-state
+  priority?: core.ISSUE_PRIORITY
+  open_graph_image_url?: core.maybe-string
+  schedule?: schedule.Schedule/Form/Update
+  components?: core.ObjectId[]

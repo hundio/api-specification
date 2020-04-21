@@ -1,0 +1,9 @@
+{
+  "id": "5a06ee938fbb652ab878c000",
+  "type": "watchdog",
+  "high_frequency": true,
+  "service": {
+    "type": "updown",
+    "monitor_token": "kn121"
+  }
+}

@@ -1,0 +1,21 @@
+#%RAML 1.0 DataType
+
+uses:
+  prelude: /libraries/prelude.raml
+  core: /libraries/core.raml
+
+(prelude.common):
+(core.fieldDescriptions): !include /documentation/fieldDescriptions/service/pingdom_legacy_v2.yml
+displayName: Pingdom v2
+description: |
+  A [pingdom](https://www.pingdom.com) service (legacy API v2). Watchdogs of this
+  type may only be updated, not created. Please create a new Pingdom watchdog
+  instead, which uses the newer v3.1 API.
+type: core.Service
+properties:
+  type:
+    enum: [pingdom_legacy_v2]
+  check_id: string
+  check_type: core.PINGDOM_CHECK_TYPE
+  username: string
+  account_email: core.maybe-string

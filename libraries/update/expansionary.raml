@@ -1,0 +1,18 @@
+#%RAML 1.0 Library
+
+usage: |
+  Defines Update with expansions.
+
+uses:
+  core: /libraries/core.raml
+  issue: /libraries/issue.raml
+  update: /libraries/update.raml
+
+types:
+  Update-Expansionary:
+    (core.fieldDescriptions): !include /documentation/fieldDescriptions/update.yml
+    type: update.Base
+    properties:
+      issue:
+        (core.expandable):
+        type: core.ObjectId | issue.Issue

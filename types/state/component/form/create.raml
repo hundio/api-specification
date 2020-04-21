@@ -1,0 +1,23 @@
+#%RAML 1.0 DataType
+
+uses:
+  prelude: /libraries/prelude.raml
+  core: /libraries/core.raml
+  watchdog: /libraries/watchdog.raml
+
+(prelude.common):
+(core.fieldDescriptions): !include /documentation/fieldDescriptions/component.yml
+description: |
+  Component creation form.
+type: core.Form
+properties:
+  name: string
+  description?: string
+  exclude_from_global_uptime?:
+    type: boolean
+    default: false
+  exclude_from_global_history?:
+    type: boolean
+    default: false
+  group: core.ObjectId
+  watchdog: watchdog.Watchdog/Form/Create

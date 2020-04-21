@@ -1,0 +1,21 @@
+#%RAML 1.0 DataType
+
+uses:
+  prelude: /libraries/prelude.raml
+  core: /libraries/core.raml
+
+(prelude.common):
+(core.fieldDescriptions): !include /documentation/fieldDescriptions/service/pagerduty.yml
+displayName: PagerDuty
+description: |
+  PagerDuty creation form.
+type: core.Form
+properties:
+  api_key: string
+  suppress_future_issues?:
+    type: boolean
+    default: false
+  issue_templates?:
+    type: core.WatchdogIssueTemplates
+    default: { outage: null, degraded: null, operational: null }
+  services: string[]

@@ -1,0 +1,9 @@
+instance_id: |
+  The AWS EC2 instance ID to monitor.
+region: |
+  The AWS region that the given EC2 instance resides in.
+access_key_id: |
+  An AWS IAM user ID. This user can use the managed policy `CloudWatchReadOnlyAccess`.
+  Alternatively, create an inline policy with the required actions (`cloudwatch:Get*`, `cloudwatch:Describe*`).
+secret_access_key: |
+  The secret access key for the given AWS IAM user.

@@ -1,0 +1,15 @@
+{
+  "id": "5e06ee938fbb652ab878caaa",
+  "type": "component",
+  "group": "5c06ee938fbb652ab878c2a1",
+  "name": "Filtering Service",
+  "created_at": 1543958163,
+  "updated_at": 1543958164,
+  "last_event_at": 1580352001,
+  "exclude_from_global_uptime": false,
+  "exclude_from_global_history": false,
+  "description": "A *perhaps* better description.",
+  "description_html": "<p>A <em>perhaps</em> better description.</p>",
+  "percent_uptime": 99.123,
+  "watchdog": "5e06ee938fbb652ab878caa9"
+}

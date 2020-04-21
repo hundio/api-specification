@@ -1,0 +1,30 @@
+#%RAML 1.0 DataType
+
+uses:
+  prelude: /libraries/prelude.raml
+  core: /libraries/core.raml
+  service: /libraries/service.raml
+  metric_instance: /libraries/metric_instance.raml
+
+(prelude.common):
+(core.fieldDescriptions): !include /documentation/fieldDescriptions/metric_provider.yml
+displayName: MetricProvider
+description: |
+  MetricProviders gather metrics from a configured service for viewing on the
+  Status Page.
+type: [core.TypedObject, core.HAL/Linkable]
+properties:
+  id: core.ObjectId
+  type:
+    enum: [metric_provider]
+  watchdog:
+    (core.expandable):
+    type: core.ObjectId
+  default: boolean
+  instances: metric_instance.MetricInstance[]
+  service: service.Services/MetricProvider
+  _links?:
+    properties:
+      self: core.HAL/Link
+      update-form: core.HAL/Link
+      watchdog: core.HAL/Link

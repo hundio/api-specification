@@ -1,0 +1,250 @@
+#%RAML 1.0 Library
+
+usage: |
+  Defines core API types, forms, and resources.
+
+uses:
+  prelude: /libraries/prelude.raml
+
+types:
+  # Annotations
+
+  Tag:
+    type: object
+    properties:
+      x-displayName: string
+
+  TagGroup:
+    type: object
+    properties:
+      name: string
+      tags: string[]
+
+  # Constants
+
+  METRIC_AXIS_TYPE:
+    type: string
+    enum: [time, measure]
+  METRIC_PLOT_TYPE:
+    type: string
+    enum: [line, bar]
+  METRIC_INTERPOLATION:
+    type: string
+    enum: [linear, step, basis, bundle, cardinal]
+  METRIC_AGGREGATION:
+    type: string
+    enum: [sum, average, first, last, max, min]
+
+  ISSUE_PRIORITY:
+    type: integer
+    enum: [-1, 0, 1]
+  ISSUE_SPECIALIZATION:
+    type: string
+    enum: [informational, maintenance, general]
+  ISSUE_LABEL:
+    type: string
+    enum: [assessed, informational, investigating, maintenance]
+
+  UPDATE_LABEL:
+    type: string
+    enum: [identified, investigating, monitoring, resolved, addendum]
+
+  ISSUE_TEMPLATE_KIND:
+    type: string
+    enum: [generic, pagerduty, newrelic]
+  ISSUE_TEMPLATE_LABEL:
+    type: string
+    enum: [maintenance, assessed, identified, investigating, monitoring, resolved, addendum, informational]
+
+  PINGDOM_CHECK_TYPE:
+    type: string
+    enum: [transactional, check]
+
+  CLOUDWATCH_REGION:
+    type: string
+    enum: [ap-northeast-1, ap-southeast-1, ap-southeast-2, eu-central-1, eu-west-1, sa-east-1, us-east-1, us-west-1, us-west-2]
+
+  NEWRELIC_API_REGION:
+    type: string
+    enum: [us, eu]
+
+  NATIVE_REGION:
+    type: string
+    enum: [wa-us-1, tx-us-1, nj-us-1, lon-gb-1, syd-au-1, fra-de-1, par-fr-1, ams-nl-1, sin-sg-1, mow-ru-1]
+  NATIVE_IP_VERSION:
+    type: string
+    enum: [inet, inet6]
+  NATIVE_STRING_CONTAINMENT_MODE:
+    type: string
+    enum: [exact, regex]
+  NATIVE_DNS_RESPONSE_CONTAINMENT:
+    type: string
+    enum: [any, all]
+  NATIVE_DNS_RECORD_TYPE:
+    type: string
+    enum: [A, AAAA, CNAME, MX, NS, PTR, SOA, SRV, TXT]
+
+  # Primatives
+
+  maybe-string:
+    (prelude.common):
+    type: nil | string
+  maybe-boolean:
+    (prelude.common):
+    type: nil | boolean
+  nonnegative-number:
+    (prelude.common):
+    type: number
+    minimum: 0
+  nonnegative-integer:
+    (prelude.common):
+    type: integer
+    minimum: 0
+  port:
+    (prelude.common):
+    type: integer
+    minimum: 1
+    maximum: 65535
+  percentage:
+    (prelude.common):
+    type: number
+    minimum: 0
+    maximum: 1
+  integer-state:
+    (prelude.common):
+    description: |
+      An integer denoting operational state (1 => operational, 0 => degraded, -1 => outage).
+    displayName: State
+    type: integer
+    enum: [-1, 0, 1]
+  namespaced-slug:
+    (prelude.common):
+    description: |
+      An alphanumeric (plus underscore) string, separated by zero or more dots,
+      denoting namespaces.
+    displayName: Slug
+    type: string
+    pattern: ([a-z][a-z0-9_]*)(\.[a-z][a-z0-9_]*)*
+  i18n:
+    type: object
+    properties:
+      //: string
+  polymorphic-i18n:
+    type: object
+    properties:
+      default: i18n
+      //: i18n
+  i18n-string:
+    (prelude.common):
+    description: |
+      A localized string. The particular translation used on this string depends
+      on the given `Accept-Language` header. Given an `Accept-Language` header
+      value of `*`, this value will be the full object of translations. If a
+      translation does not exist for the requested language, English is used as
+      a fallback.
+    displayName: i18n string
+    type: string | i18n
+  timestamp:
+    (prelude.common):
+    type: nonnegative-integer
+  maybe-timestamp:
+    (prelude.common):
+    type: nil | timestamp
+
+  # Mixins
+
+  TimestampsUpdated:
+    type: object
+    additionalProperties: false
+    properties:
+      updated_at:
+        type: timestamp
+  TimestampsCreated:
+    type: object
+    additionalProperties: false
+    properties:
+      created_at:
+        type: timestamp
+  Timestamps:
+    type: [TimestampsUpdated, TimestampsCreated]
+    additionalProperties: false
+  Describable:
+    type: object
+    additionalProperties: false
+    properties:
+      description:
+        type: maybe-string
+      description_html:
+        type: string
+  IssueContentable:
+    type: object
+    additionalProperties: false
+    properties:
+      label: maybe-string
+      body: maybe-string
+      body_html: string
+      state_override: nil | integer-state
+  WatchdogIssueTemplates:
+    type: object
+    additionalProperties: false
+    properties:
+      outage: nil | ObjectId
+      degraded: nil | ObjectId
+      operational: nil | ObjectId
+
+  # Objects
+
+  TypedObject: prelude.TypedObject
+  Form: !include /types/form.raml
+  Error: !include /types/error.raml
+
+  HAL/Link: prelude.HAL/Link
+  HAL/Links: prelude.HAL/Links
+  HAL/Linkable: prelude.HAL/Linkable
+  HAL/Embedded: prelude.HAL/Embedded
+  HAL: prelude.HAL
+
+  ObjectId: !include /types/bson/object_id.raml
+
+  PagedArray: !include /types/state/paged_array.raml
+
+  Service: !include /types/state/service.raml
+
+resourceTypes:
+  collection: !include /resourceTypes/collection.raml
+  collection-item: !include /resourceTypes/collection-item.raml
+  action: !include /resourceTypes/action.raml
+
+traits:
+  bad-request-failable: !include /traits/bad-request-failable.raml
+  not-found-failable: !include /traits/not-found-failable.raml
+  validation-failable: !include /traits/validation-failable.raml
+
+annotationTypes:
+  expandable:
+    description: Flag denoting that this field can be expanded in responses via `expand[]` query parameter.
+    allowedTargets: TypeDeclaration
+    type: nil
+  tags:
+    description: Either a definition of tags or application of them on resource types.
+    allowedTargets: [API, Resource]
+    type: string[] | Tag[]
+  tagGroups:
+    description: A grouping of tags.
+    allowedTargets: API
+    type: TagGroup[]
+  fieldDescriptions:
+    description: |
+      A field->string mapping of descriptions for a set of fields. Alternatively,
+      a type->(field->string) mapping (with required `default` key merged into
+      all types, and used as base when no other type matches). Override by
+      setting the `description` facet on a specific field. Typically set this
+      by `!include`ing a central JSON/YAML mapping stored in `/documentation`.
+    allowedTargets: TypeDeclaration
+    type: i18n | polymorphic-i18n
+  overrideFieldDescription:
+    description: |
+      Flag allowing any description set in a type declaration to override any
+      that would be set from given `fieldDescriptions`.
+    allowedTargets: TypeDeclaration
+    type: nil

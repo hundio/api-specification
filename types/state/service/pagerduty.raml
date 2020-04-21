@@ -1,0 +1,19 @@
+#%RAML 1.0 DataType
+
+uses:
+  prelude: /libraries/prelude.raml
+  core: /libraries/core.raml
+
+(prelude.common):
+(core.fieldDescriptions): !include /documentation/fieldDescriptions/service/pagerduty.yml
+displayName: PagerDuty
+description: |
+  A [PagerDuty](https://www.pagerduty.com/) service. This watchdog can
+  create/resolve issues based on PagerDuty incidents.
+type: core.Service
+properties:
+  type:
+    enum: [pagerduty]
+  suppress_future_issues: boolean
+  issue_templates: core.WatchdogIssueTemplates
+  services: string[]

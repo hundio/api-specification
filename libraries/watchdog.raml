@@ -1,0 +1,19 @@
+#%RAML 1.0 Library
+
+usage: |
+  Defines Watchdog type and forms.
+
+uses:
+  core: /libraries/core.raml
+
+types:
+  Watchdog: !include /types/state/watchdog.raml
+  Watchdog/Form/Create: !include /types/state/watchdog/form/create.raml
+  Watchdog/Form/Update: !include /types/state/watchdog/form/update.raml
+  Watchdog/Form/Convert:
+    (core.fieldDescriptions): !include /documentation/fieldDescriptions/watchdog.yml
+    type: Watchdog/Form/Create
+    properties:
+      keep_original_default_metric_provider?:
+        type: boolean
+        default: true

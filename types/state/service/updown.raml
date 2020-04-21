@@ -1,0 +1,16 @@
+#%RAML 1.0 DataType
+
+uses:
+  prelude: /libraries/prelude.raml
+  core: /libraries/core.raml
+
+(prelude.common):
+(core.fieldDescriptions): !include /documentation/fieldDescriptions/service/updown.yml
+displayName: Updown
+description: |
+  An [Updown.io](https://updown.io) service.
+type: core.Service
+properties:
+  type:
+    enum: [updown]
+  monitor_token: string

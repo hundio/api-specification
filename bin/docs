@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+bin/redoc core.raml > dist/index.html

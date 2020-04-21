@@ -1,0 +1,48 @@
+#%RAML 1.0 Library
+
+usage: |
+  Defines essential types used by definitions in core.
+
+types:
+  TypedObject: !include /types/typed_object.raml
+
+  HAL/Link:
+    (common):
+    displayName: HAL Link
+    type: object
+    additionalProperties: true
+    properties:
+      href: string
+      templated?:
+        type: boolean
+        default: false
+  HAL/Links:
+    (common):
+    displayName: HAL Links
+    description: |
+      An object describing the various link relations for this type.
+    type: object
+    additionalProperties: true
+    properties:
+      //: HAL/Link
+  HAL/Linkable:
+    type: object
+    properties:
+      _links?: HAL/Links
+  HAL/Embedded:
+    type: object
+    additionalProperties: true
+  HAL:
+    type: HAL/Linkable
+    properties:
+      _embedded?: HAL/Embedded
+
+annotationTypes:
+  common:
+    description: |
+      Root flag denoting that this type is "common" and should be hoisted to
+      the root of a resolved webapi base unit. Any types with the same library
+      name are considered to be the same type while hoisting and deduplicating
+      type usage.
+    type: nil
+    allowedTargets: TypeDeclaration

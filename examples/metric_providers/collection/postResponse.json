@@ -1,0 +1,29 @@
+{
+  "id": "5e16ee938cca652ab8780010",
+  "type": "metric_provider",
+  "watchdog": "5a06ee938fbb652ab878c000",
+  "default": true,
+  "instances": [
+    {
+      "id": "5e16ee938cca652ab8780011",
+      "type": "metric_instance",
+      "slug": "platform_errors@5e16ee938cca652ab8780010",
+      "definition_slug": "platform_errors",
+      "enabled": true,
+      "top_level_enabled": true,
+      "title": "Platform Errors",
+      "x_title": "Platform Errors",
+      "y_title": "Time",
+      "x_type": "time",
+      "y_type": "measure",
+      "y_supremum": 4.0,
+      "plot_type": "bar",
+      "interpolation": "linear",
+      "aggregation": "sum"
+    }
+  ],
+  "service": {
+    "type": "webhook",
+    "webhook_key": "AAAAAAAAaaaaaaaa"
+  }
+}

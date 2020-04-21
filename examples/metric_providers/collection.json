@@ -1,0 +1,81 @@
+{
+  "type": "paged_array",
+  "total_count": 2,
+  "has_more": false,
+  "data": [
+    {
+      "id": "5e16ee938cca652ab8780000",
+      "type": "metric_provider",
+      "watchdog": "5a06ee938fbb652ab878c000",
+      "default": true,
+      "instances": [
+        {
+          "id": "5e16ee938cca652ab8780001",
+          "type": "metric_instance",
+          "slug": "apdex@5e16ee938cca652ab8780000",
+          "definition_slug": "apdex",
+          "enabled": true,
+          "top_level_enabled": false,
+          "title": "Apdex",
+          "x_title": "Apdex",
+          "y_title": "Time",
+          "x_type": "time",
+          "y_type": "measure",
+          "y_supremum": 1.0,
+          "plot_type": "line",
+          "interpolation": "linear",
+          "aggregation": "average"
+        }
+      ],
+      "service": {
+        "type": "updown",
+        "monitor_token": "kn121"
+      }
+    },
+    {
+      "id": "5e16ee938cca652ab8780003",
+      "type": "metric_provider",
+      "watchdog": "5a06ee938fbb652ab878c000",
+      "default": false,
+      "instances": [
+        {
+          "id": "5e16ee938cca652ab8780004",
+          "type": "metric_instance",
+          "slug": "percent_uptime@5e16ee938cca652ab8780003",
+          "definition_slug": "percent_uptime",
+          "enabled": true,
+          "top_level_enabled": true,
+          "title": "Percent Uptime",
+          "x_title": "Percent Uptime",
+          "y_title": "Time",
+          "x_type": "time",
+          "y_type": "measure",
+          "y_supremum": 100,
+          "plot_type": "line",
+          "interpolation": "linear",
+          "aggregation": "average"
+        },
+        {
+          "id": "5e16ee938cca652ab8780005",
+          "type": "metric_instance",
+          "slug": "incidents_reported@5e16ee938cca652ab8780003",
+          "definition_slug": "incidents_reported",
+          "enabled": true,
+          "top_level_enabled": false,
+          "title": "Incidents Reported",
+          "x_title": "Incidents Reported",
+          "y_title": "Time",
+          "x_type": "time",
+          "y_type": "measure",
+          "y_supremum": 2,
+          "plot_type": "bar",
+          "interpolation": "linear",
+          "aggregation": "sum"
+        }
+      ],
+      "service": {
+        "type": "builtin"
+      }
+    }
+  ]
+}

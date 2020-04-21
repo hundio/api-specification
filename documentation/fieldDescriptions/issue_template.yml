@@ -1,0 +1,20 @@
+id: |
+  The ObjectId of the IssueTemplate.
+name: |
+  An internal name for identifying this IssueTemplate.
+kind: |
+  The "kind" of this IssueTemplate. By default, this is `generic`, denoting that
+  the template can be used for manual issue creations, as well as for any
+  automated Watchdog accepting IssueTemplates. Otherwise, this value will denote
+  a specialized Watchdog that the template expects (e.g. PagerDuty or New Relic).
+title: |
+  If this template is used against an Issue, then it will take on this title. This
+  field supports Liquid templating.
+body: |
+  The body to use for the Issue/Update created against this template. This field
+  supports Liquid templating.
+label: |
+  The label to use for the Issue/Update created aginst this template.
+components: |
+  If this template is used against an Issue, then it will take on these Components
+  as affected by the Issue.

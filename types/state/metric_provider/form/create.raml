@@ -1,0 +1,18 @@
+#%RAML 1.0 DataType
+
+uses:
+  prelude: /libraries/prelude.raml
+  core: /libraries/core.raml
+  service: /libraries/service.raml
+  metric_instance: /libraries/metric_instance.raml
+
+(prelude.common):
+(core.fieldDescriptions): !include /documentation/fieldDescriptions/metric_provider.yml
+displayName: MetricProvider
+description: |
+  MetricProvider creation form.
+type: core.Form
+properties:
+  watchdog: core.ObjectId
+  instances: metric_instance.MetricInstance/Form/Create[]
+  service: service.Form/MetricProvider/Create

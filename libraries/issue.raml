@@ -1,0 +1,12 @@
+#%RAML 1.0 Library
+
+usage: |
+  Defines the Issue type and forms.
+
+types:
+  Issue: !include /types/state/issue.raml
+  Issue/Form/Create: !include /types/state/issue/form/create.raml
+  Issue/Form/Update: !include /types/state/issue/form/update.raml
+  Issue/Form/Cancel: !include /types/state/issue/form/cancel.raml
+
+  RetrospectiveIssue/Form/Create: !include /types/state/issue/retrospective/form/create.raml

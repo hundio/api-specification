@@ -1,0 +1,19 @@
+#%RAML 1.0 DataType
+
+uses:
+  prelude: /libraries/prelude.raml
+  core: /libraries/core.raml
+  check: /libraries/service/native/check.raml
+
+(prelude.common):
+(core.fieldDescriptions): !include /documentation/fieldDescriptions/service/native/check.yml
+displayName: Hund Native Monitoring
+description: |
+  Hund's builtin monitoring service, offered free-of-charge with a Hund status
+  page. This service can watch the status of any ICMP, HTTP, DNS, TCP, or UDP
+  endpoint. For more information about this service, visit our
+  [knowledge base](https://hund.io/help/integrations/hund-native-monitoring).
+type: [core.Service, check.Checks]
+properties:
+  type:
+    enum: [native]

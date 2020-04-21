@@ -1,0 +1,11 @@
+{
+  "group": "5c06ee938fbb652ab878c2a1",
+  "name": "Filtering Service",
+  "watchdog": {
+    "service": {
+      "type": "updown",
+      "monitor_api_key": "AAAAAAAaaaaaaa",
+      "monitor_token": "lp341"
+    }
+  }
+}

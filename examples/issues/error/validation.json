@@ -1,0 +1,14 @@
+{
+  "message": "Validation failed",
+  "logref": "5d61fea8-8e86-4b12-8f16-6d71fc7f8b83",
+  "_embedded": {
+    "errors": [
+      {
+        "message": "Title must be present"
+      },
+      {
+        "message": "Body must be present"
+      }
+    ]
+  }
+}

@@ -1,0 +1,29 @@
+#%RAML 1.0 Library
+
+usage: |
+  Defines Hund Native Monitoring Check subtypes
+
+types:
+  ICMP: !include /types/state/service/native/check/icmp.raml
+  ICMP/Form/Create: !include /types/state/service/native/check/icmp/form/create.raml
+  ICMP/Form/Update: !include /types/state/service/native/check/icmp/form/update.raml
+
+  HTTP: !include /types/state/service/native/check/http.raml
+  HTTP/Form/Create: !include /types/state/service/native/check/http/form/create.raml
+  HTTP/Form/Update: !include /types/state/service/native/check/http/form/update.raml
+
+  DNS: !include /types/state/service/native/check/dns.raml
+  DNS/Form/Create: !include /types/state/service/native/check/dns/form/create.raml
+  DNS/Form/Update: !include /types/state/service/native/check/dns/form/update.raml
+
+  TCP: !include /types/state/service/native/check/tcp.raml
+  TCP/Form/Create: !include /types/state/service/native/check/tcp/form/create.raml
+  TCP/Form/Update: !include /types/state/service/native/check/tcp/form/update.raml
+
+  UDP: !include /types/state/service/native/check/udp.raml
+  UDP/Form/Create: !include /types/state/service/native/check/udp/form/create.raml
+  UDP/Form/Update: !include /types/state/service/native/check/udp/form/update.raml
+
+  Checks: ICMP | HTTP | DNS | TCP | UDP
+  Checks/Form/Create: ICMP/Form/Create | HTTP/Form/Create | DNS/Form/Create | TCP/Form/Create | UDP/Form/Create
+  Checks/Form/Update: ICMP/Form/Update | HTTP/Form/Update | DNS/Form/Update | TCP/Form/Update | UDP/Form/Update

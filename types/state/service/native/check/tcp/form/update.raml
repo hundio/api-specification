@@ -1,0 +1,17 @@
+#%RAML 1.0 DataType
+
+uses:
+  core: /libraries/core.raml
+  native: /libraries/service/native.raml
+
+displayName: TCP
+description: |
+  Hund Native Monitoring TCP Check update form.
+type: native.Check/Form/Update
+properties:
+  port?: core.port
+  send_data?: core.maybe-string
+  response_must_contain?: core.maybe-string
+  response_must_contain_mode?: core.NATIVE_STRING_CONTAINMENT_MODE
+  wait_for_initial_response?: boolean
+  ip_version?: core.NATIVE_IP_VERSION

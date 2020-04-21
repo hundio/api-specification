@@ -1,0 +1,56 @@
+#%RAML 1.0 ResourceType
+
+description: Singular <<resourcePathName|!uppercamelcase|!singularize>> in this context.
+uriParameters:
+  <<resourcePathName|!singularize>>_id:
+    description: |
+      The ObjectId of the of the <<resourcePathName|!uppercamelcase|!singularize>>.
+    type: core.ObjectId
+is:
+  core.not-found-failable:
+    errorNotFoundExample: <<errorNotFoundExample>>
+get:
+  displayName: Retrieve a <<resourcePathName|!singularize|!uppercamelcase>>
+  description: |
+    Retrieve the given <<resourcePathName|!uppercamelcase|!singularize>> by ObjectId.
+  responses:
+    200:
+      description: |
+        Succesfully retrieved <<resourcePathName|!uppercamelcase|!singularize>>.
+      body:
+        application/hal+json:
+          examples:
+            "GET <<resourcePath>> (200)": <<getResponseExample>>
+          type: <<itemType>>
+put:
+  is:
+    core.validation-failable:
+      errorExample: <<putErrorExample>>
+  displayName: Update a <<resourcePathName|!singularize|!uppercamelcase>>
+  description: |
+    Update the given <<resourcePathName|!uppercamelcase|!singularize>> by ObjectId.
+  body:
+    application/json:
+      examples:
+        "PUT <<resourcePath>>": <<putRequestExample>>
+      type: <<putParamsType>>
+  responses:
+    200:
+      description: |
+        Succesfully updated <<resourcePathName|!uppercamelcase|!singularize>>.
+      body:
+        application/hal+json:
+          examples:
+            "PUT <<resourcePath>> (200)": <<putResponseExample>>
+          type: <<itemType>>
+    400:
+      description: |
+        Failed to update <<resourcePathName|!uppercamelcase|!singularize>>.
+delete?:
+  displayName: Delete a <<resourcePathName|!singularize|!uppercamelcase>>
+  description: |
+    Delete the given <<resourcePathName|!uppercamelcase|!singularize>> by ObjectId.
+  responses:
+    204:
+      description: |
+        Succesfully deleted <<resourcePathName|!uppercamelcase|!singularize>>.

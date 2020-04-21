@@ -1,0 +1,15 @@
+#%RAML 1.0 DataType
+
+uses:
+  prelude: /libraries/prelude.raml
+  core: /libraries/core.raml
+
+(prelude.common):
+(core.fieldDescriptions): !include /documentation/fieldDescriptions/service/uptimerobot.yml
+displayName: Uptime Robot
+description: |
+  An [Uptime Robot](https://uptimerobot.com) service.
+type: core.Service
+properties:
+  type:
+    enum: [uptimerobot]

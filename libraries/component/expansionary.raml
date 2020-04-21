@@ -1,0 +1,22 @@
+#%RAML 1.0 Library
+
+usage: |
+  Defines Component with expansions.
+
+uses:
+  core: /libraries/core.raml
+  component: /libraries/component.raml
+  watchdog: /libraries/watchdog.raml
+  group: /libraries/group.raml
+
+types:
+  Component-Expansionary:
+    (core.fieldDescriptions): !include /documentation/fieldDescriptions/component.yml
+    type: component.Base
+    properties:
+      watchdog:
+        (core.expandable):
+        type: core.ObjectId | watchdog.Watchdog
+      group?:
+        (core.expandable):
+        type: core.ObjectId | group.Group

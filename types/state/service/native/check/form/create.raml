@@ -1,0 +1,29 @@
+#%RAML 1.0 DataType
+
+uses:
+  core: /libraries/core.raml
+
+displayName: Check
+description: |
+  Hund Native Monitoring Check creation form.
+type: core.Form
+# discriminator: method
+properties:
+  method: string
+  target: string
+  regions: core.NATIVE_REGION[]
+  frequency?:
+    type: integer
+    default: 60000
+  timeout?:
+    type: integer
+    default: 10000
+  consecutive_check_degraded_threshold?:
+    type: nil | core.nonnegative-integer
+    default: null
+  consecutive_check_outage_threshold?:
+    type: core.nonnegative-integer
+    default: 1
+  percentage_regions_failed_threshold?:
+    type: core.percentage
+    default: 0.25

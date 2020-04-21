@@ -1,0 +1,7 @@
+{
+  "service": {
+    "type": "uptimerobot",
+    "monitor_api_key": "BBBBBBBaaaaaaa"
+  },
+  "keep_original_default_metric_provider": false
+}

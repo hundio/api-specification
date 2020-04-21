@@ -1,0 +1,31 @@
+{
+  "type": "paged_array",
+  "total_count": 2,
+  "has_more": false,
+  "data": [
+    {
+      "id": "5c16fe948fbb652ab878c2cc",
+      "type": "update",
+      "label": "resolved",
+      "body": "**Lorem ipsum** _dolor sit amet_.",
+      "body_html": "\u003cp\u003e\u003cstrong\u003eLorem ipsum\u003c/strong\u003e \u003cem\u003edolor sit amet\u003c/em\u003e.\u003c/p\u003e\n",
+      "state_override": null,
+      "created_at": 1543959101,
+      "updated_at": 1543959101,
+      "issue": "5c06ee978fbb652ab878c3b8",
+      "reopening": false
+    },
+    {
+      "id": "5c16ee948fbb652ab878c2c6",
+      "type": "update",
+      "label": null,
+      "body": "**Lorem ipsum** _dolor sit amet_.",
+      "body_html": "\u003cp\u003e\u003cstrong\u003eLorem ipsum\u003c/strong\u003e \u003cem\u003edolor sit amet\u003c/em\u003e.\u003c/p\u003e\n",
+      "state_override": 0,
+      "created_at": 1543958900,
+      "updated_at": 1543958900,
+      "issue": "5c06ee978fbb652ab878c3b8",
+      "reopening": false
+    }
+  ]
+}

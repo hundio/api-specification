@@ -1,0 +1,11 @@
+{
+  "message": "Validation failed",
+  "logref": "37c24cba-3811-4a33-b1d9-306b26ce61cf",
+  "_embedded": {
+    "errors": [
+      {
+        "message": "Definition slug cannot be blank."
+      }
+    ]
+  }
+}

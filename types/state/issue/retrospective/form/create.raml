@@ -1,0 +1,39 @@
+#%RAML 1.0 DataType
+
+uses:
+  prelude: /libraries/prelude.raml
+  core: /libraries/core.raml
+
+(prelude.common):
+(core.fieldDescriptions): !include /documentation/fieldDescriptions/issue.yml
+displayName: Issue
+description: |
+  Retrospective Issue creation form.
+type: core.Form
+properties:
+  title: string
+  body: string
+  began_at: core.timestamp
+  ended_at:
+    (core.overrideFieldDescription):
+    description: |
+      The time at which this Issue stopped affecting its given Components.
+    type: core.timestamp
+  postmortem_body?:
+    description: |
+      An optional body for a postmortem Update, which will be added on to the
+      Issue if given. This is helpful for explaining what had happened during
+      the course of this backdated issue.
+    type: core.maybe-string
+    default: null
+  label?:
+    type: nil | core.ISSUE_LABEL
+    default: null
+  state_override?:
+    type: nil | core.integer-state
+    default: null
+  priority?:
+    type: core.ISSUE_PRIORITY
+    default: 0
+  open_graph_image_url?: core.maybe-string
+  components: core.ObjectId[]

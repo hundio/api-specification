@@ -1,0 +1,15 @@
+#%RAML 1.0 Trait
+
+usage: |
+  Methods of this trait can fail with a `400 Bad Request` error, due to
+  validation errors.
+
+responses:
+  400:
+    description: |
+      <<resourcePathName|!singularize|!uppercamelcase>> is invalid.
+    body:
+      application/vnd.error+json:
+        type: core.Error
+        examples:
+          "<<methodName|!uppercase>> <<resourcePath>> (400)": <<errorExample>>

@@ -1,0 +1,15 @@
+#%RAML 1.0 DataType
+
+uses:
+  prelude: /libraries/prelude.raml
+  core: /libraries/core.raml
+
+(prelude.common):
+displayName: Builtin
+description: |
+  The builtin Hund metric provider, which provides metrics based on recorded
+  uptime and incidents.
+type: core.Service
+properties:
+  type:
+    enum: [builtin]

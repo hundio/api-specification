@@ -1,0 +1,24 @@
+#%RAML 1.0 DataType
+
+uses:
+  prelude: /libraries/prelude.raml
+  core: /libraries/core.raml
+  service: /libraries/service.raml
+
+(prelude.common):
+(core.fieldDescriptions): !include /documentation/fieldDescriptions/watchdog.yml
+displayName: Watchdog
+description: |
+  Watchdogs determine the method by which component availability is calculated,
+  and generate statuses at the configured frequency (regular or high).
+type: [core.TypedObject, core.HAL/Linkable]
+properties:
+  id: core.ObjectId
+  type:
+    enum: [watchdog]
+  high_frequency: boolean
+  service: service.Services/Watchdog
+  _links?:
+    properties:
+      self: core.HAL/Link
+      update-form: core.HAL/Link

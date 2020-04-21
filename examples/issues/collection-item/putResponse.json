@@ -1,0 +1,51 @@
+{
+  "id": "5c06ee978fbb652ab878c3b8",
+  "type": "issue",
+  "label": "maintenance",
+  "body": "We are currently doing some spot upgrades to degraded subsystems to maintain stability.",
+  "body_html": "\u003cp\u003eWe are currently doing some spot upgrades to degraded subsystems to maintain stability.\u003c/p\u003e\n",
+  "state_override": null,
+  "created_at": 1543958167,
+  "updated_at": 1543958400,
+  "title": "Unplanned maintenance",
+  "priority": 0,
+  "open_graph_image_url": null,
+  "components": {
+    "type": "paged_array",
+    "total_count": 1,
+    "has_more": false,
+    "data": [
+      {
+        "id": "5c06ee938fbb652ab878c2a2",
+        "type": "component",
+        "created_at": 1543958163,
+        "updated_at": 1543958164,
+        "last_event_at": 1580352001,
+        "exclude_from_global_uptime": false,
+        "exclude_from_global_history": false,
+        "name": "Component 65",
+        "description": "My **description**",
+        "description_html": "<p>My <strong>description</strong></p>",
+        "group": "5c06ee938fbb652ab878c2a1",
+        "watchdog": "5c06ee938fbb652ab878c2a0",
+        "percent_uptime": 99.123
+      }
+    ]
+  },
+  "specialization": "maintenance",
+  "retrospective": false,
+  "scheduled": false,
+  "standing": true,
+  "resolved": false,
+  "cancelled": null,
+  "began_at": 1543958167,
+  "ended_at": null,
+  "cancelled_at": null,
+  "schedule": null,
+  "updates": {
+    "type": "paged_array",
+    "total_count": 0,
+    "has_more": false,
+    "data": []
+  }
+}

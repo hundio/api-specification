@@ -1,0 +1,28 @@
+{
+  "id": "5e16ee938cca652ab8780010",
+  "type": "metric_provider",
+  "watchdog": "5a06ee938fbb652ab878c000",
+  "default": true,
+  "instances": [
+    {
+      "id": "5e16fe938cca652ab8780001",
+      "type": "metric_instance",
+      "slug": "request_rate@5e16ee938cca652ab8780010",
+      "definition_slug": "request_rate",
+      "enabled": true,
+      "top_level_enabled": false,
+      "title": "Request Rate (Hz)",
+      "x_title": "Request Rate (Hz)",
+      "y_title": "Time",
+      "x_type": "time",
+      "y_type": "measure",
+      "y_supremum": 500.0,
+      "plot_type": "line",
+      "interpolation": "linear",
+      "aggregation": "average"
+    }
+  ],
+  "service": {
+    "type": "webhook"
+  }
+}

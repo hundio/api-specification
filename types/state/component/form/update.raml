@@ -1,0 +1,17 @@
+#%RAML 1.0 DataType
+
+uses:
+  prelude: /libraries/prelude.raml
+  core: /libraries/core.raml
+
+(prelude.common):
+(core.fieldDescriptions): !include /documentation/fieldDescriptions/component.yml
+description: |
+  Component update form.
+type: core.Form
+properties:
+  name?: string
+  description?: string
+  exclude_from_global_uptime?: boolean
+  exclude_from_global_history?: boolean
+  group?: core.ObjectId

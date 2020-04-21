@@ -1,0 +1,9 @@
+#%RAML 1.0 Library
+
+usage: |
+  Defines MetricInstance type and forms.
+
+types:
+  MetricInstance: !include /types/state/metric_instance.raml
+  MetricInstance/Form/Create: !include /types/state/metric_instance/form/create.raml
+  MetricInstance/Form/EmbeddedUpdate: !include /types/state/metric_instance/form/embedded_update.raml

@@ -1,0 +1,38 @@
+#%RAML 1.0 DataType
+
+uses:
+  prelude: /libraries/prelude.raml
+  core: /libraries/core.raml
+
+(prelude.common):
+(core.fieldDescriptions): !include /documentation/fieldDescriptions/metric_instance.yml
+displayName: MetricInstance
+description: |
+  MetricInstance creation form.
+type: core.Form
+properties:
+  definition_slug:
+    description: |
+      A descriptive string that identifies the metric definition this instance
+      derives from (e.g. `http.tcp_connection_time`, `apdex`, etc.). If a new
+      slug is given, then the fields given will become the defaults for future
+      instances using this slug (except for `enabled` and `top_level_enabled`).
+    type: string
+  enabled?:
+    type: boolean
+    default: true
+  top_level_enabled?:
+    type: boolean
+    default: false
+  title?:
+    description: |
+      The title of the metric, displayed above its graph on the status page.
+      **Note:** this field is required when using a new definition slug.
+    type: core.i18n-string
+  x_title?: core.i18n-string
+  y_title?: core.i18n-string
+  x_type?: core.METRIC_AXIS_TYPE
+  y_type?: core.METRIC_AXIS_TYPE
+  y_supremum?: core.nonnegative-number
+  plot_type?: core.METRIC_PLOT_TYPE
+  aggregation?: core.METRIC_AGGREGATION

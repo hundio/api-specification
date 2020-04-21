@@ -1,0 +1,15 @@
+#%RAML 1.0 DataType
+
+uses:
+  core: /libraries/core.raml
+  native: /libraries/service/native.raml
+
+displayName: DNS
+description: |
+  Hund Native Monitoring DNS Check update form.
+type: native.Check/Form/Update
+properties:
+  record_type?: core.NATIVE_DNS_RECORD_TYPE
+  nameservers?: string[]
+  responses_must_contain?: string[]
+  response_containment?: core.NATIVE_DNS_RESPONSE_CONTAINMENT

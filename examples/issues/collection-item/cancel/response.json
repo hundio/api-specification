@@ -1,0 +1,88 @@
+{
+  "id": "5c06ee978fbb652ab878c3b8",
+  "type": "issue",
+  "label": null,
+  "body": "**Lorem ipsum** _dolor sit amet_.",
+  "body_html": "\u003cp\u003e\u003cstrong\u003eLorem ipsum\u003c/strong\u003e \u003cem\u003edolor sit amet\u003c/em\u003e.\u003c/p\u003e\n",
+  "state_override": -1,
+  "created_at": 1543950000,
+  "updated_at": 1543950000,
+  "title": "Issue 34",
+  "priority": 0,
+  "open_graph_image_url": null,
+  "components": {
+    "type": "paged_array",
+    "total_count": 2,
+    "has_more": false,
+    "data": [
+      {
+        "id": "5c06ee938fbb652ab878c2a2",
+        "type": "component",
+        "created_at": 1543958163,
+        "updated_at": 1543958164,
+        "last_event_at": 1580352001,
+        "exclude_from_global_uptime": false,
+        "exclude_from_global_history": false,
+        "name": "Component 65",
+        "description": "My **description**",
+        "description_html": "<p>My <strong>description</strong></p>",
+        "group": "5c06ee938fbb652ab878c2a1",
+        "watchdog": "5c06ee938fbb652ab878c2a0",
+        "percent_uptime": 99.123
+      },
+      {
+        "id": "5c06ee938fbb652ab878c2aa",
+        "type": "component",
+        "created_at": 1543958163,
+        "updated_at": 1543958164,
+        "last_event_at": 1580358022,
+        "exclude_from_global_uptime": true,
+        "exclude_from_global_history": false,
+        "name": "Component 66",
+        "description": null,
+        "description_html": "",
+        "group": "5c06ee938fbb652ab878c2a9",
+        "watchdog": "5c06ee938fbb652ab878c212",
+        "percent_uptime": 100
+      }
+    ]
+  },
+  "specialization": "general",
+  "retrospective": false,
+  "scheduled": true,
+  "standing": false,
+  "resolved": false,
+  "cancelled": true,
+  "began_at": 1543958167,
+  "ended_at": null,
+  "cancelled_at": 1543963200,
+  "schedule": {
+    "id": "5c06ee9a8fbb652ab878c4ee",
+    "type": "schedule",
+    "starts_at": 1543958167,
+    "ends_at": 1543965370,
+    "notify_subscribers_at": 1543951000,
+    "started": true,
+    "ended": false,
+    "notified": true
+  },
+  "updates": {
+    "type": "paged_array",
+    "total_count": 1,
+    "has_more": false,
+    "data": [
+      {
+        "id": "5c16ff948fbb652ab878c2dd",
+        "type": "update",
+        "label": null,
+        "body": "We have discovered that this scheduled work is not actually necessary. Services continue to run as normal.",
+        "body_html": "\u003cp\u003eWe have discovered that this scheduled work is not actually necessary. Services continue to run as normal.\u003c/p\u003e\n",
+        "state_override": null,
+        "created_at": 1543963200,
+        "updated_at": 1543963200,
+        "issue": "5c06ee978fbb652ab878c3b8",
+        "reopening": false
+      }
+    ]
+  }
+}

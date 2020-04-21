@@ -1,0 +1,33 @@
+#%RAML 1.0 DataType
+
+uses:
+  prelude: /libraries/prelude.raml
+
+(prelude.common):
+description: |
+  A [vnd.error](https://github.com/blongden/vnd.error) object.
+type: prelude.HAL
+properties:
+  message:
+    description: |
+      A descriptive message detailing the returned error.
+    type: string
+  logref:
+    description: |
+      The ID of this specific request. This ID should be supplied in support requests.
+    type: string
+  path?: string
+  _embedded?:
+    additionalProperties: false
+    properties:
+      errors:
+        description: |
+          Additional embedded error objects, for granular detail in case of a
+          multi-faceted error (e.g. field validation errors).
+        type: array
+        uniqueItems: true
+        items:
+          type: object
+          properties:
+            message: string
+            _links?: prelude.HAL/Links

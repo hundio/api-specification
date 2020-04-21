@@ -1,0 +1,29 @@
+#%RAML 1.0 DataType
+
+uses:
+  core: /libraries/core.raml
+  native: /libraries/service/native.raml
+
+displayName: TCP
+description: |
+  Hund Native Monitoring TCP Check creation form.
+type: native.Check/Form/Create
+properties:
+  method:
+    enum: [tcp]
+  port: core.port
+  send_data?:
+    type: core.maybe-string
+    default: null
+  response_must_contain?:
+    type: core.maybe-string
+    default: null
+  response_must_contain_mode?:
+    type: core.NATIVE_STRING_CONTAINMENT_MODE
+    default: exact
+  wait_for_initial_response?:
+    type: boolean
+    default: false
+  ip_version?:
+    type: core.NATIVE_IP_VERSION
+    default: inet

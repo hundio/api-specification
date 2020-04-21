@@ -1,0 +1,4 @@
+monitor_token: |
+  An Updown.io monitor token to retrieve status from.
+monitor_api_key: |
+  An Updown.io monitor API key. This API key can be read-only.

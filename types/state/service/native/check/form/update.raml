@@ -1,0 +1,17 @@
+#%RAML 1.0 DataType
+
+uses:
+  core: /libraries/core.raml
+
+displayName: Check
+description: |
+  Hund Native Monitoring Check update form.
+type: core.Form
+properties:
+  target?: string
+  regions?: core.NATIVE_REGION[]
+  frequency?: integer
+  timeout?: integer
+  consecutive_check_degraded_threshold?: nil | core.nonnegative-integer
+  consecutive_check_outage_threshold?: core.nonnegative-integer
+  percentage_regions_failed_threshold?: core.percentage

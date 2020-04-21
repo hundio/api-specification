@@ -1,0 +1,28 @@
+#%RAML 1.0 DataType
+
+uses:
+  prelude: /libraries/prelude.raml
+  core: /libraries/core.raml
+
+(prelude.common):
+(core.fieldDescriptions): !include /documentation/fieldDescriptions/component.yml
+displayName: Component
+description: |
+  An object representing a specific part of a service, which is potentially subject to downtime.
+type: [core.TypedObject, core.Timestamps, core.Describable, core.HAL/Linkable]
+properties:
+  id: core.ObjectId
+  type:
+    enum: [component]
+  name: string
+  exclude_from_global_uptime: boolean
+  exclude_from_global_history: boolean
+  last_event_at: integer
+  percent_uptime: number
+  _links?:
+    properties:
+      self: core.HAL/Link
+      self-view: core.HAL/Link
+      update-form: core.HAL/Link
+      group?: core.HAL/Link
+      watchdog: core.HAL/Link

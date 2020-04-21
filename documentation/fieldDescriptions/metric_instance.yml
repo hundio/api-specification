@@ -1,0 +1,39 @@
+id: |
+  The ObjectId of the MetricInstance.
+slug: |
+  A string that uniquely identifies this MetricInstance by referencing the
+  definition slug and MetricProvider ObjectId.
+definition_slug: |
+  A descriptive string that identifies the metric definition this instance
+  derives from (e.g. `http.tcp_connection_time`, `apdex`, etc.).
+enabled: |
+  Whether or not to show this metric on the Component that uses it (through
+  the Watchdog).
+top_level_enabled: |
+  Whether or not to show this metric on the status page home.
+title: |
+  The title of the metric, displayed above its graph on the status page.
+x_title: |
+  The title of the x-axis of this metric.
+y_title: |
+  The title of the y-axis of this metric.
+x_type: |
+  The type of quantity represented by the x-axis.
+y_type: |
+  The type of quantity represented by the y-axis.
+y_supremum: |
+  The least upper bound to display the y-axis on. The metric will always display
+  up to at least this value on the y-axis regardless of the graphed data. If the
+  graph exceeds this value, then the bound will be raised as much as necessary
+  to accommodate the data.
+plot_type: |
+  The kind of visualization to display the metric with.
+interpolation: |
+  The kind of interpolation to use between points displayed in the graph (line
+  plots only).
+aggregation: |
+  The kind of aggregation method to use in case multiple displayed data points
+  share the same time-axis value (depending on the axis configured for time, by
+  default x). **Note:** this field does not have any effect on the underlying
+  data; it is purely cosmetic, and applied only when viewing the data on the
+  status page.

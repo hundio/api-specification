@@ -1,0 +1,30 @@
+#%RAML 1.0 DataType
+
+uses:
+  prelude: /libraries/prelude.raml
+  core: /libraries/core.raml
+  component: /libraries/component.raml
+
+(prelude.common):
+(core.fieldDescriptions): !include /documentation/fieldDescriptions/group.yml
+displayName: Group
+description: |
+  A logical grouping of Components.
+type: [core.TypedObject, core.Timestamps, core.Describable, core.HAL/Linkable]
+properties:
+  id: core.ObjectId
+  type:
+    enum: [group]
+  name: string
+  collapsed: boolean
+  position: integer
+  components:
+    type: core.PagedArray
+    properties:
+      data:
+        items: component.Component
+  _links?:
+    properties:
+      self: core.HAL/Link
+      update-form: core.HAL/Link
+      components: core.HAL/Link

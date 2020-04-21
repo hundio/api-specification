@@ -1,0 +1,23 @@
+api_key: |
+  The New Relic API key.
+api_region: |
+  The API region to access.
+suppress_warning_violations: |
+  When `true`, suppresses all warning violations from New Relic Alerts.
+suppress_future_issues: |
+  When `true`, suppresses newly triggered violations from Alerts when a New
+  Relic issue is already ongoing for the policy.
+issue_templates: |
+  An object of IssueTemplate IDs to create Issues/Updates whenever this Watchdog
+  changes state. This Watchdog will create Issues from the `degraded` template
+  for violations with warning severity, and `outage` for those with critical severity.
+
+  When multiple violations are present, the highest severity of the violations will be used.
+
+  Once a Watchdog in degraded/outage finds that there are no longer unresolved
+  violations, it will resolve Issues via the `operational` template.
+
+  If any of the given templates are `null`, then the Watchdog will not create
+  an Issue/Update in that case.
+alert_policies: |
+  The specific New Relic Alerts policy IDs to track on this Watchdog.

@@ -1,0 +1,24 @@
+#%RAML 1.0 Library
+
+usage: |
+  Defines Component type and forms.
+
+uses:
+  core: /libraries/core.raml
+
+types:
+  Base: !include /types/state/component.raml
+
+  Component:
+    (core.fieldDescriptions): !include /documentation/fieldDescriptions/component.yml
+    type: Base
+    properties:
+      watchdog:
+        (core.expandable):
+        type: core.ObjectId
+      group?:
+        (core.expandable):
+        type: core.ObjectId
+
+  Component/Form/Create: !include /types/state/component/form/create.raml
+  Component/Form/Update: !include /types/state/component/form/update.raml

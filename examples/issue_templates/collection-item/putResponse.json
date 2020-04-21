@@ -1,0 +1,12 @@
+{
+  "id": "5e751f8f8fbb6523f805e5b9",
+  "type": "issue_template",
+  "created_at": 1584737229,
+  "updated_at": 1584740881,
+  "name": "New PD Incidents",
+  "kind": "pagerduty",
+  "title": "{{ pagerduty.incidents.first.summary }}",
+  "body": "**Incidents detected:**\n\n{% for incident in pagerduty.incidents %}\n  * {{ incident.description }}\n{% endfor %}",
+  "label": "identified",
+  "components": []
+}

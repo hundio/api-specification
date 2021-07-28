@@ -2,7 +2,7 @@ Welcome to the Hund REST API v1 documentation! This documentation is part of Hun
 
 # Base URL
 
-The base URL for the Hund API is of the following form: `https://{domain}/v1`, where domain is a status page or global dashboard domain, or the generic `api.hund.io`. Accessing the API through any of these domains will only show objects accessible from that domain.
+The base URL for the Hund API is of the following form: `https://{domain}/api/v1`, where domain is a status page or global dashboard domain, or the generic `api.hund.io`. Accessing the API through any of these domains will only show objects accessible from that domain.
 
 ## Status Page Domain
 
@@ -78,7 +78,7 @@ To facilitate discoverability, as well as compatibility with the existing hyperm
 
 ## HAL Directory
 
-The root of the API (`GET https://{domain}/v1`) can be requested to retrieve a HAL directory with links to the various endpoints of the API. The Hund API should work with most HAL-compliant hypermedia clients (e.g. [hyperclient](https://github.com/codegram/hyperclient) for Ruby).
+The root of the API (`GET https://{domain}/api/v1`) can be requested to retrieve a HAL directory with links to the various endpoints of the API. The Hund API should work with most HAL-compliant hypermedia clients (e.g. [hyperclient](https://github.com/codegram/hyperclient) for Ruby).
 
 ## Link Relations
 

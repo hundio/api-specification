@@ -9,7 +9,7 @@ function principalType(shape) {
 function hoistedId(shape) {
   let name
 
-  if (principalType(shape) == "NodeShape")
+  if (["NodeShape", "UnionShape"].includes(principalType(shape)))
     name = "/" + shape.name.value()
   else
     name = shape.id.match(/\/[^\/]+\/[^\/]+$/)[0]

@@ -33,10 +33,11 @@ specialization: |
   Whether this Issue has special abilities or connotations. `general` is the
   default behavior, indicating no specialization. Other values include
   `maintenance`, which indicates an Issue shows affected components as
-  "under maintenance," and `information`, which indicates that the Issue is an
+  "under maintenance," and `informational`, which indicates that the Issue is an
   informational bulletin.
 retrospective: |
-  Whether this is a retrospective, backdated Issue.
+  Whether this Issue is retrospective; that is, the Issue was created both resolved
+  *and* backdated.
 scheduled: |
   Whether this Issue has a Schedule.
 standing: |
@@ -57,7 +58,7 @@ cancelled_at: |
   has not been cancelled or is not scheduled.
 schedule: |
   An object detailing the Schedule of this issue if it is scheduled. This field
-  is `null` if the Issue is not Scheduled.
+  is `null` if the Issue is not scheduled.
 updates: |
   A PagedArray whose `data` field contains an array of Issue Update objects.
   This PagedArray will always be completely paged in, so expect `has_more` to

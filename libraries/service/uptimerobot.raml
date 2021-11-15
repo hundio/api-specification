@@ -1,0 +1,9 @@
+#%RAML 1.0 Library
+
+usage: |
+  Defines UptimeRobot service types for use in watchdog-specific extensions
+
+types:
+  Uptimerobot: !include /types/state/service/uptimerobot.raml
+  Uptimerobot/Form/Create: !include /types/state/service/uptimerobot/form/create.raml
+  Uptimerobot/Form/Update: !include /types/state/service/uptimerobot/form/update.raml

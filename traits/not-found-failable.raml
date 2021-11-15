@@ -5,10 +5,12 @@ usage: |
 
 responses:
   404:
+    (specs.bindIds):
+      <<resourcePathName|!singularize>>: nonexistent
     description: |
       <<resourcePathName|!singularize|!uppercamelcase>> not found.
     body:
-      application/vnd.error+json:
+      application/hal+json:
         type: core.Error
         examples:
           "<<methodName|!uppercase>> <<resourcePath>> (404)": <<errorNotFoundExample>>

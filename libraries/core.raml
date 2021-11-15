@@ -20,6 +20,14 @@ types:
       name: string
       tags: string[]
 
+  Logo:
+    type: object
+    properties:
+      url: string
+      backgroundColor?: string
+      altText?: string
+      href?: string
+
   # Constants
 
   METRIC_AXIS_TYPE:
@@ -47,7 +55,7 @@ types:
 
   UPDATE_LABEL:
     type: string
-    enum: [identified, investigating, monitoring, resolved, addendum]
+    enum: [identified, investigating, monitoring, resolved, addendum, cancelled]
 
   ISSUE_TEMPLATE_KIND:
     type: string
@@ -217,6 +225,7 @@ resourceTypes:
 
 traits:
   bad-request-failable: !include /traits/bad-request-failable.raml
+  not-authorized-failable: !include /traits/not-authorized-failable.raml
   not-found-failable: !include /traits/not-found-failable.raml
   validation-failable: !include /traits/validation-failable.raml
 
@@ -225,6 +234,10 @@ annotationTypes:
     description: Flag denoting that this field can be expanded in responses via `expand[]` query parameter.
     allowedTargets: TypeDeclaration
     type: nil
+  logo:
+    description: A logo image associated with this API.
+    allowedTargets: API
+    type: Logo
   tags:
     description: Either a definition of tags or application of them on resource types.
     allowedTargets: [API, Resource]

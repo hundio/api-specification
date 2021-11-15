@@ -1,4 +1,4 @@
-Welcome to the Hund REST API v1 documentation! This documentation is part of Hund's API Open Beta, and is subject to change. If you would like to send us feedback on this planned API, [send us an email](mailto:support@hund.io) or [leave an issue](https://github.com/hundio/api-specification/issues) on our `api-specification` GitHub repository.
+Welcome to the Hund REST API v1 documentation! If you would like to send us feedback on this API, [send us an email](mailto:support@hund.io) or [leave an issue](https://github.com/hundio/api-specification/issues) on our `api-specification` GitHub repository.
 
 # Base URL
 
@@ -51,8 +51,8 @@ If a resource returns a specific success/error code for some reason, it will be 
 | Code | Description |
 |---|---|
 | 401 (Unauthorized) | A valid API key was not given. |
-| 403 (Forbidden) | The given API does not have permission to access the requested resource. |
-| 405 (Method Not Allowed) | The HTTP request method is not supported on the requested resource. |
+| 403 (Forbidden) | The given API key does not have permission to access the requested resource. |
+| 404 (Not Found) | The requested HTTP verb/path combination does not exist. |
 | 429 (Too Many Requests) | You are making too many requests too quickly. Try using some form of backoff (Fibonacci or exponential are good choices) if you must make large batches of requests. |
 | 5xx (Server Errors) | Hund has encountered some form of backend error. These errors are uncommon, and are automatically reported to our staff. |
 
@@ -364,6 +364,6 @@ Our API supports dated versioning. A dated version is cut whenever backwards inc
 
 The default API version to use can be configured and upgraded from the dashboard.
 
-To make an API call against a specific version, use the `Hund-Version` header like so: `Hund-Version: 2020-04-14`.
+To make an API call against a specific version, use the `Hund-Version` header like so: `Hund-Version: 2021-09-01`.
 
 API request URLs also contain a major version (currently `v1`). This major version will ideally never change, but a new version may be cut if it is deemed absolutely necessary.

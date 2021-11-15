@@ -8,6 +8,8 @@
   "created_at": 1543958900,
   "updated_at": 1543958900,
   "reopening": false,
+  "effective": true,
+  "effective_after": 1543958900,
   "issue": {
     "id": "5c06ee978fbb652ab878c3b8",
     "type": "issue",
@@ -67,7 +69,9 @@
           "created_at": 1543958900,
           "updated_at": 1543958900,
           "issue": "5c06ee978fbb652ab878c3b8",
-          "reopening": false
+          "reopening": false,
+          "effective": true,
+          "effective_after": 1543958900
         }
       ]
     }

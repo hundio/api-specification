@@ -4,15 +4,25 @@ usage: |
   Defines Watchdog type and forms.
 
 uses:
+  prelude: /libraries/prelude.raml
   core: /libraries/core.raml
+  metric_provider: /libraries/metric_provider.raml
 
 types:
+  Watchdog/Form/BaseCreate: !include /types/state/watchdog/form/base_create.raml
+
   Watchdog: !include /types/state/watchdog.raml
-  Watchdog/Form/Create: !include /types/state/watchdog/form/create.raml
+  Watchdog/Form/Create:
+    (prelude.common):
+    (core.fieldDescriptions): !include /documentation/fieldDescriptions/watchdog.yml
+    type: Watchdog/Form/BaseCreate
+    properties:
+      metric_providers?: metric_provider.MetricProvider/Form/EmbeddedCreate[]
   Watchdog/Form/Update: !include /types/state/watchdog/form/update.raml
   Watchdog/Form/Convert:
+    (prelude.common):
     (core.fieldDescriptions): !include /documentation/fieldDescriptions/watchdog.yml
-    type: Watchdog/Form/Create
+    type: Watchdog/Form/BaseCreate
     properties:
       keep_original_default_metric_provider?:
         type: boolean

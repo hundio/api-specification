@@ -1,0 +1,20 @@
+#%RAML 1.0 DataType
+
+uses:
+  prelude: /libraries/prelude.raml
+  core: /libraries/core.raml
+  webhook: /libraries/service/webhook.raml
+
+(prelude.common):
+(core.fieldDescriptions): !include /documentation/fieldDescriptions/service/webhook.yml
+type: webhook.Webhook/Form/Create
+properties:
+  deadman?:
+    type: boolean
+    default: false
+  reporting_interval?:
+    type: webhook.deadman-reporting-interval?
+    default: null
+  consecutive_checks?:
+    type: webhook.deadman-consecutive-checks?
+    default: null

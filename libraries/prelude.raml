@@ -41,8 +41,8 @@ annotationTypes:
   common:
     description: |
       Root flag denoting that this type is "common" and should be hoisted to
-      the root of a resolved webapi base unit. Any types with the same library
-      name are considered to be the same type while hoisting and deduplicating
-      type usage.
+      the `declares` of a resolved webapi base unit. Any types with the same
+      library name are considered to be the same type while hoisting and
+      deduplicating type usage.
     type: nil
     allowedTargets: TypeDeclaration

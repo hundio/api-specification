@@ -4,16 +4,18 @@ usage: |
   Defines the Issue Update type and forms.
 
 uses:
+  prelude: /libraries/prelude.raml
   core: /libraries/core.raml
 
 types:
   Base: !include /types/state/update.raml
 
   Update:
+    (prelude.common):
     (core.fieldDescriptions): !include /documentation/fieldDescriptions/update.yml
     type: Base
     properties:
-      issue: 
+      issue:
         (core.expandable):
         type: core.ObjectId
 

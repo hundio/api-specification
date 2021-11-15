@@ -2,7 +2,9 @@
   "id": "5a06ee938fbb652ab878c000",
   "type": "watchdog",
   "high_frequency": true,
+  "latest_status": "5b0001938fbb652ab878c001",
   "service": {
-    "type": "uptimerobot"
+    "type": "uptimerobot",
+    "unconfirmed_is_down": false
   }
 }

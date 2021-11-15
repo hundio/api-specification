@@ -9,7 +9,7 @@ responses:
     description: |
       <<resourcePathName|!singularize|!uppercamelcase>> is invalid.
     body:
-      application/vnd.error+json:
+      application/hal+json:
         type: core.Error
         examples:
           "<<methodName|!uppercase>> <<resourcePath>> (400)": <<errorExample>>

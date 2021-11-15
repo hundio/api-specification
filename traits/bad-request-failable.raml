@@ -8,7 +8,7 @@ responses:
   400:
     description: <<description>>
     body:
-      application/vnd.error+json:
+      application/hal+json:
         examples:
           "<<methodName|!uppercase>> <<resourcePath>> (400)": <<errorBadRequestExample>>
         type: core.Error

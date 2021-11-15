@@ -1,0 +1,9 @@
+#%RAML 1.0 Library
+
+usage: |
+  Defines Pingdom service types for use in watchdog-specific extensions
+
+types:
+  Pingdom: !include /types/state/service/pingdom.raml
+  Pingdom/Form/Create: !include /types/state/service/pingdom/form/create.raml
+  Pingdom/Form/Update: !include /types/state/service/pingdom/form/update.raml

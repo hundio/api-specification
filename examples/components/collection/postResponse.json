@@ -5,16 +5,17 @@
   "name": "Filtering Service",
   "created_at": 1543958163,
   "updated_at": 1543958164,
-  "last_event_at": 1580352001,
+  "last_event_at": null,
   "exclude_from_global_uptime": false,
   "exclude_from_global_history": false,
   "description": "My **description**",
   "description_html": "<p>My <strong>description</strong></p>",
-  "percent_uptime": 99.123,
+  "percent_uptime": 100.0,
   "watchdog": {
     "id": "5e06ee938fbb652ab878caa9",
     "type": "watchdog",
     "high_frequency": false,
+    "latest_status": null,
     "service": {
       "type": "updown",
       "monitor_token": "lp341"

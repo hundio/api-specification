@@ -1,0 +1,81 @@
+#%RAML 1.0 Library
+
+usage: |
+  Defines annotations specific to request spec generation.
+
+annotationTypes:
+  apiKeyPermissionLevel:
+    description: |
+      A string that sets the overall permission level of the API key for this
+      spec. The values `none`, `read`, and `write` are accepted. Note that some
+      objects (i.e. Component, Issue, Group) are publically readable even with
+      level `none`.
+    allowedTargets: Response
+    type: string
+    enum: [none, read, write]
+    default: write
+  bindIds:
+    description: |
+      An object with model name keys and string ID values. These IDs will be
+      assigned to names (usually ending in `_id`) before executing the specs for
+      the annotated response. The special value `auto[:<factory_trait>...]` will
+      create a new object of that model type to derive an extant, valid ID for
+      use in those specs.
+
+      If an entire resource is annotated with `bindIds`, then the annotation
+      will be inherited by all responses within the resource, and merged with
+      any response-level `bindIds`, where binds declared in the response take
+      precedence over those declared in the entire resource.
+    allowedTargets: [Resource, Response]
+    type: object
+    properties:
+      //:
+        type: string
+  requestBody:
+    description: |
+      A string which will be used as the body to a POST/PUT/PATCH call. The
+      special value `auto:<factory_name>[:<factory_trait>...]` will use `op_attributes_for` to
+      generate the body. It is expected that this request body would emit the
+      annotated response. This string may be pure code, including literal
+      constructions. In any case, it will be converted to JSON via `#to_json`.
+    allowedTargets: Response
+    type: string
+  exhaustiveRequestBodies:
+    description: |
+      An object configuring a series of exhaustive request bodies to test against
+      the annotated response. The `source` property is expected to be a dot-delimited
+      path relative to the root of the request payload, which itself should lead to
+      a union of types, each of which will be tested as a separate request, with
+      the request body being generated from the pre-defined factory (according
+      to `factory` property) trait corresponding to that subtype.
+
+      If the optional `mergePath` property is given, then it is expected to be
+      a dot-delimited path through the `requestBody` annotation, wherein each
+      subtype body will be merged for the full request body for each test case.
+      For example, a value of `foo.bar` would merge each exhaustive body from
+      `source` into the `bar` object (or create it) within `foo` within `requestBody`.
+    allowedTargets: Response
+    type: object
+    properties:
+      source: string
+      factory: string
+      mergePath?: string
+  opCreateList:
+    description: |
+      An object with model name keys and object values. Use the `op_create_list`
+      strategy to generate test models before beginning the specs for the
+      annotated response.
+    allowedTargets: Response
+    type: object
+    properties:
+      //:
+        type: object
+        properties:
+          count?:
+            type: integer
+            default: 3
+          traits?: string
+          options?:
+            type: object
+            properties:
+              //: string

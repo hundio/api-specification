@@ -26,8 +26,39 @@ function normalizeSecuritySchemes(spec) {
   return JSON.stringify(spec)
 }
 
+function deepRemoveSpecAnnotations(obj) {
+  Object.entries(obj).forEach(([prop, val]) => {
+    if (prop.startsWith("x-specs.")) {
+      delete obj[prop]
+    } else if (val && typeof val == "object") {
+      deepRemoveSpecAnnotations(val)
+    }
+  });
+}
+
+function removeSpecAnnotations(spec) {
+  spec = JSON.parse(spec)
+
+  deepRemoveSpecAnnotations(spec)
+
+  return JSON.stringify(spec)
+}
+
+function normalizeLogo(spec) {
+  spec = JSON.parse(spec)
+
+  let logo = spec["x-core.logo"]
+
+  if (logo) {
+    delete spec["x-core.logo"]
+    spec.info["x-logo"] = logo
+  }
+
+  return JSON.stringify(spec)
+}
+
 function redoc(spec) {
-  spec = normalizeSecuritySchemes(spec)
+  spec = normalizeLogo(removeSpecAnnotations(normalizeSecuritySchemes(spec)))
     .replace(/x-amf-union/g, "anyOf")
     .replace(/x-core\.tags/g, "tags")
     .replace(/x-core\.tagGroups/g, "x-tagGroups")
@@ -37,42 +68,42 @@ function redoc(spec) {
     .replace(/,"anyOf":\[{"\$ref":"[^"]+"}]/g, "")
 
   return `
-    <!DOCTYPE html>
-    <html>
-    <head>
-      <title>Hund API v1 Documentation</title>
-      <meta name="description" content="View documentation for the Hund API v1.">
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Hund API v1 Documentation</title>
+  <meta name="description" content="View documentation for the Hund API v1.">
 
-      <link rel="icon" href="https://hund.io/favicon.ico">
+  <link rel="icon" href="https://hund.io/favicon.ico">
 
-      <script src="https://cdn.jsdelivr.net/npm/redoc@2.0.0-rc.26/bundles/redoc.standalone.js"> </script>
+  <script src="https://cdn.jsdelivr.net/npm/redoc@2.0.0-rc.56/bundles/redoc.standalone.js"> </script>
 
-      <style>
-        strong code {
-          font-weight: bold !important;
-        }
+  <style>
+    strong code {
+      font-weight: bold !important;
+    }
 
-        h4 code {
-          font-size: 14px !important;
-          font-weight: bold !important;
-        }
+    h4 code {
+      font-size: 14px !important;
+      font-weight: bold !important;
+    }
 
-        label[role=menuitem] {
-            padding-top: 5px;
-            padding-bottom: 5px;
-        }
-      </style>
-    </head>
+    label[role=menuitem] {
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+  </style>
+</head>
 
-    <body>
-      <div id="redoc-container"></div>
+<body>
+  <div id="redoc-container"></div>
 
-      <script>
-        const spec = ${JSON.stringify(JSON.parse(spec), null, " ")};
-        Redoc.init(spec, {jsonSampleExpandLevel: 4, expandResponses: "200,201", showExtensions: ["x-expandable"], hideSingleRequestSampleTab: true, requiredPropsFirst: true, sortPropsAlphabetically: false}, document.getElementById("redoc-container"))
-      </script>
-    </body>
-    </html>
+  <script>
+    const spec = ${spec};
+    Redoc.init(spec, {jsonSampleExpandLevel: 4, expandResponses: "200,201", showExtensions: ["x-expandable"], hideSingleRequestSampleTab: true, requiredPropsFirst: true, sortPropsAlphabetically: false, theme: {logo: {gutter: "1rem"}}}, document.getElementById("redoc-container"))
+  </script>
+</body>
+</html>
   `
 }
 

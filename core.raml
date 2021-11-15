@@ -16,11 +16,11 @@ description: !include /documentation/topLevel.md
 
 uses:
   core: /libraries/core.raml
+  specs: /libraries/specs.raml
   group: /libraries/group.raml
   component: /libraries/component.raml
   component-expansionary: /libraries/component/expansionary.raml
   issue: /libraries/issue.raml
-  issue_template: /libraries/issue_template.raml
   metric_provider: /libraries/metric_provider.raml
   update: /libraries/update.raml
   update-expansionary: /libraries/update/expansionary.raml
@@ -42,6 +42,11 @@ securitySchemes:
           type: string
           pattern: ^Bearer [A-Za-z0-9_]+$
 
+(core.logo):
+  url: https://d3sn9fxf3jyih3.cloudfront.net/misc/logo-dark.svg
+  altText: Hund
+  href: https://hund.io/help
+
 (core.tags):
   - name: component
     x-displayName: Components
@@ -55,14 +60,34 @@ securitySchemes:
     x-displayName: Issues
   - name: update
     x-displayName: Issue Updates
-  - name: issue_template
-    x-displayName: IssueTemplates
 
 (core.tagGroups):
   - name: Monitoring
     tags: [component, group, metric_provider, watchdog]
   - name: Incident Reporting
-    tags: [issue, update, issue_template]
+    tags: [issue, update]
+
+/:
+  get:
+    displayName: Get HAL Directory
+    description: |
+      Returns the HAL directory for the entire API. This root endpoint can be used
+      to discover the rest of the top-level collection API endpoints within a HAL client.
+    responses:
+      200:
+        description: |
+          Succesfully retrieved directory.
+        body:
+          application/hal+json:
+            type: core.HAL/Linkable
+            properties:
+              _links:
+                properties:
+                  self: core.HAL/Link
+                  components: core.HAL/Link
+                  groups: core.HAL/Link
+                  metric_providers: core.HAL/Link
+                  issues: core.HAL/Link
 
 /components:
   (core.tags): [component]
@@ -74,6 +99,20 @@ securitySchemes:
       postRequestExample: !include /examples/components/collection/postRequest.json
       postResponseExample: !include /examples/components/collection/postResponse.json
       postErrorExample: !include /examples/components/error/validation.json
+      errorNotAuthorizedExample: !include /examples/components/error/notAuthorized.json
+  get:
+    queryParameters:
+      group?:
+        description: |
+          Return the Components for the provided Group ObjectId.
+        type: core.ObjectId
+  post:
+    responses:
+      201:
+        (specs.exhaustiveRequestBodies):
+          source: watchdog.service
+          factory: watchdog
+          mergePath: watchdog
   /{component_id}:
     (core.tags): [component]
     type:
@@ -84,7 +123,12 @@ securitySchemes:
         putRequestExample: !include /examples/components/collection-item/putRequest.json
         putResponseExample: !include /examples/components/collection-item/putResponse.json
         errorNotFoundExample: !include /examples/components/error/notFound.json
+        errorNotAuthorizedExample: !include /examples/components/error/notAuthorized.json
         putErrorExample: !include /examples/components/error/validation.json
+    put:
+      responses:
+        400:
+          (specs.requestBody): '{ "name": "" }'
     delete:
 
 /watchdogs/{watchdog_id}:
@@ -97,7 +141,21 @@ securitySchemes:
       putRequestExample: !include /examples/watchdogs/collection-item/putRequest.json
       putResponseExample: !include /examples/watchdogs/collection-item/putResponse.json
       errorNotFoundExample: !include /examples/watchdogs/error/notFound.json
+      errorNotAuthorizedExample: !include /examples/watchdogs/error/notAuthorized.json
       putErrorExample: !include /examples/watchdogs/error/validation.json
+  get:
+    is:
+    - core.not-authorized-failable:
+        permissionLevel: read
+        errorNotAuthorizedExample: !include /examples/watchdogs/error/notAuthorized.json
+    responses:
+      403:
+        (specs.bindIds):
+          watchdog: auto
+  put:
+    responses:
+      400:
+        (specs.requestBody): '{ "service": { "state": 5 } }'
   /convert:
     (core.tags): [watchdog]
     type:
@@ -118,14 +176,23 @@ securitySchemes:
         requestExample: !include /examples/watchdogs/convert/putRequest.json
         responseExample: !include /examples/watchdogs/convert/putResponse.json
         errorNotFoundExample: !include /examples/watchdogs/error/notFound.json
+        errorNotAuthorizedExample: !include /examples/watchdogs/error/notAuthorized.json
     put:
       is:
       - core.validation-failable:
           errorExample: !include /examples/watchdogs/error/validation.json
       responses:
+        200:
+          (specs.requestBody): '{ "service": { "type": "manual", "state": 1 } }'
         400:
+          (specs.bindIds):
+            watchdog: auto
+          (specs.requestBody): '{ "service": { "type": "manual", "state": 5 } }'
           description: |
-            Failed to convert watchdog service.
+            Failed to convert Watchdog service.
+        403:
+          description: |
+            Not authorized to write Watchdogs.
 
 /groups:
   (core.tags): [group]
@@ -137,6 +204,7 @@ securitySchemes:
       postRequestExample: !include /examples/groups/collection/postRequest.json
       postResponseExample: !include /examples/groups/collection/postResponse.json
       postErrorExample: !include /examples/groups/error/validation.json
+      errorNotAuthorizedExample: !include /examples/issues/error/notAuthorized.json
   /{group_id}:
     (core.tags): [group]
     type:
@@ -147,13 +215,22 @@ securitySchemes:
         putRequestExample: !include /examples/groups/collection-item/putRequest.json
         putResponseExample: !include /examples/groups/collection-item/putResponse.json
         errorNotFoundExample: !include /examples/groups/error/notFound.json
+        errorNotAuthorizedExample: !include /examples/issues/error/notAuthorized.json
         putErrorExample: !include /examples/groups/error/validation.json
+    put:
+      responses:
+        400:
+          (specs.requestBody): '{ "name": "" }'
     delete:
       is:
       - core.bad-request-failable:
           description: |
             Group is not empty.
           errorBadRequestExample: !include /examples/groups/error/nonempty.json
+      responses:
+        400:
+          (specs.bindIds):
+            group: auto:nonempty
     /reorder:
       (core.tags): [group]
       type:
@@ -173,12 +250,25 @@ securitySchemes:
           requestExample: !include /examples/groups/collection-item/reorder/putRequest.json
           responseExample: !include /examples/groups/collection-item/reorder/putResponse.json
           errorNotFoundExample: !include /examples/groups/error/notFound.json
+          errorNotAuthorizedExample: !include /examples/issues/error/notAuthorized.json
       put:
         is:
         - core.bad-request-failable:
             description: |
               Incomplete listing of group components given.
             errorBadRequestExample: !include /examples/groups/error/incompleteComponentListing.json
+        responses:
+          200:
+            (specs.bindIds):
+              group: auto:nonempty
+            (specs.requestBody): 'State::Group.find(group_id).component_ids.map(&:to_s).shuffle'
+          400:
+            (specs.bindIds):
+              group: auto:nonempty
+            (specs.requestBody): '["5e16ee938fbb652ab878cacc", "5e16ee938fbb652ab878caee"]'
+          403:
+            description: |
+              Not authorized to write Groups.
 
 /metric_providers:
   (core.tags): [metric_provider]
@@ -190,12 +280,41 @@ securitySchemes:
       postRequestExample: !include /examples/metric_providers/collection/postRequest.json
       postResponseExample: !include /examples/metric_providers/collection/postResponse.json
       postErrorExample: !include /examples/metric_providers/error/postValidation.json
+      errorNotAuthorizedExample: !include /examples/metric_providers/error/notAuthorized.json
   get:
+    is:
+    - core.not-authorized-failable:
+        permissionLevel: read
+        errorNotAuthorizedExample: !include /examples/metric_providers/error/notAuthorized.json
     queryParameters:
       watchdog?:
         description: |
           ObjectId for a particular Watchdog to retrieve MetricProviders on.
         type: core.ObjectId
+    responses:
+      200:
+        (specs.opCreateList):
+          metric_provider:
+            count: 3
+            traits: builtin
+  post:
+    is:
+    - core.not-found-failable:
+        errorNotFoundExample: !include /examples/metric_providers/error/watchdogNotFound.json
+    responses:
+      201:
+        (specs.requestBody): auto:metric_provider:builtin
+        (specs.exhaustiveRequestBodies):
+          source: service
+          factory: metric_provider
+      400:
+        (specs.bindIds):
+          watchdog: auto
+        (specs.requestBody): '{ watchdog: watchdog_id }'
+      404:
+        (specs.requestBody): '{ service: { type: "builtin" }, watchdog: "nonexistent" }'
+        description: |
+          Watchdog not found.
   /{metric_provider_id}:
     (core.tags): [metric_provider]
     type:
@@ -206,24 +325,50 @@ securitySchemes:
         putRequestExample: !include /examples/metric_providers/collection-item/putRequest.json
         putResponseExample: !include /examples/metric_providers/collection-item/putResponse.json
         errorNotFoundExample: !include /examples/metric_providers/error/notFound.json
+        errorNotAuthorizedExample: !include /examples/metric_providers/error/notAuthorized.json
         putErrorExample: !include /examples/metric_providers/error/putValidation.json
+    get:
+      is:
+      - core.not-authorized-failable:
+          permissionLevel: read
+          errorNotAuthorizedExample: !include /examples/metric_providers/error/notAuthorized.json
+      responses:
+        200:
+          (specs.bindIds):
+            metric_provider: auto:builtin
+        403:
+          (specs.bindIds):
+            metric_provider: auto
+    put:
+      responses:
+        200:
+          (specs.bindIds):
+            metric_provider: auto:builtin
+          (specs.requestBody): '{ instances: [{ id: State::MetricProvider.find(metric_provider_id).metric_instances.first.id.to_s, enabled: false }] }'
+        400:
+          (specs.requestBody): '{ instances: [{ definition_slug: "unprovided" }] }'
     delete:
       is:
       - core.bad-request-failable:
           description: |
             Cannot delete a Watchdog's default MetricProvider.
           errorBadRequestExample: !include /examples/metric_providers/error/defaultForWatchdog.json
+      responses:
+        400:
+          (specs.bindIds):
+            metric_provider: auto:webhook:default
 
 /issues:
   (core.tags): [issue]
   type:
     core.collection:
       itemType: issue.Issue
-      postParamsType: issue.Issue/Form/Create | issue.RetrospectiveIssue/Form/Create
+      postParamsType: issue.Issue/Form/Create
       getResponseExample: !include /examples/issues/collection.json
       postRequestExample: !include /examples/issues/collection/postRequest.json
       postResponseExample: !include /examples/issues/collection/postResponse.json
       postErrorExample: !include /examples/issues/error/validation.json
+      errorNotAuthorizedExample: !include /examples/issues/error/notAuthorized.json
   get:
     queryParameters:
       components[]?:
@@ -248,6 +393,7 @@ securitySchemes:
         putResponseExample: !include /examples/issues/collection-item/putResponse.json
         errorNotFoundExample: !include /examples/issues/error/notFound.json
         putErrorExample: !include /examples/issues/error/validation.json
+        errorNotAuthorizedExample: !include /examples/issues/error/notAuthorized.json
     put:
       displayName: Revise an Issue
       description: |
@@ -255,6 +401,9 @@ securitySchemes:
 
         **Note:** this endpoint does not create Isuse Updates, but merely revises
         the properties of the original Issue.
+      responses:
+        400:
+          (specs.requestBody): '{ body: "" }'
     delete:
     /cancel:
       (core.tags): [issue]
@@ -274,14 +423,32 @@ securitySchemes:
           requestExample: !include /examples/issues/collection-item/cancel/request.json
           responseExample: !include /examples/issues/collection-item/cancel/response.json
           errorNotFoundExample: !include /examples/issues/error/notFound.json
+          errorNotAuthorizedExample: !include /examples/issues/error/notAuthorized.json
       put:
         is:
         - core.bad-request-failable:
             description: |
               Invalid update body or unscheduled issue.
             errorBadRequestExample: !include /examples/issues/error/unscheduledIssue.json
+        responses:
+          200:
+            (specs.bindIds):
+              issue: auto:scheduled
+            (specs.requestBody): '{ body: "cancellation body" }'
+          400:
+            (specs.bindIds):
+              issue: auto
+            (specs.requestBody): '{}'
+          403:
+            description: |
+              Not authorized to write Issues.
     /updates:
       (core.tags): [update]
+      (specs.bindIds):
+        issue: auto
+      is:
+      - core.not-found-failable:
+          errorNotFoundExample: !include /examples/issues/error/notFound.json
       uriParameters:
         issue_id:
           description: |
@@ -295,8 +462,31 @@ securitySchemes:
           postRequestExample: !include /examples/updates/collection/postRequest.json
           postResponseExample: !include /examples/updates/collection/postResponse.json
           postErrorExample: !include /examples/updates/error/validation.json
+          errorNotAuthorizedExample: !include /examples/updates/error/notAuthorized.json
+      get:
+        responses:
+          200:
+            (specs.opCreateList):
+              update:
+                options:
+                  issue: "State::Issue.find(issue_id)"
+          404:
+            (specs.bindIds):
+              issue: nonexistent
+            description: |
+              Issue not found.
+      post:
+        responses:
+          404:
+            (specs.bindIds):
+              issue: nonexistent
+            (specs.requestBody): '{}'
+            description: |
+              Issue not found.
       /{update_id}:
         (core.tags): [update]
+        (specs.bindIds):
+          issue: '#{State::Issue.where("updates._id": BSON::ObjectId(update_id)).first.id}'
         uriParameters:
           issue_id:
             description: |
@@ -310,32 +500,30 @@ securitySchemes:
             putRequestExample: !include /examples/updates/collection-item/putRequest.json
             putResponseExample: !include /examples/updates/collection-item/putResponse.json
             errorNotFoundExample: !include /examples/updates/error/notFound.json
+            errorNotAuthorizedExample: !include /examples/updates/error/notAuthorized.json
             putErrorExample: !include /examples/updates/error/validation.json
+        get:
+          responses:
+            404:
+              (specs.bindIds):
+                issue: auto
         put:
           displayName: Revise an Update
           description: |
             Revise an Update by ObjectId.
+          responses:
+            200:
+              description: |
+                Succesfully revised Update.
+            400:
+              (specs.requestBody): '{ body: "" }'
+              description: |
+                Failed to revise Update.
+            404:
+              (specs.bindIds):
+                issue: auto
         delete:
-
-/issue_templates:
-  (core.tags): [issue_template]
-  type:
-    core.collection:
-      itemType: issue_template.IssueTemplate
-      postParamsType: issue_template.IssueTemplate/Form/Create
-      getResponseExample: !include /examples/issue_templates/collection.json
-      postRequestExample: !include /examples/issue_templates/collection/postRequest.json
-      postResponseExample: !include /examples/issue_templates/collection/postResponse.json
-      postErrorExample: !include /examples/issue_templates/error/postValidation.json
-  /{issue_template_id}:
-    (core.tags): [issue_template]
-    type:
-      core.collection-item:
-        itemType: issue_template.IssueTemplate
-        putParamsType: issue_template.IssueTemplate/Form/Update
-        getResponseExample: !include /examples/issue_templates/collection-item.json
-        putRequestExample: !include /examples/issue_templates/collection-item/putRequest.json
-        putResponseExample: !include /examples/issue_templates/collection-item/putResponse.json
-        errorNotFoundExample: !include /examples/issue_templates/error/notFound.json
-        putErrorExample: !include /examples/issue_templates/error/putValidation.json
-    delete:
+          responses:
+            404:
+              (specs.bindIds):
+                issue: auto

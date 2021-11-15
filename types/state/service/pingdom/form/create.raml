@@ -11,6 +11,8 @@ description: |
   Pingdom service creation form.
 type: core.Form
 properties:
+  type:
+    enum: [pingdom]
   api_token: string
   check_id: string
   check_type?:

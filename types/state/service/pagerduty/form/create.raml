@@ -11,6 +11,8 @@ description: |
   PagerDuty creation form.
 type: core.Form
 properties:
+  type:
+    enum: [pagerduty]
   api_key: string
   suppress_future_issues?:
     type: boolean

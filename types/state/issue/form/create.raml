@@ -4,6 +4,7 @@ uses:
   prelude: /libraries/prelude.raml
   core: /libraries/core.raml
   schedule: /libraries/schedule.raml
+  update: /libraries/update.raml
 
 (prelude.common):
 (core.fieldDescriptions): !include /documentation/fieldDescriptions/issue.yml
@@ -26,3 +27,43 @@ properties:
   open_graph_image_url?: core.maybe-string
   schedule?: schedule.Schedule/Form/Create
   components: core.ObjectId[]
+  began_at?:
+    (core.overrideFieldDescription):
+    description: |
+      When given, backdates the beginning of this issue to the provided time.
+      If any further `updates` are provided, they should set `effective_after`
+      strictly after this time, or the Issue is invalid. When not provided, the
+      issue will either start immediately, or according to a given `schedule`.
+
+      **Note:** This value cannot be set into the future; you must provide
+      `schedule` to create Issues that begin and end automatically in the future.
+
+      **Note:** This field is required when `ended_at` is also provided.
+
+      **Note:** `began_at` is *mutually exclusive* with `schedule`.
+    type: core.timestamp
+  ended_at?:
+    (core.overrideFieldDescription):
+    description: |
+      When given, acts as a shorthand to prepend an Update to `updates` with blank
+      `body`, `label` set to `resolved`, and `effective_after` set to the value
+      of this field (hence, a final resolving update, ending the issue at the
+      given time). Providing this field will mark the Issue as `retrospective`.
+
+      **Note:** This value cannot be set into the future; you must provide
+      `schedule` to create Issues that begin and end automatically in the future.
+
+      **Note:** `ended_at` is *mutually exclusive* with `schedule`.
+    type: core.timestamp
+  updates?:
+    (core.overrideFieldDescription):
+    description: |
+      An array of updates to initially create on this Issue in descending
+      order (i.e. latest update first). Adding an Update to this list with `label`
+      set to `resolved` is functionally equivalent to providing an `ended_at`
+      to the Issue, and will mark the issue as `retrospective`.
+
+      **Note:** You may provide `updates` without providing a backdated `began_at`,
+      but be wary that any provided `effective_after` fields must be consistent
+      with each other, and the beginning of the issue.
+    type: update.Update/Form/Create[]

@@ -1,2 +1,5 @@
 monitor_api_key: |
   An Uptime Robot monitor API key to retrieve status from.
+unconfirmed_is_down: |
+  When true, triggers Watchdog outage when UptimeRobot reports a yet unconfirmed
+  outage.

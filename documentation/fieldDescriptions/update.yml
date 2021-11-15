@@ -21,3 +21,10 @@ issue: |
 reopening: |
   Whether this Update reopened the Issue if it was already resolved in an Update
   before this one.
+effective_after: |
+  The time after which this Update is considered the latest Update on its Issue,
+  until the `effective_after` time of the Update succeeding this one, if one
+  exists.
+effective: |
+  When true, denotes that this Update is the latest update on this Issue (hence,
+  the "effective" Update according to `effective_after`).

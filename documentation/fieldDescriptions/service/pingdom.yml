@@ -5,3 +5,6 @@ check_id: |
 check_type: |
   The type of the Pingdom check. `check` denotes a normal Pingdom uptime check,
   and `transactional` denotes a Pingdom TMS check.
+unconfirmed_is_down: |
+  When true, triggers Watchdog outage when Pingdom reports a yet unconfirmed
+  outage.

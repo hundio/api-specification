@@ -15,6 +15,8 @@ get:
     Retrieve the given <<resourcePathName|!uppercamelcase|!singularize>> by ObjectId.
   responses:
     200:
+      (specs.bindIds):
+        <<resourcePathName|!singularize>>: auto
       description: |
         Succesfully retrieved <<resourcePathName|!uppercamelcase|!singularize>>.
       body:
@@ -24,7 +26,10 @@ get:
           type: <<itemType>>
 put:
   is:
-    core.validation-failable:
+  - core.not-authorized-failable:
+      permissionLevel: write
+      errorNotAuthorizedExample: <<errorNotAuthorizedExample>>
+  - core.validation-failable:
       errorExample: <<putErrorExample>>
   displayName: Update a <<resourcePathName|!singularize|!uppercamelcase>>
   description: |
@@ -36,6 +41,9 @@ put:
       type: <<putParamsType>>
   responses:
     200:
+      (specs.bindIds):
+        <<resourcePathName|!singularize>>: auto
+      (specs.requestBody): auto:<<resourcePathName|!singularize>>
       description: |
         Succesfully updated <<resourcePathName|!uppercamelcase|!singularize>>.
       body:
@@ -44,13 +52,29 @@ put:
             "PUT <<resourcePath>> (200)": <<putResponseExample>>
           type: <<itemType>>
     400:
+      (specs.bindIds):
+        <<resourcePathName|!singularize>>: auto
       description: |
         Failed to update <<resourcePathName|!uppercamelcase|!singularize>>.
+    403:
+      (specs.bindIds):
+        <<resourcePathName|!singularize>>: auto
+    404:
+      (specs.requestBody): auto:<<resourcePathName|!singularize>>
 delete?:
+  is:
+  - core.not-authorized-failable:
+      permissionLevel: write
+      errorNotAuthorizedExample: <<errorNotAuthorizedExample>>
   displayName: Delete a <<resourcePathName|!singularize|!uppercamelcase>>
   description: |
     Delete the given <<resourcePathName|!uppercamelcase|!singularize>> by ObjectId.
   responses:
     204:
+      (specs.bindIds):
+        <<resourcePathName|!singularize>>: auto
       description: |
         Succesfully deleted <<resourcePathName|!uppercamelcase|!singularize>>.
+    403:
+      (specs.bindIds):
+        <<resourcePathName|!singularize>>: auto

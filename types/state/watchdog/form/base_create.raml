@@ -3,6 +3,7 @@
 uses:
   core: /libraries/core.raml
   service: /libraries/service.raml
+  metric_provider: /libraries/metric_provider.raml
 
 (core.fieldDescriptions): !include /documentation/fieldDescriptions/watchdog.yml
 description: |
@@ -12,4 +13,5 @@ properties:
   high_frequency?:
     type: boolean
     default: false
+  default_metric_provider?: metric_provider.MetricProvider/Form/DefaultCreate
   service: service.Form/Watchdog/Create

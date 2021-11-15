@@ -1,0 +1,14 @@
+#%RAML 1.0 DataType
+
+uses:
+  prelude: /libraries/prelude.raml
+  core: /libraries/core.raml
+  pingdom: /libraries/service/pingdom.raml
+
+(prelude.common):
+(core.fieldDescriptions): !include /documentation/fieldDescriptions/service/pingdom.yml
+type: pingdom.Pingdom/Form/Create
+properties:
+  unconfirmed_is_down?:
+    type: boolean
+    default: false

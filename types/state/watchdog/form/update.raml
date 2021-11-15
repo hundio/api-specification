@@ -1,13 +1,18 @@
 #%RAML 1.0 DataType
 
 uses:
+  prelude: /libraries/prelude.raml
   core: /libraries/core.raml
   service: /libraries/service.raml
+  metric_provider: /libraries/metric_provider.raml
 
+(prelude.common):
 (core.fieldDescriptions): !include /documentation/fieldDescriptions/watchdog.yml
 description: |
   The Watchdog update form object.
 type: core.Form
 properties:
   high_frequency?: boolean
+  default_metric_provider?: metric_provider.MetricProvider/Form/DefaultUpdate
+  metric_providers?: metric_provider.MetricProvider/Form/EmbeddedUpdate[]
   service: service.Form/Watchdog/Update

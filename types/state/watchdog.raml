@@ -16,9 +16,11 @@ properties:
   id: core.ObjectId
   type:
     enum: [watchdog]
+  latest_status: nil | core.ObjectId
   high_frequency: boolean
   service: service.Services/Watchdog
   _links?:
     properties:
       self: core.HAL/Link
-      update-form: core.HAL/Link
+      metric_providers: core.HAL/Link
+      action:convert: core.HAL/Link

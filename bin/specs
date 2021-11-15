@@ -1,0 +1,40 @@
+#!/usr/bin/env node
+
+const fs = require('fs')
+const path = require('path')
+const wap = require('webapi-parser').WebApiParser
+
+const { postProcess } = require("./lib/post-processing")
+const { RequestSpecGenerator } = require("./lib/request-spec-generator")
+
+const ramlPath = process.argv[2]
+const specPath = process.argv[3]
+
+async function main () {
+  const raml = fs.readFileSync(ramlPath).toString()
+  const ramlDir = path.resolve(ramlPath)
+  const specDir = path.resolve(specPath)
+
+  const model = await wap.raml10.parse(raml, `file://${ramlDir}`)
+
+  var resolved = await wap.raml10.resolve(model)
+
+  postProcess(resolved)
+
+  var specGenerator = new RequestSpecGenerator(resolved)
+  specGenerator.generate()
+
+  const specFileDir = `${specDir}/requests/state/api/v1/latest`
+  const specSchemaDir = `${specDir}/support/schemas/state/api/v1/latest`
+
+  fs.mkdirSync(specFileDir, { recursive: true })
+  fs.mkdirSync(specSchemaDir, { recursive: true })
+
+  fs.writeFileSync(`${specFileDir}/api_spec.rb`, specGenerator.spec)
+
+  Object.entries(specGenerator.schemas).forEach(([schemaId, schema]) => {
+    fs.writeFileSync(`${specSchemaDir}/${schemaId}.json`, schema)
+  })
+}
+
+main()

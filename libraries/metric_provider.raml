@@ -3,7 +3,44 @@
 usage: |
   Defines MetricProvider type and forms.
 
+uses:
+  prelude: /libraries/prelude.raml
+  core: /libraries/core.raml
+  service: /libraries/service.raml
+
 types:
+  MetricProvider/Form/BaseCreate: !include /types/state/metric_provider/form/base_create.raml
+  MetricProvider/Form/BaseUpdate: !include /types/state/metric_provider/form/base_update.raml
+
   MetricProvider: !include /types/state/metric_provider.raml
-  MetricProvider/Form/Create: !include /types/state/metric_provider/form/create.raml
-  MetricProvider/Form/Update: !include /types/state/metric_provider/form/update.raml
+  MetricProvider/Form/Create:
+    (prelude.common):
+    (core.fieldDescriptions): !include /documentation/fieldDescriptions/metric_provider.yml
+    type: MetricProvider/Form/BaseCreate
+    properties:
+      watchdog: core.ObjectId
+      service: service.Form/MetricProvider/Create
+  MetricProvider/Form/Update:
+    (prelude.common):
+    (core.fieldDescriptions): !include /documentation/fieldDescriptions/metric_provider.yml
+    type: MetricProvider/Form/BaseUpdate
+    properties:
+      service?: service.Form/MetricProvider/Update
+  MetricProvider/Form/EmbeddedCreate:
+    (prelude.common):
+    (core.fieldDescriptions): !include /documentation/fieldDescriptions/metric_provider.yml
+    type: MetricProvider/Form/BaseCreate
+    properties:
+      service: service.Form/MetricProvider/Create
+  MetricProvider/Form/DefaultCreate:
+    (prelude.common):
+    type: MetricProvider/Form/BaseCreate
+  MetricProvider/Form/EmbeddedUpdate:
+    (prelude.common):
+    (core.fieldDescriptions): !include /documentation/fieldDescriptions/metric_provider.yml
+    type: MetricProvider/Form/Update
+    properties:
+      id: core.ObjectId
+  MetricProvider/Form/DefaultUpdate:
+    (prelude.common):
+    type: MetricProvider/Form/BaseUpdate

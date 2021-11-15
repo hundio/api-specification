@@ -1,11 +1,4 @@
 {
-  "message": "Validation failed",
-  "logref": "046af021-2d3d-43c5-97c6-6395964aa7a5",
-  "_embedded": {
-    "errors": [
-      {
-        "message": "Watchdog must reference an existing object"
-      }
-    ]
-  }
+  "message": "The given service.type is missing or invalid.",
+  "logref": "046af021-2d3d-43c5-97c6-6395964aa7a5"
 }

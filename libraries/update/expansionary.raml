@@ -4,12 +4,14 @@ usage: |
   Defines Update with expansions.
 
 uses:
+  prelude: /libraries/prelude.raml
   core: /libraries/core.raml
   issue: /libraries/issue.raml
   update: /libraries/update.raml
 
 types:
   Update-Expansionary:
+    (prelude.common):
     (core.fieldDescriptions): !include /documentation/fieldDescriptions/update.yml
     type: update.Base
     properties:

@@ -11,6 +11,8 @@ description: |
   New Relic service creation form.
 type: core.Form
 properties:
+  type:
+    enum: [newrelic]
   api_key: string
   api_region?:
     type: core.NEWRELIC_API_REGION

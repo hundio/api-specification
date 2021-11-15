@@ -20,3 +20,15 @@ properties:
   state_override?:
     type: nil | core.integer-state
     default: null
+  effective_after?:
+    (core.overrideFieldDescription):
+    description: |
+      Backdate this Update to be effective on its Issue after the given time,
+      until the `effective_after` time of the Update succeeding this one, if
+      one exists.
+
+      **Note:** This field cannot be set into the future, nor made to encroach
+      upon the `effective_after` time of the updates preceding or succeeding
+      this one (`updates` on an Issue must occur in proper reverse-chronological
+      order according to their `effective_after` fields).
+    type: core.timestamp

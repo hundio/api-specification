@@ -1,2 +1,23 @@
 webhook_key: |
   The key to use for this webhook, expected in request headers.
+deadman: |
+  When true, turns on a "Dead Man's Switch" for the Watchdog, according to the
+  configuration set by `reporting_interval` and `consecutive_checks`. The Watchdog
+  will trigger an "outage" state if the webhook does not receive a call after
+  the configured number of consecutive checks (according to the reporting interval).
+
+  This switch can be useful when a lack of webhook reporting from the specific
+  component should be taken to mean that the component itself is down.
+reporting_interval: |
+  This property is only required when `deadman: true`. This property configures
+  how often (in seconds) that you expect to POST status to the webhook.
+consecutive_checks: |
+  This property is only required when `deadman: true`. This property configures
+  how many checks (i.e. the number of times `reporting_interval` elapses) must
+  fail (i.e. no status reported to the webhook) before triggering the "Dead Man's
+  Switch."
+
+  For example, if `deadman: true` and `reporting_interval: 60`, then a setting
+  of `consecutive_checks: 5` would cause the Watchdog to wait for 5 consecutive
+  minutes to receive a webhook call before triggering outage. Since the count is
+  consecutive, it is reset whenever a new webhook call comes through to the Watchdog.

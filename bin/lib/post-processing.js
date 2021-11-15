@@ -115,7 +115,31 @@ function copyResourceTagsToMethods(resolved) {
     if (!tags) return
 
     endpoint.operations
-      .forEach((operation) => operation.withCustomDomainProperties([tags]))
+      .forEach((operation) => operation.withCustomDomainProperties([tags].concat(operation.customDomainProperties)))
+  })
+}
+
+function mergeResourceSpecBindIdsToResponses(resolved) {
+  resolved.encodes.endPoints.forEach((endPoint) => {
+    var bindIds = endPoint.customDomainProperties.find((prop) => prop.name.value() == "specs.bindIds")
+    if (!bindIds) return
+
+    endPoint.operations.forEach((operation) => {
+      operation.responses.forEach((response) => {
+        let rBindIds = response.customDomainProperties.find((prop) => prop.name.value() == "specs.bindIds")
+        if (!rBindIds) {
+          response.withCustomDomainProperties([bindIds].concat(response.customDomainProperties))
+        } else {
+          Object.entries(bindIds.extension.properties).forEach(([name, bind]) => {
+            let rBindIdsExt = rBindIds.extension
+
+            if (name in rBindIdsExt.properties) return
+
+            rBindIdsExt.addProperty(name, bind)
+          })
+        }
+      })
+    })
   })
 }
 
@@ -176,4 +200,5 @@ exports.postProcess = (resolved) => {
   hoistCommonTypes(resolved)
   copyResourceTagsToMethods(resolved)
   moveFieldDescriptionsToProperties(resolved)
+  mergeResourceSpecBindIdsToResponses(resolved)
 }

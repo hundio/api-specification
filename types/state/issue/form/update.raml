@@ -20,3 +20,15 @@ properties:
   open_graph_image_url?: core.maybe-string
   schedule?: schedule.Schedule/Form/Update
   components?: core.ObjectId[]
+  began_at?:
+    (core.overrideFieldDescription):
+    description: |
+      When given, backdates the beginning of this issue to the provided time.
+
+      **Note:** This value cannot be set into the future, nor any time that would
+      encroach upon any Update's `effective_after` time.
+
+      **Note:** `began_at` cannot be updated if this Issue is scheduled; you
+      must instead revise the `schedule` object itself to change the automatic
+      begin/end times of the Issue.
+    type: core.timestamp

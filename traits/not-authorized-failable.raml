@@ -1,0 +1,17 @@
+#%RAML 1.0 Trait
+
+usage: |
+  Methods of this trait can fail with a `403 Forbidden` error, given valid
+  authentication headers.
+
+responses:
+  403:
+    (specs.apiKeyPermissionLevel): none
+    (specs.requestBody): "{}"
+    description: |
+      Not authorized to <<permissionLevel>> <<resourcePathName|!uppercamelcase>>.
+    body:
+      application/hal+json:
+        type: core.Error
+        examples:
+          "<<methodName|!uppercase>> <<resourcePath>> (403)": <<errorNotAuthorizedExample>>

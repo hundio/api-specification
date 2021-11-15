@@ -11,6 +11,8 @@ description: |
   AWS Cloudwatch creation form.
 type: core.Form
 properties:
+  type:
+    enum: [cloudwatch]
   instance_id: string
   region: core.CLOUDWATCH_REGION
   access_key_id: string

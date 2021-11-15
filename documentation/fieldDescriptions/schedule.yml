@@ -2,19 +2,16 @@ id: |
   The ObjectId of this Schedule.
 starts_at: |
   The time at which this scheduled Issue will begin.
-
-  **Note:** this field cannot be changed once an Issue has started.
 ends_at: |
   The time at which this scheduled Issue will end.
-
-  **Note:** this field cannot be changed once an Issue has ended.
 notify_subscribers_at: |
   The time at which this scheduled Issue will fire a "heads-up" `issue_upcoming`
   notification, informing subscribers that the Issue will begin soon. This field
   is `null` if the Issue will not be sending an `issue_upcoming` notification.
 
   **Note:** this field cannot be changed once the Issue has emitted an
-  `issue_upcoming` notification.
+  `issue_upcoming` notification. Consider creating a new Update if you'd like to
+  remind subscribers additional times apart from this automated notification.
 started: |
   Whether this scheduled Issue has started.
 ended: |

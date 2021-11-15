@@ -1,0 +1,17 @@
+#%RAML 1.0 Library
+
+usage: |
+  Defines Webhook service types for use in watchdog-specific extensions
+
+types:
+  deadman-reporting-interval:
+    type: integer
+    minimum: 30
+  deadman-consecutive-checks:
+    type: integer
+    minimum: 1
+    maximum: 30
+
+  Webhook: !include /types/state/service/webhook.raml
+  Webhook/Form/Create: !include /types/state/service/webhook/form/create.raml
+  Webhook/Form/Update: !include /types/state/service/webhook/form/update.raml

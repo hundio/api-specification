@@ -97,6 +97,13 @@ function hoistCommonTypes(resolved) {
     })
 
   resolved
+    .findByType("http://a.ml/vocabularies/shapes#ArrayShape")
+    .filter((a) => isCommon(a.items))
+    .forEach((array) => {
+      array.withItems(hoistType(resolved, array.items))
+    })
+
+  resolved
     .findByType("http://a.ml/vocabularies/apiContract#Payload")
     .filter((p) => isCommon(p.schema))
     .forEach((payload) => payload.withSchema(hoistType(resolved, payload.schema)))

@@ -2,7 +2,7 @@
 
 const fs = require('fs')
 const path = require('path')
-const wap = require('webapi-parser').WebApiParser
+const amf = require('amf-client-js')
 
 const { postProcess } = require("./lib/post-processing")
 const { RequestSpecGenerator } = require("./lib/request-spec-generator")
@@ -11,17 +11,16 @@ const ramlPath = process.argv[2]
 const specPath = process.argv[3]
 
 async function main () {
-  const raml = fs.readFileSync(ramlPath).toString()
   const ramlDir = path.resolve(ramlPath)
   const specDir = path.resolve(specPath)
+  const raml10 = amf.RAMLConfiguration.RAML10().baseUnitClient()
 
-  const model = await wap.raml10.parse(raml, `file://${ramlDir}`)
+  const parseResult = await raml10.parse(`file://${ramlDir}`)
+  const resolved = raml10.transform(parseResult.baseUnit, amf.PipelineId.Cache)
 
-  var resolved = await wap.raml10.resolve(model)
+  postProcess(resolved.baseUnit)
 
-  postProcess(resolved)
-
-  var specGenerator = new RequestSpecGenerator(resolved)
+  var specGenerator = new RequestSpecGenerator(resolved.baseUnit)
   specGenerator.generate()
 
   const specFileDir = `${specDir}/requests/state/api/v1/latest`

@@ -1,8 +1,12 @@
+const amf = require("amf-client-js")
+const util = require("./utilities")
+
 class RequestSpecGenerator {
   constructor(resolved) {
     this.resolved = resolved
     this.schemas = {}
     this.spec = undefined
+    this.schemaClient = amf.RAMLConfiguration.RAML10().elementClient()
     this.basePath = new URL(resolved.encodes.servers[0].url.value()).pathname
     this.compileCommonJsonSchema()
   }
@@ -16,14 +20,16 @@ class RequestSpecGenerator {
 
     var paramsBinding, headersBinding = 'headers.merge! "content-type" => "application/json"'
 
-    var requestBody = response.customDomainProperties.find(d => d.name.value() == "specs.requestBody")?.extension?.value?.value()
+    var requestBody = response.customDomainProperties.find(d => d.name.value() == "specs.requestBody")?.extension?.value?.value(),
+        attributesStrategy = this.factoryAttributesStrategy(response),
+        factoryName = this.factoryName(response)
 
     if (!requestBody) {
       paramsBinding = ""
     } else if (requestBody.startsWith("auto:")) {
       var [_, model, ...traits] = requestBody.split(":"),
           bindTraits = traits.length == 0 ? "" : `, ${traits.map(t => ":" + t).join(", ")}`
-      paramsBinding = `params = op_attributes_for(:${model}${bindTraits})`
+      paramsBinding = `params = ${attributesStrategy}(:${factoryName || model}${bindTraits})`
     } else {
       paramsBinding = `params = ${requestBody}`
     }
@@ -31,9 +37,9 @@ class RequestSpecGenerator {
     if (paramsBinding) {
       if (requestBodyInfo.factory) {
         if (requestBodyInfo.mergePath) {
-          paramsBinding += `.merge(${requestBodyInfo.mergePath[0]}: op_attributes_for(:${requestBodyInfo.factory}, :${requestBodyInfo.trait}))`
+          paramsBinding += `.merge(${requestBodyInfo.mergePath[0]}: ${attributesStrategy}(:${requestBodyInfo.factory}, :${requestBodyInfo.trait}))`
         } else {
-          paramsBinding += `.merge(op_attributes_for(:${requestBodyInfo.factory}, :${requestBodyInfo.trait}))`
+          paramsBinding += `.merge(${attributesStrategy}(:${requestBodyInfo.factory}, :${requestBodyInfo.trait}))`
         }
       }
 
@@ -60,7 +66,9 @@ class RequestSpecGenerator {
   }
 
   idBindings(response) {
-    var bindIds = response.customDomainProperties.find(d => d.name.value() == "specs.bindIds")
+    var bindIds = response.customDomainProperties.find(d => d.name.value() == "specs.bindIds"),
+        factoryStrategy = this.factoryStrategy(response),
+        factoryName = this.factoryName(response)
 
     if (!bindIds) return ""
 
@@ -70,7 +78,7 @@ class RequestSpecGenerator {
       if (idValue == "auto" || idValue.startsWith("auto:")) {
         var traits = idValue.split(":").slice(1),
             bindTraits = traits.length == 0 ? "" : `, ${traits.map(t => ":" + t).join(", ")}`
-        bindValue = `op_create(:${model}${bindTraits}).id.to_s`
+        bindValue = `${factoryStrategy}(:${factoryName || model}${bindTraits}).id.to_s`
       } else {
         bindValue = `"${idValue}"`
       }
@@ -89,9 +97,17 @@ class RequestSpecGenerator {
     return description
   }
 
+  testCaseFlags(requestBodyInfo) {
+    var flags = ""
+
+    if (requestBodyInfo.vcr) flags += ", vcr: true"
+
+    return flags
+  }
+
   responseTestCase(endPoint, operation, response, code, idBindings, bodyExpectation, requestBodyInfo = {}) {
     return `
-      it "${this.testCaseDescription(requestBodyInfo)}" do
+      it "${this.testCaseDescription(requestBodyInfo)}"${this.testCaseFlags(requestBodyInfo)} do
         ${this.requestBindings(operation, response, requestBodyInfo)}
         ${operation.method.value()} "${this.basePath}${this.endPointPath(endPoint, idBindings)}"${this.requestOptions(operation)}
 
@@ -107,33 +123,50 @@ class RequestSpecGenerator {
 
     var factory = config.factory.value.value(),
         mergePath = config.mergePath?.value?.value()?.split("."),
+        vcrTraits = config.vcr?.members?.map(m => m.value.value()) || [],
         source = config.source.value.value().split("."),
-        requestSchema = this.itselfOrTraverseLink(operation.request.payloads[0].schema)
+        requestSchema = util.itselfOrTraverseLink(operation.request.payloads[0].schema)
 
     var shape = source.reduce((s, path) => {
       let pathProp = s.properties.find(n => n.name.value() === path).range
-      return this.itselfOrTraverseLink(pathProp)
+      return util.itselfOrTraverseLink(pathProp)
     }, requestSchema);
 
     return shape.anyOf.map((subshape) => {
-      var trait = subshape.displayName.value().toLowerCase()
+      var trait = util.toSnakeCase(subshape.displayName.value()),
+          info = {factory: factory, trait: trait, mergePath: mergePath}
 
-      return this.responseTestCase(endPoint, operation, response, code, idBindings, bodyExpectation, {factory: factory, trait: trait, mergePath: mergePath})
+      if (vcrTraits.includes(trait)) info.vcr = true
+
+      return this.responseTestCase(endPoint, operation, response, code, idBindings, bodyExpectation, info)
     }).join("\n\n");
   }
 
-  opCreateLists(response) {
-    var opCreate = response.customDomainProperties.find(d => d.name.value() == "specs.opCreateList")
-    if (!opCreate) return ""
+  beforeHook(response) {
+    var hook = util.findCustomDomainProperty(response, "specs.beforeHook")
 
-    return Object.entries(opCreate.extension.properties).map(([model, options]) => {
+    if (!hook) return ""
+
+    return `before { ${hook.extension.value.value()} }`
+  }
+
+  createModelsHook(response) {
+    var createModels = response.customDomainProperties.find(d => d.name.value() == "specs.createModels")
+    if (!createModels) return ""
+
+    var strategy = this.factoryStrategy(response);
+    if (!strategy) return ""
+
+    var factoryName = this.factoryName(response);
+
+    return Object.entries(createModels.extension.properties).map(([model, options]) => {
       var count = options.properties.count?.value?.value() || 3,
           traits = options.properties.traits?.value?.value()?.split(":") || [],
           traitsSection = traits.length == 0 ? "" : `, ${traits.map(t => ":" + t).join(", ")}`,
           factoryOptions = Object.entries(options.properties.options?.properties || {}),
           factoryOptionsSection = factoryOptions.length == 0 ? "" : `, ${factoryOptions.map(([opt, val]) => `${opt}: ${val.value.value()}`).join(", ")}`
 
-      return `before { op_create_list :${model}, ${count}${traitsSection}${factoryOptionsSection} }`
+      return `before { ${strategy}_list :${factoryName || model}, ${count}${traitsSection}${factoryOptionsSection} }`
     }).join("\n")
   }
 
@@ -148,7 +181,7 @@ class RequestSpecGenerator {
         var payload = response.payloads[0],
             schemaId = this.schemaId(payload.schema)
 
-        this.schemas[schemaId] = this.dereferenceJsonSchemaRoot(this.relocateJsonSchemaReferences(payload.schema.buildJsonSchema()), schemaId)
+        this.schemas[schemaId] = this.dereferenceJsonSchemaRoot(this.relocateJsonSchemaReferences(this.toJsonSchema(payload.schema)), schemaId)
 
         bodyExpectation = `expect(response.body).to match_json_schema("state/api/v1/latest/${schemaId}")`
       }
@@ -160,7 +193,8 @@ class RequestSpecGenerator {
         ${this.apiKeyBinding(response)}
         ${idBindings}
 
-        ${this.opCreateLists(response)}
+        ${this.beforeHook(response)}
+        ${this.createModelsHook(response)}
 
         ${this.responseTestCase(endPoint, operation, response, code, idBindings, bodyExpectation)}
         ${this.exhaustiveResponseTestCases(endPoint, operation, response, code, idBindings, bodyExpectation)}
@@ -185,12 +219,8 @@ class RequestSpecGenerator {
     return `
     require "rails_helper"
 
-    RSpec.describe "${this.basePath} (version: latest)" do
-      before(:example) do
-        State::GenericMetricProvider.delete_all
-        State::BluthundMetricProvider.delete_all
-        State::BluthundWatchdog.delete_all
-      end
+    RSpec.describe "${this.basePath} (version: latest)", :timeline_simulation do
+      before(:example) { DatabaseCleaner.clean }
       let(:api_key) { create :api_key, :write }
       let(:headers) { { accept: "application/hal+json;variant=compact", authorization: "Bearer #{api_key.token}" } }
 
@@ -217,6 +247,29 @@ class RequestSpecGenerator {
     return upgradeInterpolations ? path.replace(/\{[A-Za-z0-9_]+\}/g, "#$&") : path
   }
 
+  factoryStrategy(response) {
+    var prop = util.findCustomDomainProperty(response, "specs.factoryStrategy"),
+        value = prop?.extension?.value?.value()
+
+    if (value === "null") return null
+    return value || "op_create"
+  }
+
+  factoryName(response) {
+    var prop = util.findCustomDomainProperty(response, "specs.factoryName"),
+        value = prop?.extension?.value?.value()
+
+    return value
+  }
+
+  factoryAttributesStrategy(response) {
+    const strategy = this.factoryStrategy(response)
+
+    if (!strategy) return null
+
+    return strategy.startsWith("op_") ? "op_attributes_for" : "attributes_for"
+  }
+
   compileCommonJsonSchema() {
     var commonShapes = this.resolved.declares.
       filter(d => d.graph().types().includes("http://a.ml/vocabularies/shapes#AnyShape"))
@@ -228,7 +281,10 @@ class RequestSpecGenerator {
     }
 
     commonShapes.forEach((shape) => {
-      Object.assign(commonSchema.definitions, JSON.parse(shape.buildJsonSchema()).definitions)
+      var schema = JSON.parse(this.toJsonSchema(shape)),
+          def = schema.$ref.match(/#\/definitions\/(.+)/)[1]
+
+      commonSchema.definitions[shape.name.value()] = schema.definitions[def]
     })
 
     this.schemas.common = JSON.stringify(commonSchema, null, 2)
@@ -253,12 +309,8 @@ class RequestSpecGenerator {
     return JSON.stringify(schema, null, 2)
   }
 
-  itselfOrTraverseLink(linkable) {
-    if (linkable.and?.[0]?.isLink) {
-      return linkable.and[0].linkTarget
-    } else {
-      return linkable
-    }
+  toJsonSchema(shape) {
+    return this.schemaClient.buildJsonSchema(shape)
   }
 }
 

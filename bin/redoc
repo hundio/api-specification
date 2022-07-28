@@ -1,17 +1,12 @@
 #!/usr/bin/env node
 
-const fs = require('fs')
 const path = require('path')
-const wap = require('webapi-parser').WebApiParser
+const amf = require('amf-client-js')
 
 const { postProcess } = require("./lib/post-processing")
 
 function normalizeSecuritySchemes(spec) {
   spec = JSON.parse(spec)
-
-  var basic = spec.components.securitySchemes.basic
-  basic["type"] = "http"
-  basic["scheme"] = "basic"
 
   var bearer = spec["components"]["x-amf-securitySchemes"]["bearer"]
   delete spec["components"]["x-amf-securitySchemes"]
@@ -26,20 +21,44 @@ function normalizeSecuritySchemes(spec) {
   return JSON.stringify(spec)
 }
 
-function deepRemoveSpecAnnotations(obj) {
+function deepRemoveAnnotations(obj, predicate) {
   Object.entries(obj).forEach(([prop, val]) => {
-    if (prop.startsWith("x-specs.")) {
+    if (predicate(prop)) {
       delete obj[prop]
     } else if (val && typeof val == "object") {
-      deepRemoveSpecAnnotations(val)
+      deepRemoveAnnotations(val, predicate)
     }
   });
 }
 
-function removeSpecAnnotations(spec) {
+function deepNormalizeSecurity(obj) {
+  Object.entries(obj).forEach(([_prop, val]) => {
+    if (val && typeof val == "object") {
+      if (val.hasOwnProperty("x-amf-security")) {
+        val.security = val.security.concat(val["x-amf-security"])
+        delete val["x-amf-security"]
+      }
+
+      deepNormalizeSecurity(val)
+    }
+  })
+}
+
+function removeAnnotations(spec) {
   spec = JSON.parse(spec)
 
-  deepRemoveSpecAnnotations(spec)
+  const annotations = [
+    "x-amf-uses",
+    "x-amf-is",
+    "x-amf-type",
+    "x-common",
+    "x-prelude.common",
+  ]
+
+  deepRemoveAnnotations(spec, (prop) =>
+    prop.startsWith("x-specs.") || annotations.includes(prop)
+  )
+  deepNormalizeSecurity(spec)
 
   return JSON.stringify(spec)
 }
@@ -58,17 +77,20 @@ function normalizeLogo(spec) {
 }
 
 function redoc(spec) {
-  spec = normalizeLogo(removeSpecAnnotations(normalizeSecuritySchemes(spec)))
+  spec = normalizeLogo(removeAnnotations(normalizeSecuritySchemes(spec)))
     .replace(/x-amf-union/g, "anyOf")
     .replace(/x-core\.tags/g, "tags")
     .replace(/x-core\.tagGroups/g, "x-tagGroups")
     .replace(/x-core\.expandable/g, "x-expandable")
     .replace(/("x-expandable":)null/g, "$1true")
-    .replace(/,"x-(prelude\.)?common":( )?null/g, "")
+    .replace(/x-prelude\.discriminatorJunction/g, "discriminator")
     .replace(/,"anyOf":\[{"\$ref":"[^"]+"}]/g, "")
+    // FIXME: the following shouldn't be necessary, but something causes the
+    // wrong $ref in usages of the Events union.
+    .replace(/"\$ref":"#\/definitions\/([^"]+)"/g, '"$ref":"#/components/schemas/$1"')
+    .replace(/#\/definitions\//g, "")
 
-  return `
-<!DOCTYPE html>
+  return `<!DOCTYPE html>
 <html>
 <head>
   <title>Hund API v1 Documentation</title>
@@ -76,7 +98,7 @@ function redoc(spec) {
 
   <link rel="icon" href="https://hund.io/favicon.ico">
 
-  <script src="https://cdn.jsdelivr.net/npm/redoc@2.0.0-rc.56/bundles/redoc.standalone.js"> </script>
+  <script src="https://cdn.jsdelivr.net/npm/redoc@2.0.0-rc.72/bundles/redoc.standalone.js"> </script>
 
   <style>
     strong code {
@@ -100,26 +122,25 @@ function redoc(spec) {
 
   <script>
     const spec = ${spec};
-    Redoc.init(spec, {jsonSampleExpandLevel: 4, expandResponses: "200,201", showExtensions: ["x-expandable"], hideSingleRequestSampleTab: true, requiredPropsFirst: true, sortPropsAlphabetically: false, theme: {logo: {gutter: "1rem"}}}, document.getElementById("redoc-container"))
+    Redoc.init(spec, {jsonSampleExpandLevel: 3, expandResponses: "200,201", showExtensions: ["x-expandable"], hideSingleRequestSampleTab: true, requiredPropsFirst: true, sortPropsAlphabetically: false, theme: {logo: {gutter: "1rem"}}}, document.getElementById("redoc-container"))
   </script>
 </body>
-</html>
-  `
+</html>`
 }
 
 const ramlPath = process.argv[2]
 
 async function main () {
-  const raml = fs.readFileSync(ramlPath).toString()
   const ramlDir = path.resolve(ramlPath)
+  const raml10 = amf.RAMLConfiguration.RAML10().baseUnitClient();
+  const oas30 = amf.OASConfiguration.OAS30().baseUnitClient();
 
-  const model = await wap.raml10.parse(raml, `file://${ramlDir}`)
+  const parseResult = await raml10.parse(`file://${ramlDir}`)
+  const resolved = raml10.transform(parseResult.baseUnit, amf.PipelineId.Cache)
 
-  var resolved = await wap.raml10.resolve(model)
+  postProcess(resolved.baseUnit)
 
-  postProcess(resolved)
-
-  const spec = await wap.oas30.generateString(resolved)
+  const spec = oas30.render(resolved.baseUnit, "application/json")
 
   console.log(redoc(spec))
 }

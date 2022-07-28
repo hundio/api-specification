@@ -4,6 +4,7 @@ usage: |
   Defines Component with expansions.
 
 uses:
+  prelude: /libraries/prelude.raml
   core: /libraries/core.raml
   component: /libraries/component.raml
   watchdog: /libraries/watchdog.raml
@@ -11,6 +12,7 @@ uses:
 
 types:
   Component-Expansionary:
+    (prelude.common):
     (core.fieldDescriptions): !include /documentation/fieldDescriptions/component.yml
     type: component.Base
     properties:

@@ -7,7 +7,6 @@ displayName: Check
 description: |
   Hund Native Monitoring Check creation form.
 type: core.Form
-# discriminator: method
 properties:
   method: string
   target: string
@@ -19,7 +18,7 @@ properties:
     type: integer
     default: 10000
   consecutive_check_degraded_threshold?:
-    type: nil | core.nonnegative-integer
+    type: core.nonnegative-integer?
     default: null
   consecutive_check_outage_threshold?:
     type: core.nonnegative-integer

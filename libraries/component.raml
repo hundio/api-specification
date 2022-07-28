@@ -4,12 +4,14 @@ usage: |
   Defines Component type and forms.
 
 uses:
+  prelude: /libraries/prelude.raml
   core: /libraries/core.raml
 
 types:
   Base: !include /types/state/component.raml
 
   Component:
+    (prelude.common):
     (core.fieldDescriptions): !include /documentation/fieldDescriptions/component.yml
     type: Base
     properties:

@@ -13,6 +13,11 @@ types:
     additionalProperties: true
     properties:
       /\A[\Q!#$%&'*+-.^_`|~\E0-9A-Za-z]+\Z/: string
+  HTTP/ResponseCode:
+    (prelude.common):
+    type: integer
+    minimum: 100
+    maximum: 599
 
   Check: !include /types/state/service/native/check.raml
   Check/Form/Create: !include /types/state/service/native/check/form/create.raml

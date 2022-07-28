@@ -13,7 +13,7 @@ properties:
   password?: core.maybe-string
   response_body_must_contain?: core.maybe-string
   response_body_must_contain_mode?: core.NATIVE_STRING_CONTAINMENT_MODE
-  response_code_must_be?: nil | integer
+  response_code_must_be?: native.HTTP/ResponseCode?
   headers?: native.HTTP/Headers
   follow_redirects?: boolean
   ssl_verify_peer?: boolean

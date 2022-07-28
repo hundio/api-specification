@@ -31,64 +31,82 @@ types:
   # Constants
 
   METRIC_AXIS_TYPE:
+    (prelude.common):
     type: string
     enum: [time, measure]
   METRIC_PLOT_TYPE:
+    (prelude.common):
     type: string
     enum: [line, bar]
   METRIC_INTERPOLATION:
+    (prelude.common):
     type: string
     enum: [linear, step, basis, bundle, cardinal]
   METRIC_AGGREGATION:
+    (prelude.common):
     type: string
     enum: [sum, average, first, last, max, min]
 
   ISSUE_PRIORITY:
+    (prelude.common):
     type: integer
     enum: [-1, 0, 1]
   ISSUE_SPECIALIZATION:
+    (prelude.common):
     type: string
     enum: [informational, maintenance, general]
   ISSUE_LABEL:
+    (prelude.common):
     type: string
     enum: [assessed, informational, investigating, maintenance]
 
   UPDATE_LABEL:
+    (prelude.common):
     type: string
     enum: [identified, investigating, monitoring, resolved, addendum, cancelled]
 
   ISSUE_TEMPLATE_KIND:
+    (prelude.common):
     type: string
     enum: [generic, pagerduty, newrelic]
   ISSUE_TEMPLATE_LABEL:
+    (prelude.common):
     type: string
     enum: [maintenance, assessed, identified, investigating, monitoring, resolved, addendum, informational]
 
   PINGDOM_CHECK_TYPE:
+    (prelude.common):
     type: string
     enum: [transactional, check]
 
   CLOUDWATCH_REGION:
+    (prelude.common):
     type: string
     enum: [ap-northeast-1, ap-southeast-1, ap-southeast-2, eu-central-1, eu-west-1, sa-east-1, us-east-1, us-west-1, us-west-2]
 
   NEWRELIC_API_REGION:
+    (prelude.common):
     type: string
     enum: [us, eu]
 
   NATIVE_REGION:
+    (prelude.common):
     type: string
     enum: [wa-us-1, tx-us-1, nj-us-1, lon-gb-1, syd-au-1, fra-de-1, par-fr-1, ams-nl-1, sin-sg-1, mow-ru-1]
   NATIVE_IP_VERSION:
+    (prelude.common):
     type: string
     enum: [inet, inet6]
   NATIVE_STRING_CONTAINMENT_MODE:
+    (prelude.common):
     type: string
     enum: [exact, regex]
   NATIVE_DNS_RESPONSE_CONTAINMENT:
+    (prelude.common):
     type: string
     enum: [any, all]
   NATIVE_DNS_RECORD_TYPE:
+    (prelude.common):
     type: string
     enum: [A, AAAA, CNAME, MX, NS, PTR, SOA, SRV, TXT]
 
@@ -134,10 +152,12 @@ types:
     type: string
     pattern: ([a-z][a-z0-9_]*)(\.[a-z][a-z0-9_]*)*
   i18n:
+    (prelude.common):
     type: object
     properties:
       //: string
   polymorphic-i18n:
+    (prelude.common):
     type: object
     properties:
       default: i18n
@@ -161,20 +181,20 @@ types:
 
   # Mixins
 
-  TimestampsUpdated:
+  Timestamps/Updated:
     type: object
     additionalProperties: false
     properties:
       updated_at:
         type: timestamp
-  TimestampsCreated:
+  Timestamps/Created:
     type: object
     additionalProperties: false
     properties:
       created_at:
         type: timestamp
   Timestamps:
-    type: [TimestampsUpdated, TimestampsCreated]
+    type: [Timestamps/Updated, Timestamps/Created]
     additionalProperties: false
   Describable:
     type: object
@@ -211,6 +231,12 @@ types:
   HAL/Linkable: prelude.HAL/Linkable
   HAL/Embedded: prelude.HAL/Embedded
   HAL: prelude.HAL
+
+  UUID:
+    (prelude.common):
+    displayName: UUID
+    type: string
+    pattern: ^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$
 
   ObjectId: !include /types/bson/object_id.raml
 

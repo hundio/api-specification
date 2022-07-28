@@ -3,11 +3,16 @@
 usage: |
   Defines Webhook service types for use in watchdog-specific extensions
 
+uses:
+  prelude: /libraries/prelude.raml
+
 types:
   deadman-reporting-interval:
+    (prelude.common):
     type: integer
     minimum: 30
   deadman-consecutive-checks:
+    (prelude.common):
     type: integer
     minimum: 1
     maximum: 30

@@ -1,0 +1,26 @@
+#%RAML 1.0 ResourceType
+
+description: Singular <<resourcePathName|!uppercamelcase|!singularize>> in this context.
+uriParameters:
+  <<idPrefix>>_id:
+    description: |
+      The ObjectId of the of the <<resourcePathName|!uppercamelcase|!singularize>>.
+    type: core.ObjectId
+is:
+  core.not-found-failable:
+    errorNotFoundExample: <<errorNotFoundExample>>
+get:
+  displayName: Retrieve a <<resourcePathName|!singularize|!uppercamelcase>>
+  description: |
+    Retrieve the given <<resourcePathName|!uppercamelcase|!singularize>> by ObjectId.
+  responses:
+    200:
+      (specs.bindIds):
+        <<idPrefix>>: auto
+      description: |
+        Successfully retrieved <<resourcePathName|!uppercamelcase|!singularize>>.
+      body:
+        application/hal+json:
+          examples:
+            "GET <<resourcePath>> (200)": <<getResponseExample>>
+          type: <<itemType>>

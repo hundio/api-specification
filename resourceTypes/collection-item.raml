@@ -1,29 +1,11 @@
 #%RAML 1.0 ResourceType
 
-description: Singular <<resourcePathName|!uppercamelcase|!singularize>> in this context.
-uriParameters:
-  <<resourcePathName|!singularize>>_id:
-    description: |
-      The ObjectId of the of the <<resourcePathName|!uppercamelcase|!singularize>>.
-    type: core.ObjectId
-is:
-  core.not-found-failable:
+type:
+  core.read-collection-item:
     errorNotFoundExample: <<errorNotFoundExample>>
-get:
-  displayName: Retrieve a <<resourcePathName|!singularize|!uppercamelcase>>
-  description: |
-    Retrieve the given <<resourcePathName|!uppercamelcase|!singularize>> by ObjectId.
-  responses:
-    200:
-      (specs.bindIds):
-        <<resourcePathName|!singularize>>: auto
-      description: |
-        Succesfully retrieved <<resourcePathName|!uppercamelcase|!singularize>>.
-      body:
-        application/hal+json:
-          examples:
-            "GET <<resourcePath>> (200)": <<getResponseExample>>
-          type: <<itemType>>
+    getResponseExample: <<getResponseExample>>
+    itemType: <<itemType>>
+    idPrefix: <<idPrefix>>
 put:
   is:
   - core.not-authorized-failable:
@@ -45,7 +27,7 @@ put:
         <<resourcePathName|!singularize>>: auto
       (specs.requestBody): auto:<<resourcePathName|!singularize>>
       description: |
-        Succesfully updated <<resourcePathName|!uppercamelcase|!singularize>>.
+        Successfully updated <<resourcePathName|!uppercamelcase|!singularize>>.
       body:
         application/hal+json:
           examples:
@@ -74,7 +56,7 @@ delete?:
       (specs.bindIds):
         <<resourcePathName|!singularize>>: auto
       description: |
-        Succesfully deleted <<resourcePathName|!uppercamelcase|!singularize>>.
+        Successfully deleted <<resourcePathName|!uppercamelcase|!singularize>>.
     403:
       (specs.bindIds):
         <<resourcePathName|!singularize>>: auto

@@ -117,6 +117,7 @@ securitySchemes:
     (core.tags): [component]
     type:
       core.collection-item:
+        idPrefix: component
         itemType: component-expansionary.Component-Expansionary
         putParamsType: component.Component/Form/Update
         getResponseExample: !include /examples/components/collection-item.json
@@ -135,6 +136,7 @@ securitySchemes:
   (core.tags): [watchdog]
   type:
     core.collection-item:
+      idPrefix: watchdog
       itemType: watchdog.Watchdog
       putParamsType: watchdog.Watchdog/Form/Update
       getResponseExample: !include /examples/watchdogs/collection-item.json
@@ -209,6 +211,7 @@ securitySchemes:
     (core.tags): [group]
     type:
       core.collection-item:
+        idPrefix: group
         itemType: group.Group
         putParamsType: group.Group/Form/Update
         getResponseExample: !include /examples/groups/collection-item.json
@@ -319,6 +322,7 @@ securitySchemes:
     (core.tags): [metric_provider]
     type:
       core.collection-item:
+        idPrefix: metric_provider
         itemType: metric_provider.MetricProvider
         putParamsType: metric_provider.MetricProvider/Form/Update
         getResponseExample: !include /examples/metric_providers/collection-item.json
@@ -386,6 +390,7 @@ securitySchemes:
     (core.tags): [issue]
     type:
       core.collection-item:
+        idPrefix: issue
         itemType: issue.Issue
         putParamsType: issue.Issue/Form/Update
         getResponseExample: !include /examples/issues/collection-item.json
@@ -494,6 +499,7 @@ securitySchemes:
             type: core.ObjectId
         type:
           core.collection-item:
+            idPrefix: update
             itemType: update-expansionary.Update-Expansionary
             putParamsType: update.Update/Form/Update
             getResponseExample: !include /examples/updates/collection-item.json

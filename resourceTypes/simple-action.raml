@@ -1,0 +1,35 @@
+#%RAML 1.0 ResourceType
+
+uriParameters:
+  <<idPrefix>>_id:
+    description: |
+      The ObjectId of the of the <<idPrefix|!uppercamelcase>>.
+    type: core.ObjectId
+put:
+  is:
+  - core.not-authorized-failable:
+      permissionLevel: write
+      errorNotAuthorizedExample: <<errorNotAuthorizedExample>>
+  - core.not-found-failable:
+      errorNotFoundExample: <<errorNotFoundExample>>
+  displayName: <<displayName>>
+  description: <<description>>
+  responses:
+    200:
+      (specs.requestBody): "{}"
+      (specs.bindIds):
+        <<idPrefix>>: auto
+      description: <<successDescription>>
+      body:
+        application/hal+json:
+          examples:
+            "PUT <<resourcePath>> (200)": <<responseExample>>
+          type: <<itemType>>
+    403:
+      (specs.bindIds):
+        <<idPrefix>>: auto
+    404:
+      (specs.bindIds):
+        <<idPrefix>>: nonexistent
+      (specs.requestBody): "{}"
+      description: <<notFoundDescription>>

@@ -3,6 +3,11 @@
 usage: |
   Defines annotations specific to request spec generation.
 
+types:
+  FACTORY_STRATEGY:
+    type: string
+    enum: [op_create, create]
+
 annotationTypes:
   apiKeyPermissionLevel:
     description: |
@@ -54,17 +59,21 @@ annotationTypes:
       subtype body will be merged for the full request body for each test case.
       For example, a value of `foo.bar` would merge each exhaustive body from
       `source` into the `bar` object (or create it) within `foo` within `requestBody`.
+
+      The optional `vcr` property denotes a list of factory traits whose request
+      tests will enable VCR to record any potential net calls (such as plugin APIs).
     allowedTargets: Response
     type: object
     properties:
       source: string
       factory: string
       mergePath?: string
-  opCreateList:
+      vcr?: string[]
+  createModels:
     description: |
-      An object with model name keys and object values. Use the `op_create_list`
-      strategy to generate test models before beginning the specs for the
-      annotated response.
+      An object with model name keys and object values. By default, uses the
+      configured strategy to generate test models before beginning the specs for
+      the annotated response.
     allowedTargets: Response
     type: object
     properties:
@@ -79,3 +88,29 @@ annotationTypes:
             type: object
             properties:
               //: string
+  beforeHook:
+    description: |
+      Code to run in a `before { }` hook that runs before the RSpec example testing
+      the annotated response.
+    allowedTargets: Response
+    type: string
+  factoryStrategy:
+    description : |
+      The strategy to use when generating models under the annotated resource,
+      from spec annotations like `createModels`, `bindIds`, and `requestBody`.
+
+      Resource-level `factoryStrategy` is inherited by Responses unless explicitly
+      overridden.
+    allowedTargets: [Resource, Response]
+    type: FACTORY_STRATEGY?
+    default: op_create
+  factoryName:
+    description : |
+      The factory name to use when generating models under the annotated resource,
+      from spec annotations like `createModels`, `bindIds`, and `requestBody` when
+      the `auto` keyword is used.
+
+      Resource-level `factoryName` is inherited by Responses unless explicitly
+      overridden.
+    allowedTargets: [Resource, Response]
+    type: string

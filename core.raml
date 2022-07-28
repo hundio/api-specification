@@ -296,7 +296,7 @@ securitySchemes:
         type: core.ObjectId
     responses:
       200:
-        (specs.opCreateList):
+        (specs.createModels):
           metric_provider:
             count: 3
             traits: builtin
@@ -471,7 +471,7 @@ securitySchemes:
       get:
         responses:
           200:
-            (specs.opCreateList):
+            (specs.createModels):
               update:
                 options:
                   issue: "State::Issue.find(issue_id)"

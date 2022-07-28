@@ -1,0 +1,12 @@
+{
+  "type": "api/error/validation_failed",
+  "logref": "87bdefe4-4591-4d43-b0de-6e578d77fb01",
+  "message": "Validation failed.",
+  "errors": [
+    {
+      "type": "api/error/validation_failed/embedded",
+      "path": "/listens_to_level",
+      "message": "`listens_to_level` is not included in the list"
+    }
+  ]
+}

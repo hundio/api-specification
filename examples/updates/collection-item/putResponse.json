@@ -52,6 +52,7 @@
     "cancelled": null,
     "began_at": 1543958167,
     "ended_at": null,
+    "duration": 3690,
     "cancelled_at": null,
     "schedule": null,
     "updates": {

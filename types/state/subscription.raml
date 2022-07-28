@@ -1,0 +1,39 @@
+#%RAML 1.0 DataType
+
+uses:
+  prelude: /libraries/prelude.raml
+  core: /libraries/core.raml
+  channel: /libraries/channel.raml
+  notifier: /libraries/notifier.raml
+
+(prelude.common):
+(core.fieldDescriptions): !include /documentation/fieldDescriptions/subscription.yml
+displayName: Subscription
+description: |
+  Subscriptions represent an individual notification endpoint, often managed
+  by a single person (e.g. email address, SMS number, etc.), usually the
+  recipient of notifications sent to the configured endpoint. However, some
+  Subscription channels can be curated in order to prevent public changes to its
+  preferences.
+
+  All Subscriptions are tied to a specific Notifier that may configure additional
+  properties regarding the endpoint channel (e.g. SMTP server details, service credentials, etc.).
+type: [core.TypedObject, core.Timestamps, core.NotificationPreferential, core.HAL/Linkable]
+properties:
+  id: core.ObjectId
+  type:
+    enum: [subscription]
+  notifier:
+    (core.expandable):
+    type: core.ObjectId | notifier.Notifier
+  channel: channel.Channels/Subscription
+  curated: boolean
+  curatable: boolean
+  remove_links: boolean
+  _links?:
+    properties:
+      self: core.HAL/Link
+      update-form: core.HAL/Link
+      notifier: core.HAL/Link
+      events: core.HAL/Link
+      action:send-edit-link: core.HAL/Link

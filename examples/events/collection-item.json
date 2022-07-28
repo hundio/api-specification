@@ -1,0 +1,26 @@
+{
+  "id": "62d9d9108fbb6588a979f987",
+  "type": "event",
+  "created_at": 1658444048,
+  "kind": "subscription_edit_link_requested",
+  "eventable": "5d2fd9c08fbb65711fbb3dc0",
+  "context": {
+    "notifier": "5d2fcf198fbb6523cbf73375",
+    "_links": {
+      "notifier": {
+        "href": "https://status.example.com/api/v1/notifiers/5d2fcf198fbb6523cbf73375"
+      }
+    }
+  },
+  "_links": {
+    "self": {
+      "href": "https://status.example.com/api/v1/events/62d9d9108fbb6588a979f987"
+    },
+    "eventable": {
+      "href": "https://status.example.com/api/v1/subscriptions/5d2fd9c08fbb65711fbb3dc0"
+    },
+    "events:by-context": {
+      "href": "https://status.example.com/api/v1/events?context.event=62d9d9108fbb6588a979f987"
+    }
+  }
+}

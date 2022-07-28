@@ -1,0 +1,19 @@
+#%RAML 1.0 DataType
+
+uses:
+  prelude: /libraries/prelude.raml
+  core: /libraries/core.raml
+
+(prelude.common):
+(core.fieldDescriptions): !include /documentation/fieldDescriptions/notifier/twitter.yml
+displayName: Twitter
+description: |
+  A Twitter notifier.
+type: core.Channel
+properties:
+  type:
+    enum: [twitter]
+  consumer_key: string
+  access_token: string
+  handle: string
+  handle_url: string

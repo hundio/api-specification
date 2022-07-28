@@ -1,0 +1,14 @@
+#%RAML 1.0 DataType
+
+uses:
+  prelude: /libraries/prelude.raml
+  core: /libraries/core.raml
+
+(prelude.common):
+(core.fieldDescriptions): !include /documentation/fieldDescriptions/subscription/email.yml
+displayName: Email
+description: |
+  An email Subscription channel update form.
+type: core.Form
+properties:
+  address?: string

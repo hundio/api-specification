@@ -1,0 +1,51 @@
+{
+  "id": "62d9d95d8fbb6588a979f988",
+  "type": "subscription",
+  "created_at": 1658444127,
+  "updated_at": 1658444127,
+  "channel": {
+    "type": "email",
+    "address": "sub3@example.com"
+  },
+  "notification_exclusions": [
+    "5ad566898fbb654577715322",
+    "5c9583858fbb6575d664cf96",
+    "5c9588038fbb657c95d929e9",
+    "5c993ab18fbb652a1e53f068",
+    "5c993b198fbb652a1e53f092"
+  ],
+  "listens_to": [
+    "restored",
+    "degraded",
+    "issue_upcoming",
+    "issue_created",
+    "issue_resolved",
+    "issue_cancelled",
+    "issue_started",
+    "issue_ended",
+    "issue_reopened",
+    "notifier_tested"
+  ],
+  "listens_to_level": "normal",
+  "notifier": "5c81682c8fbb652388b9fdb9",
+  "curatable": true,
+  "curated": false,
+  "remove_links": false,
+  "_links": {
+    "self": {
+      "href": "https://status.example.com/api/v1/subscriptions/62d9d95d8fbb6588a979f988"
+    },
+    "notifier": {
+      "href": "https://status.example.com/api/v1/notifiers/5c81682c8fbb652388b9fdb9"
+    },
+    "events": {
+      "href": "https://status.example.com/api/v1/events?eventable=62d9d95d8fbb6588a979f988"
+    },
+    "action:send-edit-link": {
+      "href": "https://status.example.com/api/v1/subscriptions/62d9d95d8fbb6588a979f988/send_edit_link"
+    },
+    "update-form": {
+      "href": "https://status.example.com/subscriptions/62d9d95d8fbb6588a979f988/edit"
+    }
+  }
+}

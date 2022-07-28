@@ -1,0 +1,18 @@
+#%RAML 1.0 DataType
+
+uses:
+  prelude: /libraries/prelude.raml
+  core: /libraries/core.raml
+  event: /libraries/event/core.raml
+  notifier: /libraries/notifier.raml
+
+(prelude.common):
+(core.fieldDescriptions): !include /documentation/fieldDescriptions/event.yml
+displayName: NotifierEvented
+type: event.Event
+discriminatorValue: notifier_evented
+properties:
+  eventable:
+    (core.expandable):
+    type: core.ObjectId | notifier.Notifier
+  context: event.EmptyContextual

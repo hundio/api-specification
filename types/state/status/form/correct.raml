@@ -1,0 +1,13 @@
+#%RAML 1.0 DataType
+
+uses:
+  prelude: /libraries/prelude.raml
+  core: /libraries/core.raml
+
+(prelude.common):
+displayName: Status
+description: |
+  Status correction form.
+type: core.Form
+properties:
+  state: core.integer-state

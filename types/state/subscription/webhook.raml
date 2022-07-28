@@ -1,0 +1,17 @@
+#%RAML 1.0 DataType
+
+uses:
+  prelude: /libraries/prelude.raml
+  core: /libraries/core.raml
+
+(prelude.common):
+(core.fieldDescriptions): !include /documentation/fieldDescriptions/subscription/webhook.yml
+displayName: Webhook
+description: |
+  An outgoing webhook Subscription.
+type: core.Channel
+properties:
+  type:
+    enum: [webhook]
+  verb: core.WEBHOOK_VERB
+  version: string

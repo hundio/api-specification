@@ -1,0 +1,49 @@
+id: |
+  The ObjectId of this Notifier.
+created_at: |
+  The UNIX timestamp at which this Notifier was created.
+updated_at: |
+  The UNIX timestamp at which this Notifier was last updated.
+channel: |
+  Defines the channel used by this Notifier to deliver notifications. Typically,
+  this sets the type as well as relevant credentials for the channel (e.g. SMTP
+  server details, API credentials, etc.).
+enabled: |
+  Whether this Notifier is currently enabled. Disabled notifiers do not deliver
+  notifications to endpoints until enabled again.
+curated: |
+  Whether this Notifier is curated. When true, disables public subscriptions on
+  this Notifier. Thus, Subscriptions for this Notifier may only be created from
+  the dashboard or API.
+subscribable: |
+  Whether this Notifier channel can have individual Subscriptions. When false,
+  this Notifier cannot create Subscriptions, and broadcasts to a single endpoint
+  configured in `channel`.
+include_group_in_component_names: |
+  For certain Notifier channels (i.e. `email`, `slack`), instructs templates to
+  render Component names with their Group name as well (e.g. `Group 1 / Component 1`).
+listens_to: |
+  A list of notification events that this Notifier will either listen for (when
+  `subscribable` is false), or set as the Subscription `listens_to` default (when
+  `subscribable` is true).
+
+  To read more about the various notification event types encountered within Hund,
+  please [read this article](https://hund.io/help/documentation/notifications).
+listens_to_level: |
+  A string representation of the `listens_to` array, when it matches a specific
+  preset. This field can also be used to set `listens_to` according to a preset
+  in forms.
+
+  * `all`: listen to all event types.
+  * `normal`: listen to most event types, except for generic `issue_updated`
+  (listens only for `issue_resolved` instead)
+  * `custom`: the current `listens_to` array does not match one of the above
+  presets
+notification_exclusions: |
+  A list of Component ObjectIds that this Notifier will either ignore notifications
+  regarding (when `subscribable` is false), or set as the Subscription
+  `notification_exclusions` default (when `subscribable` is true).
+
+  A specific notification is suppressed exactly when all of the Event's
+  `component` context is excluded by this list. If any of an Event's `component`
+  context remains unexcluded by the Subscription, then a notification will be sent.

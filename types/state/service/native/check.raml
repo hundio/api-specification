@@ -14,6 +14,6 @@ properties:
   regions: core.NATIVE_REGION[]
   frequency: integer
   timeout: integer
-  consecutive_check_degraded_threshold: nil | core.nonnegative-integer
+  consecutive_check_degraded_threshold: core.nonnegative-integer?
   consecutive_check_outage_threshold: core.nonnegative-integer
   percentage_regions_failed_threshold: core.percentage

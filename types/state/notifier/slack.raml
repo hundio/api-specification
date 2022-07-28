@@ -1,0 +1,14 @@
+#%RAML 1.0 DataType
+
+uses:
+  prelude: /libraries/prelude.raml
+  core: /libraries/core.raml
+
+(prelude.common):
+displayName: Slack
+description: |
+  A Slack notifier, based on Incoming Webhooks.
+type: core.Channel
+properties:
+  type:
+    enum: [slack]

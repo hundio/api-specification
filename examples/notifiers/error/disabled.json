@@ -1,0 +1,5 @@
+{
+  "type": "notifier/error/disabled",
+  "logref": "9deb8196-1686-43a2-b445-1335207ac332",
+  "message": "Notifier is currently disabled. Enable it first before performing this action."
+}

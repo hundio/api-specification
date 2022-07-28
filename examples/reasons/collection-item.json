@@ -1,0 +1,24 @@
+{
+  "id": "628d5d038fbb655c8470641d",
+  "type": "reason",
+  "status": "6269a9088fbb656d42d881e7",
+  "watchdog": "5cabe2388fbb6540136899b4",
+  "subject": "2606:2800:220:1:248:1893:25c8:1946",
+  "description": "timeout",
+  "context": [],
+  "fingerprint": "1c65e8ef2f2cb8bc23384931fd60ed8aeb6cec1f",
+  "region": "wa-us-1",
+  "began_at": 1653431554,
+  "ended_at": 1653432126,
+  "_links": {
+    "self": {
+      "href": "https://status.example.com/api/v1/reasons/628d5d038fbb655c8470641d"
+    },
+    "status": {
+      "href": "https://status.example.com/api/v1/statuses/6269a9088fbb656d42d881e7"
+    },
+    "watchdog": {
+      "href": "https://status.example.com/api/v1/watchdogs/5cabe2388fbb6540136899b4"
+    }
+  }
+}

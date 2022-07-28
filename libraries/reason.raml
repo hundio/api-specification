@@ -1,0 +1,30 @@
+#%RAML 1.0 Library
+
+usage: |
+  Defines Reason types.
+
+uses:
+  prelude: /libraries/prelude.raml
+  core: /libraries/core.raml
+
+types:
+  Base: !include /types/state/reason.raml
+
+  Reason:
+    (prelude.common):
+    (core.fieldDescriptions): !include /documentation/fieldDescriptions/reason.yml
+    type: Base
+    properties:
+      status:
+        (core.expandable):
+        type: core.ObjectId
+      watchdog:
+        (core.expandable):
+        type: core.ObjectId
+
+  Reasons:
+    (prelude.common):
+    type: core.PagedArray
+    properties:
+      data:
+        items: Reason

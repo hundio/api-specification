@@ -1,0 +1,51 @@
+id: |
+  The ObjectId of this Subscription.
+created_at: |
+  The UNIX timestamp at which this Subscription was created.
+updated_at: |
+  The UNIX timestamp at which this Subscription was last updated.
+channel: |
+  Defines the channel used by this subscription to receive notifications. Typically,
+  this sets the type as well as relevant credentials for the channel (e.g. Email
+  address, SMS number, etc.).
+notifier: |
+  The Notifier that this Subscription receives notifications from.
+curated: |
+  Whether this Subscription is curated. When true, disables public preference
+  changes, requiring any Subscription preferences to be edited via the dashboard
+  or API. This can be useful in cases like `email`, for example, when a
+  Subscription's address represents an entire mailing list, rather than a single
+  individual.
+
+  **Note:** a Subscription must be `curatable` in order to set `curated` true.
+curatable: |
+  Whether this Subscription channel allows for curation.
+remove_links: |
+  For certain Notifier channels (i.e. `email`), instructs templates to render
+  notifications without *any* links back to the status page. This field requires
+  `curated` (and thus `curatable`) to be true.
+listens_to: |
+  A list of notification events that this Subscription will listen for. Prefixing
+  an event name with `-` (e.g. `-issue_reopened`) denotes that the event should
+  be explicitly suppressed (useful when including superevents like `issue_updated`
+  which implicitly includes events like `issue_reopened`).
+
+  To read more about the various notification event types encountered within Hund,
+  please [read this article](https://hund.io/help/documentation/notifications).
+listens_to_level: |
+  A string representation of the `listens_to` array, when it matches a specific
+  preset. This field can also be used to set `listens_to` according to a preset
+  in forms.
+
+  * `all`: listen to all event types.
+  * `normal`: listen to most event types, except for generic `issue_updated`
+  (listens only for `issue_resolved` instead)
+  * `custom`: the current `listens_to` array does not match one of the above
+  presets
+notification_exclusions: |
+  A list of Component ObjectIds that this Subscription will ignore notifications
+  regarding.
+
+  A specific notification is suppressed exactly when all of the Event's
+  `component` context is excluded by this list. If any of an Event's `component`
+  context remains unexcluded by the Subscription, then a notification will be sent.

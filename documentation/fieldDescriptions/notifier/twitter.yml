@@ -1,0 +1,30 @@
+consumer_key: |
+  The Twitter Consumer (Application) key. This key is pulled from a Twitter
+  Application via their development portal.
+
+  **Note:** This field is automatically filled when using the "Quick Setup"
+  button via the Notifiers section of the dashboard. Our official Hund Twitter
+  application is granted access to your Twitter handle in this case.
+consumer_secret: |
+  The Twitter Consumer (Application) secret. This secret is pulled from a Twitter
+  Application via their development portal.
+
+  **Note:** This field is automatically filled when using the "Quick Setup"
+  button via the Notifiers section of the dashboard. Our official Hund Twitter
+  application is granted access to your Twitter handle in this case.
+access_token: |
+  The Twitter access token. This token is pulled from the specific Twitter handle
+  you plan to tweet status updates from.
+
+  **Note:** This field is automatically filled when using the "Quick Setup"
+  button via the Notifiers section of the dashboard.
+access_token_secret: |
+  The Twitter access token secret. This secret is pulled from the specific Twitter
+  handle you plan to tweet status updates from.
+
+  **Note:** This field is automatically filled when using the "Quick Setup"
+  button via the Notifiers section of the dashboard.
+handle: |
+  The Twitter handle that this Notifier tweets from.
+handle_url: |
+  The Twitter URL navigating to the current `handle`.

@@ -1,0 +1,14 @@
+#%RAML 1.0 DataType
+
+uses:
+  prelude: /libraries/prelude.raml
+  core: /libraries/core.raml
+
+(prelude.common):
+displayName: MS Teams
+description: |
+  An MS Teams notifier, based on Incoming Webhook Connectors.
+type: core.Channel
+properties:
+  type:
+    enum: [ms_teams]

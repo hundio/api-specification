@@ -110,7 +110,53 @@ types:
     type: string
     enum: [A, AAAA, CNAME, MX, NS, PTR, SOA, SRV, TXT]
 
-  # Primatives
+  NOTIFICATION_EVENT:
+    (prelude.common):
+    type: string
+    enum: [restored, degraded, issue_upcoming, issue_retrospectively_created, -issue_retrospectively_created, informational_issue_created, -informational_issue_created, scheduled_issue_created, -scheduled_issue_created, issue_created, issue_reopened, -issue_reopened, issue_resolved, -issue_resolved, issue_addended, -issue_addended, issue_updated, issue_cancelled, issue_started, issue_ended, notifier_tested]
+  NOTIFICATION_LISTEN_LEVEL:
+    (prelude.common):
+    type: string
+    enum: [all, normal, custom]
+
+  SMTP_AUTHENTICATION_TYPE:
+    (prelude.common):
+    type: string
+    enum: [plain, login, cram-md5]
+
+  SNS_SENDER_ID:
+    (prelude.common):
+    type: string
+    pattern: ^\d*[a-zA-Z][a-zA-Z\d\s]*$
+  SNS_PHONE_NUMBER:
+    (prelude.common):
+    type: string
+    pattern: ^\+?[1-9]\d{1,14}$
+
+  WEBHOOK_VERB:
+    (prelude.common):
+    type: string
+    enum: [post, put]
+
+  COUNTRY_CODE_A2:
+    (prelude.common):
+    type: string
+    pattern: ^[A-Za-z]{2}$
+
+  TIMELINE_SOURCE_GLOBAL:
+    (prelude.common):
+    type: string
+    enum: [global]
+  TIMELINE_SOURCE:
+    (prelude.common):
+    type: TIMELINE_SOURCE_GLOBAL | ObjectId | ObjectId[]
+  TIMELINE_OUTAGE_DURATIONS:
+    (prelude.common):
+    type: object
+    properties:
+      /^[a-fA-F0-9]{24}$/: nonnegative-integer
+
+  # Primitives
 
   maybe-string:
     (prelude.common):
@@ -179,6 +225,20 @@ types:
     (prelude.common):
     type: nil | timestamp
 
+  NotificationEvents:
+    (prelude.common):
+    type: NOTIFICATION_EVENT[]
+    uniqueItems: true
+
+  WatchdogIssueTemplates:
+    (prelude.common):
+    type: object
+    additionalProperties: false
+    properties:
+      outage: nil | ObjectId
+      degraded: nil | ObjectId
+      operational: nil | ObjectId
+
   # Mixins
 
   Timestamps/Updated:
@@ -212,13 +272,19 @@ types:
       body: maybe-string
       body_html: string
       state_override: nil | integer-state
-  WatchdogIssueTemplates:
+  NotificationPreferential:
     type: object
     additionalProperties: false
     properties:
-      outage: nil | ObjectId
-      degraded: nil | ObjectId
-      operational: nil | ObjectId
+      listens_to: NotificationEvents
+      listens_to_level: NOTIFICATION_LISTEN_LEVEL
+      notification_exclusions: ObjectId[]
+  NotificationPreferential/Form:
+    type: Form
+    properties:
+      listens_to?: NotificationEvents
+      listens_to_level?: NOTIFICATION_LISTEN_LEVEL
+      notification_exclusions?: ObjectId[]
 
   # Objects
 
@@ -242,6 +308,7 @@ types:
 
   PagedArray: !include /types/state/paged_array.raml
 
+  Channel: !include /types/state/channel.raml
   Service: !include /types/state/service.raml
 
 resourceTypes:

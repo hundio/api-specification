@@ -1,0 +1,210 @@
+{
+  "type": "paged_array",
+  "total_count": 8,
+  "data": [
+    {
+      "id": "628d5d038fbb655c8470641d",
+      "type": "reason",
+      "status": "6269a9088fbb656d42d881e7",
+      "watchdog": "5cabe2388fbb6540136899b4",
+      "subject": "2606:2800:220:1:248:1893:25c8:1946",
+      "description": "timeout",
+      "context": [],
+      "fingerprint": "1c65e8ef2f2cb8bc23384931fd60ed8aeb6cec1f",
+      "region": "wa-us-1",
+      "began_at": 1653431554,
+      "ended_at": 1653432126,
+      "_links": {
+        "self": {
+          "href": "https://status.example.com/api/v1/reasons/628d5d038fbb655c8470641d"
+        },
+        "status": {
+          "href": "https://status.example.com/api/v1/statuses/6269a9088fbb656d42d881e7"
+        },
+        "watchdog": {
+          "href": "https://status.example.com/api/v1/watchdogs/5cabe2388fbb6540136899b4"
+        }
+      }
+    },
+    {
+      "id": "628d5d038fbb655c8470641c",
+      "type": "reason",
+      "status": "6269a9088fbb656d42d881e7",
+      "watchdog": "5cabe2388fbb6540136899b4",
+      "subject": "2606:2800:220:1:248:1893:25c8:1946",
+      "description": "timeout",
+      "context": [],
+      "fingerprint": "1c65e8ef2f2cb8bc23384931fd60ed8aeb6cec1f",
+      "region": "nj-us-1",
+      "began_at": 1653431554,
+      "ended_at": 1653432126,
+      "_links": {
+        "self": {
+          "href": "https://status.example.com/api/v1/reasons/628d5d038fbb655c8470641c"
+        },
+        "status": {
+          "href": "https://status.example.com/api/v1/statuses/6269a9088fbb656d42d881e7"
+        },
+        "watchdog": {
+          "href": "https://status.example.com/api/v1/watchdogs/5cabe2388fbb6540136899b4"
+        }
+      }
+    },
+    {
+      "id": "628d58368fbb656daf70641b",
+      "type": "reason",
+      "status": "6269a9088fbb656d42d881e7",
+      "watchdog": "5cabe2388fbb6540136899b4",
+      "subject": "54.218.247.76",
+      "description": "timeout",
+      "context": [],
+      "fingerprint": "4402da23c3733f628462c0875d5ff0378d474965",
+      "region": "wa-us-1",
+      "began_at": 1653430326,
+      "ended_at": 1653431554,
+      "_links": {
+        "self": {
+          "href": "https://status.example.com/api/v1/reasons/628d58368fbb656daf70641b"
+        },
+        "status": {
+          "href": "https://status.example.com/api/v1/statuses/6269a9088fbb656d42d881e7"
+        },
+        "watchdog": {
+          "href": "https://status.example.com/api/v1/watchdogs/5cabe2388fbb6540136899b4"
+        }
+      }
+    },
+    {
+      "id": "628d58368fbb656daf70641a",
+      "type": "reason",
+      "status": "6269a9088fbb656d42d881e7",
+      "watchdog": "5cabe2388fbb6540136899b4",
+      "subject": "52.27.210.93",
+      "description": "timeout",
+      "context": [],
+      "fingerprint": "84a21935916a3a82537b5d1e1d1a4aa3568b014d",
+      "region": "wa-us-1",
+      "began_at": 1653430326,
+      "ended_at": 1653431554,
+      "_links": {
+        "self": {
+          "href": "https://status.example.com/api/v1/reasons/628d58368fbb656daf70641a"
+        },
+        "status": {
+          "href": "https://status.example.com/api/v1/statuses/6269a9088fbb656d42d881e7"
+        },
+        "watchdog": {
+          "href": "https://status.example.com/api/v1/watchdogs/5cabe2388fbb6540136899b4"
+        }
+      }
+    },
+    {
+      "id": "628d58368fbb656daf706419",
+      "type": "reason",
+      "status": "6269a9088fbb656d42d881e7",
+      "watchdog": "5cabe2388fbb6540136899b4",
+      "subject": "44.225.164.27",
+      "description": "timeout",
+      "context": [],
+      "fingerprint": "2c914693ad522d531622a1b541081b992b51855d",
+      "region": "wa-us-1",
+      "began_at": 1653430326,
+      "ended_at": 1653431554,
+      "_links": {
+        "self": {
+          "href": "https://status.example.com/api/v1/reasons/628d58368fbb656daf706419"
+        },
+        "status": {
+          "href": "https://status.example.com/api/v1/statuses/6269a9088fbb656d42d881e7"
+        },
+        "watchdog": {
+          "href": "https://status.example.com/api/v1/watchdogs/5cabe2388fbb6540136899b4"
+        }
+      }
+    },
+    {
+      "id": "628d58368fbb656daf706418",
+      "type": "reason",
+      "status": "6269a9088fbb656d42d881e7",
+      "watchdog": "5cabe2388fbb6540136899b4",
+      "subject": "44.225.164.27",
+      "description": "timeout",
+      "context": [],
+      "fingerprint": "2c914693ad522d531622a1b541081b992b51855d",
+      "region": "nj-us-1",
+      "began_at": 1653430326,
+      "ended_at": 1653431554,
+      "_links": {
+        "self": {
+          "href": "https://status.example.com/api/v1/reasons/628d58368fbb656daf706418"
+        },
+        "status": {
+          "href": "https://status.example.com/api/v1/statuses/6269a9088fbb656d42d881e7"
+        },
+        "watchdog": {
+          "href": "https://status.example.com/api/v1/watchdogs/5cabe2388fbb6540136899b4"
+        }
+      }
+    },
+    {
+      "id": "628d58368fbb656daf706417",
+      "type": "reason",
+      "status": "6269a9088fbb656d42d881e7",
+      "watchdog": "5cabe2388fbb6540136899b4",
+      "subject": "54.218.247.76",
+      "description": "timeout",
+      "context": [],
+      "fingerprint": "4402da23c3733f628462c0875d5ff0378d474965",
+      "region": "nj-us-1",
+      "began_at": 1653430326,
+      "ended_at": 1653431554,
+      "_links": {
+        "self": {
+          "href": "https://status.example.com/api/v1/reasons/628d58368fbb656daf706417"
+        },
+        "status": {
+          "href": "https://status.example.com/api/v1/statuses/6269a9088fbb656d42d881e7"
+        },
+        "watchdog": {
+          "href": "https://status.example.com/api/v1/watchdogs/5cabe2388fbb6540136899b4"
+        }
+      }
+    },
+    {
+      "id": "628d58368fbb656daf706416",
+      "type": "reason",
+      "status": "6269a9088fbb656d42d881e7",
+      "watchdog": "5cabe2388fbb6540136899b4",
+      "subject": "52.27.210.93",
+      "description": "timeout",
+      "context": [],
+      "fingerprint": "84a21935916a3a82537b5d1e1d1a4aa3568b014d",
+      "region": "nj-us-1",
+      "began_at": 1653430326,
+      "ended_at": 1653431554,
+      "_links": {
+        "self": {
+          "href": "https://status.example.com/api/v1/reasons/628d58368fbb656daf706416"
+        },
+        "status": {
+          "href": "https://status.example.com/api/v1/statuses/6269a9088fbb656d42d881e7"
+        },
+        "watchdog": {
+          "href": "https://status.example.com/api/v1/watchdogs/5cabe2388fbb6540136899b4"
+        }
+      }
+    }
+  ],
+  "has_more": false,
+  "_links": {
+    "self": {
+      "href": "https://status.example.com/api/v1/reasons?limit=10"
+    },
+    "prev": {
+      "href": "https://status.example.com/api/v1/reasons?ending_before=628d5d038fbb655c8470641d&limit=10"
+    },
+    "beginning": {
+      "href": "https://status.example.com/api/v1/reasons?limit=10"
+    }
+  }
+}

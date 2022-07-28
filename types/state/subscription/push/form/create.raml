@@ -1,0 +1,18 @@
+#%RAML 1.0 DataType
+
+uses:
+  prelude: /libraries/prelude.raml
+  core: /libraries/core.raml
+
+(prelude.common):
+(core.fieldDescriptions): !include /documentation/fieldDescriptions/subscription/push.yml
+displayName: Push
+description: |
+  Web Push notifier channel creation form.
+type: core.Form
+properties:
+  type:
+    enum: [push]
+  endpoint: string
+  p256dh: string
+  auth: string

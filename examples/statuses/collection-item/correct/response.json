@@ -1,0 +1,23 @@
+{
+  "id": "62b10ee78fbb653dfc433807",
+  "type": "status",
+  "created_at": 1620258769,
+  "updated_at": 1656030900,
+  "watchdog": "60932fa68fbb65f1c3be61df",
+  "reasons": null,
+  "state": 1,
+  "duration": 35771709,
+  "began_at": 1620258769,
+  "ended_at": null,
+  "_links": {
+    "self": {
+      "href": "https://status.example.com/api/v1/statuses/62b10ee78fbb653dfc433807"
+    },
+    "events": {
+      "href": "https://status.example.com/api/v1/events?eventable=62b10ee78fbb653dfc433807"
+    },
+    "watchdog": {
+      "href": "https://status.example.com/api/v1/watchdogs/60932fa68fbb65f1c3be61df"
+    }
+  }
+}

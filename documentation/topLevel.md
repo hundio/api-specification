@@ -2,7 +2,7 @@ Welcome to the Hund REST API v1 documentation! If you would like to send us feed
 
 # Base URL
 
-The base URL for the Hund API is of the following form: `https://{domain}/api/v1`, where domain is a status page or global dashboard domain, or the generic `api.hund.io`. Accessing the API through any of these domains will only show objects accessible from that domain.
+The base URL for the Hund API is of the following form: `https://{domain}/api/v1`, where `domain` is a status page or global dashboard domain, or the generic `api.hund.io`. Accessing the API through any of these domains will only show objects accessible from that domain.
 
 ## Status Page Domain
 
@@ -14,7 +14,7 @@ Only API keys with sufficient permissions for the given status page may use this
 
 When using the domain of the global dashboard, all objects across your entire account are visible, up to any Privacy Control the API key's user is subject to.
 
-**Note**: since a shared `Component` will belong to multiple `Group`s across your status pages, the `group` field of `Component` does not exist in this context, and cannot be set. Thus, a specific status page API must be used to change the structure of that status page's `Group`s.
+**Note:** since a shared `Component` will belong to multiple `Group`s across your status pages, the `group` field of `Component` does not exist in this context, and cannot be set. Thus, a specific status page API must be used to change the structure of that status page's `Group`s.
 
 Only API keys with sufficient global permissions may use this API.
 
@@ -30,7 +30,7 @@ As above, whether a particular context is accessible from this domain depends on
 
 Hund uses API keys to facilitate authentication. These keys can be given in a couple different formats, described below. API keys are created from the dashboard, and each is linked to the specific user that created it. API keys can be given lesser or equivalent permissions to the linked user.
 
-<!-- ReDoc-Inject: <security-definitions> -->
+<!-- ReDoc-Inject: <SecurityDefinitions /> -->
 
 # Internationalization (I18n)
 

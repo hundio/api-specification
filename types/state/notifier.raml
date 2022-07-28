@@ -1,0 +1,34 @@
+#%RAML 1.0 DataType
+
+uses:
+  prelude: /libraries/prelude.raml
+  core: /libraries/core.raml
+  channel: /libraries/channel.raml
+
+(prelude.common):
+(core.fieldDescriptions): !include /documentation/fieldDescriptions/notifier.yml
+displayName: Notifier
+description: |
+  Notifiers broadcast Event-based notifications to one or more endpoints. Most
+  Notifier channels use Subscriptions to facilitate multi-endpoint notifications.
+
+  Some Notifier channels (e.g. `twitter`) do not use Subscriptions, and thus a
+  notification will only be sent to the single configured endpoint.
+type: [core.TypedObject, core.Timestamps, core.NotificationPreferential, core.HAL/Linkable]
+properties:
+  id: core.ObjectId
+  type:
+    enum: [notifier]
+  channel: channel.Channels/Notifier
+  enabled: boolean
+  curated: boolean
+  subscribable: boolean
+  include_group_in_component_names: boolean
+  _links?:
+    properties:
+      self: core.HAL/Link
+      update-form: core.HAL/Link
+      events: core.HAL/Link
+      events:by-context: core.HAL/Link
+      subscriptions?: core.HAL/Link
+      action:test: core.HAL/Link

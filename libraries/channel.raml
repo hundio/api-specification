@@ -1,0 +1,73 @@
+#%RAML 1.0 Library
+
+usage: |
+  Defines Channel types and forms.
+
+uses:
+  prelude: /libraries/prelude.raml
+
+types:
+  Email/Notifier: !include /types/state/notifier/email.raml
+  Email/Notifier/Form/Create: !include /types/state/notifier/email/form/create.raml
+  Email/Notifier/Form/Update: !include /types/state/notifier/email/form/update.raml
+
+  Email/Subscription: !include /types/state/subscription/email.raml
+  Email/Subscription/Form/Create: !include /types/state/subscription/email/form/create.raml
+  Email/Subscription/Form/Update: !include /types/state/subscription/email/form/update.raml
+
+  Feed/Notifier: !include /types/state/notifier/feed.raml
+  Feed/Notifier/Form/Create: !include /types/state/notifier/feed/form/create.raml
+  Feed/Notifier/Form/Update: !include /types/state/notifier/feed/form/update.raml
+
+  SNS/Notifier: !include /types/state/notifier/sns.raml
+  SNS/Notifier/Form/Create: !include /types/state/notifier/sns/form/create.raml
+  SNS/Notifier/Form/Update: !include /types/state/notifier/sns/form/update.raml
+
+  SNS/Subscription: !include /types/state/subscription/sns.raml
+  SNS/Subscription/Form/Create: !include /types/state/subscription/sns/form/create.raml
+  SNS/Subscription/Form/Update: !include /types/state/subscription/sns/form/update.raml
+
+  Push/Notifier: !include /types/state/notifier/push.raml
+  Push/Notifier/Form/Create: !include /types/state/notifier/push/form/create.raml
+  Push/Notifier/Form/Update: !include /types/state/notifier/push/form/update.raml
+
+  Push/Subscription: !include /types/state/subscription/push.raml
+  Push/Subscription/Form/Create: !include /types/state/subscription/push/form/create.raml
+  Push/Subscription/Form/Update: !include /types/state/subscription/push/form/update.raml
+
+  Slack/Notifier: !include /types/state/notifier/slack.raml
+  Slack/Notifier/Form/Create: !include /types/state/notifier/slack/form/create.raml
+  Slack/Notifier/Form/Update: !include /types/state/notifier/slack/form/update.raml
+
+  Slack/Subscription: !include /types/state/subscription/slack.raml
+  Slack/Subscription/Form/Create: !include /types/state/subscription/slack/form/create.raml
+  Slack/Subscription/Form/Update: !include /types/state/subscription/slack/form/update.raml
+
+  MsTeams/Notifier: !include /types/state/notifier/ms_teams.raml
+  MsTeams/Notifier/Form/Create: !include /types/state/notifier/ms_teams/form/create.raml
+  MsTeams/Notifier/Form/Update: !include /types/state/notifier/ms_teams/form/update.raml
+
+  MsTeams/Subscription: !include /types/state/subscription/ms_teams.raml
+  MsTeams/Subscription/Form/Create: !include /types/state/subscription/ms_teams/form/create.raml
+  MsTeams/Subscription/Form/Update: !include /types/state/subscription/ms_teams/form/update.raml
+
+  Twitter/Notifier: !include /types/state/notifier/twitter.raml
+  Twitter/Notifier/Form/Create: !include /types/state/notifier/twitter/form/create.raml
+  Twitter/Notifier/Form/Update: !include /types/state/notifier/twitter/form/update.raml
+
+  Webhook/Notifier: !include /types/state/notifier/webhook.raml
+  Webhook/Notifier/Form/Create: !include /types/state/notifier/webhook/form/create.raml
+  Webhook/Notifier/Form/Update: !include /types/state/notifier/webhook/form/update.raml
+
+  Webhook/Subscription: !include /types/state/subscription/webhook.raml
+  Webhook/Subscription/Form/Create: !include /types/state/subscription/webhook/form/create.raml
+  Webhook/Subscription/Form/Update: !include /types/state/subscription/webhook/form/update.raml
+
+  Form/Notifier/Create: Email/Notifier/Form/Create | Push/Notifier/Form/Create | SNS/Notifier/Form/Create | MsTeams/Notifier/Form/Create | Slack/Notifier/Form/Create | Webhook/Notifier/Form/Create | Feed/Notifier/Form/Create | Twitter/Notifier/Form/Create
+  Form/Notifier/Update: Email/Notifier/Form/Update | Push/Notifier/Form/Update | SNS/Notifier/Form/Update | MsTeams/Notifier/Form/Update | Slack/Notifier/Form/Update | Webhook/Notifier/Form/Update | Feed/Notifier/Form/Update | Twitter/Notifier/Form/Update
+
+  Form/Subscription/Create: Email/Subscription/Form/Create | Push/Subscription/Form/Create | SNS/Subscription/Form/Create | MsTeams/Subscription/Form/Create | Slack/Subscription/Form/Create | Webhook/Subscription/Form/Create
+  Form/Subscription/Update: Email/Subscription/Form/Update | Push/Subscription/Form/Update | SNS/Subscription/Form/Update | MsTeams/Subscription/Form/Update | Slack/Subscription/Form/Update | Webhook/Subscription/Form/Update
+
+  Channels/Notifier: Email/Notifier | Push/Notifier | SNS/Notifier | MsTeams/Notifier | Slack/Notifier | Webhook/Notifier | Feed/Notifier | Twitter/Notifier
+  Channels/Subscription: Email/Subscription | Push/Subscription | SNS/Subscription | MsTeams/Subscription | Slack/Subscription | Webhook/Subscription

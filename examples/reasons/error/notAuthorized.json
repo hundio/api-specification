@@ -1,0 +1,5 @@
+{
+  "type": "api/error/not_authorized",
+  "logref": "24b12a39-0902-4324-9e93-f50f6167d1ff",
+  "message": "Insufficient API key permissions."
+}

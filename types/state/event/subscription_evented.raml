@@ -1,0 +1,18 @@
+#%RAML 1.0 DataType
+
+uses:
+  prelude: /libraries/prelude.raml
+  core: /libraries/core.raml
+  event: /libraries/event/core.raml
+  subscription: /libraries/subscription.raml
+
+(prelude.common):
+(core.fieldDescriptions): !include /documentation/fieldDescriptions/event.yml
+displayName: SubscriptionEvented
+type: event.Event
+discriminatorValue: subscription_evented
+properties:
+  eventable:
+    (core.expandable):
+    type: core.ObjectId | subscription.Subscription
+  context: event.NotifierContextual

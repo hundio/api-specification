@@ -1,0 +1,9 @@
+endpoint: |
+  The [Web Push endpoint](https://developer.mozilla.org/en-US/docs/Web/API/PushSubscription/endpoint)
+  of the subscription.
+p256dh: |
+  The Base64-encoded ECDH (curve P-256) public key used for this subscription.
+  Often, a Base64 encoding can be easily retrieved in-browser via [PushSubscription.toJSON()](https://developer.mozilla.org/en-US/docs/Web/API/PushSubscription/toJSON).
+auth: |
+  The Base64-encoded authentication secret used for this subscription. Often, a
+  Base64 encoding can be easily retrieved in-browser via [PushSubscription.toJSON()](https://developer.mozilla.org/en-US/docs/Web/API/PushSubscription/toJSON).

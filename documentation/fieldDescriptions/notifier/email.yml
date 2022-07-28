@@ -1,0 +1,29 @@
+sender_address: |
+  The Email address to set in the `From` Email header.
+sender_display_name: |
+  The display name to show alongside the `sender_address` (e.g. `Display Name <user@example.com>`).
+smtp_hostname: |
+  The hostname of the SMTP server.
+smtp_port: |
+  The port of the SMTP server.
+
+  **Note:** *do not* attempt to use port 25 in this field. This port number is
+  blocked by our datacenter, and thus we are unable to deliver Emails over port 25.
+smtp_user: |
+  The username to use when authenticating with the SMTP server.
+smtp_password: |
+  The password to use when authenticating with the SMTP server.
+smtp_authentication: |
+  The authentication strategy to use when authenticating with the SMTP server.
+  The correct value of this field depends entirely on your particular SMTP server.
+smtp_domain: |
+  An optional HELO domain to send when connecting to the SMTP server.
+domain_whitelist: |
+  Limits the emails that may subscribe to this Notifier by their domain,
+  according to the whitelisted values in this field. The list supports an
+  asterisk character as a wildcard in place of a subdomain.
+
+  For example, `*.hund.io` will allow all subdomains under `hund.io`. It will
+  not allow `hund.io` itself, however; `hund.io` would need to be entered as a
+  seperate listing. Furthermore, it wouldn’t allow `example.example.hund.io`,
+  as that would require yet another listing: `*.*.hund.io`.

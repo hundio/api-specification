@@ -1,0 +1,18 @@
+#%RAML 1.0 DataType
+
+uses:
+  prelude: /libraries/prelude.raml
+  core: /libraries/core.raml
+  channel: /libraries/channel.raml
+
+(prelude.common):
+(core.fieldDescriptions): !include /documentation/fieldDescriptions/notifier.yml
+displayName: Notifier
+description: |
+  Notifier update form.
+type: [core.Form, core.NotificationPreferential/Form]
+properties:
+  channel?: channel.Form/Notifier/Update
+  enabled?: boolean
+  curated?: boolean
+  include_group_in_component_names?: boolean

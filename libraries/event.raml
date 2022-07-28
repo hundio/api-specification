@@ -1,0 +1,218 @@
+#%RAML 1.0 Library
+
+usage: |
+  Defines Event types.
+
+uses:
+  prelude: /libraries/prelude.raml
+  core: /libraries/core.raml
+  event: /libraries/event/core.raml
+  update: /libraries/update.raml
+
+types:
+  Event/ComponentEvented: !include /types/state/event/component_evented.raml
+  Event/ComponentCreated:
+    (prelude.common):
+    (core.fieldDescriptions): !include /documentation/fieldDescriptions/event.yml
+    discriminatorValue: component_created
+    type: Event/ComponentEvented
+  Event/ComponentUpdated:
+    (prelude.common):
+    (core.fieldDescriptions): !include /documentation/fieldDescriptions/event.yml
+    discriminatorValue: component_updated
+    type: Event/ComponentEvented
+  Event/ComponentDestroyed:
+    (prelude.common):
+    (core.fieldDescriptions): !include /documentation/fieldDescriptions/event.yml
+    discriminatorValue: component_destroyed
+    type: Event/ComponentEvented
+
+  Event/MetricProviderEvented: !include /types/state/event/metric_provider_evented.raml
+  Event/MetricProviderCreated:
+    (prelude.common):
+    (core.fieldDescriptions): !include /documentation/fieldDescriptions/event.yml
+    discriminatorValue: metric_provider_created
+    type: Event/MetricProviderEvented
+  Event/MetricProviderUpdated:
+    (prelude.common):
+    (core.fieldDescriptions): !include /documentation/fieldDescriptions/event.yml
+    discriminatorValue: metric_provider_updated
+    type: Event/MetricProviderEvented
+  Event/MetricProviderDestroyed:
+    (prelude.common):
+    (core.fieldDescriptions): !include /documentation/fieldDescriptions/event.yml
+    discriminatorValue: metric_provider_destroyed
+    type: Event/MetricProviderEvented
+
+  Event/IssueEvented: !include /types/state/event/issue_evented.raml
+  Event/IssueUpcoming:
+    (prelude.common):
+    (core.fieldDescriptions): !include /documentation/fieldDescriptions/event.yml
+    discriminatorValue: issue_upcoming
+    type: Event/IssueEvented
+  Event/IssueStarted:
+    (prelude.common):
+    (core.fieldDescriptions): !include /documentation/fieldDescriptions/event.yml
+    discriminatorValue: issue_started
+    type: Event/IssueEvented
+  Event/IssueEnded:
+    (prelude.common):
+    (core.fieldDescriptions): !include /documentation/fieldDescriptions/event.yml
+    discriminatorValue: issue_ended
+    type: Event/IssueEvented
+  Event/IssueCancelled:
+    (prelude.common):
+    (core.fieldDescriptions): !include /documentation/fieldDescriptions/event.yml
+    discriminatorValue: issue_cancelled
+    type: Event/IssueEvented
+    properties:
+      context:
+        type: event.ComponentMulticontextual
+        properties:
+          update:
+            (core.expandable):
+            type: nil | core.ObjectId | update.Update
+  Event/IssueCreated:
+    (prelude.common):
+    (core.fieldDescriptions): !include /documentation/fieldDescriptions/event.yml
+    discriminatorValue: issue_created
+    type: Event/IssueEvented
+  Event/InformationalIssueCreated:
+    (prelude.common):
+    (core.fieldDescriptions): !include /documentation/fieldDescriptions/event.yml
+    discriminatorValue: informational_issue_created
+    type: Event/IssueCreated
+  Event/ScheduledIssueCreated:
+    (prelude.common):
+    (core.fieldDescriptions): !include /documentation/fieldDescriptions/event.yml
+    discriminatorValue: scheduled_issue_created
+    type: Event/IssueCreated
+  Event/IssueRetrospectivelyCreated:
+    (prelude.common):
+    (core.fieldDescriptions): !include /documentation/fieldDescriptions/event.yml
+    discriminatorValue: issue_retrospectively_created
+    type: Event/IssueCreated
+  Event/IssueUpdated:
+    (prelude.common):
+    (core.fieldDescriptions): !include /documentation/fieldDescriptions/event.yml
+    discriminatorValue: issue_updated
+    type: Event/IssueEvented
+    properties:
+      context:
+        type: event.ComponentMulticontextual
+        properties:
+          update:
+            (core.expandable):
+            type: core.ObjectId | update.Update
+  Event/IssueReopened:
+    (prelude.common):
+    (core.fieldDescriptions): !include /documentation/fieldDescriptions/event.yml
+    discriminatorValue: issue_reopened
+    type: Event/IssueUpdated
+  Event/IssueAddended:
+    (prelude.common):
+    (core.fieldDescriptions): !include /documentation/fieldDescriptions/event.yml
+    discriminatorValue: issue_addended
+    type: Event/IssueUpdated
+  Event/IssueResolved:
+    (prelude.common):
+    (core.fieldDescriptions): !include /documentation/fieldDescriptions/event.yml
+    discriminatorValue: issue_resolved
+    type: Event/IssueUpdated
+
+  Event/NotifierEvented: !include /types/state/event/notifier_evented.raml
+  Event/NotifierTested:
+    (prelude.common):
+    (core.fieldDescriptions): !include /documentation/fieldDescriptions/event.yml
+    discriminatorValue: notifier_tested
+    type: Event/NotifierEvented
+  Event/NotifierCreated:
+    (prelude.common):
+    (core.fieldDescriptions): !include /documentation/fieldDescriptions/event.yml
+    discriminatorValue: notifier_created
+    type: Event/NotifierEvented
+  Event/NotifierUpdated:
+    (prelude.common):
+    (core.fieldDescriptions): !include /documentation/fieldDescriptions/event.yml
+    discriminatorValue: notifier_updated
+    type: Event/NotifierEvented
+  Event/NotifierDestroyed:
+    (prelude.common):
+    (core.fieldDescriptions): !include /documentation/fieldDescriptions/event.yml
+    discriminatorValue: notifier_destroyed
+    type: Event/NotifierEvented
+  Event/NotifierEnabled:
+    (prelude.common):
+    (core.fieldDescriptions): !include /documentation/fieldDescriptions/event.yml
+    discriminatorValue: notifier_enabled
+    type: Event/NotifierEvented
+  Event/NotifierDisabled:
+    (prelude.common):
+    (core.fieldDescriptions): !include /documentation/fieldDescriptions/event.yml
+    discriminatorValue: notifier_disabled
+    type: Event/NotifierEvented
+  Event/NotifierBroadcasted:
+    (prelude.common):
+    (core.fieldDescriptions): !include /documentation/fieldDescriptions/event.yml
+    discriminatorValue: notifier_broadcasted
+    type: Event/NotifierEvented
+    properties:
+      context: event.EventContextual
+
+  Event/SubscriptionEvented: !include /types/state/event/subscription_evented.raml
+  Event/SubscriptionCreated:
+    (prelude.common):
+    (core.fieldDescriptions): !include /documentation/fieldDescriptions/event.yml
+    discriminatorValue: subscription_created
+    type: Event/SubscriptionEvented
+  Event/SubscriptionDestroyed:
+    (prelude.common):
+    (core.fieldDescriptions): !include /documentation/fieldDescriptions/event.yml
+    discriminatorValue: subscription_destroyed
+    type: Event/SubscriptionEvented
+  Event/SubscriptionEditLinkRequested:
+    (prelude.common):
+    (core.fieldDescriptions): !include /documentation/fieldDescriptions/event.yml
+    discriminatorValue: subscription_edit_link_requested
+    type: Event/SubscriptionEvented
+  Event/SubscriptionNotified:
+    (prelude.common):
+    (core.fieldDescriptions): !include /documentation/fieldDescriptions/event.yml
+    discriminatorValue: subscription_notified
+    type: Event/SubscriptionEvented
+    properties:
+      context:
+        type: [event.NotifierContextual, event.EventContextual]
+        additionalProperties: false
+
+  Event/StatusEvented: !include /types/state/event/status_evented.raml
+  Event/StatusCorrected:
+    (prelude.common):
+    (core.fieldDescriptions): !include /documentation/fieldDescriptions/event.yml
+    discriminatorValue: status_corrected
+    type: Event/StatusEvented
+  Event/StatusCreated:
+    (prelude.common):
+    (core.fieldDescriptions): !include /documentation/fieldDescriptions/event.yml
+    discriminatorValue: status_created
+    type: Event/StatusEvented
+    properties:
+      state: core.integer-state
+  Event/Degraded:
+    (prelude.common):
+    (core.fieldDescriptions): !include /documentation/fieldDescriptions/event.yml
+    discriminatorValue: degraded
+    type: Event/StatusCreated
+  Event/Restored:
+    (prelude.common):
+    (core.fieldDescriptions): !include /documentation/fieldDescriptions/event.yml
+    discriminatorValue: restored
+    type: Event/StatusCreated
+    properties:
+      time_down: core.nonnegative-integer
+
+  Events:
+    (prelude.common):
+    (prelude.discriminatorJunction):
+    (core.fieldDescriptions): !include /documentation/fieldDescriptions/event.yml
+    type: Event/ComponentCreated | Event/ComponentUpdated | Event/ComponentDestroyed | Event/MetricProviderCreated | Event/MetricProviderUpdated | Event/MetricProviderDestroyed | Event/IssueUpcoming | Event/IssueStarted | Event/IssueEnded | Event/IssueCancelled | Event/IssueCreated | Event/InformationalIssueCreated | Event/ScheduledIssueCreated | Event/IssueRetrospectivelyCreated | Event/IssueUpdated | Event/IssueReopened | Event/IssueAddended | Event/IssueResolved | Event/NotifierTested | Event/NotifierCreated | Event/NotifierUpdated | Event/NotifierDestroyed | Event/NotifierEnabled | Event/NotifierDisabled | Event/NotifierBroadcasted | Event/SubscriptionCreated | Event/SubscriptionDestroyed | Event/SubscriptionEditLinkRequested | Event/SubscriptionNotified | Event/StatusCreated | Event/StatusCorrected | Event/Degraded | Event/Restored

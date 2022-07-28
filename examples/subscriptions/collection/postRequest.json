@@ -1,0 +1,4 @@
+{
+  "notifier": "5c81682c8fbb652388b9fdb9",
+  "channel": { "type": "email", "address": "sub3@example.com" }
+}

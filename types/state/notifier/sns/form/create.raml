@@ -1,0 +1,26 @@
+#%RAML 1.0 DataType
+
+uses:
+  prelude: /libraries/prelude.raml
+  core: /libraries/core.raml
+
+(prelude.common):
+(core.fieldDescriptions): !include /documentation/fieldDescriptions/notifier/sns.yml
+displayName: SMS via AWS SNS
+description: |
+  SNS notifier channel creation form.
+type: core.Form
+properties:
+  type:
+    enum: [sns]
+  access_key_id: string
+  secret_access_key: string
+  sender_id?:
+    type: core.SNS_SENDER_ID?
+    default: null
+  max_price?:
+    type: core.nonnegative-number
+    default: 0.1
+  countries?:
+    type: core.COUNTRY_CODE_A2[]
+    default: []

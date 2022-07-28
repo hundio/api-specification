@@ -1,0 +1,19 @@
+#%RAML 1.0 DataType
+
+uses:
+  prelude: /libraries/prelude.raml
+  core: /libraries/core.raml
+
+(prelude.common):
+(core.fieldDescriptions): !include /documentation/fieldDescriptions/subscription/slack.yml
+displayName: Slack
+description: |
+  A Slack subscription, based on Incoming Webhooks. Subscriptions may be created
+  from Slack Incoming Webhooks, or created by Slack App via the Notifier's "Quick
+  Setup" button, available from the Notifiers section of the dashboard.
+type: core.Channel
+properties:
+  type:
+    enum: [slack]
+  channel: core.maybe-string
+  team: core.maybe-string

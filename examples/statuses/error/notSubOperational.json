@@ -1,0 +1,5 @@
+{
+  "type": "status/error/operational",
+  "logref": "6c0bd234-6551-4548-abab-ae8fe90220ff",
+  "message": "Status has operational state. A Status with sub-operational state (i.e. `degraded`, `outage`) was expected."
+}

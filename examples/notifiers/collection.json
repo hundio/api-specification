@@ -1,0 +1,385 @@
+{
+  "type": "paged_array",
+  "total_count": 7,
+  "data": [
+    {
+      "id": "5e2604d88fbb65980272e640",
+      "type": "notifier",
+      "created_at": 1579549912,
+      "updated_at": 1579549912,
+      "channel": {
+        "type": "push"
+      },
+      "notification_exclusions": [
+        "5ad566898fbb654577715322",
+        "5c9583858fbb6575d664cf96",
+        "5c9588038fbb657c95d929e9",
+        "5c993ab18fbb652a1e53f068",
+        "5c993b198fbb652a1e53f092",
+        "5c993b228fbb652a1e53f0a6"
+      ],
+      "listens_to": [
+        "restored",
+        "degraded",
+        "issue_upcoming",
+        "issue_created",
+        "issue_updated",
+        "issue_cancelled",
+        "issue_started",
+        "issue_ended",
+        "notifier_tested"
+      ],
+      "listens_to_level": "all",
+      "curated": false,
+      "enabled": true,
+      "subscribable": true,
+      "include_group_in_component_names": false,
+      "_links": {
+        "self": {
+          "href": "https://status.example.com/api/v1/notifiers/5e2604d88fbb65980272e640"
+        },
+        "update-form": {
+          "href": "https://status.example.com/dashboard/notifiers/5e2604d88fbb65980272e640/edit"
+        },
+        "events": {
+          "href": "https://status.example.com/api/v1/events?eventable=5e2604d88fbb65980272e640"
+        },
+        "events:by-context": {
+          "href": "https://status.example.com/api/v1/events?context.notifier=5e2604d88fbb65980272e640"
+        },
+        "subscriptions": {
+          "href": "https://status.example.com/api/v1/subscriptions?notifier=5e2604d88fbb65980272e640"
+        },
+        "action:test": {
+          "href": "https://status.example.com/api/v1/notifiers/5e2604d88fbb65980272e640/test"
+        }
+      }
+    },
+    {
+      "id": "5d2fd0d28fbb6523cbf73377",
+      "type": "notifier",
+      "created_at": 1563414738,
+      "updated_at": 1658442457,
+      "channel": {
+        "type": "twitter",
+        "consumer_key": "akOZZvcthZm0iNg7sMFCmO8XK",
+        "access_token": "859473272525684737-dtQ5z32XqpbTXUeVI1GJo20AGrmtUov",
+        "handle": "test57869689",
+        "handle_url": "https://twitter.com/test57869689"
+      },
+      "notification_exclusions": [
+        "5ad566898fbb654577715322",
+        "5c993ab18fbb652a1e53f068",
+        "5e5029f38fbb657ce18eabd8",
+        "5e4f0ce98fbb654a4b2a4313"
+      ],
+      "listens_to": [
+        "restored",
+        "degraded",
+        "issue_upcoming",
+        "issue_created",
+        "issue_resolved",
+        "issue_cancelled",
+        "issue_started",
+        "issue_ended",
+        "issue_reopened",
+        "notifier_tested"
+      ],
+      "listens_to_level": "normal",
+      "curated": false,
+      "enabled": true,
+      "subscribable": false,
+      "include_group_in_component_names": false,
+      "_links": {
+        "self": {
+          "href": "https://status.example.com/api/v1/notifiers/5d2fd0d28fbb6523cbf73377"
+        },
+        "update-form": {
+          "href": "https://status.example.com/dashboard/notifiers/5d2fd0d28fbb6523cbf73377/edit"
+        },
+        "events": {
+          "href": "https://status.example.com/api/v1/events?eventable=5d2fd0d28fbb6523cbf73377"
+        },
+        "events:by-context": {
+          "href": "https://status.example.com/api/v1/events?context.notifier=5d2fd0d28fbb6523cbf73377"
+        },
+        "subscriptions": {
+          "href": "https://status.example.com/api/v1/subscriptions?notifier=5d2fd0d28fbb6523cbf73377"
+        },
+        "action:test": {
+          "href": "https://status.example.com/api/v1/notifiers/5d2fd0d28fbb6523cbf73377/test"
+        }
+      }
+    },
+    {
+      "id": "5d2fcf198fbb6523cbf73375",
+      "type": "notifier",
+      "created_at": 1563414297,
+      "updated_at": 1563414297,
+      "channel": {
+        "type": "sns",
+        "access_key_id": "AKI00000000000000000",
+        "sender_id": null,
+        "countries": [
+          "US"
+        ],
+        "max_price": 0.1
+      },
+      "notification_exclusions": [
+        "5c993c248fbb652a1e53f176",
+        "5c993ab18fbb652a1e53f068",
+        "5c993b278fbb652a1e53f0ae"
+      ],
+      "listens_to": [
+        "restored",
+        "degraded",
+        "issue_upcoming",
+        "issue_created",
+        "issue_resolved",
+        "issue_cancelled",
+        "issue_started",
+        "issue_ended",
+        "issue_reopened",
+        "notifier_tested"
+      ],
+      "listens_to_level": "normal",
+      "curated": false,
+      "enabled": true,
+      "subscribable": true,
+      "include_group_in_component_names": false,
+      "_links": {
+        "self": {
+          "href": "https://status.example.com/api/v1/notifiers/5d2fcf198fbb6523cbf73375"
+        },
+        "update-form": {
+          "href": "https://status.example.com/dashboard/notifiers/5d2fcf198fbb6523cbf73375/edit"
+        },
+        "events": {
+          "href": "https://status.example.com/api/v1/events?eventable=5d2fcf198fbb6523cbf73375"
+        },
+        "events:by-context": {
+          "href": "https://status.example.com/api/v1/events?context.notifier=5d2fcf198fbb6523cbf73375"
+        },
+        "subscriptions": {
+          "href": "https://status.example.com/api/v1/subscriptions?notifier=5d2fcf198fbb6523cbf73375"
+        },
+        "action:test": {
+          "href": "https://status.example.com/api/v1/notifiers/5d2fcf198fbb6523cbf73375/test"
+        }
+      }
+    },
+    {
+      "id": "5d2d0ebb8fbb6528fd6c6eb2",
+      "type": "notifier",
+      "created_at": 1563233979,
+      "updated_at": 1563233979,
+      "channel": {
+        "type": "feed"
+      },
+      "notification_exclusions": [
+        "5e5029f38fbb657ce18eabd8",
+        "5e4f0ce98fbb654a4b2a4313",
+        "5e4f12b38fbb654a4b2a4323",
+        "6091ee508fbb653b2287025e"
+      ],
+      "listens_to": [
+        "restored",
+        "degraded",
+        "issue_upcoming",
+        "issue_created",
+        "issue_resolved",
+        "issue_cancelled",
+        "issue_started",
+        "issue_ended",
+        "issue_reopened",
+        "notifier_tested"
+      ],
+      "listens_to_level": "normal",
+      "curated": false,
+      "enabled": true,
+      "subscribable": false,
+      "include_group_in_component_names": false,
+      "_links": {
+        "self": {
+          "href": "https://status.example.com/api/v1/notifiers/5d2d0ebb8fbb6528fd6c6eb2"
+        },
+        "update-form": {
+          "href": "https://status.example.com/dashboard/notifiers/5d2d0ebb8fbb6528fd6c6eb2/edit"
+        },
+        "events": {
+          "href": "https://status.example.com/api/v1/events?eventable=5d2d0ebb8fbb6528fd6c6eb2"
+        },
+        "events:by-context": {
+          "href": "https://status.example.com/api/v1/events?context.notifier=5d2d0ebb8fbb6528fd6c6eb2"
+        },
+        "subscriptions": {
+          "href": "https://status.example.com/api/v1/subscriptions?notifier=5d2d0ebb8fbb6528fd6c6eb2"
+        },
+        "action:test": {
+          "href": "https://status.example.com/api/v1/notifiers/5d2d0ebb8fbb6528fd6c6eb2/test"
+        }
+      }
+    },
+    {
+      "id": "5d2621e08fbb6579925131ee",
+      "type": "notifier",
+      "created_at": 1562780128,
+      "updated_at": 1562780128,
+      "channel": {
+        "type": "slack"
+      },
+      "notification_exclusions": [
+        "5c993c248fbb652a1e53f176",
+        "5c993ab18fbb652a1e53f068",
+        "5c993b278fbb652a1e53f0ae"
+      ],
+      "listens_to": [
+        "restored",
+        "degraded",
+        "issue_upcoming",
+        "issue_created",
+        "issue_resolved",
+        "issue_cancelled",
+        "issue_started",
+        "issue_ended",
+        "issue_reopened",
+        "notifier_tested"
+      ],
+      "listens_to_level": "normal",
+      "curated": false,
+      "enabled": true,
+      "subscribable": true,
+      "include_group_in_component_names": false,
+      "_links": {
+        "self": {
+          "href": "https://status.example.com/api/v1/notifiers/5d2621e08fbb6579925131ee"
+        },
+        "update-form": {
+          "href": "https://status.example.com/dashboard/notifiers/5d2621e08fbb6579925131ee/edit"
+        },
+        "events": {
+          "href": "https://status.example.com/api/v1/events?eventable=5d2621e08fbb6579925131ee"
+        },
+        "events:by-context": {
+          "href": "https://status.example.com/api/v1/events?context.notifier=5d2621e08fbb6579925131ee"
+        },
+        "subscriptions": {
+          "href": "https://status.example.com/api/v1/subscriptions?notifier=5d2621e08fbb6579925131ee"
+        },
+        "action:test": {
+          "href": "https://status.example.com/api/v1/notifiers/5d2621e08fbb6579925131ee/test"
+        }
+      }
+    },
+    {
+      "id": "5c818d848fbb653d83671b3c",
+      "type": "notifier",
+      "created_at": 1551994244,
+      "updated_at": 1561668390,
+      "channel": {
+        "type": "webhook"
+      },
+      "notification_exclusions": [
+        "5c993c248fbb652a1e53f176",
+        "5c993ab18fbb652a1e53f068"
+      ],
+      "listens_to": [
+        "restored",
+        "degraded",
+        "issue_upcoming",
+        "issue_created",
+        "issue_resolved",
+        "issue_cancelled",
+        "issue_started",
+        "issue_ended",
+        "issue_reopened",
+        "notifier_tested"
+      ],
+      "listens_to_level": "normal",
+      "curated": false,
+      "enabled": true,
+      "subscribable": true,
+      "include_group_in_component_names": false,
+      "_links": {
+        "self": {
+          "href": "https://status.example.com/api/v1/notifiers/5c818d848fbb653d83671b3c"
+        },
+        "update-form": {
+          "href": "https://status.example.com/dashboard/notifiers/5c818d848fbb653d83671b3c/edit"
+        },
+        "events": {
+          "href": "https://status.example.com/api/v1/events?eventable=5c818d848fbb653d83671b3c"
+        },
+        "events:by-context": {
+          "href": "https://status.example.com/api/v1/events?context.notifier=5c818d848fbb653d83671b3c"
+        },
+        "subscriptions": {
+          "href": "https://status.example.com/api/v1/subscriptions?notifier=5c818d848fbb653d83671b3c"
+        },
+        "action:test": {
+          "href": "https://status.example.com/api/v1/notifiers/5c818d848fbb653d83671b3c/test"
+        }
+      }
+    },
+    {
+      "id": "5c81682c8fbb652388b9fdb9",
+      "type": "notifier",
+      "created_at": 1551984684,
+      "updated_at": 1561659543,
+      "channel": {
+        "type": "email",
+        "sender_address": "support@example.com",
+        "sender_display_name": null,
+        "smtp_hostname": "smtp.example.com",
+        "smtp_port": 587,
+        "smtp_user": "postmaster@mail1.example.com",
+        "smtp_authentication": "plain",
+        "smtp_domain": null,
+        "domain_whitelist": []
+      },
+      "notification_exclusions": [
+        "5c993c248fbb652a1e53f176",
+        "5c993ab18fbb652a1e53f068",
+        "5c993b278fbb652a1e53f0ae"
+      ],
+      "listens_to": [
+        "restored",
+        "degraded",
+        "issue_upcoming",
+        "issue_created",
+        "issue_resolved",
+        "issue_cancelled",
+        "issue_started",
+        "issue_ended",
+        "issue_reopened",
+        "notifier_tested"
+      ],
+      "listens_to_level": "normal",
+      "curated": false,
+      "enabled": true,
+      "subscribable": true,
+      "include_group_in_component_names": false,
+      "_links": {
+        "self": {
+          "href": "https://status.example.com/api/v1/notifiers/5c81682c8fbb652388b9fdb9"
+        },
+        "update-form": {
+          "href": "https://status.example.com/dashboard/notifiers/5c81682c8fbb652388b9fdb9/edit"
+        },
+        "events": {
+          "href": "https://status.example.com/api/v1/events?eventable=5c81682c8fbb652388b9fdb9"
+        },
+        "events:by-context": {
+          "href": "https://status.example.com/api/v1/events?context.notifier=5c81682c8fbb652388b9fdb9"
+        },
+        "subscriptions": {
+          "href": "https://status.example.com/api/v1/subscriptions?notifier=5c81682c8fbb652388b9fdb9"
+        },
+        "action:test": {
+          "href": "https://status.example.com/api/v1/notifiers/5c81682c8fbb652388b9fdb9/test"
+        }
+      }
+    }
+  ],
+  "has_more": false
+}

@@ -33,6 +33,7 @@ properties:
   began_at: core.timestamp
   ended_at: core.maybe-timestamp
   cancelled_at: core.maybe-timestamp
+  duration: core.nonnegative-integer
   schedule: nil | schedule.Schedule
   updates:
     type: core.PagedArray
@@ -50,5 +51,7 @@ properties:
       self-view: core.HAL/Link
       update-form: core.HAL/Link
       components: core.HAL/Link
+      events: core.HAL/Link
       updates: core.HAL/Link
       action:cancel: core.HAL/Link
+      og:image?: core.HAL/Link

@@ -1,0 +1,5 @@
+{
+  "type": "api/error/not_found",
+  "logref": "72737e1c-5960-4f8c-bde9-b80bdb7b1b0a",
+  "message": "Subscription not found."
+}

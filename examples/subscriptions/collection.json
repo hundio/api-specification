@@ -1,0 +1,560 @@
+{
+  "type": "paged_array",
+  "total_count": 10,
+  "data": [
+    {
+      "id": "61dcaf458fbb6523de62f078",
+      "type": "subscription",
+      "created_at": 1641852745,
+      "updated_at": 1641852745,
+      "channel": {
+        "type": "slack",
+        "channel": "sandbox",
+        "team": "Hund"
+      },
+      "notification_exclusions": [
+        "5c993c248fbb652a1e53f176",
+        "5c993ab18fbb652a1e53f068",
+        "5c993b278fbb652a1e53f0ae",
+        "5c9583858fbb6575d664cf96"
+      ],
+      "listens_to": [
+        "restored",
+        "degraded",
+        "issue_upcoming",
+        "issue_created",
+        "issue_resolved",
+        "issue_cancelled",
+        "issue_started",
+        "issue_ended",
+        "issue_reopened",
+        "notifier_tested"
+      ],
+      "listens_to_level": "normal",
+      "notifier": "5d2621e08fbb6579925131ee",
+      "curatable": false,
+      "curated": false,
+      "remove_links": false,
+      "_links": {
+        "self": {
+          "href": "https://status.example.com/api/v1/subscriptions/61dcaf458fbb6523de62f078"
+        },
+        "notifier": {
+          "href": "https://status.example.com/api/v1/notifiers/5d2621e08fbb6579925131ee"
+        },
+        "events": {
+          "href": "https://status.example.com/api/v1/events?eventable=61dcaf458fbb6523de62f078"
+        },
+        "action:send-edit-link": {
+          "href": "https://status.example.com/api/v1/subscriptions/61dcaf458fbb6523de62f078/send_edit_link"
+        },
+        "update-form": {
+          "href": "https://status.example.com/subscriptions/61dcaf458fbb6523de62f078/edit"
+        }
+      }
+    },
+    {
+      "id": "603705a78fbb654416bd444d",
+      "type": "subscription",
+      "created_at": 1614218663,
+      "updated_at": 1614218677,
+      "channel": {
+        "type": "push"
+      },
+      "notification_exclusions": [
+        "5ad566898fbb654577715322",
+        "5c9588038fbb657c95d929e9",
+        "5c993ab18fbb652a1e53f068",
+        "5c993b198fbb652a1e53f092",
+        "5c993b1f8fbb652a1e53f09c"
+      ],
+      "listens_to": [
+        "restored",
+        "degraded",
+        "issue_upcoming",
+        "issue_created",
+        "issue_updated",
+        "issue_cancelled",
+        "issue_started",
+        "issue_ended",
+        "notifier_tested"
+      ],
+      "listens_to_level": "all",
+      "notifier": "5e2604d88fbb65980272e640",
+      "curatable": false,
+      "curated": false,
+      "remove_links": false,
+      "_links": {
+        "self": {
+          "href": "https://status.example.com/api/v1/subscriptions/603705a78fbb654416bd444d"
+        },
+        "notifier": {
+          "href": "https://status.example.com/api/v1/notifiers/5e2604d88fbb65980272e640"
+        },
+        "events": {
+          "href": "https://status.example.com/api/v1/events?eventable=603705a78fbb654416bd444d"
+        },
+        "action:send-edit-link": {
+          "href": "https://status.example.com/api/v1/subscriptions/603705a78fbb654416bd444d/send_edit_link"
+        },
+        "update-form": {
+          "href": "https://status.example.com/subscriptions/603705a78fbb654416bd444d/edit"
+        }
+      }
+    },
+    {
+      "id": "5e2b22228fbb6510f7d55dba",
+      "type": "subscription",
+      "created_at": 1579885091,
+      "updated_at": 1579885091,
+      "channel": {
+        "type": "email",
+        "address": "sub1@example.com"
+      },
+      "notification_exclusions": [
+        "5c993c248fbb652a1e53f176",
+        "5c993ab18fbb652a1e53f068",
+        "5c993b278fbb652a1e53f0ae",
+        "5c9583858fbb6575d664cf96",
+        "5ad566898fbb654577715322",
+        "5c993c0d8fbb652a1e53f152",
+        "5e21e1db8fbb653796b7910f",
+        "5e21e0f08fbb653796b790f4",
+        "5e5029f38fbb657ce18eabd8",
+        "5e4f0ce98fbb654a4b2a4313",
+        "5e4f12b38fbb654a4b2a4323",
+        "6091ee508fbb653b2287025e"
+      ],
+      "listens_to": [
+        "restored",
+        "degraded",
+        "issue_upcoming",
+        "issue_created",
+        "issue_resolved",
+        "issue_cancelled",
+        "issue_started",
+        "issue_ended",
+        "issue_reopened",
+        "notifier_tested"
+      ],
+      "listens_to_level": "normal",
+      "notifier": "5c81682c8fbb652388b9fdb9",
+      "curatable": true,
+      "curated": false,
+      "remove_links": false,
+      "_links": {
+        "self": {
+          "href": "https://status.example.com/api/v1/subscriptions/5e2b22228fbb6510f7d55dba"
+        },
+        "notifier": {
+          "href": "https://status.example.com/api/v1/notifiers/5c81682c8fbb652388b9fdb9"
+        },
+        "events": {
+          "href": "https://status.example.com/api/v1/events?eventable=5e2b22228fbb6510f7d55dba"
+        },
+        "action:send-edit-link": {
+          "href": "https://status.example.com/api/v1/subscriptions/5e2b22228fbb6510f7d55dba/send_edit_link"
+        },
+        "update-form": {
+          "href": "https://status.example.com/subscriptions/5e2b22228fbb6510f7d55dba/edit"
+        }
+      }
+    },
+    {
+      "id": "5d8bacc58fbb6525fb9baacd",
+      "type": "subscription",
+      "created_at": 1569434822,
+      "updated_at": 1569434822,
+      "channel": {
+        "type": "email",
+        "address": "sub2@example.com"
+      },
+      "notification_exclusions": [
+        "5c993c248fbb652a1e53f176",
+        "5c993ab18fbb652a1e53f068",
+        "5e5029f38fbb657ce18eabd8",
+        "5e4f0ce98fbb654a4b2a4313",
+        "5e4f12b38fbb654a4b2a4323",
+        "6091ee508fbb653b2287025e"
+      ],
+      "listens_to": [
+        "restored",
+        "degraded",
+        "issue_upcoming",
+        "issue_created",
+        "issue_resolved",
+        "issue_cancelled",
+        "issue_started",
+        "issue_ended",
+        "issue_reopened",
+        "notifier_tested"
+      ],
+      "listens_to_level": "normal",
+      "notifier": "5c81682c8fbb652388b9fdb9",
+      "curatable": true,
+      "curated": false,
+      "remove_links": false,
+      "_links": {
+        "self": {
+          "href": "https://status.example.com/api/v1/subscriptions/5d8bacc58fbb6525fb9baacd"
+        },
+        "notifier": {
+          "href": "https://status.example.com/api/v1/notifiers/5c81682c8fbb652388b9fdb9"
+        },
+        "events": {
+          "href": "https://status.example.com/api/v1/events?eventable=5d8bacc58fbb6525fb9baacd"
+        },
+        "action:send-edit-link": {
+          "href": "https://status.example.com/api/v1/subscriptions/5d8bacc58fbb6525fb9baacd/send_edit_link"
+        },
+        "update-form": {
+          "href": "https://status.example.com/subscriptions/5d8bacc58fbb6525fb9baacd/edit"
+        }
+      }
+    },
+    {
+      "id": "5d8a82dd8fbb654dc6a10318",
+      "type": "subscription",
+      "created_at": 1569358558,
+      "updated_at": 1569359640,
+      "channel": {
+        "type": "email",
+        "address": "sub0@example.com"
+      },
+      "notification_exclusions": [
+        "5c993ab18fbb652a1e53f068",
+        "5c993c248fbb652a1e53f176",
+        "5e5029f38fbb657ce18eabd8",
+        "5e4f0ce98fbb654a4b2a4313",
+        "5e4f12b38fbb654a4b2a4323",
+        "6091ee508fbb653b2287025e"
+      ],
+      "listens_to": [
+        "restored",
+        "degraded",
+        "issue_upcoming",
+        "issue_created",
+        "issue_resolved",
+        "issue_cancelled",
+        "issue_started",
+        "issue_ended",
+        "issue_reopened",
+        "notifier_tested"
+      ],
+      "listens_to_level": "normal",
+      "notifier": "5c81682c8fbb652388b9fdb9",
+      "curatable": true,
+      "curated": false,
+      "remove_links": false,
+      "_links": {
+        "self": {
+          "href": "https://status.example.com/api/v1/subscriptions/5d8a82dd8fbb654dc6a10318"
+        },
+        "notifier": {
+          "href": "https://status.example.com/api/v1/notifiers/5c81682c8fbb652388b9fdb9"
+        },
+        "events": {
+          "href": "https://status.example.com/api/v1/events?eventable=5d8a82dd8fbb654dc6a10318"
+        },
+        "action:send-edit-link": {
+          "href": "https://status.example.com/api/v1/subscriptions/5d8a82dd8fbb654dc6a10318/send_edit_link"
+        },
+        "update-form": {
+          "href": "https://status.example.com/subscriptions/5d8a82dd8fbb654dc6a10318/edit"
+        }
+      }
+    },
+    {
+      "id": "5d2fd9c08fbb65711fbb3dc0",
+      "type": "subscription",
+      "created_at": 1563417024,
+      "updated_at": 1563491794,
+      "channel": {
+        "type": "sns",
+        "phone": "+15555550001"
+      },
+      "notification_exclusions": [
+        "5c9583858fbb6575d664cf96",
+        "5c9588038fbb657c95d929e9",
+        "5c993c0d8fbb652a1e53f152",
+        "5c993c168fbb652a1e53f15e",
+        "5c993c178fbb652a1e53f166",
+        "5c993c208fbb652a1e53f16e",
+        "5c993c248fbb652a1e53f176",
+        "5c993c298fbb652a1e53f17e",
+        "5c993c2a8fbb652a1e53f186",
+        "5c993c358fbb652a1e53f18e",
+        "5c993c478fbb652a1e53f196",
+        "5c993c4c8fbb652a1e53f19e",
+        "5cabe2398fbb6540136899b8",
+        "5e5029f38fbb657ce18eabd8",
+        "5e4f0ce98fbb654a4b2a4313",
+        "5e4f12b38fbb654a4b2a4323",
+        "6091ee508fbb653b2287025e"
+      ],
+      "listens_to": [
+        "restored",
+        "degraded",
+        "issue_upcoming",
+        "issue_created",
+        "issue_updated",
+        "issue_cancelled",
+        "issue_started",
+        "issue_ended",
+        "notifier_tested"
+      ],
+      "listens_to_level": "all",
+      "notifier": "5d2fcf198fbb6523cbf73375",
+      "curatable": false,
+      "curated": false,
+      "remove_links": false,
+      "_links": {
+        "self": {
+          "href": "https://status.example.com/api/v1/subscriptions/5d2fd9c08fbb65711fbb3dc0"
+        },
+        "notifier": {
+          "href": "https://status.example.com/api/v1/notifiers/5d2fcf198fbb6523cbf73375"
+        },
+        "events": {
+          "href": "https://status.example.com/api/v1/events?eventable=5d2fd9c08fbb65711fbb3dc0"
+        },
+        "action:send-edit-link": {
+          "href": "https://status.example.com/api/v1/subscriptions/5d2fd9c08fbb65711fbb3dc0/send_edit_link"
+        },
+        "update-form": {
+          "href": "https://status.example.com/subscriptions/5d2fd9c08fbb65711fbb3dc0/edit"
+        }
+      }
+    },
+    {
+      "id": "5d2fd8618fbb6523cbf73382",
+      "type": "subscription",
+      "created_at": 1563416673,
+      "updated_at": 1563491808,
+      "channel": {
+        "type": "sns",
+        "phone": "+15555550002"
+      },
+      "notification_exclusions": [
+        "5e5029f38fbb657ce18eabd8",
+        "5e4f0ce98fbb654a4b2a4313",
+        "5e4f12b38fbb654a4b2a4323",
+        "6091ee508fbb653b2287025e"
+      ],
+      "listens_to": [
+        "restored",
+        "degraded",
+        "issue_upcoming",
+        "issue_created",
+        "issue_updated",
+        "issue_cancelled",
+        "issue_started",
+        "issue_ended",
+        "notifier_tested"
+      ],
+      "listens_to_level": "all",
+      "notifier": "5d2fcf198fbb6523cbf73375",
+      "curatable": false,
+      "curated": false,
+      "remove_links": false,
+      "_links": {
+        "self": {
+          "href": "https://status.example.com/api/v1/subscriptions/5d2fd8618fbb6523cbf73382"
+        },
+        "notifier": {
+          "href": "https://status.example.com/api/v1/notifiers/5d2fcf198fbb6523cbf73375"
+        },
+        "events": {
+          "href": "https://status.example.com/api/v1/events?eventable=5d2fd8618fbb6523cbf73382"
+        },
+        "action:send-edit-link": {
+          "href": "https://status.example.com/api/v1/subscriptions/5d2fd8618fbb6523cbf73382/send_edit_link"
+        },
+        "update-form": {
+          "href": "https://status.example.com/subscriptions/5d2fd8618fbb6523cbf73382/edit"
+        }
+      }
+    },
+    {
+      "id": "5d264b2a8fbb65a3c410dc6d",
+      "type": "subscription",
+      "created_at": 1562790698,
+      "updated_at": 1562790709,
+      "channel": {
+        "type": "slack",
+        "channel": null,
+        "team": null
+      },
+      "notification_exclusions": [
+        "5e5029f38fbb657ce18eabd8",
+        "5e4f0ce98fbb654a4b2a4313",
+        "5e4f12b38fbb654a4b2a4323",
+        "6091ee508fbb653b2287025e"
+      ],
+      "listens_to": [
+        "restored",
+        "degraded",
+        "issue_upcoming",
+        "issue_created",
+        "issue_updated",
+        "issue_cancelled",
+        "issue_started",
+        "issue_ended",
+        "notifier_tested"
+      ],
+      "listens_to_level": "all",
+      "notifier": "5d2621e08fbb6579925131ee",
+      "curatable": false,
+      "curated": false,
+      "remove_links": false,
+      "_links": {
+        "self": {
+          "href": "https://status.example.com/api/v1/subscriptions/5d264b2a8fbb65a3c410dc6d"
+        },
+        "notifier": {
+          "href": "https://status.example.com/api/v1/notifiers/5d2621e08fbb6579925131ee"
+        },
+        "events": {
+          "href": "https://status.example.com/api/v1/events?eventable=5d264b2a8fbb65a3c410dc6d"
+        },
+        "action:send-edit-link": {
+          "href": "https://status.example.com/api/v1/subscriptions/5d264b2a8fbb65a3c410dc6d/send_edit_link"
+        },
+        "update-form": {
+          "href": "https://status.example.com/subscriptions/5d264b2a8fbb65a3c410dc6d/edit"
+        }
+      }
+    },
+    {
+      "id": "5d2624d08fbb65804bd3ea30",
+      "type": "subscription",
+      "created_at": 1562780880,
+      "updated_at": 1562790326,
+      "channel": {
+        "type": "slack",
+        "channel": null,
+        "team": null
+      },
+      "notification_exclusions": [
+        "5e5029f38fbb657ce18eabd8",
+        "5e4f0ce98fbb654a4b2a4313",
+        "5e4f12b38fbb654a4b2a4323",
+        "6091ee508fbb653b2287025e"
+      ],
+      "listens_to": [
+        "restored",
+        "degraded",
+        "issue_upcoming",
+        "issue_created",
+        "issue_updated",
+        "issue_cancelled",
+        "issue_started",
+        "issue_ended",
+        "notifier_tested"
+      ],
+      "listens_to_level": "all",
+      "notifier": "5d2621e08fbb6579925131ee",
+      "curatable": false,
+      "curated": false,
+      "remove_links": false,
+      "_links": {
+        "self": {
+          "href": "https://status.example.com/api/v1/subscriptions/5d2624d08fbb65804bd3ea30"
+        },
+        "notifier": {
+          "href": "https://status.example.com/api/v1/notifiers/5d2621e08fbb6579925131ee"
+        },
+        "events": {
+          "href": "https://status.example.com/api/v1/events?eventable=5d2624d08fbb65804bd3ea30"
+        },
+        "action:send-edit-link": {
+          "href": "https://status.example.com/api/v1/subscriptions/5d2624d08fbb65804bd3ea30/send_edit_link"
+        },
+        "update-form": {
+          "href": "https://status.example.com/subscriptions/5d2624d08fbb65804bd3ea30/edit"
+        }
+      }
+    },
+    {
+      "id": "5d23c52a8fbb650b1cf4368c",
+      "type": "subscription",
+      "created_at": 1562625322,
+      "updated_at": 1562627254,
+      "channel": {
+        "type": "webhook",
+        "verb": "put",
+        "version": "v2"
+      },
+      "notification_exclusions": [
+        "5c9583858fbb6575d664cf96",
+        "5c9588038fbb657c95d929e9",
+        "5c993c0d8fbb652a1e53f152",
+        "5c993c168fbb652a1e53f15e",
+        "5c993c178fbb652a1e53f166",
+        "5c993c208fbb652a1e53f16e",
+        "5c993c248fbb652a1e53f176",
+        "5c993c298fbb652a1e53f17e",
+        "5c993c2a8fbb652a1e53f186",
+        "5c993c358fbb652a1e53f18e",
+        "5c993c478fbb652a1e53f196",
+        "5c993c4c8fbb652a1e53f19e",
+        "5cabe2398fbb6540136899b8",
+        "5e5029f38fbb657ce18eabd8",
+        "5e4f0ce98fbb654a4b2a4313",
+        "5e4f12b38fbb654a4b2a4323",
+        "6091ee508fbb653b2287025e"
+      ],
+      "listens_to": [
+        "restored",
+        "degraded",
+        "issue_upcoming",
+        "issue_created",
+        "issue_updated",
+        "issue_cancelled",
+        "issue_started",
+        "issue_ended",
+        "notifier_tested"
+      ],
+      "listens_to_level": "all",
+      "notifier": "5c818d848fbb653d83671b3c",
+      "curatable": false,
+      "curated": false,
+      "remove_links": false,
+      "_links": {
+        "self": {
+          "href": "https://status.example.com/api/v1/subscriptions/5d23c52a8fbb650b1cf4368c"
+        },
+        "notifier": {
+          "href": "https://status.example.com/api/v1/notifiers/5c818d848fbb653d83671b3c"
+        },
+        "events": {
+          "href": "https://status.example.com/api/v1/events?eventable=5d23c52a8fbb650b1cf4368c"
+        },
+        "action:send-edit-link": {
+          "href": "https://status.example.com/api/v1/subscriptions/5d23c52a8fbb650b1cf4368c/send_edit_link"
+        },
+        "update-form": {
+          "href": "https://status.example.com/subscriptions/5d23c52a8fbb650b1cf4368c/edit"
+        }
+      }
+    }
+  ],
+  "has_more": true,
+  "_links": {
+    "self": {
+      "href": "https://status.example.com/api/v1/subscriptions?limit=10"
+    },
+    "create-form": {
+      "href": "https://status.example.com/dashboard/subscriptions/new"
+    },
+    "next": {
+      "href": "https://status.example.com/api/v1/subscriptions?limit=10&starting_after=5d23c52a8fbb650b1cf4368c"
+    },
+    "prev": {
+      "href": "https://status.example.com/api/v1/subscriptions?ending_before=61dcaf458fbb6523de62f078&limit=10"
+    },
+    "beginning": {
+      "href": "https://status.example.com/api/v1/subscriptions?limit=10"
+    }
+  }
+}

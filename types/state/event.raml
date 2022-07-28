@@ -1,0 +1,29 @@
+#%RAML 1.0 DataType
+
+uses:
+  prelude: /libraries/prelude.raml
+  core: /libraries/core.raml
+
+(prelude.common):
+(core.fieldDescriptions): !include /documentation/fieldDescriptions/event.yml
+displayName: Event
+description: |
+  Events are immutable objects representing various things that have happened
+  on your status page, such as Issue creation/update/resolution, new Watchdog
+  Statuses, object lifecycles, and more.
+type: [core.TypedObject, core.Timestamps/Created, core.HAL/Linkable]
+discriminator: kind
+properties:
+  id: core.ObjectId
+  type:
+    enum: [event]
+  kind: string
+  eventable:
+    (core.expandable):
+    type: core.ObjectId | core.TypedObject
+  context: object
+  _links?:
+    properties:
+      self: core.HAL/Link
+      eventable: core.HAL/Link
+      events:by-context: core.HAL/Link

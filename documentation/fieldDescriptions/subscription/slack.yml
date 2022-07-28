@@ -1,0 +1,21 @@
+webhook_url: |
+  The Slack Incoming Webhook URL. This can be any URL that consumes Slack-style
+  message hooks (e.g. Slack, Mattermost, Discord, etc.).
+
+  **Note:** A Slack Subscription plus the Incoming Webhook can be created together
+  (thus automatically filling this field) when using the "Quick Setup" button
+  from the Notifier configuration in the dashboard.
+channel: |
+  The Slack channel that the webhook posts notifications to. In the API, this
+  field may be set to any value of your choosing for annotation, especially
+  useful if the webhook does not originate from Slack (e.g. Mattermost, Discord, etc.).
+
+  **Note:** This field is automatically filled when using "Quick Setup" via the
+  dashboard.
+team: |
+  The Slack team that the webhook belongs to. In the API, this field may be set
+  to any value of your choosing for annotation, especially useful if the webhook
+  does not originate from Slack (e.g. Mattermost, Discord, etc.).
+
+  **Note:** This field is automatically filled when using "Quick Setup" via the
+  dashboard.

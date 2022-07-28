@@ -1,0 +1,20 @@
+url: |
+  The URL that will be requested on Subscription notification. The payload sent
+  to the URL is documented in our [knowledge base](https://hund.io/help/documentation/outgoing-webhooks).
+verb: |
+  The HTTP verb to request `url` with.
+version: |
+  The version of the webhook payloads sent to `url`. By default, a Subscription
+  will be created at the latest API version, but any other API version-string
+  (e.g. `2021-09-01`) may be set to obtain payloads in an earlier version.
+
+  **Note:** There are two pre-API "legacy" versions that may be displayed in this
+  field: [`legacy-v1`](https://hund.io/help/legacy-documentation/outgoing-webhooks-legacy-v1)
+  and [`legacy-v2`](https://hund.io/help/legacy-documentation/outgoing-webhooks-legacy-v2).
+  Respective documentation exists for both, but we recommend upgrading your
+  webhooks to use an API version, since the emitted objects correspond to the
+  API documentation exactly.
+
+  **Note:** Public Subscriptions (i.e. via the Subscribe button) cannot be
+  *created* against legacy versions, and will use the latest API version by
+  default.

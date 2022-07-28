@@ -60,6 +60,7 @@
       "cancelled": null,
       "began_at": 1543958167,
       "ended_at": null,
+      "duration": 3650,
       "cancelled_at": null,
       "schedule": {
         "id": "5c06ee9a8fbb652ab878c4ee",
@@ -120,6 +121,7 @@
       "cancelled": null,
       "began_at": 1543958167,
       "ended_at": 1543959101,
+      "duration": 934,
       "cancelled_at": null,
       "schedule": null,
       "updates": {

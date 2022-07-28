@@ -1,0 +1,41 @@
+id: |
+  The ObjectId of this Reason.
+region: |
+  When non-null, describes the physical region (e.g. `nj-us-1`, `fr-de-1`, etc.)
+  that this Reason occurred from.
+began_at: |
+  The UNIX timestamp at which this reason began causing the related sub-operational
+  Status.
+ended_at: |
+  The UNIX timestamp at which this reason finally ceased causing the related
+  sub-operational Status.
+
+  This field is `null` when this Reason is currently responsible for an ongoing
+  sub-operational Status.
+fingerprint: |
+  A unique hash identifying the `subject`/`description`/`context` combination
+  that fully describes this Reason. Fingerprints between Reasons will be equal
+  if and only if the `subject`, `description`, and `context` fields are all equal,
+  hence representing the *same error* (regardless of regional/temporal fields).
+subject: |
+  The specific "subject" of this error, typically a URL, domain name, or IP
+  address.
+description: |
+  A machine-friendly, human-readable description of the error. To maintain
+  machine-friendliness, this field will always be a underscore-delimited
+  alphanumeric word (e.g. `timeout`, `response_body_invalid`,
+  `response_records_invalid`, etc.).
+context: |
+  A list of string terms that further describe the nature of the error, depending
+  on `description`. Typically, this field will be filled with terms related to a
+  failed assertion: with the actual value first (if recordable), then the
+  expectation after that, potentially followed by further `description`-specific
+  terms.
+
+  For example, given a `description` of `response_code_invalid`, then the
+  `context` field will look like `["500", "200"]`, meaning an HTTP response code
+  of 500 was returned from `subject`, while code 200 was expected by the Watchdog.
+status: |
+  The Status that this Reason is (wholly or partially) responsible for causing.
+watchdog: |
+  The Watchdog that this Reason pertains to.

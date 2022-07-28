@@ -1,0 +1,51 @@
+#%RAML 1.0 DataType
+
+uses:
+  prelude: /libraries/prelude.raml
+  core: /libraries/core.raml
+  component: /libraries/component.raml
+  issue: /libraries/issue.raml
+  status: /libraries/status.raml
+
+(prelude.common):
+(core.fieldDescriptions): !include /documentation/fieldDescriptions/timeline/item.yml
+displayName: TimelineItem
+description: |
+  A specific item within the larger historical Timeline. A TimelineItem can
+  represent either a Status or Issue, or the interactions between them.
+
+  For more information on the mechanics of the Timeline, please read [this
+  knowledgebase article](https://hund.io/help/documentation/the-timeline).
+type: [core.TypedObject, core.HAL/Linkable]
+properties:
+  id: core.UUID
+  type:
+    enum: [timeline_item]
+  components:
+    type: core.PagedArray
+    properties:
+      data:
+        items: component.Component
+  issue:
+    (core.expandable):
+    type: nil | core.ObjectId | issue.Issue
+  statuses:
+    type: core.PagedArray
+    properties:
+      data:
+        items: status.Status
+  source: core.TIMELINE_SOURCE
+  title: string
+  began_at: core.timestamp
+  ended_at: core.timestamp
+  duration: core.nonnegative-integer
+  outage_duration: core.nonnegative-integer?
+  outage_durations: core.TIMELINE_OUTAGE_DURATIONS
+  excluded: boolean
+  effective: boolean
+  _links?:
+    properties:
+      self: core.HAL/Link
+      components: core.HAL/Link
+      statuses: core.HAL/Link
+      issue?: core.HAL/Link

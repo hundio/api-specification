@@ -1,0 +1,1626 @@
+{
+  "type": "paged_array",
+  "total_count": 10,
+  "data": [
+    {
+      "id": "62b10ec8-4732-b764-59fd-97aa24784012",
+      "type": "timeline_item",
+      "components": {
+        "type": "paged_array",
+        "total_count": 1,
+        "data": [
+          {
+            "id": "60932fa68fbb65f1c3be61e3",
+            "type": "component",
+            "created_at": 1620258726,
+            "updated_at": 1658441924,
+            "name": "m28",
+            "description": null,
+            "description_html": "",
+            "exclude_from_global_history": false,
+            "exclude_from_global_uptime": false,
+            "last_event_at": 1658441924,
+            "group": "5ad531158fbb652fe9df1c21",
+            "watchdog": "60932fa68fbb65f1c3be61df",
+            "percent_uptime": 100,
+            "_links": {
+              "self": {
+                "href": "https://status.example.com/api/v1/components/60932fa68fbb65f1c3be61e3"
+              },
+              "self-view": {
+                "href": "https://status.example.com/components/60932fa68fbb65f1c3be61e3"
+              },
+              "update-form": {
+                "href": "https://status.example.com/dashboard/components/60932fa68fbb65f1c3be61e3/edit"
+              },
+              "events": {
+                "href": "https://status.example.com/api/v1/events?eventable=60932fa68fbb65f1c3be61e3"
+              },
+              "events:by-context": {
+                "href": "https://status.example.com/api/v1/events?context.component=60932fa68fbb65f1c3be61e3"
+              },
+              "timeline": {
+                "href": "https://status.example.com/api/v1/timeline?component=60932fa68fbb65f1c3be61e3"
+              },
+              "watchdog": {
+                "href": "https://status.example.com/api/v1/watchdogs/60932fa68fbb65f1c3be61df"
+              }
+            }
+          }
+        ],
+        "has_more": false,
+        "_links": {
+          "self": {
+            "href": "https://status.example.com/api/v1/components?limit=10&timeline_item=62b10ec8-4732-b764-59fd-97aa24784012"
+          },
+          "create-form": {
+            "href": "https://status.example.com/dashboard/components/new"
+          },
+          "prev": {
+            "href": "https://status.example.com/api/v1/components?ending_before=60932fa68fbb65f1c3be61e3&limit=10&timeline_item=62b10ec8-4732-b764-59fd-97aa24784012"
+          },
+          "beginning": {
+            "href": "https://status.example.com/api/v1/components?limit=10&timeline_item=62b10ec8-4732-b764-59fd-97aa24784012"
+          }
+        }
+      },
+      "statuses": {
+        "type": "paged_array",
+        "total_count": 0,
+        "data": [],
+        "has_more": false,
+        "_links": {
+          "self": {
+            "href": "https://status.example.com/api/v1/statuses?limit=10&timeline_item=62b10ec8-4732-b764-59fd-97aa24784012"
+          },
+          "prev": {
+            "href": "https://status.example.com/api/v1/statuses?limit=10&timeline_item=62b10ec8-4732-b764-59fd-97aa24784012"
+          },
+          "beginning": {
+            "href": "https://status.example.com/api/v1/statuses?limit=10&timeline_item=62b10ec8-4732-b764-59fd-97aa24784012"
+          }
+        }
+      },
+      "issue": null,
+      "began_at": 1655770824,
+      "ended_at": 1655770855,
+      "title": "Outage",
+      "duration": 31,
+      "source": "global",
+      "outage_durations": {
+        "60932fa68fbb65f1c3be61e3": 31
+      },
+      "outage_duration": 31,
+      "excluded": false,
+      "effective": true,
+      "_links": {
+        "self": {
+          "href": "https://status.example.com/api/v1/timeline/62b10ec8-4732-b764-59fd-97aa24784012"
+        },
+        "components": {
+          "href": "https://status.example.com/api/v1/components?timeline_item=62b10ec8-4732-b764-59fd-97aa24784012"
+        },
+        "statuses": {
+          "href": "https://status.example.com/api/v1/statuses?timeline_item=62b10ec8-4732-b764-59fd-97aa24784012"
+        }
+      }
+    },
+    {
+      "id": "6272c730-57b9-6793-721f-b687e814c835",
+      "type": "timeline_item",
+      "components": {
+        "type": "paged_array",
+        "total_count": 2,
+        "data": [
+          {
+            "id": "5c993b198fbb652a1e53f092",
+            "type": "component",
+            "created_at": 1553546009,
+            "updated_at": 1656012483,
+            "name": "m1",
+            "description": null,
+            "description_html": "",
+            "exclude_from_global_history": false,
+            "exclude_from_global_uptime": false,
+            "last_event_at": 1656012483,
+            "group": "5ad531158fbb652fe9df1c21",
+            "watchdog": "5c993b198fbb652a1e53f090",
+            "percent_uptime": 100,
+            "_links": {
+              "self": {
+                "href": "https://status.example.com/api/v1/components/5c993b198fbb652a1e53f092"
+              },
+              "self-view": {
+                "href": "https://status.example.com/components/5c993b198fbb652a1e53f092"
+              },
+              "update-form": {
+                "href": "https://status.example.com/dashboard/components/5c993b198fbb652a1e53f092/edit"
+              },
+              "events": {
+                "href": "https://status.example.com/api/v1/events?eventable=5c993b198fbb652a1e53f092"
+              },
+              "events:by-context": {
+                "href": "https://status.example.com/api/v1/events?context.component=5c993b198fbb652a1e53f092"
+              },
+              "timeline": {
+                "href": "https://status.example.com/api/v1/timeline?component=5c993b198fbb652a1e53f092"
+              },
+              "watchdog": {
+                "href": "https://status.example.com/api/v1/watchdogs/5c993b198fbb652a1e53f090"
+              }
+            }
+          },
+          {
+            "id": "5ad566898fbb654577715322",
+            "type": "component",
+            "created_at": 1523934857,
+            "updated_at": 1656012476,
+            "name": "syno",
+            "description": null,
+            "description_html": "",
+            "exclude_from_global_history": false,
+            "exclude_from_global_uptime": false,
+            "last_event_at": 1656012476,
+            "group": "5ad531158fbb652fe9df1c21",
+            "watchdog": "5ad566898fbb654577715320",
+            "percent_uptime": 100,
+            "_links": {
+              "self": {
+                "href": "https://status.example.com/api/v1/components/5ad566898fbb654577715322"
+              },
+              "self-view": {
+                "href": "https://status.example.com/components/5ad566898fbb654577715322"
+              },
+              "update-form": {
+                "href": "https://status.example.com/dashboard/components/5ad566898fbb654577715322/edit"
+              },
+              "events": {
+                "href": "https://status.example.com/api/v1/events?eventable=5ad566898fbb654577715322"
+              },
+              "events:by-context": {
+                "href": "https://status.example.com/api/v1/events?context.component=5ad566898fbb654577715322"
+              },
+              "timeline": {
+                "href": "https://status.example.com/api/v1/timeline?component=5ad566898fbb654577715322"
+              },
+              "watchdog": {
+                "href": "https://status.example.com/api/v1/watchdogs/5ad566898fbb654577715320"
+              }
+            }
+          }
+        ],
+        "has_more": false,
+        "_links": {
+          "self": {
+            "href": "https://status.example.com/api/v1/components?limit=10&timeline_item=6272c730-57b9-6793-721f-b687e814c835"
+          },
+          "create-form": {
+            "href": "https://status.example.com/dashboard/components/new"
+          },
+          "prev": {
+            "href": "https://status.example.com/api/v1/components?ending_before=5c993b198fbb652a1e53f092&limit=10&timeline_item=6272c730-57b9-6793-721f-b687e814c835"
+          },
+          "beginning": {
+            "href": "https://status.example.com/api/v1/components?limit=10&timeline_item=6272c730-57b9-6793-721f-b687e814c835"
+          }
+        }
+      },
+      "statuses": {
+        "type": "paged_array",
+        "total_count": 0,
+        "data": [],
+        "has_more": false,
+        "_links": {
+          "self": {
+            "href": "https://status.example.com/api/v1/statuses?limit=10&timeline_item=6272c730-57b9-6793-721f-b687e814c835"
+          },
+          "prev": {
+            "href": "https://status.example.com/api/v1/statuses?limit=10&timeline_item=6272c730-57b9-6793-721f-b687e814c835"
+          },
+          "beginning": {
+            "href": "https://status.example.com/api/v1/statuses?limit=10&timeline_item=6272c730-57b9-6793-721f-b687e814c835"
+          }
+        }
+      },
+      "issue": "6272c7308fbb6565e55825f3",
+      "began_at": 1651689264,
+      "ended_at": 1655770343,
+      "title": "Long Request Times",
+      "duration": 4081079,
+      "source": "global",
+      "outage_durations": {
+        "5ad566898fbb654577715322": 0,
+        "5c993b198fbb652a1e53f092": 0
+      },
+      "outage_duration": 0,
+      "excluded": false,
+      "effective": true,
+      "_links": {
+        "self": {
+          "href": "https://status.example.com/api/v1/timeline/6272c730-57b9-6793-721f-b687e814c835"
+        },
+        "components": {
+          "href": "https://status.example.com/api/v1/components?timeline_item=6272c730-57b9-6793-721f-b687e814c835"
+        },
+        "statuses": {
+          "href": "https://status.example.com/api/v1/statuses?timeline_item=6272c730-57b9-6793-721f-b687e814c835"
+        },
+        "issue": {
+          "href": "https://status.example.com/api/v1/issues/6272c7308fbb6565e55825f3"
+        }
+      }
+    },
+    {
+      "id": "6269a908-a03b-500f-d157-0519e56e740a",
+      "type": "timeline_item",
+      "components": {
+        "type": "paged_array",
+        "total_count": 1,
+        "data": [
+          {
+            "id": "5cabe2398fbb6540136899b8",
+            "type": "component",
+            "created_at": 1554768441,
+            "updated_at": 1656012528,
+            "name": "m30",
+            "description": null,
+            "description_html": "",
+            "exclude_from_global_history": false,
+            "exclude_from_global_uptime": false,
+            "last_event_at": 1656012528,
+            "group": "5cabe2378fbb6540136899b0",
+            "watchdog": "5cabe2388fbb6540136899b4",
+            "percent_uptime": 100,
+            "_links": {
+              "self": {
+                "href": "https://status.example.com/api/v1/components/5cabe2398fbb6540136899b8"
+              },
+              "self-view": {
+                "href": "https://status.example.com/components/5cabe2398fbb6540136899b8"
+              },
+              "update-form": {
+                "href": "https://status.example.com/dashboard/components/5cabe2398fbb6540136899b8/edit"
+              },
+              "events": {
+                "href": "https://status.example.com/api/v1/events?eventable=5cabe2398fbb6540136899b8"
+              },
+              "events:by-context": {
+                "href": "https://status.example.com/api/v1/events?context.component=5cabe2398fbb6540136899b8"
+              },
+              "timeline": {
+                "href": "https://status.example.com/api/v1/timeline?component=5cabe2398fbb6540136899b8"
+              },
+              "watchdog": {
+                "href": "https://status.example.com/api/v1/watchdogs/5cabe2388fbb6540136899b4"
+              }
+            }
+          }
+        ],
+        "has_more": false,
+        "_links": {
+          "self": {
+            "href": "https://status.example.com/api/v1/components?limit=10&timeline_item=6269a908-a03b-500f-d157-0519e56e740a"
+          },
+          "create-form": {
+            "href": "https://status.example.com/dashboard/components/new"
+          },
+          "prev": {
+            "href": "https://status.example.com/api/v1/components?ending_before=5cabe2398fbb6540136899b8&limit=10&timeline_item=6269a908-a03b-500f-d157-0519e56e740a"
+          },
+          "beginning": {
+            "href": "https://status.example.com/api/v1/components?limit=10&timeline_item=6269a908-a03b-500f-d157-0519e56e740a"
+          }
+        }
+      },
+      "statuses": {
+        "type": "paged_array",
+        "total_count": 1,
+        "data": [
+          {
+            "id": "6269a9088fbb656d42d881e7",
+            "type": "status",
+            "created_at": 1651091720,
+            "updated_at": 1653432126,
+            "watchdog": "5cabe2388fbb6540136899b4",
+            "reasons": {
+              "type": "paged_array",
+              "total_count": 8,
+              "data": [
+                {
+                  "id": "628d5d038fbb655c8470641d",
+                  "type": "reason",
+                  "status": "6269a9088fbb656d42d881e7",
+                  "watchdog": "5cabe2388fbb6540136899b4",
+                  "subject": "2606:2800:220:1:248:1893:25c8:1946",
+                  "description": "timeout",
+                  "context": [],
+                  "fingerprint": "1c65e8ef2f2cb8bc23384931fd60ed8aeb6cec1f",
+                  "region": "wa-us-1",
+                  "began_at": 1653431554,
+                  "ended_at": 1653432126,
+                  "_links": {
+                    "self": {
+                      "href": "https://status.example.com/api/v1/reasons/628d5d038fbb655c8470641d"
+                    },
+                    "status": {
+                      "href": "https://status.example.com/api/v1/statuses/6269a9088fbb656d42d881e7"
+                    },
+                    "watchdog": {
+                      "href": "https://status.example.com/api/v1/watchdogs/5cabe2388fbb6540136899b4"
+                    }
+                  }
+                },
+                {
+                  "id": "628d5d038fbb655c8470641c",
+                  "type": "reason",
+                  "status": "6269a9088fbb656d42d881e7",
+                  "watchdog": "5cabe2388fbb6540136899b4",
+                  "subject": "2606:2800:220:1:248:1893:25c8:1946",
+                  "description": "timeout",
+                  "context": [],
+                  "fingerprint": "1c65e8ef2f2cb8bc23384931fd60ed8aeb6cec1f",
+                  "region": "nj-us-1",
+                  "began_at": 1653431554,
+                  "ended_at": 1653432126,
+                  "_links": {
+                    "self": {
+                      "href": "https://status.example.com/api/v1/reasons/628d5d038fbb655c8470641c"
+                    },
+                    "status": {
+                      "href": "https://status.example.com/api/v1/statuses/6269a9088fbb656d42d881e7"
+                    },
+                    "watchdog": {
+                      "href": "https://status.example.com/api/v1/watchdogs/5cabe2388fbb6540136899b4"
+                    }
+                  }
+                },
+                {
+                  "id": "628d58368fbb656daf70641b",
+                  "type": "reason",
+                  "status": "6269a9088fbb656d42d881e7",
+                  "watchdog": "5cabe2388fbb6540136899b4",
+                  "subject": "54.218.247.76",
+                  "description": "timeout",
+                  "context": [],
+                  "fingerprint": "4402da23c3733f628462c0875d5ff0378d474965",
+                  "region": "wa-us-1",
+                  "began_at": 1653430326,
+                  "ended_at": 1653431554,
+                  "_links": {
+                    "self": {
+                      "href": "https://status.example.com/api/v1/reasons/628d58368fbb656daf70641b"
+                    },
+                    "status": {
+                      "href": "https://status.example.com/api/v1/statuses/6269a9088fbb656d42d881e7"
+                    },
+                    "watchdog": {
+                      "href": "https://status.example.com/api/v1/watchdogs/5cabe2388fbb6540136899b4"
+                    }
+                  }
+                },
+                {
+                  "id": "628d58368fbb656daf70641a",
+                  "type": "reason",
+                  "status": "6269a9088fbb656d42d881e7",
+                  "watchdog": "5cabe2388fbb6540136899b4",
+                  "subject": "52.27.210.93",
+                  "description": "timeout",
+                  "context": [],
+                  "fingerprint": "84a21935916a3a82537b5d1e1d1a4aa3568b014d",
+                  "region": "wa-us-1",
+                  "began_at": 1653430326,
+                  "ended_at": 1653431554,
+                  "_links": {
+                    "self": {
+                      "href": "https://status.example.com/api/v1/reasons/628d58368fbb656daf70641a"
+                    },
+                    "status": {
+                      "href": "https://status.example.com/api/v1/statuses/6269a9088fbb656d42d881e7"
+                    },
+                    "watchdog": {
+                      "href": "https://status.example.com/api/v1/watchdogs/5cabe2388fbb6540136899b4"
+                    }
+                  }
+                },
+                {
+                  "id": "628d58368fbb656daf706419",
+                  "type": "reason",
+                  "status": "6269a9088fbb656d42d881e7",
+                  "watchdog": "5cabe2388fbb6540136899b4",
+                  "subject": "44.225.164.27",
+                  "description": "timeout",
+                  "context": [],
+                  "fingerprint": "2c914693ad522d531622a1b541081b992b51855d",
+                  "region": "wa-us-1",
+                  "began_at": 1653430326,
+                  "ended_at": 1653431554,
+                  "_links": {
+                    "self": {
+                      "href": "https://status.example.com/api/v1/reasons/628d58368fbb656daf706419"
+                    },
+                    "status": {
+                      "href": "https://status.example.com/api/v1/statuses/6269a9088fbb656d42d881e7"
+                    },
+                    "watchdog": {
+                      "href": "https://status.example.com/api/v1/watchdogs/5cabe2388fbb6540136899b4"
+                    }
+                  }
+                },
+                {
+                  "id": "628d58368fbb656daf706418",
+                  "type": "reason",
+                  "status": "6269a9088fbb656d42d881e7",
+                  "watchdog": "5cabe2388fbb6540136899b4",
+                  "subject": "44.225.164.27",
+                  "description": "timeout",
+                  "context": [],
+                  "fingerprint": "2c914693ad522d531622a1b541081b992b51855d",
+                  "region": "nj-us-1",
+                  "began_at": 1653430326,
+                  "ended_at": 1653431554,
+                  "_links": {
+                    "self": {
+                      "href": "https://status.example.com/api/v1/reasons/628d58368fbb656daf706418"
+                    },
+                    "status": {
+                      "href": "https://status.example.com/api/v1/statuses/6269a9088fbb656d42d881e7"
+                    },
+                    "watchdog": {
+                      "href": "https://status.example.com/api/v1/watchdogs/5cabe2388fbb6540136899b4"
+                    }
+                  }
+                },
+                {
+                  "id": "628d58368fbb656daf706417",
+                  "type": "reason",
+                  "status": "6269a9088fbb656d42d881e7",
+                  "watchdog": "5cabe2388fbb6540136899b4",
+                  "subject": "54.218.247.76",
+                  "description": "timeout",
+                  "context": [],
+                  "fingerprint": "4402da23c3733f628462c0875d5ff0378d474965",
+                  "region": "nj-us-1",
+                  "began_at": 1653430326,
+                  "ended_at": 1653431554,
+                  "_links": {
+                    "self": {
+                      "href": "https://status.example.com/api/v1/reasons/628d58368fbb656daf706417"
+                    },
+                    "status": {
+                      "href": "https://status.example.com/api/v1/statuses/6269a9088fbb656d42d881e7"
+                    },
+                    "watchdog": {
+                      "href": "https://status.example.com/api/v1/watchdogs/5cabe2388fbb6540136899b4"
+                    }
+                  }
+                },
+                {
+                  "id": "628d58368fbb656daf706416",
+                  "type": "reason",
+                  "status": "6269a9088fbb656d42d881e7",
+                  "watchdog": "5cabe2388fbb6540136899b4",
+                  "subject": "52.27.210.93",
+                  "description": "timeout",
+                  "context": [],
+                  "fingerprint": "84a21935916a3a82537b5d1e1d1a4aa3568b014d",
+                  "region": "nj-us-1",
+                  "began_at": 1653430326,
+                  "ended_at": 1653431554,
+                  "_links": {
+                    "self": {
+                      "href": "https://status.example.com/api/v1/reasons/628d58368fbb656daf706416"
+                    },
+                    "status": {
+                      "href": "https://status.example.com/api/v1/statuses/6269a9088fbb656d42d881e7"
+                    },
+                    "watchdog": {
+                      "href": "https://status.example.com/api/v1/watchdogs/5cabe2388fbb6540136899b4"
+                    }
+                  }
+                }
+              ],
+              "has_more": false,
+              "_links": {
+                "self": {
+                  "href": "https://status.example.com/api/v1/reasons?limit=10&status=6269a9088fbb656d42d881e7"
+                },
+                "prev": {
+                  "href": "https://status.example.com/api/v1/reasons?ending_before=628d5d038fbb655c8470641d&limit=10&status=6269a9088fbb656d42d881e7"
+                },
+                "beginning": {
+                  "href": "https://status.example.com/api/v1/reasons?limit=10&status=6269a9088fbb656d42d881e7"
+                }
+              }
+            },
+            "state": -1,
+            "duration": 2340155,
+            "began_at": 1651091720,
+            "ended_at": 1653432126,
+            "_links": {
+              "self": {
+                "href": "https://status.example.com/api/v1/statuses/6269a9088fbb656d42d881e7"
+              },
+              "events": {
+                "href": "https://status.example.com/api/v1/events?eventable=6269a9088fbb656d42d881e7"
+              },
+              "reasons": {
+                "href": "https://status.example.com/api/v1/reasons?status=6269a9088fbb656d42d881e7"
+              },
+              "watchdog": {
+                "href": "https://status.example.com/api/v1/watchdogs/5cabe2388fbb6540136899b4"
+              },
+              "action:correct": {
+                "href": "https://status.example.com/api/v1/statuses/6269a9088fbb656d42d881e7/correct"
+              }
+            }
+          }
+        ],
+        "has_more": false,
+        "_links": {
+          "self": {
+            "href": "https://status.example.com/api/v1/statuses?limit=10&timeline_item=6269a908-a03b-500f-d157-0519e56e740a"
+          },
+          "prev": {
+            "href": "https://status.example.com/api/v1/statuses?ending_before=6269a9088fbb656d42d881e7&limit=10&timeline_item=6269a908-a03b-500f-d157-0519e56e740a"
+          },
+          "beginning": {
+            "href": "https://status.example.com/api/v1/statuses?limit=10&timeline_item=6269a908-a03b-500f-d157-0519e56e740a"
+          }
+        }
+      },
+      "issue": null,
+      "began_at": 1651091720,
+      "ended_at": 1653432126,
+      "title": "Outage",
+      "duration": 2340155,
+      "source": "global",
+      "outage_durations": {
+        "5cabe2398fbb6540136899b8": 2340155
+      },
+      "outage_duration": 2340155,
+      "excluded": false,
+      "effective": true,
+      "_links": {
+        "self": {
+          "href": "https://status.example.com/api/v1/timeline/6269a908-a03b-500f-d157-0519e56e740a"
+        },
+        "components": {
+          "href": "https://status.example.com/api/v1/components?timeline_item=6269a908-a03b-500f-d157-0519e56e740a"
+        },
+        "statuses": {
+          "href": "https://status.example.com/api/v1/statuses?timeline_item=6269a908-a03b-500f-d157-0519e56e740a"
+        }
+      }
+    },
+    {
+      "id": "623ba0f0-a96e-a495-a28a-a8ee879b26e9",
+      "type": "timeline_item",
+      "components": {
+        "type": "paged_array",
+        "total_count": 3,
+        "data": [
+          {
+            "id": "5c993b2b8fbb652a1e53f0b8",
+            "type": "component",
+            "created_at": 1553546027,
+            "updated_at": 1656012501,
+            "name": "m5",
+            "description": null,
+            "description_html": "",
+            "exclude_from_global_history": false,
+            "exclude_from_global_uptime": false,
+            "last_event_at": 1656012501,
+            "group": "5ad531158fbb652fe9df1c21",
+            "watchdog": "5c993b2b8fbb652a1e53f0b6",
+            "percent_uptime": 100,
+            "_links": {
+              "self": {
+                "href": "https://status.example.com/api/v1/components/5c993b2b8fbb652a1e53f0b8"
+              },
+              "self-view": {
+                "href": "https://status.example.com/components/5c993b2b8fbb652a1e53f0b8"
+              },
+              "update-form": {
+                "href": "https://status.example.com/dashboard/components/5c993b2b8fbb652a1e53f0b8/edit"
+              },
+              "events": {
+                "href": "https://status.example.com/api/v1/events?eventable=5c993b2b8fbb652a1e53f0b8"
+              },
+              "events:by-context": {
+                "href": "https://status.example.com/api/v1/events?context.component=5c993b2b8fbb652a1e53f0b8"
+              },
+              "timeline": {
+                "href": "https://status.example.com/api/v1/timeline?component=5c993b2b8fbb652a1e53f0b8"
+              },
+              "watchdog": {
+                "href": "https://status.example.com/api/v1/watchdogs/5c993b2b8fbb652a1e53f0b6"
+              }
+            }
+          },
+          {
+            "id": "5c993b228fbb652a1e53f0a6",
+            "type": "component",
+            "created_at": 1553546018,
+            "updated_at": 1656012511,
+            "name": "m3",
+            "description": null,
+            "description_html": "",
+            "exclude_from_global_history": false,
+            "exclude_from_global_uptime": false,
+            "last_event_at": 1656012511,
+            "group": "5ad531158fbb652fe9df1c21",
+            "watchdog": "5c993b228fbb652a1e53f0a4",
+            "percent_uptime": 100,
+            "_links": {
+              "self": {
+                "href": "https://status.example.com/api/v1/components/5c993b228fbb652a1e53f0a6"
+              },
+              "self-view": {
+                "href": "https://status.example.com/components/5c993b228fbb652a1e53f0a6"
+              },
+              "update-form": {
+                "href": "https://status.example.com/dashboard/components/5c993b228fbb652a1e53f0a6/edit"
+              },
+              "events": {
+                "href": "https://status.example.com/api/v1/events?eventable=5c993b228fbb652a1e53f0a6"
+              },
+              "events:by-context": {
+                "href": "https://status.example.com/api/v1/events?context.component=5c993b228fbb652a1e53f0a6"
+              },
+              "timeline": {
+                "href": "https://status.example.com/api/v1/timeline?component=5c993b228fbb652a1e53f0a6"
+              },
+              "watchdog": {
+                "href": "https://status.example.com/api/v1/watchdogs/5c993b228fbb652a1e53f0a4"
+              }
+            }
+          },
+          {
+            "id": "5ad566898fbb654577715322",
+            "type": "component",
+            "created_at": 1523934857,
+            "updated_at": 1656012476,
+            "name": "syno",
+            "description": null,
+            "description_html": "",
+            "exclude_from_global_history": false,
+            "exclude_from_global_uptime": false,
+            "last_event_at": 1656012476,
+            "group": "5ad531158fbb652fe9df1c21",
+            "watchdog": "5ad566898fbb654577715320",
+            "percent_uptime": 100,
+            "_links": {
+              "self": {
+                "href": "https://status.example.com/api/v1/components/5ad566898fbb654577715322"
+              },
+              "self-view": {
+                "href": "https://status.example.com/components/5ad566898fbb654577715322"
+              },
+              "update-form": {
+                "href": "https://status.example.com/dashboard/components/5ad566898fbb654577715322/edit"
+              },
+              "events": {
+                "href": "https://status.example.com/api/v1/events?eventable=5ad566898fbb654577715322"
+              },
+              "events:by-context": {
+                "href": "https://status.example.com/api/v1/events?context.component=5ad566898fbb654577715322"
+              },
+              "timeline": {
+                "href": "https://status.example.com/api/v1/timeline?component=5ad566898fbb654577715322"
+              },
+              "watchdog": {
+                "href": "https://status.example.com/api/v1/watchdogs/5ad566898fbb654577715320"
+              }
+            }
+          }
+        ],
+        "has_more": false,
+        "_links": {
+          "self": {
+            "href": "https://status.example.com/api/v1/components?limit=10&timeline_item=623ba0f0-a96e-a495-a28a-a8ee879b26e9"
+          },
+          "create-form": {
+            "href": "https://status.example.com/dashboard/components/new"
+          },
+          "prev": {
+            "href": "https://status.example.com/api/v1/components?ending_before=5c993b2b8fbb652a1e53f0b8&limit=10&timeline_item=623ba0f0-a96e-a495-a28a-a8ee879b26e9"
+          },
+          "beginning": {
+            "href": "https://status.example.com/api/v1/components?limit=10&timeline_item=623ba0f0-a96e-a495-a28a-a8ee879b26e9"
+          }
+        }
+      },
+      "statuses": {
+        "type": "paged_array",
+        "total_count": 0,
+        "data": [],
+        "has_more": false,
+        "_links": {
+          "self": {
+            "href": "https://status.example.com/api/v1/statuses?limit=10&timeline_item=623ba0f0-a96e-a495-a28a-a8ee879b26e9"
+          },
+          "prev": {
+            "href": "https://status.example.com/api/v1/statuses?limit=10&timeline_item=623ba0f0-a96e-a495-a28a-a8ee879b26e9"
+          },
+          "beginning": {
+            "href": "https://status.example.com/api/v1/statuses?limit=10&timeline_item=623ba0f0-a96e-a495-a28a-a8ee879b26e9"
+          }
+        }
+      },
+      "issue": "623ba0f08fbb65bbe46da96b",
+      "began_at": 1648074992,
+      "ended_at": 1648080586,
+      "title": "Unplanned maintenance",
+      "duration": 5594,
+      "source": "global",
+      "outage_durations": {
+        "5ad566898fbb654577715322": 251,
+        "5c993b2b8fbb652a1e53f0b8": 251,
+        "5c993b228fbb652a1e53f0a6": 251
+      },
+      "outage_duration": 251,
+      "excluded": false,
+      "effective": true,
+      "_links": {
+        "self": {
+          "href": "https://status.example.com/api/v1/timeline/623ba0f0-a96e-a495-a28a-a8ee879b26e9"
+        },
+        "components": {
+          "href": "https://status.example.com/api/v1/components?timeline_item=623ba0f0-a96e-a495-a28a-a8ee879b26e9"
+        },
+        "statuses": {
+          "href": "https://status.example.com/api/v1/statuses?timeline_item=623ba0f0-a96e-a495-a28a-a8ee879b26e9"
+        },
+        "issue": {
+          "href": "https://status.example.com/api/v1/issues/623ba0f08fbb65bbe46da96b"
+        }
+      }
+    },
+    {
+      "id": "621e8228-6a00-2a1b-d4bf-e44e32d7b4b6",
+      "type": "timeline_item",
+      "components": {
+        "type": "paged_array",
+        "total_count": 2,
+        "data": [
+          {
+            "id": "5c993b2b8fbb652a1e53f0b8",
+            "type": "component",
+            "created_at": 1553546027,
+            "updated_at": 1656012501,
+            "name": "m5",
+            "description": null,
+            "description_html": "",
+            "exclude_from_global_history": false,
+            "exclude_from_global_uptime": false,
+            "last_event_at": 1656012501,
+            "group": "5ad531158fbb652fe9df1c21",
+            "watchdog": "5c993b2b8fbb652a1e53f0b6",
+            "percent_uptime": 100,
+            "_links": {
+              "self": {
+                "href": "https://status.example.com/api/v1/components/5c993b2b8fbb652a1e53f0b8"
+              },
+              "self-view": {
+                "href": "https://status.example.com/components/5c993b2b8fbb652a1e53f0b8"
+              },
+              "update-form": {
+                "href": "https://status.example.com/dashboard/components/5c993b2b8fbb652a1e53f0b8/edit"
+              },
+              "events": {
+                "href": "https://status.example.com/api/v1/events?eventable=5c993b2b8fbb652a1e53f0b8"
+              },
+              "events:by-context": {
+                "href": "https://status.example.com/api/v1/events?context.component=5c993b2b8fbb652a1e53f0b8"
+              },
+              "timeline": {
+                "href": "https://status.example.com/api/v1/timeline?component=5c993b2b8fbb652a1e53f0b8"
+              },
+              "watchdog": {
+                "href": "https://status.example.com/api/v1/watchdogs/5c993b2b8fbb652a1e53f0b6"
+              }
+            }
+          },
+          {
+            "id": "5c993ab18fbb652a1e53f068",
+            "type": "component",
+            "created_at": 1553545905,
+            "updated_at": 1656012456,
+            "name": "m0",
+            "description": null,
+            "description_html": "",
+            "exclude_from_global_history": false,
+            "exclude_from_global_uptime": false,
+            "last_event_at": 1656012456,
+            "group": "5ad531158fbb652fe9df1c21",
+            "watchdog": "5c993ab18fbb652a1e53f066",
+            "percent_uptime": 100,
+            "_links": {
+              "self": {
+                "href": "https://status.example.com/api/v1/components/5c993ab18fbb652a1e53f068"
+              },
+              "self-view": {
+                "href": "https://status.example.com/components/5c993ab18fbb652a1e53f068"
+              },
+              "update-form": {
+                "href": "https://status.example.com/dashboard/components/5c993ab18fbb652a1e53f068/edit"
+              },
+              "events": {
+                "href": "https://status.example.com/api/v1/events?eventable=5c993ab18fbb652a1e53f068"
+              },
+              "events:by-context": {
+                "href": "https://status.example.com/api/v1/events?context.component=5c993ab18fbb652a1e53f068"
+              },
+              "timeline": {
+                "href": "https://status.example.com/api/v1/timeline?component=5c993ab18fbb652a1e53f068"
+              },
+              "watchdog": {
+                "href": "https://status.example.com/api/v1/watchdogs/5c993ab18fbb652a1e53f066"
+              }
+            }
+          }
+        ],
+        "has_more": false,
+        "_links": {
+          "self": {
+            "href": "https://status.example.com/api/v1/components?limit=10&timeline_item=621e8228-6a00-2a1b-d4bf-e44e32d7b4b6"
+          },
+          "create-form": {
+            "href": "https://status.example.com/dashboard/components/new"
+          },
+          "prev": {
+            "href": "https://status.example.com/api/v1/components?ending_before=5c993b2b8fbb652a1e53f0b8&limit=10&timeline_item=621e8228-6a00-2a1b-d4bf-e44e32d7b4b6"
+          },
+          "beginning": {
+            "href": "https://status.example.com/api/v1/components?limit=10&timeline_item=621e8228-6a00-2a1b-d4bf-e44e32d7b4b6"
+          }
+        }
+      },
+      "statuses": {
+        "type": "paged_array",
+        "total_count": 0,
+        "data": [],
+        "has_more": false,
+        "_links": {
+          "self": {
+            "href": "https://status.example.com/api/v1/statuses?limit=10&timeline_item=621e8228-6a00-2a1b-d4bf-e44e32d7b4b6"
+          },
+          "prev": {
+            "href": "https://status.example.com/api/v1/statuses?limit=10&timeline_item=621e8228-6a00-2a1b-d4bf-e44e32d7b4b6"
+          },
+          "beginning": {
+            "href": "https://status.example.com/api/v1/statuses?limit=10&timeline_item=621e8228-6a00-2a1b-d4bf-e44e32d7b4b6"
+          }
+        }
+      },
+      "issue": "621e82288fbb659d5d3c4f81",
+      "began_at": 1646166568,
+      "ended_at": 1646167735,
+      "title": "Upstream Degradation",
+      "duration": 1167,
+      "source": "global",
+      "outage_durations": {
+        "5c993ab18fbb652a1e53f068": 0,
+        "5c993b2b8fbb652a1e53f0b8": 0
+      },
+      "outage_duration": 0,
+      "excluded": false,
+      "effective": true,
+      "_links": {
+        "self": {
+          "href": "https://status.example.com/api/v1/timeline/621e8228-6a00-2a1b-d4bf-e44e32d7b4b6"
+        },
+        "components": {
+          "href": "https://status.example.com/api/v1/components?timeline_item=621e8228-6a00-2a1b-d4bf-e44e32d7b4b6"
+        },
+        "statuses": {
+          "href": "https://status.example.com/api/v1/statuses?timeline_item=621e8228-6a00-2a1b-d4bf-e44e32d7b4b6"
+        },
+        "issue": {
+          "href": "https://status.example.com/api/v1/issues/621e82288fbb659d5d3c4f81"
+        }
+      }
+    },
+    {
+      "id": "6196c91b-b9e7-67be-87fb-ca7b2bf16afb",
+      "type": "timeline_item",
+      "components": {
+        "type": "paged_array",
+        "total_count": 2,
+        "data": [
+          {
+            "id": "5c993b278fbb652a1e53f0ae",
+            "type": "component",
+            "created_at": 1553546023,
+            "updated_at": 1656012516,
+            "name": "m4",
+            "description": null,
+            "description_html": "",
+            "exclude_from_global_history": false,
+            "exclude_from_global_uptime": false,
+            "last_event_at": 1656012516,
+            "group": "5ad531158fbb652fe9df1c21",
+            "watchdog": "5c993b278fbb652a1e53f0ac",
+            "percent_uptime": 100,
+            "_links": {
+              "self": {
+                "href": "https://status.example.com/api/v1/components/5c993b278fbb652a1e53f0ae"
+              },
+              "self-view": {
+                "href": "https://status.example.com/components/5c993b278fbb652a1e53f0ae"
+              },
+              "update-form": {
+                "href": "https://status.example.com/dashboard/components/5c993b278fbb652a1e53f0ae/edit"
+              },
+              "events": {
+                "href": "https://status.example.com/api/v1/events?eventable=5c993b278fbb652a1e53f0ae"
+              },
+              "events:by-context": {
+                "href": "https://status.example.com/api/v1/events?context.component=5c993b278fbb652a1e53f0ae"
+              },
+              "timeline": {
+                "href": "https://status.example.com/api/v1/timeline?component=5c993b278fbb652a1e53f0ae"
+              },
+              "watchdog": {
+                "href": "https://status.example.com/api/v1/watchdogs/5c993b278fbb652a1e53f0ac"
+              }
+            }
+          },
+          {
+            "id": "5c993b228fbb652a1e53f0a6",
+            "type": "component",
+            "created_at": 1553546018,
+            "updated_at": 1656012511,
+            "name": "m3",
+            "description": null,
+            "description_html": "",
+            "exclude_from_global_history": false,
+            "exclude_from_global_uptime": false,
+            "last_event_at": 1656012511,
+            "group": "5ad531158fbb652fe9df1c21",
+            "watchdog": "5c993b228fbb652a1e53f0a4",
+            "percent_uptime": 100,
+            "_links": {
+              "self": {
+                "href": "https://status.example.com/api/v1/components/5c993b228fbb652a1e53f0a6"
+              },
+              "self-view": {
+                "href": "https://status.example.com/components/5c993b228fbb652a1e53f0a6"
+              },
+              "update-form": {
+                "href": "https://status.example.com/dashboard/components/5c993b228fbb652a1e53f0a6/edit"
+              },
+              "events": {
+                "href": "https://status.example.com/api/v1/events?eventable=5c993b228fbb652a1e53f0a6"
+              },
+              "events:by-context": {
+                "href": "https://status.example.com/api/v1/events?context.component=5c993b228fbb652a1e53f0a6"
+              },
+              "timeline": {
+                "href": "https://status.example.com/api/v1/timeline?component=5c993b228fbb652a1e53f0a6"
+              },
+              "watchdog": {
+                "href": "https://status.example.com/api/v1/watchdogs/5c993b228fbb652a1e53f0a4"
+              }
+            }
+          }
+        ],
+        "has_more": false,
+        "_links": {
+          "self": {
+            "href": "https://status.example.com/api/v1/components?limit=10&timeline_item=6196c91b-b9e7-67be-87fb-ca7b2bf16afb"
+          },
+          "create-form": {
+            "href": "https://status.example.com/dashboard/components/new"
+          },
+          "prev": {
+            "href": "https://status.example.com/api/v1/components?ending_before=5c993b278fbb652a1e53f0ae&limit=10&timeline_item=6196c91b-b9e7-67be-87fb-ca7b2bf16afb"
+          },
+          "beginning": {
+            "href": "https://status.example.com/api/v1/components?limit=10&timeline_item=6196c91b-b9e7-67be-87fb-ca7b2bf16afb"
+          }
+        }
+      },
+      "statuses": {
+        "type": "paged_array",
+        "total_count": 0,
+        "data": [],
+        "has_more": false,
+        "_links": {
+          "self": {
+            "href": "https://status.example.com/api/v1/statuses?limit=10&timeline_item=6196c91b-b9e7-67be-87fb-ca7b2bf16afb"
+          },
+          "prev": {
+            "href": "https://status.example.com/api/v1/statuses?limit=10&timeline_item=6196c91b-b9e7-67be-87fb-ca7b2bf16afb"
+          },
+          "beginning": {
+            "href": "https://status.example.com/api/v1/statuses?limit=10&timeline_item=6196c91b-b9e7-67be-87fb-ca7b2bf16afb"
+          }
+        }
+      },
+      "issue": "6196c91b8fbb659ed89d053e",
+      "began_at": 1637271835,
+      "ended_at": 1645557238,
+      "title": "Unplanned maintenance",
+      "duration": 8285403,
+      "source": "global",
+      "outage_durations": {
+        "5c993b228fbb652a1e53f0a6": 0,
+        "5c993b278fbb652a1e53f0ae": 0
+      },
+      "outage_duration": 0,
+      "excluded": false,
+      "effective": true,
+      "_links": {
+        "self": {
+          "href": "https://status.example.com/api/v1/timeline/6196c91b-b9e7-67be-87fb-ca7b2bf16afb"
+        },
+        "components": {
+          "href": "https://status.example.com/api/v1/components?timeline_item=6196c91b-b9e7-67be-87fb-ca7b2bf16afb"
+        },
+        "statuses": {
+          "href": "https://status.example.com/api/v1/statuses?timeline_item=6196c91b-b9e7-67be-87fb-ca7b2bf16afb"
+        },
+        "issue": {
+          "href": "https://status.example.com/api/v1/issues/6196c91b8fbb659ed89d053e"
+        }
+      }
+    },
+    {
+      "id": "61846bb8-bbfc-9171-3d25-722d0d394415",
+      "type": "timeline_item",
+      "components": {
+        "type": "paged_array",
+        "total_count": 2,
+        "data": [
+          {
+            "id": "5c993b198fbb652a1e53f092",
+            "type": "component",
+            "created_at": 1553546009,
+            "updated_at": 1656012483,
+            "name": "m1",
+            "description": null,
+            "description_html": "",
+            "exclude_from_global_history": false,
+            "exclude_from_global_uptime": false,
+            "last_event_at": 1656012483,
+            "group": "5ad531158fbb652fe9df1c21",
+            "watchdog": "5c993b198fbb652a1e53f090",
+            "percent_uptime": 100,
+            "_links": {
+              "self": {
+                "href": "https://status.example.com/api/v1/components/5c993b198fbb652a1e53f092"
+              },
+              "self-view": {
+                "href": "https://status.example.com/components/5c993b198fbb652a1e53f092"
+              },
+              "update-form": {
+                "href": "https://status.example.com/dashboard/components/5c993b198fbb652a1e53f092/edit"
+              },
+              "events": {
+                "href": "https://status.example.com/api/v1/events?eventable=5c993b198fbb652a1e53f092"
+              },
+              "events:by-context": {
+                "href": "https://status.example.com/api/v1/events?context.component=5c993b198fbb652a1e53f092"
+              },
+              "timeline": {
+                "href": "https://status.example.com/api/v1/timeline?component=5c993b198fbb652a1e53f092"
+              },
+              "watchdog": {
+                "href": "https://status.example.com/api/v1/watchdogs/5c993b198fbb652a1e53f090"
+              }
+            }
+          },
+          {
+            "id": "5c9583858fbb6575d664cf96",
+            "type": "component",
+            "created_at": 1553302405,
+            "updated_at": 1656012499,
+            "name": "quantico",
+            "description": null,
+            "description_html": "",
+            "exclude_from_global_history": false,
+            "exclude_from_global_uptime": false,
+            "last_event_at": 1656012499,
+            "group": "5d6740c88fbb658345356144",
+            "watchdog": "5c9583858fbb6575d664cf94",
+            "percent_uptime": 100,
+            "_links": {
+              "self": {
+                "href": "https://status.example.com/api/v1/components/5c9583858fbb6575d664cf96"
+              },
+              "self-view": {
+                "href": "https://status.example.com/components/5c9583858fbb6575d664cf96"
+              },
+              "update-form": {
+                "href": "https://status.example.com/dashboard/components/5c9583858fbb6575d664cf96/edit"
+              },
+              "events": {
+                "href": "https://status.example.com/api/v1/events?eventable=5c9583858fbb6575d664cf96"
+              },
+              "events:by-context": {
+                "href": "https://status.example.com/api/v1/events?context.component=5c9583858fbb6575d664cf96"
+              },
+              "timeline": {
+                "href": "https://status.example.com/api/v1/timeline?component=5c9583858fbb6575d664cf96"
+              },
+              "watchdog": {
+                "href": "https://status.example.com/api/v1/watchdogs/5c9583858fbb6575d664cf94"
+              }
+            }
+          }
+        ],
+        "has_more": false,
+        "_links": {
+          "self": {
+            "href": "https://status.example.com/api/v1/components?limit=10&timeline_item=61846bb8-bbfc-9171-3d25-722d0d394415"
+          },
+          "create-form": {
+            "href": "https://status.example.com/dashboard/components/new"
+          },
+          "prev": {
+            "href": "https://status.example.com/api/v1/components?ending_before=5c993b198fbb652a1e53f092&limit=10&timeline_item=61846bb8-bbfc-9171-3d25-722d0d394415"
+          },
+          "beginning": {
+            "href": "https://status.example.com/api/v1/components?limit=10&timeline_item=61846bb8-bbfc-9171-3d25-722d0d394415"
+          }
+        }
+      },
+      "statuses": {
+        "type": "paged_array",
+        "total_count": 0,
+        "data": [],
+        "has_more": false,
+        "_links": {
+          "self": {
+            "href": "https://status.example.com/api/v1/statuses?limit=10&timeline_item=61846bb8-bbfc-9171-3d25-722d0d394415"
+          },
+          "prev": {
+            "href": "https://status.example.com/api/v1/statuses?limit=10&timeline_item=61846bb8-bbfc-9171-3d25-722d0d394415"
+          },
+          "beginning": {
+            "href": "https://status.example.com/api/v1/statuses?limit=10&timeline_item=61846bb8-bbfc-9171-3d25-722d0d394415"
+          }
+        }
+      },
+      "issue": "61846bb88fbb656a71e9f9e1",
+      "began_at": 1636068280,
+      "ended_at": 1636068280,
+      "title": "Increased Platform Errors",
+      "duration": 0,
+      "source": "global",
+      "outage_durations": {
+        "5c993b198fbb652a1e53f092": 0,
+        "5c9583858fbb6575d664cf96": 0
+      },
+      "outage_duration": 0,
+      "excluded": false,
+      "effective": false,
+      "_links": {
+        "self": {
+          "href": "https://status.example.com/api/v1/timeline/61846bb8-bbfc-9171-3d25-722d0d394415"
+        },
+        "components": {
+          "href": "https://status.example.com/api/v1/components?timeline_item=61846bb8-bbfc-9171-3d25-722d0d394415"
+        },
+        "statuses": {
+          "href": "https://status.example.com/api/v1/statuses?timeline_item=61846bb8-bbfc-9171-3d25-722d0d394415"
+        },
+        "issue": {
+          "href": "https://status.example.com/api/v1/issues/61846bb88fbb656a71e9f9e1"
+        }
+      }
+    },
+    {
+      "id": "60933034-2d9f-6e2b-5fb2-2ba026504cfa",
+      "type": "timeline_item",
+      "components": {
+        "type": "paged_array",
+        "total_count": 1,
+        "data": [
+          {
+            "id": "60932fa68fbb65f1c3be61e3",
+            "type": "component",
+            "created_at": 1620258726,
+            "updated_at": 1658441924,
+            "name": "m28",
+            "description": null,
+            "description_html": "",
+            "exclude_from_global_history": false,
+            "exclude_from_global_uptime": false,
+            "last_event_at": 1658441924,
+            "group": "5ad531158fbb652fe9df1c21",
+            "watchdog": "60932fa68fbb65f1c3be61df",
+            "percent_uptime": 100,
+            "_links": {
+              "self": {
+                "href": "https://status.example.com/api/v1/components/60932fa68fbb65f1c3be61e3"
+              },
+              "self-view": {
+                "href": "https://status.example.com/components/60932fa68fbb65f1c3be61e3"
+              },
+              "update-form": {
+                "href": "https://status.example.com/dashboard/components/60932fa68fbb65f1c3be61e3/edit"
+              },
+              "events": {
+                "href": "https://status.example.com/api/v1/events?eventable=60932fa68fbb65f1c3be61e3"
+              },
+              "events:by-context": {
+                "href": "https://status.example.com/api/v1/events?context.component=60932fa68fbb65f1c3be61e3"
+              },
+              "timeline": {
+                "href": "https://status.example.com/api/v1/timeline?component=60932fa68fbb65f1c3be61e3"
+              },
+              "watchdog": {
+                "href": "https://status.example.com/api/v1/watchdogs/60932fa68fbb65f1c3be61df"
+              }
+            }
+          }
+        ],
+        "has_more": false,
+        "_links": {
+          "self": {
+            "href": "https://status.example.com/api/v1/components?limit=10&timeline_item=60933034-2d9f-6e2b-5fb2-2ba026504cfa"
+          },
+          "create-form": {
+            "href": "https://status.example.com/dashboard/components/new"
+          },
+          "prev": {
+            "href": "https://status.example.com/api/v1/components?ending_before=60932fa68fbb65f1c3be61e3&limit=10&timeline_item=60933034-2d9f-6e2b-5fb2-2ba026504cfa"
+          },
+          "beginning": {
+            "href": "https://status.example.com/api/v1/components?limit=10&timeline_item=60933034-2d9f-6e2b-5fb2-2ba026504cfa"
+          }
+        }
+      },
+      "statuses": {
+        "type": "paged_array",
+        "total_count": 0,
+        "data": [],
+        "has_more": false,
+        "_links": {
+          "self": {
+            "href": "https://status.example.com/api/v1/statuses?limit=10&timeline_item=60933034-2d9f-6e2b-5fb2-2ba026504cfa"
+          },
+          "prev": {
+            "href": "https://status.example.com/api/v1/statuses?limit=10&timeline_item=60933034-2d9f-6e2b-5fb2-2ba026504cfa"
+          },
+          "beginning": {
+            "href": "https://status.example.com/api/v1/statuses?limit=10&timeline_item=60933034-2d9f-6e2b-5fb2-2ba026504cfa"
+          }
+        }
+      },
+      "issue": "609330348fbb65f1c3be61e9",
+      "began_at": 1620258868,
+      "ended_at": 1620258890,
+      "title": "Service Degradation",
+      "duration": 22,
+      "source": "global",
+      "outage_durations": {
+        "60932fa68fbb65f1c3be61e3": 0
+      },
+      "outage_duration": 0,
+      "excluded": false,
+      "effective": true,
+      "_links": {
+        "self": {
+          "href": "https://status.example.com/api/v1/timeline/60933034-2d9f-6e2b-5fb2-2ba026504cfa"
+        },
+        "components": {
+          "href": "https://status.example.com/api/v1/components?timeline_item=60933034-2d9f-6e2b-5fb2-2ba026504cfa"
+        },
+        "statuses": {
+          "href": "https://status.example.com/api/v1/statuses?timeline_item=60933034-2d9f-6e2b-5fb2-2ba026504cfa"
+        },
+        "issue": {
+          "href": "https://status.example.com/api/v1/issues/609330348fbb65f1c3be61e9"
+        }
+      }
+    },
+    {
+      "id": "60932f6c-e5cd-1bdd-539a-a7ed22425d5c",
+      "type": "timeline_item",
+      "components": {
+        "type": "paged_array",
+        "total_count": 2,
+        "data": [
+          {
+            "id": "5c993b1f8fbb652a1e53f09c",
+            "type": "component",
+            "created_at": 1553546015,
+            "updated_at": 1656012486,
+            "name": "m2",
+            "description": "yup",
+            "description_html": "<p>yup</p>\n",
+            "exclude_from_global_history": false,
+            "exclude_from_global_uptime": false,
+            "last_event_at": 1656012486,
+            "group": "5ad531158fbb652fe9df1c21",
+            "watchdog": "5c993b1f8fbb652a1e53f09a",
+            "percent_uptime": 100,
+            "_links": {
+              "self": {
+                "href": "https://status.example.com/api/v1/components/5c993b1f8fbb652a1e53f09c"
+              },
+              "self-view": {
+                "href": "https://status.example.com/components/5c993b1f8fbb652a1e53f09c"
+              },
+              "update-form": {
+                "href": "https://status.example.com/dashboard/components/5c993b1f8fbb652a1e53f09c/edit"
+              },
+              "events": {
+                "href": "https://status.example.com/api/v1/events?eventable=5c993b1f8fbb652a1e53f09c"
+              },
+              "events:by-context": {
+                "href": "https://status.example.com/api/v1/events?context.component=5c993b1f8fbb652a1e53f09c"
+              },
+              "timeline": {
+                "href": "https://status.example.com/api/v1/timeline?component=5c993b1f8fbb652a1e53f09c"
+              },
+              "watchdog": {
+                "href": "https://status.example.com/api/v1/watchdogs/5c993b1f8fbb652a1e53f09a"
+              }
+            }
+          },
+          {
+            "id": "5ad566898fbb654577715322",
+            "type": "component",
+            "created_at": 1523934857,
+            "updated_at": 1656012476,
+            "name": "syno",
+            "description": null,
+            "description_html": "",
+            "exclude_from_global_history": false,
+            "exclude_from_global_uptime": false,
+            "last_event_at": 1656012476,
+            "group": "5ad531158fbb652fe9df1c21",
+            "watchdog": "5ad566898fbb654577715320",
+            "percent_uptime": 100,
+            "_links": {
+              "self": {
+                "href": "https://status.example.com/api/v1/components/5ad566898fbb654577715322"
+              },
+              "self-view": {
+                "href": "https://status.example.com/components/5ad566898fbb654577715322"
+              },
+              "update-form": {
+                "href": "https://status.example.com/dashboard/components/5ad566898fbb654577715322/edit"
+              },
+              "events": {
+                "href": "https://status.example.com/api/v1/events?eventable=5ad566898fbb654577715322"
+              },
+              "events:by-context": {
+                "href": "https://status.example.com/api/v1/events?context.component=5ad566898fbb654577715322"
+              },
+              "timeline": {
+                "href": "https://status.example.com/api/v1/timeline?component=5ad566898fbb654577715322"
+              },
+              "watchdog": {
+                "href": "https://status.example.com/api/v1/watchdogs/5ad566898fbb654577715320"
+              }
+            }
+          }
+        ],
+        "has_more": false,
+        "_links": {
+          "self": {
+            "href": "https://status.example.com/api/v1/components?limit=10&timeline_item=60932f6c-e5cd-1bdd-539a-a7ed22425d5c"
+          },
+          "create-form": {
+            "href": "https://status.example.com/dashboard/components/new"
+          },
+          "prev": {
+            "href": "https://status.example.com/api/v1/components?ending_before=5c993b1f8fbb652a1e53f09c&limit=10&timeline_item=60932f6c-e5cd-1bdd-539a-a7ed22425d5c"
+          },
+          "beginning": {
+            "href": "https://status.example.com/api/v1/components?limit=10&timeline_item=60932f6c-e5cd-1bdd-539a-a7ed22425d5c"
+          }
+        }
+      },
+      "statuses": {
+        "type": "paged_array",
+        "total_count": 0,
+        "data": [],
+        "has_more": false,
+        "_links": {
+          "self": {
+            "href": "https://status.example.com/api/v1/statuses?limit=10&timeline_item=60932f6c-e5cd-1bdd-539a-a7ed22425d5c"
+          },
+          "prev": {
+            "href": "https://status.example.com/api/v1/statuses?limit=10&timeline_item=60932f6c-e5cd-1bdd-539a-a7ed22425d5c"
+          },
+          "beginning": {
+            "href": "https://status.example.com/api/v1/statuses?limit=10&timeline_item=60932f6c-e5cd-1bdd-539a-a7ed22425d5c"
+          }
+        }
+      },
+      "issue": "60932f6c8fbb65f1c3be61cc",
+      "began_at": 1620258668,
+      "ended_at": 1620258682,
+      "title": "Emergency Maintenance",
+      "duration": 14,
+      "source": "global",
+      "outage_durations": {
+        "5ad566898fbb654577715322": 0,
+        "5c993b1f8fbb652a1e53f09c": 0
+      },
+      "outage_duration": 0,
+      "excluded": false,
+      "effective": true,
+      "_links": {
+        "self": {
+          "href": "https://status.example.com/api/v1/timeline/60932f6c-e5cd-1bdd-539a-a7ed22425d5c"
+        },
+        "components": {
+          "href": "https://status.example.com/api/v1/components?timeline_item=60932f6c-e5cd-1bdd-539a-a7ed22425d5c"
+        },
+        "statuses": {
+          "href": "https://status.example.com/api/v1/statuses?timeline_item=60932f6c-e5cd-1bdd-539a-a7ed22425d5c"
+        },
+        "issue": {
+          "href": "https://status.example.com/api/v1/issues/60932f6c8fbb65f1c3be61cc"
+        }
+      }
+    },
+    {
+      "id": "60932426-dc8c-cec7-aeb1-d7653842a850",
+      "type": "timeline_item",
+      "components": {
+        "type": "paged_array",
+        "total_count": 2,
+        "data": [
+          {
+            "id": "5c993b1f8fbb652a1e53f09c",
+            "type": "component",
+            "created_at": 1553546015,
+            "updated_at": 1656012486,
+            "name": "m2",
+            "description": "yup",
+            "description_html": "<p>yup</p>\n",
+            "exclude_from_global_history": false,
+            "exclude_from_global_uptime": false,
+            "last_event_at": 1656012486,
+            "group": "5ad531158fbb652fe9df1c21",
+            "watchdog": "5c993b1f8fbb652a1e53f09a",
+            "percent_uptime": 100,
+            "_links": {
+              "self": {
+                "href": "https://status.example.com/api/v1/components/5c993b1f8fbb652a1e53f09c"
+              },
+              "self-view": {
+                "href": "https://status.example.com/components/5c993b1f8fbb652a1e53f09c"
+              },
+              "update-form": {
+                "href": "https://status.example.com/dashboard/components/5c993b1f8fbb652a1e53f09c/edit"
+              },
+              "events": {
+                "href": "https://status.example.com/api/v1/events?eventable=5c993b1f8fbb652a1e53f09c"
+              },
+              "events:by-context": {
+                "href": "https://status.example.com/api/v1/events?context.component=5c993b1f8fbb652a1e53f09c"
+              },
+              "timeline": {
+                "href": "https://status.example.com/api/v1/timeline?component=5c993b1f8fbb652a1e53f09c"
+              },
+              "watchdog": {
+                "href": "https://status.example.com/api/v1/watchdogs/5c993b1f8fbb652a1e53f09a"
+              }
+            }
+          },
+          {
+            "id": "5ad566898fbb654577715322",
+            "type": "component",
+            "created_at": 1523934857,
+            "updated_at": 1656012476,
+            "name": "syno",
+            "description": null,
+            "description_html": "",
+            "exclude_from_global_history": false,
+            "exclude_from_global_uptime": false,
+            "last_event_at": 1656012476,
+            "group": "5ad531158fbb652fe9df1c21",
+            "watchdog": "5ad566898fbb654577715320",
+            "percent_uptime": 100,
+            "_links": {
+              "self": {
+                "href": "https://status.example.com/api/v1/components/5ad566898fbb654577715322"
+              },
+              "self-view": {
+                "href": "https://status.example.com/components/5ad566898fbb654577715322"
+              },
+              "update-form": {
+                "href": "https://status.example.com/dashboard/components/5ad566898fbb654577715322/edit"
+              },
+              "events": {
+                "href": "https://status.example.com/api/v1/events?eventable=5ad566898fbb654577715322"
+              },
+              "events:by-context": {
+                "href": "https://status.example.com/api/v1/events?context.component=5ad566898fbb654577715322"
+              },
+              "timeline": {
+                "href": "https://status.example.com/api/v1/timeline?component=5ad566898fbb654577715322"
+              },
+              "watchdog": {
+                "href": "https://status.example.com/api/v1/watchdogs/5ad566898fbb654577715320"
+              }
+            }
+          }
+        ],
+        "has_more": false,
+        "_links": {
+          "self": {
+            "href": "https://status.example.com/api/v1/components?limit=10&timeline_item=60932426-dc8c-cec7-aeb1-d7653842a850"
+          },
+          "create-form": {
+            "href": "https://status.example.com/dashboard/components/new"
+          },
+          "prev": {
+            "href": "https://status.example.com/api/v1/components?ending_before=5c993b1f8fbb652a1e53f09c&limit=10&timeline_item=60932426-dc8c-cec7-aeb1-d7653842a850"
+          },
+          "beginning": {
+            "href": "https://status.example.com/api/v1/components?limit=10&timeline_item=60932426-dc8c-cec7-aeb1-d7653842a850"
+          }
+        }
+      },
+      "statuses": {
+        "type": "paged_array",
+        "total_count": 0,
+        "data": [],
+        "has_more": false,
+        "_links": {
+          "self": {
+            "href": "https://status.example.com/api/v1/statuses?limit=10&timeline_item=60932426-dc8c-cec7-aeb1-d7653842a850"
+          },
+          "prev": {
+            "href": "https://status.example.com/api/v1/statuses?limit=10&timeline_item=60932426-dc8c-cec7-aeb1-d7653842a850"
+          },
+          "beginning": {
+            "href": "https://status.example.com/api/v1/statuses?limit=10&timeline_item=60932426-dc8c-cec7-aeb1-d7653842a850"
+          }
+        }
+      },
+      "issue": "609324268fbb653a9850247b",
+      "began_at": 1620255782,
+      "ended_at": 1620255813,
+      "title": "Elevated Traffic Detected",
+      "duration": 31,
+      "source": "global",
+      "outage_durations": {
+        "5ad566898fbb654577715322": 0,
+        "5c993b1f8fbb652a1e53f09c": 0
+      },
+      "outage_duration": 0,
+      "excluded": false,
+      "effective": true,
+      "_links": {
+        "self": {
+          "href": "https://status.example.com/api/v1/timeline/60932426-dc8c-cec7-aeb1-d7653842a850"
+        },
+        "components": {
+          "href": "https://status.example.com/api/v1/components?timeline_item=60932426-dc8c-cec7-aeb1-d7653842a850"
+        },
+        "statuses": {
+          "href": "https://status.example.com/api/v1/statuses?timeline_item=60932426-dc8c-cec7-aeb1-d7653842a850"
+        },
+        "issue": {
+          "href": "https://status.example.com/api/v1/issues/609324268fbb653a9850247b"
+        }
+      }
+    }
+  ],
+  "has_more": true,
+  "_links": {
+    "self": {
+      "href": "https://status.example.com/api/v1/timeline?limit=10"
+    },
+    "next": {
+      "href": "https://status.example.com/api/v1/timeline?limit=10&starting_after=60932426-dc8c-cec7-aeb1-d7653842a850"
+    },
+    "prev": {
+      "href": "https://status.example.com/api/v1/timeline?ending_before=62b10ec8-4732-b764-59fd-97aa24784012&limit=10"
+    },
+    "beginning": {
+      "href": "https://status.example.com/api/v1/timeline?limit=10"
+    }
+  }
+}

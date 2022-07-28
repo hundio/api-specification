@@ -1,0 +1,14 @@
+#%RAML 1.0 DataType
+
+uses:
+  prelude: /libraries/prelude.raml
+  core: /libraries/core.raml
+
+(prelude.common):
+displayName: Feed
+description: |
+  An Atom 1.0 Feed notifier.
+type: core.Channel
+properties:
+  type:
+    enum: [feed]

@@ -20,8 +20,14 @@ uses:
   group: /libraries/group.raml
   component: /libraries/component.raml
   component-expansionary: /libraries/component/expansionary.raml
+  event: /libraries/event.raml
   issue: /libraries/issue.raml
   metric_provider: /libraries/metric_provider.raml
+  notifier: /libraries/notifier.raml
+  reason-expansionary: /libraries/reason/expansionary.raml
+  status: /libraries/status.raml
+  subscription: /libraries/subscription.raml
+  timeline: /libraries/timeline.raml
   update: /libraries/update.raml
   update-expansionary: /libraries/update/expansionary.raml
   watchdog: /libraries/watchdog.raml
@@ -30,7 +36,8 @@ securedBy: [basic, bearer]
 securitySchemes:
   basic:
     description: |
-      This API supports HTTP Basic Authentication, with the API key given as the username. No password should be given.
+      This API supports HTTP Basic Authentication, with the API key given as the
+      username. No password should be given.
     type: Basic Authentication
   bearer:
     description: |
@@ -52,6 +59,10 @@ securitySchemes:
     x-displayName: Components
   - name: watchdog
     x-displayName: Watchdogs
+  - name: status
+    x-displayName: Statuses
+  - name: reason
+    x-displayName: Reasons
   - name: metric_provider
     x-displayName: MetricProviders
   - name: group
@@ -60,12 +71,39 @@ securitySchemes:
     x-displayName: Issues
   - name: update
     x-displayName: Issue Updates
+  - name: notifier
+    x-displayName: Notifiers
+  - name: subscription
+    x-displayName: Subscriptions
+  - name: event
+    description: |
+      Events are immutable objects representing various things that have happened
+      on your status page, such as Issue creation/update/resolution, new Watchdog
+      Statuses, object lifecycles, and more.
+    x-displayName: Events
+  - name: timeline
+    description: |
+      The Timeline is a global/Component-wise history of Issues and Statuses
+      across your Status Page. Any Timeline is a PagedArray of TimelineItems in
+      reverse-chronological order (i.e. descending). A TimelineItem can
+      represent either a Status or Issue, or the interactions between them.
+
+      A Timeline can be pulled from this API for the entire Status Page (the
+      default behavior), or one or more Components (or Group of Components).
+
+      For more information on the mechanics of the Timeline, please read [this
+      knowledgebase article](https://hund.io/help/documentation/the-timeline).
+    x-displayName: Timeline
 
 (core.tagGroups):
   - name: Monitoring
-    tags: [component, group, metric_provider, watchdog]
+    tags: [component, group, metric_provider, watchdog, status, reason]
   - name: Incident Reporting
     tags: [issue, update]
+  - name: Communication
+    tags: [notifier, subscription]
+  - name: History
+    tags: [event, timeline]
 
 /:
   get:
@@ -76,7 +114,7 @@ securitySchemes:
     responses:
       200:
         description: |
-          Succesfully retrieved directory.
+          Successfully retrieved directory.
         body:
           application/hal+json:
             type: core.HAL/Linkable
@@ -88,6 +126,12 @@ securitySchemes:
                   groups: core.HAL/Link
                   metric_providers: core.HAL/Link
                   issues: core.HAL/Link
+                  notifiers: core.HAL/Link
+                  subscriptions: core.HAL/Link
+                  events: core.HAL/Link
+                  statuses: core.HAL/Link
+                  reasons: core.HAL/Link
+                  timeline: core.HAL/Link
 
 /components:
   (core.tags): [component]
@@ -106,6 +150,18 @@ securitySchemes:
         description: |
           Return the Components for the provided Group ObjectId.
         type: core.ObjectId
+      issue?:
+        description: |
+          Return the Components for the provided Issue ObjectId.
+        type: core.ObjectId
+      event?:
+        description: |
+          Return the Components of the provided Event's `context.component_ids`.
+        type: core.ObjectId
+      timeline_item?:
+        description: |
+          Return the Components for the provided TimelineItem UUID.
+        type: core.UUID
   post:
     responses:
       201:
@@ -172,7 +228,7 @@ securitySchemes:
         itemType: watchdog.Watchdog
         paramsType: watchdog.Watchdog/Form/Convert
         successDescription: |
-          Succesfully converted watchdog service.
+          Successfully converted watchdog service.
         notFoundDescription: |
           Watchdog not found.
         requestExample: !include /examples/watchdogs/convert/putRequest.json
@@ -195,6 +251,135 @@ securitySchemes:
         403:
           description: |
             Not authorized to write Watchdogs.
+
+/statuses:
+  (core.tags): [status]
+  (specs.factoryStrategy): create
+  type:
+    core.read-collection:
+      getResponseExample: !include /examples/statuses/collection.json
+      itemType: status.Status
+  get:
+    queryParameters:
+      watchdog?:
+        description: |
+          Return the Statuses for the provided Watchdog ObjectId.
+        type: core.ObjectId
+      timeline_item?:
+        description: |
+          Return the Statuses for the provided TimelineItem UUID.
+        type: core.UUID
+  /{status_id}:
+    (core.tags): [status]
+    (specs.factoryStrategy): create
+    type:
+      core.read-collection-item:
+        errorNotFoundExample: !include /examples/statuses/error/notFound.json
+        getResponseExample: !include /examples/statuses/collection-item.json
+        idPrefix: status
+        itemType: status.Status
+    /correct:
+      (core.tags): [status]
+      (specs.factoryStrategy): create
+      type:
+        core.action:
+          displayName: Correct a Status
+          description: |
+            Revises the state of the given sub-operational Status. Often helpful
+            for marking previous downtime streaks as Operational again, in case
+            the automated downtime should be considered incorrect.
+
+            A sub-operational Status can be changed to any given state. If the
+            Status borders another Status object with the same state, it will be
+            merged accordingly. This operation *will* mutate at least one Status,
+            if not the given one. This operation *may* result in the deletion of
+            one or more Status objects (including the given one), depending on
+            the state of bordering Status objects.
+          idPrefix: status
+          itemType: status.Status
+          paramsType: status.Status/Form/Correct
+          successDescription: |
+            Successfully corrected Status.
+          notFoundDescription: |
+            Status not found.
+          requestExample: !include /examples/statuses/collection-item/correct/request.json
+          responseExample: !include /examples/statuses/collection-item/correct/response.json
+          errorNotFoundExample: !include /examples/statuses/error/notFound.json
+          errorNotAuthorizedExample: !include /examples/statuses/error/notAuthorized.json
+      put:
+        is:
+        - core.bad-request-failable:
+            description: |
+              Status is not sub-operational.
+            errorBadRequestExample: !include /examples/statuses/error/notSubOperational.json
+        responses:
+          200:
+            (specs.bindIds):
+              status: auto:outage:ended
+            (specs.requestBody): '{ state: 1 }'
+          400:
+            (specs.bindIds):
+              status: auto:operational
+            (specs.requestBody): '{ state: 0 }'
+          403:
+            description: |
+              Not authorized to write Statuses.
+
+/reasons:
+  (core.tags): [reason]
+  (specs.factoryStrategy): create
+  type:
+    core.read-collection:
+      getResponseExample: !include /examples/reasons/collection.json
+      itemType: reason-expansionary.Reason-Expansionary
+  get:
+    is:
+    - core.not-authorized-failable:
+        permissionLevel: read
+        errorNotAuthorizedExample: !include /examples/reasons/error/notAuthorized.json
+    queryParameters:
+      fingerprint?:
+        description: |
+          Return Reasons whose `fingerprint` matches the given one.
+        type: string
+      subject?:
+        description: |
+          Return Reasons whose `subject` matches the given one.
+        type: string
+      description?:
+        description: |
+          Return Reasons whose `description` matches the given one.
+        type: string
+      status?:
+        description: |
+          Return the Reasons for the provided Status ObjectId.
+        type: core.ObjectId
+      watchdog?:
+        description: |
+          Return the Reasons for the provided Watchdog ObjectId.
+        type: core.ObjectId
+      region?:
+        description: |
+          Return Reasons whose `region` matches the given one.
+        type: string
+  /{reason_id}:
+    (core.tags): [reason]
+    (specs.factoryStrategy): create
+    type:
+      core.read-collection-item:
+        errorNotFoundExample: !include /examples/reasons/error/notFound.json
+        getResponseExample: !include /examples/reasons/collection-item.json
+        idPrefix: reason
+        itemType: reason-expansionary.Reason-Expansionary
+    get:
+      is:
+      - core.not-authorized-failable:
+          permissionLevel: read
+          errorNotAuthorizedExample: !include /examples/reasons/error/notAuthorized.json
+      responses:
+        403:
+          (specs.bindIds):
+            reason: auto
 
 /groups:
   (core.tags): [group]
@@ -247,7 +432,7 @@ securitySchemes:
           itemType: group.Group
           paramsType: core.ObjectId[]
           successDescription: |
-            Succesfully reordered group components.
+            Successfully reordered group components.
           notFoundDescription: |
             Group not found.
           requestExample: !include /examples/groups/collection-item/reorder/putRequest.json
@@ -404,7 +589,7 @@ securitySchemes:
       description: |
         Revise an Issue by ObjectId.
 
-        **Note:** this endpoint does not create Isuse Updates, but merely revises
+        **Note:** this endpoint does not create Issue Updates, but merely revises
         the properties of the original Issue.
       responses:
         400:
@@ -422,7 +607,7 @@ securitySchemes:
           itemType: issue.Issue
           paramsType: issue.Issue/Form/Cancel
           successDescription: |
-            Succesfully cancelled issue.
+            Successfully cancelled issue.
           notFoundDescription: |
             Issue not found.
           requestExample: !include /examples/issues/collection-item/cancel/request.json
@@ -520,7 +705,7 @@ securitySchemes:
           responses:
             200:
               description: |
-                Succesfully revised Update.
+                Successfully revised Update.
             400:
               (specs.requestBody): '{ body: "" }'
               description: |
@@ -533,3 +718,391 @@ securitySchemes:
             404:
               (specs.bindIds):
                 issue: auto
+
+/notifiers:
+  (core.tags): [notifier]
+  type:
+    core.collection:
+      itemType: notifier.Notifier
+      postParamsType: notifier.Notifier/Form/Create
+      getResponseExample: !include /examples/notifiers/collection.json
+      postRequestExample: !include /examples/notifiers/collection/postRequest.json
+      postResponseExample: !include /examples/notifiers/collection/postResponse.json
+      postErrorExample: !include /examples/notifiers/error/validation.json
+      errorNotAuthorizedExample: !include /examples/notifiers/error/notAuthorized.json
+  get:
+    is:
+    - core.not-authorized-failable:
+        permissionLevel: read
+        errorNotAuthorizedExample: !include /examples/notifiers/error/notAuthorized.json
+    queryParameters:
+      enabled?:
+        description: |
+          When true, returns only Notifiers that are currently enabled. When false,
+          returns only Notifiers that are currently disabled. When this parameter
+          is not given, all Notifiers are returned.
+        type: boolean
+    responses:
+      200:
+        (specs.createModels):
+          notifier:
+            count: 3
+            traits: real_world
+  post:
+    responses:
+      201:
+        (specs.requestBody): "auto:notifier:real_world"
+        (specs.exhaustiveRequestBodies):
+          source: channel
+          factory: notifier
+          vcr: [sns, twitter]
+      400:
+        (specs.requestBody): '{ channel: { type: "email" } }'
+  /{notifier_id}:
+    (core.tags): [notifier]
+    type:
+      core.collection-item:
+        idPrefix: notifier
+        itemType: notifier.Notifier
+        putParamsType: notifier.Notifier/Form/Update
+        getResponseExample: !include /examples/notifiers/collection-item.json
+        putRequestExample: !include /examples/notifiers/collection-item/putRequest.json
+        putResponseExample: !include /examples/notifiers/collection-item/putResponse.json
+        errorNotFoundExample: !include /examples/notifiers/error/notFound.json
+        putErrorExample: !include /examples/notifiers/error/validation.json
+        errorNotAuthorizedExample: !include /examples/notifiers/error/notAuthorized.json
+    get:
+      is:
+      - core.not-authorized-failable:
+          permissionLevel: read
+          errorNotAuthorizedExample: !include /examples/notifiers/error/notAuthorized.json
+      responses:
+        200:
+          (specs.bindIds):
+            notifier: auto:real_world
+        403:
+          (specs.bindIds):
+            notifier: auto:real_world
+    put:
+      responses:
+        200:
+          (specs.bindIds):
+            notifier: auto:real_world
+        400:
+          (specs.requestBody): '{ listens_to_level: "invalid" }'
+    delete:
+      responses:
+        204:
+          (specs.bindIds):
+            notifier: auto:real_world
+    /test:
+      (core.tags): [notifier]
+      type:
+        core.simple-action:
+          displayName: Broadcast a Test Notification
+          description: |
+            Broadcasts a test notification to all Subscriptions (if `subscribable` is true),
+            that listen to event `notifier_tested`. This action always succeeds
+            regardless of the correctness of the Notifier's configuration.
+          idPrefix: notifier
+          itemType: notifier.Notifier
+          successDescription: |
+            Successfully emitted test event.
+          notFoundDescription: |
+            Notifier not found.
+          responseExample: !include /examples/notifiers/collection-item/test/response.json
+          errorNotFoundExample: !include /examples/notifiers/error/notFound.json
+          errorNotAuthorizedExample: !include /examples/notifiers/error/notAuthorized.json
+      put:
+        is:
+        - core.bad-request-failable:
+            description: |
+              Notifier is disabled.
+            errorBadRequestExample: !include /examples/notifiers/error/disabled.json
+        responses:
+          200:
+            (specs.bindIds):
+              notifier: auto:real_world
+          400:
+            (specs.requestBody): '{}'
+            (specs.bindIds):
+              notifier: auto:disabled
+          403:
+            description: |
+              Not authorized to write Notifiers.
+
+/subscriptions:
+  (core.tags): [subscription]
+  type:
+    core.collection:
+      itemType: subscription.Subscription
+      postParamsType: subscription.Subscription/Form/Create
+      getResponseExample: !include /examples/subscriptions/collection.json
+      postRequestExample: !include /examples/subscriptions/collection/postRequest.json
+      postResponseExample: !include /examples/subscriptions/collection/postResponse.json
+      postErrorExample: !include /examples/subscriptions/error/validation.json
+      errorNotAuthorizedExample: !include /examples/subscriptions/error/notAuthorized.json
+  get:
+    is:
+    - core.not-authorized-failable:
+        permissionLevel: read
+        errorNotAuthorizedExample: !include /examples/subscriptions/error/notAuthorized.json
+    queryParameters:
+      notifier?:
+        description: |
+          Return the Subscriptions for the provided Notifier ObjectId.
+        type: core.ObjectId
+    responses:
+      200:
+        (specs.createModels):
+          subscription:
+            count: 5
+            traits: real_world
+  post:
+    is:
+    - core.not-found-failable:
+        errorNotFoundExample: !include /examples/notifiers/error/notFound.json
+    responses:
+      201:
+        (specs.requestBody): "auto:subscription:real_world"
+        (specs.exhaustiveRequestBodies):
+          source: channel
+          factory: subscription
+          vcr: [sns]
+      400:
+        (specs.bindIds):
+          notifier: auto:email
+        (specs.requestBody): '{ channel: { type: "email" }, notifier: notifier_id }'
+      404:
+        (specs.requestBody): '{ channel: { type: "email" }, notifier: "nonexistent" }'
+        description: |
+          Notifier not found.
+  /{subscription_id}:
+    (core.tags): [subscription]
+    type:
+      core.collection-item:
+        idPrefix: subscription
+        itemType: subscription.Subscription
+        putParamsType: subscription.Subscription/Form/Update
+        getResponseExample: !include /examples/subscriptions/collection-item.json
+        putRequestExample: !include /examples/subscriptions/collection-item/putRequest.json
+        putResponseExample: !include /examples/subscriptions/collection-item/putResponse.json
+        errorNotFoundExample: !include /examples/subscriptions/error/notFound.json
+        putErrorExample: !include /examples/subscriptions/error/validation.json
+        errorNotAuthorizedExample: !include /examples/subscriptions/error/notAuthorized.json
+    get:
+      is:
+      - core.not-authorized-failable:
+          permissionLevel: read
+          errorNotAuthorizedExample: !include /examples/subscriptions/error/notAuthorized.json
+      responses:
+        200:
+          (specs.bindIds):
+            subscription: auto:real_world
+        403:
+          (specs.bindIds):
+            subscription: auto:real_world
+    put:
+      responses:
+        200:
+          (specs.bindIds):
+            subscription: auto:real_world
+        400:
+          (specs.bindIds):
+            subscription: auto:real_world
+          (specs.requestBody): '{ listens_to_level: "invalid" }'
+    delete:
+      responses:
+        204:
+          (specs.bindIds):
+            subscription: auto:real_world
+    /send_edit_link:
+      (core.tags): [subscription]
+      type:
+        core.simple-action:
+          displayName: Send a Notification Preferences Link
+          description: |
+            Sends a single notification containing a preferences link for the
+            specific Subscription, over the configured channel. The link can be
+            used by the recipient to alter their subscription preferences via
+            a human-friendly HTML form.
+
+            **Note:** This endpoint also serves as a convenient method for
+            testing an individual Subscription. Unlike the related public status
+            page form, this action may be called as often as required.
+          idPrefix: subscription
+          itemType: subscription.Subscription
+          successDescription: |
+            Successfully requested preference link.
+          notFoundDescription: |
+            Subscription not found.
+          responseExample: !include /examples/subscriptions/collection-item/send_edit_link/response.json
+          errorNotFoundExample: !include /examples/subscriptions/error/notFound.json
+          errorNotAuthorizedExample: !include /examples/subscriptions/error/notAuthorized.json
+      put:
+        is:
+        - core.bad-request-failable:
+            description: |
+              This Subscription's Notifier is disabled.
+            errorBadRequestExample: !include /examples/subscriptions/error/notifierDisabled.json
+        responses:
+          200:
+            (specs.bindIds):
+              subscription: auto:real_world
+          400:
+            (specs.bindIds):
+              notifier: auto:disabled
+              subscription: '#{op_create(:subscription, params: { notifier: notifier_id }).id}'
+            (specs.requestBody): '{}'
+          403:
+            description: |
+              Not authorized to write Subscriptions.
+
+/events:
+  (core.tags): [event]
+  (specs.factoryName): issue_updated
+  (specs.factoryStrategy): create
+  type:
+    core.read-collection:
+      getResponseExample: !include /examples/events/collection.json
+      itemType: event.Events
+  get:
+    is:
+    - core.not-authorized-failable:
+        permissionLevel: read
+        errorNotAuthorizedExample: !include /examples/events/error/notAuthorized.json
+    queryParameters:
+      eventable?:
+        description: |
+          Return Events for the specific eventable ID. This could be the ID of
+          any object that has events, such as a Component, Issue, Status,
+          Subscription, Notifier, etc.
+        type: core.ObjectId
+      eventable.type?:
+        description: |
+          Return Events with the specific `eventable.type`.
+        type: string
+        enum: [component, metric_provider, issue, notifier, subscription, status]
+      kind?:
+        description: |
+          Only return Events with the given `kind`.
+        type: string
+      context.component?:
+        description: |
+          Only return Events whose `context` includes the given Component ID.
+        type: core.ObjectId
+      context.components[]?:
+        description: |
+          Only return Events whose `context` includes one or more of the given
+          Component IDs. To use this query parameter, supply
+          `context.components[]={component_id}` for each `{component_id}` to
+          return Events for.
+        type: core.ObjectId[]
+      context.update?:
+        description: |
+          Only return Events whose `context` includes the given Issue Update ID.
+        type: core.ObjectId
+      context.notifier?:
+        description: |
+          Only return Events whose `context` includes the given Notifier ID.
+        type: core.ObjectId
+      context.event?:
+        description: |
+          Only return Events whose `context` includes the given Event ID.
+        type: core.ObjectId
+  /{event_id}:
+    (core.tags): [event]
+    (specs.factoryName): restored
+    (specs.factoryStrategy): create
+    type:
+      core.read-collection-item:
+        errorNotFoundExample: !include /examples/events/error/notFound.json
+        getResponseExample: !include /examples/events/collection-item.json
+        idPrefix: event
+        itemType: event.Events
+    get:
+      is:
+      - core.not-authorized-failable:
+          permissionLevel: read
+          errorNotAuthorizedExample: !include /examples/events/error/notAuthorized.json
+      responses:
+        403:
+          (specs.bindIds):
+            event: auto
+
+/timeline:
+  (specs.factoryStrategy): null
+  (core.tags): [timeline]
+  type:
+    core.read-collection:
+      getResponseExample: !include /examples/timeline/collection.json
+      itemType: timeline.TimelineItem
+  get:
+    displayName: Get a Timeline
+    description: |
+      Retrieve a Timeline according to the given filters. Returns a PagedArray
+      of TimelineItems, with latest entries first.
+    queryParameters:
+      group?:
+        description: |
+          Return the Timeline for the Components of the given Group. This field
+          is ignored if `components[]` is supplied.
+        type: core.ObjectId
+      components[]?:
+        description: |
+          Return the Timeline for the given set of Components. To use this query
+          parameter, supply `components[]={component_id}` for each `{component_id}`
+          that makes up this composite Timeline.
+        type: core.ObjectId[]
+      component?:
+        description: |
+          Return the Timeline for the given Component. This field is ignored if
+          `components[]` is supplied.
+        type: core.ObjectId
+      excluded?:
+        description: |
+          When true, returns TimelineItems for which `excluded` is true, in addition to
+          the rest (i.e. `excluded` false) of the queried Timeline. This field
+          is ignored when `component`, `components[]`, or `group` is supplied.
+        type: boolean
+        default: false
+      effective?:
+        description: |
+          When false, returns TimelineItems for which `effective` is false, in
+          addition to the rest (i.e. `effective` true) of the queried Timeline.
+        type: boolean
+        default: false
+    responses:
+      200:
+        (specs.beforeHook): simulate_history
+        description: |
+          Successfully retrieved Timeline.
+  /{timeline_item_id}:
+    (core.tags): [timeline]
+    type:
+      core.read-collection-item:
+        errorNotFoundExample: !include /examples/timeline/error/notFound.json
+        getResponseExample: !include /examples/timeline/collection-item.json
+        idPrefix: timeline_item
+        itemType: timeline.TimelineItem
+    uriParameters:
+      timeline_item_id:
+        description: |
+          The UUID of the of the TimelineItem.
+    get:
+      displayName: Get a TimelineItem
+      description: Retrieve the given TimelineItem by UUID.
+      responses:
+        200:
+          (specs.beforeHook): |
+            simulate_history
+            State::Timeline::Operations::Materialize.(source: "global")
+          (specs.bindIds):
+            timeline_item: '#{State::Timeline::Item.all.first.id}'
+          description: |
+            Successfully retrieved TimelineItem.
+        404:
+          (specs.bindIds):
+            timeline_item: nonexistent
+          description: |
+            TimelineItem not found.

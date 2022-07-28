@@ -41,8 +41,23 @@ annotationTypes:
   common:
     description: |
       Root flag denoting that this type is "common" and should be hoisted to
-      the `declares` of a resolved webapi base unit. Any types with the same
+      the `declares` of a resolved AMF base unit. Any types with the same
       library name are considered to be the same type while hoisting and
       deduplicating type usage.
+    type: nil
+    allowedTargets: TypeDeclaration
+  discriminatorJunction:
+    description: |
+      Flag denoting that this type is the "junction" of a family of types joined
+      by a common `discriminator`. It is assumed that the discriminator arises
+      from a common base class amongst the type family. Moreover, it is assumed
+      that the annotated type is a type union of the various types allowed in
+      the junction. This flag has no effect on non-union types.
+
+      Discriminator configuration will be hoisted from the union types/base, and
+      set into this type instead (often the assumption of discriminator systems
+      in other specs like OAS3.0).
+
+      A junction type should also be marked as `common`.
     type: nil
     allowedTargets: TypeDeclaration

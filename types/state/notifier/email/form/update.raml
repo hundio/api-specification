@@ -1,0 +1,22 @@
+#%RAML 1.0 DataType
+
+uses:
+  prelude: /libraries/prelude.raml
+  core: /libraries/core.raml
+
+(prelude.common):
+(core.fieldDescriptions): !include /documentation/fieldDescriptions/notifier/email.yml
+displayName: Email
+description: |
+  Email notifier channel update form.
+type: core.Form
+properties:
+  sender_address?: string
+  sender_display_name?: core.maybe-string
+  smtp_hostname?: string
+  smtp_port?: integer
+  smtp_user?: core.maybe-string
+  smtp_password?: core.maybe-string
+  smtp_authentication?: core.SMTP_AUTHENTICATION_TYPE?
+  smtp_domain?: core.maybe-string
+  domain_whitelist?: string[]

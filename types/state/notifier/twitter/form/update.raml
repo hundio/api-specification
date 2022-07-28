@@ -1,0 +1,17 @@
+#%RAML 1.0 DataType
+
+uses:
+  prelude: /libraries/prelude.raml
+  core: /libraries/core.raml
+
+(prelude.common):
+(core.fieldDescriptions): !include /documentation/fieldDescriptions/notifier/twitter.yml
+displayName: Twitter
+description: |
+  Twitter notifier channel update form.
+type: core.Form
+properties:
+  consumer_key?: string
+  consumer_secret?: string
+  access_token?: string
+  access_token_secret?: string

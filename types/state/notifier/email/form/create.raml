@@ -1,0 +1,36 @@
+#%RAML 1.0 DataType
+
+uses:
+  prelude: /libraries/prelude.raml
+  core: /libraries/core.raml
+
+(prelude.common):
+(core.fieldDescriptions): !include /documentation/fieldDescriptions/notifier/email.yml
+displayName: Email
+description: |
+  Email notifier channel creation form.
+type: core.Form
+properties:
+  type:
+    enum: [email]
+  sender_address?: string
+  sender_display_name?:
+    type: core.maybe-string
+    default: null
+  smtp_hostname: string
+  smtp_port: integer
+  smtp_user?:
+    type: core.maybe-string
+    default: null
+  smtp_password?:
+    type: core.maybe-string
+    default: null
+  smtp_authentication?:
+    type: core.SMTP_AUTHENTICATION_TYPE?
+    default: null
+  smtp_domain?:
+    type: core.maybe-string
+    default: null
+  domain_whitelist?:
+    type: string[]
+    default: []

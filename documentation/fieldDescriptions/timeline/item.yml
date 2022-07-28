@@ -1,0 +1,55 @@
+id: |
+  The UUID of this TimelineItem.
+components: |
+  A PagedArray of Components affected by this TimelineItem.
+issue: |
+  The particular Issue that spawned this TimelineItem. A `null` value implies
+  that the TimelineItem is based purely on Watchdog-generated Statuses.
+
+  If `statuses` is non-empty and `issue` exists, then we say that the `issue` is
+  "annotating" (or "overriding" when the issue, or any of its updates, sets
+  `state_override`) the listed `statuses`.
+statuses: |
+  A PagedArray of Statuses (if any) that make up this TimelineItem. Typically,
+  this will only contain one Status. However, if multiple sub-operational (i.e.
+  degraded/outage) Statuses occurred consecutively, then they will each be
+  listed here.
+source: |
+  The particular Timeline source that this TimelineItem belongs to. This is
+  either the ObjectId of a single Component, an array of multiple Component
+  ObjectIds, or the string `global` (i.e. the item comes from the global Timeline,
+  aggregated from all Component-wise Timelines).
+title: |
+  The title of this TimelineItem. If `issue` exists, then it is the `title` of
+  `issue`.
+began_at: |
+  The UNIX timestamp at which this TimelineItem began affecting the listed `components`.
+ended_at: |
+  The UNIX timestamp at which this TimelineItem stopped affecting the listed `components`.
+duration: |
+  The effective duration of this TimelineItem in seconds. This field is zero
+  when `effective` is false.
+outage_duration: |
+  The outage duration of this TimelineItem in seconds. That is, the amount of
+  time for which `components` are considered to be in an "outage" state, thus
+  negatively affecting their uptime measurements.
+
+  **Note:** when `source` is `global` (or multiple Components), and the
+  Component-wise outage durations of `components` are not all equal, then this
+  field is null. In this case, consult the generic `outage_durations` field,
+  which breaks down the total outage duration per Component.
+outage_durations: |
+  The per-Component outage durations of this TimelineItem, each in seconds. The
+  keys of this object are Component ObjectIds, one for each Component in
+  `components`.
+
+  This field is particularly useful when `source` is `global` (or multiple
+  Components) and the outage durations of the affected `components` are not all
+  equal (and thus `outage_duration` is null).
+excluded: |
+  Whether this TimelineItem is excluded from the global Timeline. Excluded items
+  can still be pulled from this API, but will not be displayed on status pages.
+effective: |
+  Whether this TimelineItem affects the listed `components`. Typically, this
+  field is true, unless `issue` is a cancelled or informational Issue (neither
+  of which can affect their Components).

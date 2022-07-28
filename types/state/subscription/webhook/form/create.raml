@@ -1,0 +1,19 @@
+#%RAML 1.0 DataType
+
+uses:
+  prelude: /libraries/prelude.raml
+  core: /libraries/core.raml
+
+(prelude.common):
+(core.fieldDescriptions): !include /documentation/fieldDescriptions/subscription/webhook.yml
+displayName: Webhook
+description: |
+  A webhook Subscription channel creation form.
+type: core.Form
+properties:
+  type:
+    enum: [webhook]
+  url: string
+  verb?:
+    type: core.WEBHOOK_VERB
+    default: post

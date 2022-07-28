@@ -55,6 +55,7 @@
   "cancelled": true,
   "began_at": 1543958167,
   "ended_at": null,
+  "duration": 0,
   "cancelled_at": 1543963200,
   "schedule": {
     "id": "5c06ee9a8fbb652ab878c4ee",

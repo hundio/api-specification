@@ -1,0 +1,27 @@
+id: |
+  The ObjectId of this Status.
+created_at: |
+  The UNIX timestamp at which this Status was created.
+updated_at: |
+  The UNIX timestamp at which this Status was last updated by a Watchdog run.
+began_at: |
+  The UNIX timestamp at which this Status begins affecting related Component
+  Timelines.
+ended_at: |
+  The UNIX timestamp at which this Status stops affecting related Component
+  Timelines. A value of `null` implies that this is the current Status.
+duration: |
+  The effective duration of this Status in seconds. The duration is continually extended by
+  subsequent Watchdog runs until the `state` changes, at which point a new Status
+  object is created.
+state: |
+  An integer denoting the operational state of this Status. This state affects
+  any related Component Timelines over the duration of this Status.
+reasons: |
+  When `state` < 1 (sub-operational), this field contains a PagedArray of zero or
+  more Reason objects describing the specific reasons this Status was generated,
+  over time and potentially by region when supported.
+
+  If `state` == 1 (operational), then this field will be `null`.
+watchdog: |
+  The Watchdog that generated this Status

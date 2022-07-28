@@ -1,0 +1,19 @@
+#%RAML 1.0 DataType
+
+uses:
+  prelude: /libraries/prelude.raml
+  core: /libraries/core.raml
+  event: /libraries/event/core.raml
+  component: /libraries/component.raml
+  status: /libraries/status.raml
+
+(prelude.common):
+(core.fieldDescriptions): !include /documentation/fieldDescriptions/event.yml
+displayName: StatusEvented
+type: event.Event
+discriminatorValue: status_evented
+properties:
+  eventable:
+    (core.expandable):
+    type: core.ObjectId | status.Status
+  context: event.ComponentContextual

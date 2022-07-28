@@ -1,0 +1,15 @@
+#%RAML 1.0 DataType
+
+uses:
+  prelude: /libraries/prelude.raml
+  core: /libraries/core.raml
+
+(prelude.common):
+(core.fieldDescriptions): !include /documentation/fieldDescriptions/subscription/push.yml
+displayName: Push
+description: |
+  A [Web Push](https://developer.mozilla.org/en-US/docs/Web/API/Push_API) subscription.
+type: core.Channel
+properties:
+  type:
+    enum: [push]

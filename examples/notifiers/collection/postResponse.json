@@ -1,0 +1,51 @@
+{
+  "id": "62d9d65b8fbb6588a979f980",
+  "type": "notifier",
+  "created_at": 1658443355,
+  "updated_at": 1658443356,
+  "channel": {
+    "type": "ms_teams"
+  },
+  "notification_exclusions": [
+    "5ad566898fbb654577715322",
+    "5c9583858fbb6575d664cf96",
+    "5c9588038fbb657c95d929e9",
+    "5c993ab18fbb652a1e53f068"
+  ],
+  "listens_to": [
+    "restored",
+    "degraded",
+    "issue_upcoming",
+    "issue_created",
+    "issue_updated",
+    "issue_cancelled",
+    "issue_started",
+    "issue_ended",
+    "notifier_tested"
+  ],
+  "listens_to_level": "all",
+  "curated": false,
+  "enabled": true,
+  "subscribable": true,
+  "include_group_in_component_names": false,
+  "_links": {
+    "self": {
+      "href": "https://status.example.com/api/v1/notifiers/62d9d65b8fbb6588a979f980"
+    },
+    "update-form": {
+      "href": "https://status.example.com/dashboard/notifiers/62d9d65b8fbb6588a979f980/edit"
+    },
+    "events": {
+      "href": "https://status.example.com/api/v1/events?eventable=62d9d65b8fbb6588a979f980"
+    },
+    "events:by-context": {
+      "href": "https://status.example.com/api/v1/events?context.notifier=62d9d65b8fbb6588a979f980"
+    },
+    "subscriptions": {
+      "href": "https://status.example.com/api/v1/subscriptions?notifier=62d9d65b8fbb6588a979f980"
+    },
+    "action:test": {
+      "href": "https://status.example.com/api/v1/notifiers/62d9d65b8fbb6588a979f980/test"
+    }
+  }
+}

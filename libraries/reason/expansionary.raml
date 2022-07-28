@@ -1,0 +1,24 @@
+#%RAML 1.0 Library
+
+usage: |
+  Defines Reason with expansions.
+
+uses:
+  prelude: /libraries/prelude.raml
+  core: /libraries/core.raml
+  reason: /libraries/reason.raml
+  status: /libraries/status.raml
+  watchdog: /libraries/watchdog.raml
+
+types:
+  Reason-Expansionary:
+    (prelude.common):
+    (core.fieldDescriptions): !include /documentation/fieldDescriptions/reason.yml
+    type: reason.Base
+    properties:
+      status:
+        (core.expandable):
+        type: core.ObjectId | status.Status
+      watchdog:
+        (core.expandable):
+        type: core.ObjectId | watchdog.Watchdog

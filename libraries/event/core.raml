@@ -1,0 +1,47 @@
+#%RAML 1.0 Library
+
+usage: |
+  Defines core Event types and contexts.
+
+uses:
+  prelude: /libraries/prelude.raml
+  core: /libraries/core.raml
+  component: /libraries/component.raml
+  notifier: /libraries/notifier.raml
+
+types:
+  Event: !include /types/state/event.raml
+
+  EmptyContextual:
+    (prelude.common):
+    type: core.HAL/Linkable
+    additionalProperties: false
+  ComponentContextual:
+    (prelude.common):
+    type: EmptyContextual
+    properties:
+      component:
+        (core.expandable):
+        type: core.ObjectId | component.Component
+  ComponentMulticontextual:
+    (prelude.common):
+    type: EmptyContextual
+    properties:
+      components:
+        type: core.PagedArray
+        properties:
+          data: component.Component[]
+  EventContextual:
+    (prelude.common):
+    type: EmptyContextual
+    properties:
+      event:
+        (core.expandable):
+        type: core.ObjectId
+  NotifierContextual:
+    (prelude.common):
+    type: EmptyContextual
+    properties:
+      notifier:
+        (core.expandable):
+        type: core.ObjectId | notifier.Notifier

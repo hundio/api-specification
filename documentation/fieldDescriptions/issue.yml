@@ -49,13 +49,21 @@ cancelled: |
   Whether this Issue has been cancelled. Note that this field is `null` if the
   Issue is not scheduled.
 began_at: |
-  The time at which this Issue began affecting its given Components.
+  The UNIX timestamp at which this Issue began affecting its given Components.
 ended_at: |
-  The time at which this Issue stopped affecting its given Components. This
+  The UNIX timestamp at which this Issue stopped affecting its given Components. This
   field is `null` if it has not ended yet.
 cancelled_at: |
   The time at which this Issue was cancelled. This field is `null` if the Issue
   has not been cancelled or is not scheduled.
+duration: |
+  The effective duration of this Issue in seconds. That is, the total amount of
+  time for which this Issue affects its Components. Thus, this field only
+  accumulates while the Issue is ongoing/open.
+
+  **Note:** This value is zero for cancelled and informational Issues. For
+  scheduled Issues, this field will remain zero until the Issue begins according
+  to the Schedule.
 schedule: |
   An object detailing the Schedule of this issue if it is scheduled. This field
   is `null` if the Issue is not scheduled.

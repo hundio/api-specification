@@ -1,0 +1,92 @@
+{
+  "id": "62b10ec8-4732-b764-59fd-97aa24784012",
+  "type": "timeline_item",
+  "components": {
+    "type": "paged_array",
+    "total_count": 1,
+    "data": [
+      {
+        "id": "60932fa68fbb65f1c3be61e3",
+        "type": "component",
+        "created_at": 1620258726,
+        "updated_at": 1658441924,
+        "name": "m28",
+        "description": null,
+        "description_html": "",
+        "exclude_from_global_history": false,
+        "exclude_from_global_uptime": false,
+        "last_event_at": 1658441924,
+        "group": "5ad531158fbb652fe9df1c21",
+        "watchdog": "60932fa68fbb65f1c3be61df",
+        "percent_uptime": 100,
+        "_links": {
+          "self": {
+            "href": "https://status.example.com/api/v1/components/60932fa68fbb65f1c3be61e3"
+          },
+          "self-view": {
+            "href": "https://status.example.com/components/60932fa68fbb65f1c3be61e3"
+          },
+          "update-form": {
+            "href": "https://status.example.com/dashboard/components/60932fa68fbb65f1c3be61e3/edit"
+          },
+          "events": {
+            "href": "https://status.example.com/api/v1/events?eventable=60932fa68fbb65f1c3be61e3"
+          },
+          "events:by-context": {
+            "href": "https://status.example.com/api/v1/events?context.component=60932fa68fbb65f1c3be61e3"
+          },
+          "timeline": {
+            "href": "https://status.example.com/api/v1/timeline?component=60932fa68fbb65f1c3be61e3"
+          },
+          "watchdog": {
+            "href": "https://status.example.com/api/v1/watchdogs/60932fa68fbb65f1c3be61df"
+          }
+        }
+      }
+    ],
+    "has_more": false,
+    "_links": {
+      "self": {
+        "href": "https://status.example.com/api/v1/components?limit=10&timeline_item=62b10ec8-4732-b764-59fd-97aa24784012"
+      },
+      "create-form": {
+        "href": "https://status.example.com/dashboard/components/new"
+      },
+      "prev": {
+        "href": "https://status.example.com/api/v1/components?ending_before=60932fa68fbb65f1c3be61e3&limit=10&timeline_item=62b10ec8-4732-b764-59fd-97aa24784012"
+      },
+      "beginning": {
+        "href": "https://status.example.com/api/v1/components?limit=10&timeline_item=62b10ec8-4732-b764-59fd-97aa24784012"
+      }
+    }
+  },
+  "statuses": {
+    "type": "paged_array",
+    "total_count": 0,
+    "data": [],
+    "has_more": false,
+    "_links": {
+      "self": {
+        "href": "https://status.example.com/api/v1/statuses?limit=10&timeline_item=62b10ec8-4732-b764-59fd-97aa24784012"
+      },
+      "prev": {
+        "href": "https://status.example.com/api/v1/statuses?limit=10&timeline_item=62b10ec8-4732-b764-59fd-97aa24784012"
+      },
+      "beginning": {
+        "href": "https://status.example.com/api/v1/statuses?limit=10&timeline_item=62b10ec8-4732-b764-59fd-97aa24784012"
+      }
+    }
+  },
+  "issue": null,
+  "began_at": 1655770824,
+  "ended_at": 1655770855,
+  "title": "Outage",
+  "duration": 31,
+  "source": "global",
+  "outage_durations": {
+    "60932fa68fbb65f1c3be61e3": 31
+  },
+  "outage_duration": 31,
+  "excluded": false,
+  "effective": true
+}

@@ -1,0 +1,25 @@
+id: |
+  The ObjectId of this Event.
+created_at: |
+  The UNIX timestamp at which this Event was emitted.
+kind: |
+  The particular subtype of Event.
+eventable: |
+  The object responsible for the emission of this Event. The type of this field
+  depends on the `kind`.
+context: |
+  Additional objects related to this Event. The structure of this field depends
+  on the `kind`.
+
+  For example, Issue Events always have a `context.components` field which
+  contains a PagedArray of the `components` of the Issue.
+
+# status_created
+state: |
+  The integer state of the newly created Status (i.e. `eventable`) that
+  triggered this Event.
+
+# restored
+time_down: |
+  The number of seconds elapsed between the last `degraded` event and this
+  `restored` event on the related Watchdog.

@@ -1,0 +1,16 @@
+#%RAML 1.0 DataType
+
+uses:
+  prelude: /libraries/prelude.raml
+  core: /libraries/core.raml
+
+(prelude.common):
+(core.fieldDescriptions): !include /documentation/fieldDescriptions/subscription/ms_teams.yml
+displayName: MS Teams
+description: |
+  MS Teams subscription creation form.
+type: core.Channel
+properties:
+  type:
+    enum: [ms_teams]
+  webhook_url: string

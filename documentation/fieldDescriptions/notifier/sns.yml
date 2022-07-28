@@ -1,0 +1,21 @@
+access_key_id: |
+  The AWS IAM access key ID that will be used to contact the SNS API. This IAM
+  user must have ample permissions to publish directly to phone numbers, as well
+  as look up phone number opt-in status. Typically, the managed policy `AmazonSNSFullAccess`
+  can be used on this user to ensure adequate permissions.
+secret_access_key: |
+  The AWS IAM secret access key for the given access key ID.
+sender_id: |
+  An alphanumeric identifier displayed as the message sender in supported
+  countries. Please see [this article](http://docs.aws.amazon.com/sns/latest/dg/sms_supported-countries.html)
+  for a list of countries supporting this feature.
+max_price: |
+  The maximum amount in USD that you are willing to spend for each SMS message.
+  For more information on SMS pricing by country and network, please see
+  [this article](https://aws.amazon.com/sns/sms-pricing/).
+
+  **Note:** Messages exceeding this price will *not* be sent.
+countries: |
+  A list of [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
+  two-letter country codes, denoting which countries a phone number may originate.
+  An empty list here implies any country is allowed.

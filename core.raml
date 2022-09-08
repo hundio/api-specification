@@ -736,6 +736,10 @@ securitySchemes:
         permissionLevel: read
         errorNotAuthorizedExample: !include /examples/notifiers/error/notAuthorized.json
     queryParameters:
+      channel.type?:
+        description: |
+          Return Notifiers with the provided `channel.type`.
+        type: string
       enabled?:
         description: |
           When true, returns only Notifiers that are currently enabled. When false,
@@ -848,6 +852,50 @@ securitySchemes:
         permissionLevel: read
         errorNotAuthorizedExample: !include /examples/subscriptions/error/notAuthorized.json
     queryParameters:
+      channel.type?:
+        description: |
+          Return Subscriptions with the provided `channel.type`.
+        type: string
+      channel.address?:
+        description: |
+          Return Email Subscriptions whose `channel.address` field matches the
+          query parameter by substring match. An incomplete email address (e.g.
+          `@example.com`, `user`, `user@example`, etc.) is an acceptable input
+          to this parameter. This field is ignored if `channel.address!` is given.
+
+          **Note:** It is possible for email addresses like `0user@example.com`
+          to match the query `channel.address=user@example.com` by substring match. If you
+          require **exact** matching, use `channel.address!` as described below.
+
+          **Note:** Email addresses are *case insensitive*. Any casing given to
+          this parameter will be ignored.
+        type: string
+        example: "@example.com"
+      channel.address!?:
+        description: |
+          Return Email Subscriptions whose `channel.address` field matches the
+          query parameter *exactly*. A valid email address must be given for this
+          parameter to work correctly.
+
+          **Note:** Email addresses are *case insensitive*. Any casing given to
+          this parameter will be ignored.
+        type: string
+        example: user@example.com
+      channel.phone?:
+        description: |
+          Return SNS Subscriptions whose `channel.phone` field matches the query
+          parameter by substring match. An incomplete phone number is an
+          acceptable input to this parameter. This field is ignored if
+          `channel.phone!` is given.
+        type: string
+        example: "+1307"
+      channel.phone!?:
+        description: |
+          Return SNS Subscriptions whose `channel.phone` field matches the
+          parameter *exactly*. A valid phone number must be given for this
+          parameter to work correctly.
+        type: core.SNS_PHONE_NUMBER
+        example: "+15555555555"
       notifier?:
         description: |
           Return the Subscriptions for the provided Notifier ObjectId.

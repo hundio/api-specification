@@ -67,6 +67,7 @@
     "ended": false,
     "notified": true
   },
+  "template": null,
   "updates": {
     "type": "paged_array",
     "total_count": 1,
@@ -82,6 +83,7 @@
         "created_at": 1543963200,
         "updated_at": 1543963200,
         "issue": "5c06ee978fbb652ab878c3b8",
+        "template": null,
         "reopening": false,
         "effective": true,
         "effective_after": 1543963200

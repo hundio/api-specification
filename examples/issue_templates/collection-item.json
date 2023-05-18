@@ -1,12 +1,34 @@
 {
-  "id": "5e751f8f8fbb6523f805e5b9",
+  "id": "645ac4088fbb650535674c8f",
   "type": "issue_template",
-  "created_at": 1584737229,
-  "updated_at": 1584737229,
-  "name": "New PD Incidents",
-  "kind": "pagerduty",
-  "title": "{{ pagerduty.incidents.first.summary }}",
-  "body": "**Incidents detected:**\n\n{% for incident in pagerduty.incidents %}\n  * {{ incident.description }}\n{% endfor %}",
-  "label": "assessed",
-  "components": []
+  "created_at": 1683670024,
+  "updated_at": 1683858725,
+  "name": "Good Issue Template",
+  "kind": "issue",
+  "title": "Good Issue {{ vars.ordinal }}",
+  "body": "**Thing in itself**: {{ vars.thing | default: 'unknown' }}",
+  "label": null,
+  "variables": {
+    "ordinal": {
+      "type": "number",
+      "required": true
+    },
+    "var_two": {
+      "type": "string",
+      "required": true
+    },
+    "thing": {
+      "type": "i18n-string",
+      "required": false
+    },
+    "time": {
+      "type": "datetime",
+      "required": true
+    }
+  },
+  "_links": {
+    "self": {
+      "href": "https://status.example.com/api/v1/issue_templates/645ac4088fbb650535674c8f"
+    }
+  }
 }

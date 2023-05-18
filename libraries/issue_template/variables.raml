@@ -1,0 +1,52 @@
+#%RAML 1.0 Library
+
+uses:
+  prelude: /libraries/prelude.raml
+  core: /libraries/core.raml
+
+usage: |
+  Defines types/forms for IssueTemplate variables.
+
+types:
+  IssueTemplateVariables/Application:
+    (prelude.common):
+    type: object
+    properties:
+      /^[a-zA-Z][a-zA-Z0-9_]*$/: number | string | core.i18n-string
+
+  ISSUE_TEMPLATE_VARIABLE_TYPE:
+    (prelude.common):
+    type: string
+    enum: [number, datetime, string, i18n-string]
+
+  IssueTemplateVariable:
+    (prelude.common):
+    type: object
+    additionalProperties: false
+    properties:
+      type: ISSUE_TEMPLATE_VARIABLE_TYPE
+      required: boolean
+
+  IssueTemplateVariable/Form:
+    (prelude.common):
+    type: object
+    additionalProperties: false
+    properties:
+      type?:
+        type: ISSUE_TEMPLATE_VARIABLE_TYPE
+        default: string
+      required?:
+        type: boolean
+        default: false
+
+  IssueTemplateVariables:
+    (prelude.common):
+    type: object
+    properties:
+      /^[a-zA-Z][a-zA-Z0-9_]*$/: IssueTemplateVariable
+
+  IssueTemplateVariables/Form:
+    (prelude.common):
+    type: object
+    properties:
+      /^[a-zA-Z][a-zA-Z0-9_]*$/: IssueTemplateVariable/Form

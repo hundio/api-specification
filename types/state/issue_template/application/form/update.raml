@@ -1,0 +1,21 @@
+#%RAML 1.0 DataType
+
+uses:
+  prelude: /libraries/prelude.raml
+  core: /libraries/core.raml
+  variables: /libraries/issue_template/variables.raml
+
+(prelude.common):
+(core.fieldDescriptions): !include /documentation/fieldDescriptions/issue_template/application.yml
+displayName: IssueTemplateApplication
+description: |
+  IssueTemplateApplication update form.
+type: core.Form
+properties:
+  body?: core.i18n-string
+  label?: core.ISSUE_TEMPLATE_LABEL | nil
+  schema?: variables.IssueTemplateVariables/Form
+  variables?: variables.IssueTemplateVariables/Application
+  sync_with_issue_template?:
+    type: boolean
+    default: false

@@ -3,18 +3,20 @@ id: |
 name: |
   An internal name for identifying this IssueTemplate.
 kind: |
-  The "kind" of this IssueTemplate. By default, this is `generic`, denoting that
-  the template can be used for manual issue creations, as well as for any
-  automated Watchdog accepting IssueTemplates. Otherwise, this value will denote
-  a specialized Watchdog that the template expects (e.g. PagerDuty or New Relic).
+  The "kind" of this IssueTemplate. This field can be either `issue` or `update`,
+  depending on whether this IssueTemplate can be applied to an Issue or Issue Update,
+  respectively.
 title: |
-  If this template is used against an Issue, then it will take on this title. This
+  When `kind` is `issue`, then the applied Issue will take on this title. This
   field supports Liquid templating.
 body: |
-  The body to use for the Issue/Update created against this template. This field
+  The body to use for an Issue/Update applied against this template. This field
   supports Liquid templating.
 label: |
-  The label to use for the Issue/Update created aginst this template.
-components: |
-  If this template is used against an Issue, then it will take on these Components
-  as affected by the Issue.
+  The label to use for an Issue/Update applied against this template.
+variables: |
+  An object defining a set of typed variables that can be provided in an application
+  of this IssueTemplate. The variables can be accessed from any field in the
+  IssueTemplate supporting Liquid.
+
+  Each defined variable can be given an expected type, and can be marked as required.

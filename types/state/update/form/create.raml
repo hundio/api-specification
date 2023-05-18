@@ -3,6 +3,7 @@
 uses:
   prelude: /libraries/prelude.raml
   core: /libraries/core.raml
+  template: /libraries/issue_template/application.raml
 
 (prelude.common):
 (core.fieldDescriptions): !include /documentation/fieldDescriptions/update.yml
@@ -32,3 +33,4 @@ properties:
       this one (`updates` on an Issue must occur in proper reverse-chronological
       order according to their `effective_after` fields).
     type: core.timestamp
+  template?: core.ObjectId | template.IssueTemplate/Application/Form/Create

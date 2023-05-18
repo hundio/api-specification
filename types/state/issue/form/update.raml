@@ -4,6 +4,7 @@ uses:
   prelude: /libraries/prelude.raml
   core: /libraries/core.raml
   schedule: /libraries/schedule.raml
+  template: /libraries/issue_template/application.raml
 
 (prelude.common):
 (core.fieldDescriptions): !include /documentation/fieldDescriptions/issue.yml
@@ -20,6 +21,7 @@ properties:
   open_graph_image_url?: core.maybe-string
   schedule?: schedule.Schedule/Form/Update
   components?: core.ObjectId[]
+  template?: nil | core.ObjectId | template.IssueTemplate/Application/Issue/Form/Create | template.IssueTemplate/Application/Issue/Form/Update
   began_at?:
     (core.overrideFieldDescription):
     description: |

@@ -3,6 +3,7 @@
 uses:
   prelude: /libraries/prelude.raml
   core: /libraries/core.raml
+  variables: /libraries/issue_template/variables.raml
 
 (prelude.common):
 (core.fieldDescriptions): !include /documentation/fieldDescriptions/issue_template.yml
@@ -16,11 +17,11 @@ properties:
     enum: [issue_template]
   name: string
   kind: core.ISSUE_TEMPLATE_KIND
-  title: core.maybe-string
+  title: core.maybe-i18n-string
   label: core.ISSUE_TEMPLATE_LABEL | nil
-  body: core.maybe-string
-  components: core.ObjectId[]
+  body: core.maybe-i18n-string
+  variables: variables.IssueTemplateVariables
   _links?:
     properties:
       self: core.HAL/Link
-      update-form: core.HAL/Link
+      # update-form: core.HAL/Link

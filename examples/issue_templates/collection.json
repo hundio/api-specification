@@ -1,31 +1,91 @@
 {
   "type": "paged_array",
-  "total_count": 2,
-  "has_more": false,
+  "total_count": 3,
   "data": [
     {
-      "id": "5e751f8d8fbb6523f805e5b8",
+      "id": "646429738fbb658d5b169308",
       "type": "issue_template",
-      "created_at": 1584308660,
-      "updated_at": 1584308660,
-      "name": "Maintenance (Weekly)",
-      "kind": "generic",
-      "title": "Weekly Systems Maintenance",
-      "body": "The following components are currently undergoing our weekly maintenance routines:\n\n{% for component in components %}\n  * *{{ component.group.name }}* / {{ component.name }}\n{% endfor %}",
-      "label": "maintenance",
-      "components": []
+      "created_at": 1684285811,
+      "updated_at": 1684285847,
+      "name": "Investigation",
+      "kind": "update",
+      "title": null,
+      "body": "lookin' into it\n\n{{ vars.summary }}",
+      "label": "investigating",
+      "variables": {
+        "summary": {
+          "type": "i18n-string",
+          "required": true
+        }
+      },
+      "_links": {
+        "self": {
+          "href": "https://status.example.com/api/v1/issue_templates/646429738fbb658d5b169308"
+        }
+      }
     },
     {
-      "id": "5e751f8d8fbb6523f805e5b8",
+      "id": "645c2c298fbb65ba64da80fc",
       "type": "issue_template",
-      "created_at": 1584395163,
-      "updated_at": 1584395163,
-      "name": "Maintenance Concluded (Weekly)",
-      "kind": "generic",
+      "created_at": 1683762217,
+      "updated_at": 1683762816,
+      "name": "Resolution",
+      "kind": "update",
       "title": null,
-      "body": "Our weekly systems maintenance has now concluded. Thank you for your patience.",
+      "body": "**It's so over.**",
       "label": "resolved",
-      "components": []
+      "variables": {},
+      "_links": {
+        "self": {
+          "href": "https://status.example.com/api/v1/issue_templates/645c2c298fbb65ba64da80fc"
+        }
+      }
+    },
+    {
+      "id": "645ac4088fbb650535674c8f",
+      "type": "issue_template",
+      "created_at": 1683670024,
+      "updated_at": 1683858725,
+      "name": "Good Issue Template",
+      "kind": "issue",
+      "title": "Good Issue {{ vars.ordinal }}",
+      "body": "**Thing in itself**: {{ vars.thing | default: 'unknown' }}",
+      "label": null,
+      "variables": {
+        "ordinal": {
+          "type": "number",
+          "required": true
+        },
+        "var_two": {
+          "type": "string",
+          "required": true
+        },
+        "thing": {
+          "type": "i18n-string",
+          "required": false
+        },
+        "time": {
+          "type": "datetime",
+          "required": true
+        }
+      },
+      "_links": {
+        "self": {
+          "href": "https://status.example.com/api/v1/issue_templates/645ac4088fbb650535674c8f"
+        }
+      }
     }
-  ]
+  ],
+  "has_more": false,
+  "_links": {
+    "self": {
+      "href": "https://status.example.com/api/v1/issue_templates?limit=10"
+    },
+    "prev": {
+      "href": "https://status.example.com/api/v1/issue_templates?ending_before=646429738fbb658d5b169308&limit=10"
+    },
+    "beginning": {
+      "href": "https://status.example.com/api/v1/issue_templates?limit=10"
+    }
+  }
 }

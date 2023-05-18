@@ -43,6 +43,7 @@
   "duration": 0,
   "cancelled_at": null,
   "schedule": null,
+  "template": null,
   "updates": {
     "type": "paged_array",
     "total_count": 0,

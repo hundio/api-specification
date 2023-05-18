@@ -5,6 +5,7 @@ uses:
   core: /libraries/core.raml
   component: /libraries/component.raml
   schedule: /libraries/schedule.raml
+  template: /libraries/issue_template/application.raml
   update: /libraries/update.raml
 
 (prelude.common):
@@ -45,6 +46,7 @@ properties:
     properties:
       data:
         items: component.Component
+  template: nil | template.IssueTemplate/Application/Issue
   _links?:
     properties:
       self: core.HAL/Link

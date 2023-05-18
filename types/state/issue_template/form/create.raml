@@ -3,6 +3,7 @@
 uses:
   prelude: /libraries/prelude.raml
   core: /libraries/core.raml
+  variables: /libraries/issue_template/variables.raml
 
 (prelude.common):
 (core.fieldDescriptions): !include /documentation/fieldDescriptions/issue_template.yml
@@ -12,10 +13,10 @@ description: |
 type: core.Form
 properties:
   name: string
-  kind?:
-    type: core.ISSUE_TEMPLATE_KIND
-    default: generic
-  title?: string
+  kind: core.ISSUE_TEMPLATE_KIND
+  title?: core.i18n-string
   label?: core.ISSUE_TEMPLATE_LABEL
-  body?: string
-  components?: core.ObjectId[]
+  body?: core.i18n-string
+  variables?:
+    type: variables.IssueTemplateVariables/Form
+    default: {}

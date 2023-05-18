@@ -1,0 +1,30 @@
+id: |
+  The ObjectId of the IssueTemplateApplication.
+issue_template: |
+  The ObjectId of an IssueTemplate to use as the basis of this Application, which
+  will inform the values for `body`, `label`, and `title` (when `kind` == `issue`).
+
+  If this value is changed in a request, then the application will be re-created
+  according to the values of the given IssueTemplate.
+title: |
+  The Liquid template for the `title` of the applied Issue.
+body: |
+  The Liquid template for the `body` of the applied Issue/Update.
+label: |
+  The Liquid template for the `label` of the applied Issue/Update.
+variables: |
+  An object of variable assignments used to parameterize the associated IssueTemplate.
+
+  If the associated IssueTemplate marks a variable as `required`, then it must appear
+  here with an appropriate value.
+sync_with_issue_template: |
+  When true, and given that the `issue_template` field is not changed, causes the
+  request to resynchronize this application's fields with the original `issue_template`.
+
+  This can be useful to update an Issue or Update according to changes made in
+  the underlying IssueTemplate, when normally an application's fields are allowed
+  to diverge from the template as necessary.
+
+  **Note:** If the original `issue_template` referenced by this application no
+  longer exists, then a request with `sync_with_issue_template` set true will fail
+  with a 404 error.

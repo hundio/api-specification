@@ -1,0 +1,32 @@
+#%RAML 1.0 DataType
+
+uses:
+  prelude: /libraries/prelude.raml
+  core: /libraries/core.raml
+  variables: /libraries/issue_template/variables.raml
+
+(prelude.common):
+(core.fieldDescriptions): !include /documentation/fieldDescriptions/issue_template/application.yml
+displayName: IssueTemplateApplication
+description: |
+  An application of an IssueTemplate, which contains a copy of the template fields
+  of the associated IssueTemplate, as well as an object of user-defined variables
+  that parameterize the template.
+
+  Alterations to an IssueTemplateApplication do not affect the associated
+  IssueTemplate, and will update the Issue/Update's content accordingly.
+  Conversely, modification/deletion of the associated IssueTemplate do not affect
+  the IssueTemplateApplication.
+type: [core.TypedObject, core.HAL/Linkable]
+properties:
+  id: core.ObjectId
+  type:
+    enum: [issue_template/application]
+  issue_template: core.ObjectId
+  body: core.maybe-i18n-string
+  label: core.ISSUE_TEMPLATE_LABEL | nil
+  schema: variables.IssueTemplateVariables
+  variables: variables.IssueTemplateVariables/Application
+  _links?:
+    properties:
+      issue_template: core.HAL/Link

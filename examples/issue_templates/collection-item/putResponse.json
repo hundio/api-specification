@@ -1,12 +1,22 @@
 {
-  "id": "5e751f8f8fbb6523f805e5b9",
+  "id": "646429738fbb658d5b169308",
   "type": "issue_template",
-  "created_at": 1584737229,
-  "updated_at": 1584740881,
-  "name": "New PD Incidents",
-  "kind": "pagerduty",
-  "title": "{{ pagerduty.incidents.first.summary }}",
-  "body": "**Incidents detected:**\n\n{% for incident in pagerduty.incidents %}\n  * {{ incident.description }}\n{% endfor %}",
-  "label": "identified",
-  "components": []
+  "created_at": 1684285811,
+  "updated_at": 1684285847,
+  "name": "Investigation",
+  "kind": "update",
+  "title": null,
+  "body": "lookin' into it\n\n{{ vars.summary }}",
+  "label": "investigating",
+  "variables": {
+    "summary": {
+      "type": "i18n-string",
+      "required": true
+    }
+  },
+  "_links": {
+    "self": {
+      "href": "https://status.example.com/api/v1/issue_templates/646429738fbb658d5b169308"
+    }
+  }
 }

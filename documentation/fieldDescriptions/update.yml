@@ -28,3 +28,6 @@ effective_after: |
 effective: |
   When true, denotes that this Update is the latest update on this Issue (hence,
   the "effective" Update according to `effective_after`).
+template: |
+  The IssueTemplateApplication that this Update is applied against, which controls
+  the values of `body`, and `label` when set.

@@ -3,6 +3,7 @@
 uses:
   prelude: /libraries/prelude.raml
   core: /libraries/core.raml
+  template: /libraries/issue_template/application.raml
 
 (prelude.common):
 displayName: Issue
@@ -14,3 +15,8 @@ properties:
     description: |
       An optional Issue Update body describing the cancellation.
     type: core.i18n-string
+  template?:
+    description: |
+      An optional Issue Template which will create an Issue Update describing
+      the cancellation. This field takes precedence over `body`.
+    type: core.ObjectId | template.IssueTemplate/Application/Form/Create

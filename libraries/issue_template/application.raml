@@ -1,0 +1,35 @@
+#%RAML 1.0 Library
+
+uses:
+  prelude: /libraries/prelude.raml
+  core: /libraries/core.raml
+
+usage: |
+  Defines types/forms for IssueTemplate/Application.
+
+types:
+  IssueTemplate/Application: !include /types/state/issue_template/application.raml
+
+  IssueTemplate/Application/Form/Create: !include /types/state/issue_template/application/form/create.raml
+  IssueTemplate/Application/Form/Update: !include /types/state/issue_template/application/form/update.raml
+
+  IssueTemplate/Application/Issue:
+    (prelude.common):
+    (core.fieldDescriptions): !include /documentation/fieldDescriptions/issue_template/application.yml
+    type: IssueTemplate/Application
+    properties:
+      title: core.maybe-i18n-string
+
+  IssueTemplate/Application/Issue/Form/Create:
+    (prelude.common):
+    (core.fieldDescriptions): !include /documentation/fieldDescriptions/issue_template/application.yml
+    type: IssueTemplate/Application/Form/Create
+    properties:
+      title?: core.i18n-string
+
+  IssueTemplate/Application/Issue/Form/Update:
+    (prelude.common):
+    (core.fieldDescriptions): !include /documentation/fieldDescriptions/issue_template/application.yml
+    type: IssueTemplate/Application/Form/Update
+    properties:
+      title?: core.i18n-string

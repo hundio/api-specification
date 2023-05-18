@@ -22,6 +22,7 @@ uses:
   component-expansionary: /libraries/component/expansionary.raml
   event: /libraries/event.raml
   issue: /libraries/issue.raml
+  issue_template: /libraries/issue_template.raml
   metric_provider: /libraries/metric_provider.raml
   notifier: /libraries/notifier.raml
   reason-expansionary: /libraries/reason/expansionary.raml
@@ -71,6 +72,8 @@ securitySchemes:
     x-displayName: Issues
   - name: update
     x-displayName: Issue Updates
+  - name: issue_template
+    x-displayName: IssueTemplates
   - name: notifier
     x-displayName: Notifiers
   - name: subscription
@@ -99,7 +102,7 @@ securitySchemes:
   - name: Monitoring
     tags: [component, group, metric_provider, watchdog, status, reason]
   - name: Incident Reporting
-    tags: [issue, update]
+    tags: [issue, update, issue_template]
   - name: Communication
     tags: [notifier, subscription]
   - name: History
@@ -126,6 +129,7 @@ securitySchemes:
                   groups: core.HAL/Link
                   metric_providers: core.HAL/Link
                   issues: core.HAL/Link
+                  issue_templates: core.HAL/Link
                   notifiers: core.HAL/Link
                   subscriptions: core.HAL/Link
                   events: core.HAL/Link
@@ -586,6 +590,12 @@ securitySchemes:
           When true, returns only resolved Issues.
         type: boolean
         default: false
+  post:
+    responses:
+      201:
+        (specs.exhaustiveRequestBodies):
+          source: template
+          factory: issue_with_template
   /{issue_id}:
     (core.tags): [issue]
     type:
@@ -682,6 +692,10 @@ securitySchemes:
               Issue not found.
       post:
         responses:
+          201:
+            (specs.exhaustiveRequestBodies):
+              source: template
+              factory: update_with_template
           404:
             (specs.bindIds):
               issue: nonexistent
@@ -733,6 +747,57 @@ securitySchemes:
             404:
               (specs.bindIds):
                 issue: auto
+
+/issue_templates:
+  (core.tags): [issue_template]
+  (specs.factoryName): issue_template_v2
+  type:
+    core.collection:
+      itemType: issue_template.IssueTemplate
+      postParamsType: issue_template.IssueTemplate/Form/Create
+      getResponseExample: !include /examples/issue_templates/collection.json
+      postRequestExample: !include /examples/issue_templates/collection/postRequest.json
+      postResponseExample: !include /examples/issue_templates/collection/postResponse.json
+      postErrorExample: !include /examples/issue_templates/error/validation.json
+      errorNotAuthorizedExample: !include /examples/issue_templates/error/notAuthorized.json
+  get:
+    is:
+    - core.not-authorized-failable:
+        permissionLevel: read
+        errorNotAuthorizedExample: !include /examples/issue_templates/error/notAuthorized.json
+    queryParameters:
+      kind?:
+        description: |
+          Return only IssueTemplates for the given kind (i.e. Issue or Update).
+        type: core.ISSUE_TEMPLATE_KIND
+  /{issue_template_id}:
+    (core.tags): [issue_template]
+    (specs.factoryName): issue_template_v2
+    type:
+      core.collection-item:
+        idPrefix: issue_template
+        itemType: issue_template.IssueTemplate
+        putParamsType: issue_template.IssueTemplate/Form/Update
+        getResponseExample: !include /examples/issue_templates/collection-item.json
+        putRequestExample: !include /examples/issue_templates/collection-item/putRequest.json
+        putResponseExample: !include /examples/issue_templates/collection-item/putResponse.json
+        errorNotFoundExample: !include /examples/issue_templates/error/notFound.json
+        putErrorExample: !include /examples/issue_templates/error/validation.json
+        errorNotAuthorizedExample: !include /examples/issue_templates/error/notAuthorized.json
+    get:
+      is:
+      - core.not-authorized-failable:
+          permissionLevel: read
+          errorNotAuthorizedExample: !include /examples/issue_templates/error/notAuthorized.json
+      responses:
+        403:
+          (specs.bindIds):
+            issue_template: auto
+    put:
+      responses:
+        400:
+          (specs.requestBody): '{ body: "{{ invalid }" }'
+    delete:
 
 /notifiers:
   (core.tags): [notifier]

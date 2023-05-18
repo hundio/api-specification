@@ -1,7 +1,12 @@
 {
-  "name": "New PD Incidents",
-  "kind": "pagerduty",
-  "title": "{{ pagerduty.incidents.first.summary }}",
-  "body": "**Incidents detected:**\n\n{% for incident in pagerduty.incidents %}\n  * {{ incident.description }}\n{% endfor %}",
-  "label": "assessed"
+  "name": "Investigation",
+  "kind": "update",
+  "body": "Investigating:\n\n{{ vars.summary }}",
+  "label": "investigating",
+  "variables": {
+    "summary": {
+      "type": "i18n-string",
+      "required": true
+    }
+  }
 }

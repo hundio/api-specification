@@ -3,6 +3,7 @@
 uses:
   prelude: /libraries/prelude.raml
   core: /libraries/core.raml
+  template: /libraries/issue_template/application.raml
 
 (prelude.common):
 (core.fieldDescriptions): !include /documentation/fieldDescriptions/update.yml
@@ -21,6 +22,7 @@ properties:
   reopening: boolean
   effective_after: core.timestamp
   effective: boolean
+  template: nil | template.IssueTemplate/Application
   _links?:
     properties:
       self: core.HAL/Link

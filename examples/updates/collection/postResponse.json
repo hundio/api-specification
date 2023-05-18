@@ -10,6 +10,7 @@
   "reopening": false,
   "effective": true,
   "effective_after": 1543958900,
+  "template": null,
   "issue": {
     "id": "5c06ee978fbb652ab878c3b8",
     "type": "issue",
@@ -55,6 +56,7 @@
     "duration": 3690,
     "cancelled_at": null,
     "schedule": null,
+    "template": null,
     "updates": {
       "type": "paged_array",
       "total_count": 1,
@@ -70,6 +72,7 @@
           "created_at": 1543958900,
           "updated_at": 1543958900,
           "issue": "5c06ee978fbb652ab878c3b8",
+          "template": null,
           "reopening": false,
           "effective": true,
           "effective_after": 1543958900

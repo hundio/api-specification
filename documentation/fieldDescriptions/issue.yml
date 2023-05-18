@@ -72,3 +72,6 @@ updates: |
   This PagedArray will always be completely paged in, so expect `has_more` to
   always be `false`. The first element of this array is the *latest* Update for
   this Issue, and should be considered the current status of this Issue.
+template: |
+  The IssueTemplateApplication that this Issue is applied against, which controls
+  the values of `title`, `body`, and `label` when set.

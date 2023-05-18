@@ -571,6 +571,21 @@ securitySchemes:
           A single Component to return Issues for. This field is ignored if
           `components[]` is supplied.
         type: core.ObjectId
+      standing?:
+        description: |
+          When true, returns only ongoing Issues.
+        type: boolean
+        default: false
+      upcoming?:
+        description: |
+          When true, returns only upcoming scheduled Issues.
+        type: boolean
+        default: false
+      resolved?:
+        description: |
+          When true, returns only resolved Issues.
+        type: boolean
+        default: false
   /{issue_id}:
     (core.tags): [issue]
     type:

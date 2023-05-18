@@ -19,8 +19,8 @@ properties:
   id: core.ObjectId
   type:
     enum: [issue]
-  title: string
-  body: string
+  title: core.i18n-string
+  body: core.i18n-string
   label: nil | core.ISSUE_LABEL
   priority: core.ISSUE_PRIORITY
   open_graph_image_url: core.maybe-string
@@ -53,5 +53,5 @@ properties:
       components: core.HAL/Link
       events: core.HAL/Link
       updates: core.HAL/Link
-      action:cancel: core.HAL/Link
+      action:cancel?: core.HAL/Link
       og:image?: core.HAL/Link

@@ -265,16 +265,16 @@ types:
     additionalProperties: false
     properties:
       description:
-        type: maybe-string
+        type: maybe-i18n-string
       description_html:
-        type: string
+        type: i18n-string
   IssueContentable:
     type: object
     additionalProperties: false
     properties:
-      label: maybe-string
-      body: maybe-string
-      body_html: string
+      label: maybe-i18n-string
+      body: maybe-i18n-string
+      body_html: i18n-string
       state_override: nil | integer-state
   NotificationPreferential:
     type: object

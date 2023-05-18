@@ -49,3 +49,10 @@ notification_exclusions: |
   A specific notification is suppressed exactly when all of the Event's
   `component` context is excluded by this list. If any of an Event's `component`
   context remains unexcluded by the Subscription, then a notification will be sent.
+locale: |
+  The language in which to render notifications sent to this Subscription. The
+  string should be a supported [IETF BCP 47 language tag](https://tools.ietf.org/rfc/bcp/bcp47.html)
+  (e.g. `en`, `de`, `pt-BR`, etc.).
+
+  When this field is `null`, the default language of the Status Page will be used
+  when rendering notifications.

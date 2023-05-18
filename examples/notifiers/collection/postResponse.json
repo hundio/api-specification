@@ -28,6 +28,7 @@
   "enabled": true,
   "subscribable": true,
   "include_group_in_component_names": false,
+  "locale": null,
   "_links": {
     "self": {
       "href": "https://status.example.com/api/v1/notifiers/62d9d65b8fbb6588a979f980"

@@ -31,6 +31,7 @@
   "curatable": false,
   "curated": false,
   "remove_links": false,
+  "locale": null,
   "_links": {
     "self": {
       "href": "https://status.example.com/api/v1/subscriptions/5d2fd9c08fbb65711fbb3dc0"

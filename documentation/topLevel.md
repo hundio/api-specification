@@ -36,9 +36,11 @@ Hund uses API keys to facilitate authentication. These keys can be given in a co
 
 Some fields in this API can be displayed differently on your status page based on the language requested by the user. These fields are marked with type `i18n-string`, and as such can be either a `string` or `object` (with [IETF BCP 47 language tag](https://tools.ietf.org/rfc/bcp/bcp47.html) keys and string values; e.g. `{"en": "Hello!", "de": "Hallo!", "pt-BR": "Olá!"}`), depending on the value of the `Accept-Language` header.
 
-Given an `Accept-Language` header value of `*`, values of type `i18n-string` will be the full object of translations. If a translation does not exist for the requested language, English (`en`) is used as a fallback.
+Given an `Accept-Language` header value of `*`, values of type `i18n-string` will be the full object of translations. If a translation does not exist for the requested language, the Status Page *Default Language* is used as a fallback.
 
-Similarly, when sending values of type `i18n-string` in `POST` or `PUT` requests, the `Accept-Language` header will dictate the particular language given strings are in. Again, to set the entire object of translations at once requires setting `Accept-Language: *`. Without this header, English (`en`) is assumed to be the language of any given `i18n-string`s.
+Similarly, when sending values of type `i18n-string` in `POST` or `PUT` requests, the `Accept-Language` header will dictate the particular language given strings are in. Again, to set the entire object of translations at once requires setting `Accept-Language: *`. Without this header, the Status Page *Default Language* is assumed to be the language of any given `i18n-string`s.
+
+A Status Page's *Default Language* can be changed at any time from the "Settings > Localization" section of the dashboard.
 
 # Errors
 

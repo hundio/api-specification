@@ -14,6 +14,9 @@ type: [core.Form, core.NotificationPreferential/Form]
 properties:
   channel: channel.Form/Subscription/Create
   notifier: core.ObjectId
+  locale?:
+    type: core.maybe-string
+    default: null
   curated?:
     type: boolean
     default: false

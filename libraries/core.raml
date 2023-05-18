@@ -201,6 +201,7 @@ types:
     (prelude.common):
     type: object
     properties:
+      # original: string
       //: string
   polymorphic-i18n:
     (prelude.common):
@@ -214,10 +215,13 @@ types:
       A localized string. The particular translation used on this string depends
       on the given `Accept-Language` header. Given an `Accept-Language` header
       value of `*`, this value will be the full object of translations. If a
-      translation does not exist for the requested language, English is used as
-      a fallback.
-    displayName: i18n string
+      translation does not exist for the requested language, the Status Page
+      *Default Language* is used as a fallback.
+    displayName: i18n-string
     type: string | i18n
+  maybe-i18n-string:
+    (prelude.common):
+    type: i18n-string | nil
   timestamp:
     (prelude.common):
     type: nonnegative-integer

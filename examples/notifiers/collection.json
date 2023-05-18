@@ -34,6 +34,7 @@
       "enabled": true,
       "subscribable": true,
       "include_group_in_component_names": false,
+      "locale": null,
       "_links": {
         "self": {
           "href": "https://status.example.com/api/v1/notifiers/5e2604d88fbb65980272e640"
@@ -90,6 +91,7 @@
       "enabled": true,
       "subscribable": false,
       "include_group_in_component_names": false,
+      "locale": "de",
       "_links": {
         "self": {
           "href": "https://status.example.com/api/v1/notifiers/5d2fd0d28fbb6523cbf73377"
@@ -147,6 +149,7 @@
       "enabled": true,
       "subscribable": true,
       "include_group_in_component_names": false,
+      "locale": null,
       "_links": {
         "self": {
           "href": "https://status.example.com/api/v1/notifiers/5d2fcf198fbb6523cbf73375"
@@ -199,6 +202,7 @@
       "enabled": true,
       "subscribable": false,
       "include_group_in_component_names": false,
+      "locale": null,
       "_links": {
         "self": {
           "href": "https://status.example.com/api/v1/notifiers/5d2d0ebb8fbb6528fd6c6eb2"
@@ -250,6 +254,7 @@
       "enabled": true,
       "subscribable": true,
       "include_group_in_component_names": false,
+      "locale": null,
       "_links": {
         "self": {
           "href": "https://status.example.com/api/v1/notifiers/5d2621e08fbb6579925131ee"
@@ -300,6 +305,7 @@
       "enabled": true,
       "subscribable": true,
       "include_group_in_component_names": false,
+      "locale": null,
       "_links": {
         "self": {
           "href": "https://status.example.com/api/v1/notifiers/5c818d848fbb653d83671b3c"
@@ -359,6 +365,7 @@
       "enabled": true,
       "subscribable": true,
       "include_group_in_component_names": false,
+      "locale": null,
       "_links": {
         "self": {
           "href": "https://status.example.com/api/v1/notifiers/5c81682c8fbb652388b9fdb9"

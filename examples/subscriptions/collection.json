@@ -35,6 +35,7 @@
       "curatable": false,
       "curated": false,
       "remove_links": false,
+      "locale": "de",
       "_links": {
         "self": {
           "href": "https://status.example.com/api/v1/subscriptions/61dcaf458fbb6523de62f078"
@@ -84,6 +85,7 @@
       "curatable": false,
       "curated": false,
       "remove_links": false,
+      "locale": "pt-BR",
       "_links": {
         "self": {
           "href": "https://status.example.com/api/v1/subscriptions/603705a78fbb654416bd444d"
@@ -142,6 +144,7 @@
       "curatable": true,
       "curated": false,
       "remove_links": false,
+      "locale": "en",
       "_links": {
         "self": {
           "href": "https://status.example.com/api/v1/subscriptions/5e2b22228fbb6510f7d55dba"
@@ -194,6 +197,7 @@
       "curatable": true,
       "curated": false,
       "remove_links": false,
+      "locale": null,
       "_links": {
         "self": {
           "href": "https://status.example.com/api/v1/subscriptions/5d8bacc58fbb6525fb9baacd"
@@ -246,6 +250,7 @@
       "curatable": true,
       "curated": false,
       "remove_links": false,
+      "locale": null,
       "_links": {
         "self": {
           "href": "https://status.example.com/api/v1/subscriptions/5d8a82dd8fbb654dc6a10318"
@@ -308,6 +313,7 @@
       "curatable": false,
       "curated": false,
       "remove_links": false,
+      "locale": null,
       "_links": {
         "self": {
           "href": "https://status.example.com/api/v1/subscriptions/5d2fd9c08fbb65711fbb3dc0"
@@ -357,6 +363,7 @@
       "curatable": false,
       "curated": false,
       "remove_links": false,
+      "locale": null,
       "_links": {
         "self": {
           "href": "https://status.example.com/api/v1/subscriptions/5d2fd8618fbb6523cbf73382"
@@ -407,6 +414,7 @@
       "curatable": false,
       "curated": false,
       "remove_links": false,
+      "locale": null,
       "_links": {
         "self": {
           "href": "https://status.example.com/api/v1/subscriptions/5d264b2a8fbb65a3c410dc6d"
@@ -457,6 +465,7 @@
       "curatable": false,
       "curated": false,
       "remove_links": false,
+      "locale": null,
       "_links": {
         "self": {
           "href": "https://status.example.com/api/v1/subscriptions/5d2624d08fbb65804bd3ea30"
@@ -520,6 +529,7 @@
       "curatable": false,
       "curated": false,
       "remove_links": false,
+      "locale": null,
       "_links": {
         "self": {
           "href": "https://status.example.com/api/v1/subscriptions/5d23c52a8fbb650b1cf4368c"

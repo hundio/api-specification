@@ -41,9 +41,12 @@ function isCommonMaybe(shape) {
 // overshadow that of an inner shape's
 const commonWhitelistHack = [
   "Form/Watchdog/Create",
+  "Form::Watchdog::Create",
   "Form/Watchdog/Update",
   "Form/MetricProvider/Create",
+  "Form::MetricProvider::Create",
   "Form/MetricProvider/Update",
+  "Form::MetricProvider::Update",
   "Services/Watchdog",
   "Services/MetricProvider",
   "Form/Notifier/Create",

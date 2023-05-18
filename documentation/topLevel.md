@@ -28,7 +28,7 @@ As above, whether a particular context is accessible from this domain depends on
 
 # Authentication
 
-Hund uses API keys to facilitate authentication. These keys can be given in a couple different formats, described below. API keys are created from the dashboard, and each is linked to the specific user that created it. API keys can be given lesser or equivalent permissions to the linked user.
+Hund uses API keys to facilitate authentication. These keys can be given in a couple different formats, described below. API keys are created from the dashboard (via the Account section, clicking Manage API Keys on your account page), and each is linked to the specific user that created it. API keys can be given lesser or equivalent permissions to the linked user.
 
 <!-- ReDoc-Inject: <SecurityDefinitions /> -->
 

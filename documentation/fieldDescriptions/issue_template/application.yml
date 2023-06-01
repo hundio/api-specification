@@ -17,6 +17,16 @@ variables: |
 
   If the associated IssueTemplate marks a variable as `required`, then it must appear
   here with an appropriate value.
+schema: |
+  An object defining a set of typed variables that can be provided in `variables`.
+  The variables can be accessed from any field in the IssueTemplate supporting
+  Liquid.
+
+  Each defined variable can be given an expected type, and can be marked as required.
+
+  **Note:** this field is normally copied from the underlying `issue_template`,
+  but can be overridden here as necessary. In any case, `variables` must adhere
+  to `schema`.
 sync_with_issue_template: |
   When true, and given that the `issue_template` field is not changed, causes the
   request to resynchronize this application's fields with the original `issue_template`.

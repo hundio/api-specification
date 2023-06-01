@@ -1,0 +1,38 @@
+#%RAML 1.0 ResourceType
+
+post:
+  is:
+  - core.not-authorized-failable:
+      permissionLevel: write
+      errorNotAuthorizedExample: <<errorNotAuthorizedExample>>
+  - core.validation-failable:
+      errorExample: <<postErrorExample>>
+  displayName: Preview a <<itemName|!uppercamelcase>>
+  description: |
+    Preview a new <<itemName|!uppercamelcase>>. Returns the
+    <<itemName|!uppercamelcase>> that would be created if the same request is
+    made against the actual collection.
+
+    This endpoint does *not* persist the returned <<itemName|!uppercamelcase>>.
+  body:
+    application/json:
+      type: <<postParamsType>>
+      examples:
+        "POST <<resourcePath>>": <<postRequestExample>>
+  responses:
+    200:
+      (specs.requestBody): auto:<<itemName>>
+      description: |
+        Successfully previewed a <<itemName|!uppercamelcase>>.
+      body:
+        application/hal+json:
+          type: <<itemType>>
+          examples:
+            "POST <<resourcePath>> (200)": <<postResponseExample>>
+    400:
+      (specs.requestBody): "{}"
+      description: |
+        Failed to preview a new <<itemName|!uppercamelcase>>.
+    403:
+      description: |
+        Not authorized to write <<itemName|!uppercamelcase|!pluralize>>.

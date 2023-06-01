@@ -596,6 +596,17 @@ securitySchemes:
         (specs.exhaustiveRequestBodies):
           source: template
           factory: issue_with_template
+  /preview:
+    (core.tags): [issue]
+    type:
+      core.collection-preview:
+        itemName: issue
+        itemType: issue.Issue
+        postParamsType: issue.Issue/Form/Create
+        postRequestExample: !include /examples/issues/collection/postRequest.json
+        postResponseExample: !include /examples/issues/collection/postResponse.json
+        postErrorExample: !include /examples/issues/error/validation.json
+        errorNotAuthorizedExample: !include /examples/issues/error/notAuthorized.json
   /{issue_id}:
     (core.tags): [issue]
     type:
@@ -702,6 +713,30 @@ securitySchemes:
             (specs.requestBody): '{}'
             description: |
               Issue not found.
+      /preview:
+        (core.tags): [update]
+        (specs.bindIds):
+          issue: auto
+        is:
+        - core.not-found-failable:
+            errorNotFoundExample: !include /examples/issues/error/notFound.json
+        type:
+          core.collection-preview:
+            itemName: update
+            itemType: update-expansionary.Update-Expansionary
+            postParamsType: update.Update/Form/Create
+            postRequestExample: !include /examples/updates/collection/postRequest.json
+            postResponseExample: !include /examples/updates/collection/postResponse.json
+            postErrorExample: !include /examples/updates/error/validation.json
+            errorNotAuthorizedExample: !include /examples/updates/error/notAuthorized.json
+        post:
+          responses:
+            404:
+              (specs.bindIds):
+                issue: nonexistent
+              (specs.requestBody): '{}'
+              description: |
+                Issue not found.
       /{update_id}:
         (core.tags): [update]
         (specs.bindIds):

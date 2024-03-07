@@ -871,6 +871,12 @@ securitySchemes:
           returns only Notifiers that are currently disabled. When this parameter
           is not given, all Notifiers are returned.
         type: boolean
+      subscribable?:
+        description: |
+          When true, returns only Notifiers that can have individual Subscriptions.
+          When false, returns only "unsubscribable" Notifiers.
+          When this parameter is not given, all Notifiers are returned.
+        type: boolean
     responses:
       200:
         (specs.createModels):

@@ -395,7 +395,7 @@ securitySchemes:
       postRequestExample: !include /examples/groups/collection/postRequest.json
       postResponseExample: !include /examples/groups/collection/postResponse.json
       postErrorExample: !include /examples/groups/error/validation.json
-      errorNotAuthorizedExample: !include /examples/issues/error/notAuthorized.json
+      errorNotAuthorizedExample: !include /examples/groups/error/notAuthorized.json
   /{group_id}:
     (core.tags): [group]
     type:
@@ -407,7 +407,7 @@ securitySchemes:
         putRequestExample: !include /examples/groups/collection-item/putRequest.json
         putResponseExample: !include /examples/groups/collection-item/putResponse.json
         errorNotFoundExample: !include /examples/groups/error/notFound.json
-        errorNotAuthorizedExample: !include /examples/issues/error/notAuthorized.json
+        errorNotAuthorizedExample: !include /examples/groups/error/notAuthorized.json
         putErrorExample: !include /examples/groups/error/validation.json
     put:
       responses:
@@ -442,7 +442,7 @@ securitySchemes:
           requestExample: !include /examples/groups/collection-item/reorder/putRequest.json
           responseExample: !include /examples/groups/collection-item/reorder/putResponse.json
           errorNotFoundExample: !include /examples/groups/error/notFound.json
-          errorNotAuthorizedExample: !include /examples/issues/error/notAuthorized.json
+          errorNotAuthorizedExample: !include /examples/groups/error/notAuthorized.json
       put:
         is:
         - core.bad-request-failable:

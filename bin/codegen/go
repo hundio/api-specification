@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+SPECFILE=/tmp/api-specification-codegen-go-$(date +%s).json
+
+mkdir -p dist/codegen
+
+bin/openapi3 core.raml > $SPECFILE
+
+oapi-codegen \
+  -package hundApiV1 \
+  -generate types,client \
+  -include-tags component,watchdog,issue,update,issue_template,group,metric_provider \
+  -templates bin/lib/codegen/templates \
+  $SPECFILE > dist/codegen/hund_api_v1.go

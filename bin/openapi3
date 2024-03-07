@@ -1,0 +1,26 @@
+#!/usr/bin/env node
+
+const path = require('path')
+const amf = require('amf-client-js')
+
+const { postProcess } = require("./lib/post-processing")
+const { normalizeOpenApi3, collapsePatternPropertiesIntoAdditional, flattenDiscriminatedUnionRefs } = require("./lib/openapi3-post-processing")
+
+const ramlPath = process.argv[2]
+
+async function main () {
+  const ramlDir = path.resolve(ramlPath)
+  const raml10 = amf.RAMLConfiguration.RAML10().baseUnitClient();
+  const oas30 = amf.OASConfiguration.OAS30().baseUnitClient();
+
+  const parseResult = await raml10.parse(`file://${ramlDir}`)
+  const resolved = raml10.transform(parseResult.baseUnit, amf.PipelineId.Cache)
+
+  postProcess(resolved.baseUnit)
+
+  const spec = oas30.render(resolved.baseUnit, "application/json")
+
+  console.log(flattenDiscriminatedUnionRefs(collapsePatternPropertiesIntoAdditional(normalizeOpenApi3(spec))))
+}
+
+main()

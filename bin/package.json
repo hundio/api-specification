@@ -1,6 +1,9 @@
 {
   "dependencies": {
-    "amf-client-js": "^5.0.10",
+    "amf-client-js": "^5.4.8",
     "colors": "^1.4.0"
+  },
+  "devDependencies": {
+    "openapi-typescript": "^7.0.0-next.5"
   }
 }

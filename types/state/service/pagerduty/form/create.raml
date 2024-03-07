@@ -17,7 +17,5 @@ properties:
   suppress_future_issues?:
     type: boolean
     default: false
-  issue_templates?:
-    type: core.WatchdogIssueTemplates
-    default: { outage: null, degraded: null, operational: null }
+  issue_templates?: core.WatchdogIssueTemplates
   services: string[]

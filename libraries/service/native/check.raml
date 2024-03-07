@@ -3,6 +3,9 @@
 usage: |
   Defines Hund Native Monitoring Check subtypes
 
+uses:
+  prelude: /libraries/prelude.raml
+
 types:
   ICMP: !include /types/state/service/native/check/icmp.raml
   ICMP/Form/Create: !include /types/state/service/native/check/icmp/form/create.raml

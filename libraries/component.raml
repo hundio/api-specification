@@ -24,3 +24,10 @@ types:
 
   Component/Form/Create: !include /types/state/component/form/create.raml
   Component/Form/Update: !include /types/state/component/form/update.raml
+
+  ComponentPagedArray:
+    (prelude.common):
+    type: core.PagedArray
+    properties:
+      data:
+        items: Component

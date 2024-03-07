@@ -5,6 +5,8 @@ uses:
   core: /libraries/core.raml
   native: /libraries/service/native.raml
 
+(prelude.common):
+(core.fieldDescriptions): !include /documentation/fieldDescriptions/service/native/check.yml
 displayName: DNS
 description: |
   A Hund Native Monitoring DNS Check.

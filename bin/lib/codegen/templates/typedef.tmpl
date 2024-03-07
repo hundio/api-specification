@@ -1,0 +1,4 @@
+{{range .Types}}
+{{ if .Schema.Description }}{{ toGoComment .Schema.Description .TypeName  }}{{ else }}// {{.TypeName}} defines model for {{.JsonName}}.{{ end }}
+type {{.TypeName}} {{if .IsAlias }}={{end}} {{ if len .Schema.UnionElements | eq 0 }}{{ if .Schema.OAPISchema.Nullable }}*{{end}}{{end}}{{.Schema.TypeDecl}}
+{{end}}

@@ -25,5 +25,8 @@ module.exports = {
       /(^|_)([a-z])/g,
       (_m, _p1, p2) => p2.toUpperCase()
     )
+  },
+  principalType: (shape) => {
+    return shape.graph().types()[0].split("#")[1]
   }
 }

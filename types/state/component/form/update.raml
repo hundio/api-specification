@@ -3,6 +3,7 @@
 uses:
   prelude: /libraries/prelude.raml
   core: /libraries/core.raml
+  watchdog: /libraries/watchdog.raml
 
 (prelude.common):
 (core.fieldDescriptions): !include /documentation/fieldDescriptions/component.yml
@@ -15,3 +16,4 @@ properties:
   exclude_from_global_uptime?: boolean
   exclude_from_global_history?: boolean
   group?: core.ObjectId
+  watchdog?: watchdog.Watchdog/Form/Update

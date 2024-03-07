@@ -1,9 +1,12 @@
 #%RAML 1.0 DataType
 
 uses:
+  prelude: /libraries/prelude.raml
   core: /libraries/core.raml
   native: /libraries/service/native.raml
 
+(prelude.common):
+(core.fieldDescriptions): !include /documentation/fieldDescriptions/service/native/check.yml
 displayName: HTTP
 description: |
   Hund Native Monitoring HTTP Check creation form.
@@ -26,9 +29,7 @@ properties:
   response_code_must_be?:
     type: native.HTTP/ResponseCode?
     default: null
-  headers?:
-    type: native.HTTP/Headers
-    default: {}
+  headers?: native.HTTP/Headers
   follow_redirects?:
     type: boolean
     default: true

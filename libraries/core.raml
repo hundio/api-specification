@@ -224,7 +224,9 @@ types:
     type: i18n-string | nil
   timestamp:
     (prelude.common):
-    type: nonnegative-integer
+    type: integer
+    minimum: 0
+    format: int64
   maybe-timestamp:
     (prelude.common):
     type: nil | timestamp

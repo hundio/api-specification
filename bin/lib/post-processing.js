@@ -1,12 +1,10 @@
 const amf = require("amf-client-js")
 const util = require("./utilities")
 
+const principalType = util.principalType
+
 function idBase(id) {
   return id.replace(/#.*/, "")
-}
-
-function principalType(shape) {
-  return shape.graph().types()[0].split("#")[1]
 }
 
 function hoistedId(shape) {
@@ -55,6 +53,8 @@ const commonWhitelistHack = [
   "Form/Subscription/Update",
   "Channels/Notifier",
   "Channels/Subscription",
+
+  "PagedArray",
 ]
 
 function isCommon(shape) {
@@ -74,6 +74,17 @@ const hoistedShapes = {}
 
 function hoistType(resolved, shape) {
   let shapeName = commonShapeName(shape)
+
+  const explicitRef = principalType(shape) == "UnionShape" || shapeName == "PagedArray"
+
+  if (shapeName == "PagedArray") {
+    let innerType = shape.properties.find(p => p.name.value() == "data")?.range?.items?.displayName?.value()
+
+    if (!innerType) return shape
+
+    shapeName = innerType + "PagedArray"
+  }
+
   let sanitizedName = shapeName.replace(/\//g, "::")
   let outerRef = shape.linkCopy()
 
@@ -87,7 +98,7 @@ function hoistType(resolved, shape) {
   }
 
   // actual link to hoisted shape
-  let refLabel = principalType(hoistedShapes[sanitizedName]) == "UnionShape" ? `#/definitions/${sanitizedName}` : sanitizedName,
+  let refLabel = explicitRef ? `#/definitions/${sanitizedName}` : sanitizedName,
       ref = hoistedShapes[sanitizedName].link(refLabel)
 
   // wrapping shape to allow setting other properties, overriding those ref'd in
@@ -97,6 +108,8 @@ function hoistType(resolved, shape) {
   outerRef.withDisplayName(sanitizedName.split("::")[0])
   outerRef.withAnyOf?.([ref])
   outerRef.withDataType?.(shape.dataType.value())
+
+  if (shape.format?.value()) outerRef.withFormat(null)
 
   return outerRef
 }
@@ -206,6 +219,7 @@ function isolateCommonProperties(_resolved) {
       copiedRange.withAnd(prop.range.and)
       copiedRange.withDisplayName(prop.range.displayName.value())
       copiedRange.withDataType?.(prop.range.dataType.value())
+      copiedRange.withFormat?.(prop.range.format.value())
 
       copied.withName(prop.name.value())
       copied.withRange(copiedRange)

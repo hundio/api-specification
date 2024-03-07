@@ -8,6 +8,8 @@ description: |
   Hund Native Monitoring Check creation form.
 type: core.Form
 properties:
+  type:
+    enum: [native]
   method: string
   target: string
   regions: core.NATIVE_REGION[]

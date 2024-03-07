@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+SPECFILE=/tmp/api-specification-codegen-ts-$(date +%s).json
+
+mkdir -p dist/codegen
+
+bin/openapi3 core.raml > $SPECFILE
+
+cd bin
+
+npx openapi-typescript $SPECFILE -o ../dist/codegen/hund-api-v1.d.ts
+
+cd -

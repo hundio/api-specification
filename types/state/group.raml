@@ -18,11 +18,7 @@ properties:
   name: core.i18n-string
   collapsed: boolean
   position: integer
-  components:
-    type: core.PagedArray
-    properties:
-      data:
-        items: component.Component
+  components: component.ComponentPagedArray | core.ObjectId[]
   _links?:
     properties:
       self: core.HAL/Link

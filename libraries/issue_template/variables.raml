@@ -12,7 +12,28 @@ types:
     (prelude.common):
     type: object
     properties:
-      /^[a-zA-Z][a-zA-Z0-9_]*$/: number | string | core.i18n-string
+      /^[a-zA-Z][a-zA-Z0-9_]*$/: IssueTemplateVariable/Application
+
+  IssueTemplateVariable/Application:
+    (prelude.common):
+    type: IssueTemplateVariable/Application/Number | IssueTemplateVariable/Application/Datetime | IssueTemplateVariable/Application/String | IssueTemplateVariable/Application/I18nString
+
+  IssueTemplateVariable/Application/Number:
+    (prelude.common):
+    type: number
+    format: double
+
+  IssueTemplateVariable/Application/Datetime:
+    (prelude.common):
+    type: core.timestamp
+
+  IssueTemplateVariable/Application/String:
+    (prelude.common):
+    type: string
+
+  IssueTemplateVariable/Application/I18nString:
+    (prelude.common):
+    type: core.i18n
 
   ISSUE_TEMPLATE_VARIABLE_TYPE:
     (prelude.common):

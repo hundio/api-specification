@@ -9,6 +9,8 @@ description: |
 type: object
 additionalProperties: false
 properties:
+  type:
+    enum: [native]
   method: string
   target: string
   regions: core.NATIVE_REGION[]

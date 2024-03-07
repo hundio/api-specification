@@ -11,11 +11,11 @@ description: |
   MetricInstance embedded update form, for use in MetricProvider updates.
 type: core.Form
 properties:
-  id: core.ObjectId
+  definition_slug: string
   deleted?:
     description: |
-      If this field is set to true, then this MetricInstance given by `id` will
-      be deleted from the MetricProvider.
+      If this field is set to true, then this MetricInstance given by `definition_slug`
+      will be deleted from the MetricProvider.
     type: boolean
     default: false
   enabled?: boolean

@@ -483,6 +483,16 @@ securitySchemes:
         description: |
           ObjectId for a particular Watchdog to retrieve MetricProviders on.
         type: core.ObjectId
+      default?:
+        description: |
+          When true, returns only MetricProviders for which `default` is true (i.e.
+          returns MetricProviders that are considered the "default" for their
+          respective Watchdogs).
+
+          When used in conjunction with the `watchdog` parameter, returns the
+          *single* default MetricProvider of that Watchdog, if it exists.
+        type: boolean
+        default: false
     responses:
       200:
         (specs.createModels):

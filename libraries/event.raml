@@ -7,7 +7,6 @@ uses:
   prelude: /libraries/prelude.raml
   core: /libraries/core.raml
   event: /libraries/event/core.raml
-  update: /libraries/update.raml
 
 types:
   Event/ComponentEvented: !include /types/state/event/component_evented.raml
@@ -66,12 +65,7 @@ types:
     discriminatorValue: issue_cancelled
     type: Event/IssueEvented
     properties:
-      context:
-        type: event.ComponentMulticontextual
-        properties:
-          update:
-            (core.expandable):
-            type: nil | core.ObjectId | update.Update
+      context: event.ComponentMulticontextualAndMaybeUpdateContextual
   Event/IssueCreated:
     (prelude.common):
     (core.fieldDescriptions): !include /documentation/fieldDescriptions/event.yml
@@ -98,12 +92,7 @@ types:
     discriminatorValue: issue_updated
     type: Event/IssueEvented
     properties:
-      context:
-        type: event.ComponentMulticontextual
-        properties:
-          update:
-            (core.expandable):
-            type: core.ObjectId | update.Update
+      context: event.ComponentMulticontextualAndUpdateContextual
   Event/IssueReopened:
     (prelude.common):
     (core.fieldDescriptions): !include /documentation/fieldDescriptions/event.yml
@@ -181,9 +170,7 @@ types:
     discriminatorValue: subscription_notified
     type: Event/SubscriptionEvented
     properties:
-      context:
-        type: [event.NotifierContextual, event.EventContextual]
-        additionalProperties: false
+      context: event.NotifierAndEventContextual
 
   Event/StatusEvented: !include /types/state/event/status_evented.raml
   Event/StatusCorrected:

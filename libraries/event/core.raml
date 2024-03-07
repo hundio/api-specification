@@ -8,6 +8,7 @@ uses:
   core: /libraries/core.raml
   component: /libraries/component.raml
   notifier: /libraries/notifier.raml
+  update: /libraries/update.raml
 
 types:
   Event: !include /types/state/event.raml
@@ -16,6 +17,10 @@ types:
     (prelude.common):
     type: core.HAL/Linkable
     additionalProperties: false
+    properties:
+      _links?:
+        properties:
+          //: core.HAL/Link
   ComponentContextual:
     (prelude.common):
     type: EmptyContextual
@@ -23,6 +28,9 @@ types:
       component:
         (core.expandable):
         type: core.ObjectId | component.Component
+      _links?:
+        properties:
+          component: core.HAL/Link
   ComponentMulticontextual:
     (prelude.common):
     type: EmptyContextual
@@ -31,6 +39,29 @@ types:
         type: core.PagedArray
         properties:
           data: component.Component[]
+      _links?:
+        properties:
+          components: core.HAL/Link
+  ComponentMulticontextualAndMaybeUpdateContextual:
+    (prelude.common):
+    type: ComponentMulticontextual
+    properties:
+      update:
+        (core.expandable):
+        type: nil | core.ObjectId | update.Update
+      _links?:
+        properties:
+          update?: core.HAL/Link
+  ComponentMulticontextualAndUpdateContextual:
+    (prelude.common):
+    type: ComponentMulticontextual
+    properties:
+      update:
+        (core.expandable):
+        type: core.ObjectId | update.Update
+      _links?:
+        properties:
+          update: core.HAL/Link
   EventContextual:
     (prelude.common):
     type: EmptyContextual
@@ -38,6 +69,9 @@ types:
       event:
         (core.expandable):
         type: core.ObjectId
+      _links?:
+        properties:
+          event: core.HAL/Link
   NotifierContextual:
     (prelude.common):
     type: EmptyContextual
@@ -45,3 +79,10 @@ types:
       notifier:
         (core.expandable):
         type: core.ObjectId | notifier.Notifier
+      _links?:
+        properties:
+          notifier: core.HAL/Link
+  NotifierAndEventContextual:
+    (prelude.common):
+    type: [NotifierContextual, EventContextual]
+    additionalProperties: false

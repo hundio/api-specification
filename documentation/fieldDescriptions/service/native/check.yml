@@ -129,7 +129,7 @@ UDP:
   port: |
     The port at the target to connect to.
   send_data: |
-    Optional data to send to the target after connecting. Unlike in `tcp`, this
+    Data to send to the target after connecting. Unlike in `tcp`, this
     field is required.
 
     This field supports [escape codes](https://hund.io/help/documentation/text-field-escape-codes).
@@ -196,7 +196,6 @@ default:
     The number of consecutive failed checks required before posting an "outage"
     status. If `consecutive_check_degraded_threshold` is non-null, then the outage
     will only be posted after degraded has posted according to its own threshold.
-    For example, for a check with
 
     Note that regardless of threshold settings, a component will post "operational"
     whenever a check succeeds, thus resetting the consecutive check failure count.

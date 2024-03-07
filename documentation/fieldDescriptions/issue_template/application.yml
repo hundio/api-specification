@@ -11,7 +11,7 @@ title: |
 body: |
   The Liquid template for the `body` of the applied Issue/Update.
 label: |
-  The Liquid template for the `label` of the applied Issue/Update.
+  The template for the `label` of the applied Issue/Update.
 variables: |
   An object of variable assignments used to parameterize the associated IssueTemplate.
 

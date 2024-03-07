@@ -336,6 +336,7 @@
                   "context": [],
                   "fingerprint": "1c65e8ef2f2cb8bc23384931fd60ed8aeb6cec1f",
                   "region": "wa-us-1",
+                  "duration": 572,
                   "began_at": 1653431554,
                   "ended_at": 1653432126,
                   "_links": {
@@ -360,6 +361,7 @@
                   "context": [],
                   "fingerprint": "1c65e8ef2f2cb8bc23384931fd60ed8aeb6cec1f",
                   "region": "nj-us-1",
+                  "duration": 572,
                   "began_at": 1653431554,
                   "ended_at": 1653432126,
                   "_links": {
@@ -384,6 +386,7 @@
                   "context": [],
                   "fingerprint": "4402da23c3733f628462c0875d5ff0378d474965",
                   "region": "wa-us-1",
+                  "duration": 1228,
                   "began_at": 1653430326,
                   "ended_at": 1653431554,
                   "_links": {
@@ -408,6 +411,7 @@
                   "context": [],
                   "fingerprint": "84a21935916a3a82537b5d1e1d1a4aa3568b014d",
                   "region": "wa-us-1",
+                  "duration": 1228,
                   "began_at": 1653430326,
                   "ended_at": 1653431554,
                   "_links": {
@@ -432,6 +436,7 @@
                   "context": [],
                   "fingerprint": "2c914693ad522d531622a1b541081b992b51855d",
                   "region": "wa-us-1",
+                  "duration": 1228,
                   "began_at": 1653430326,
                   "ended_at": 1653431554,
                   "_links": {
@@ -456,6 +461,7 @@
                   "context": [],
                   "fingerprint": "2c914693ad522d531622a1b541081b992b51855d",
                   "region": "nj-us-1",
+                  "duration": 1228,
                   "began_at": 1653430326,
                   "ended_at": 1653431554,
                   "_links": {
@@ -480,6 +486,7 @@
                   "context": [],
                   "fingerprint": "4402da23c3733f628462c0875d5ff0378d474965",
                   "region": "nj-us-1",
+                  "duration": 1228,
                   "began_at": 1653430326,
                   "ended_at": 1653431554,
                   "_links": {
@@ -504,6 +511,7 @@
                   "context": [],
                   "fingerprint": "84a21935916a3a82537b5d1e1d1a4aa3568b014d",
                   "region": "nj-us-1",
+                  "duration": 1228,
                   "began_at": 1653430326,
                   "ended_at": 1653431554,
                   "_links": {

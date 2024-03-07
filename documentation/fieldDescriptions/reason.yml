@@ -12,6 +12,9 @@ ended_at: |
 
   This field is `null` when this Reason is currently responsible for an ongoing
   sub-operational Status.
+duration: |
+  The number of seconds that this Reason lasted. The duration will continually
+  increase until the Reason ends (when `ended_at` != null).
 fingerprint: |
   A unique hash identifying the `subject`/`description`/`context` combination
   that fully describes this Reason. Fingerprints between Reasons will be equal

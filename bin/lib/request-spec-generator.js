@@ -134,13 +134,18 @@ class RequestSpecGenerator {
       return util.itselfOrTraverseLink(pathProp)
     }, requestSchema);
 
-    return shape.anyOf.map((subshape) => {
-      var trait = util.toSnakeCase(subshape.displayName.value()),
-          info = {factory: factory, trait: trait, mergePath: mergePath}
+    return shape.anyOf.flatMap((subshape) => {
+      const subshapes = util.principalType(subshape) === "UnionShape" ?
+        util.itselfOrTraverseLink(subshape).anyOf : [subshape]
 
-      if (vcrTraits.includes(trait)) info.vcr = true
+      return subshapes.map(ss => {
+        var trait = util.toSnakeCase(ss.displayName.value()),
+        info = {factory: factory, trait: trait, mergePath: mergePath}
 
-      return this.responseTestCase(endPoint, operation, response, code, idBindings, bodyExpectation, info)
+        if (vcrTraits.includes(trait)) info.vcr = true
+
+        return this.responseTestCase(endPoint, operation, response, code, idBindings, bodyExpectation, info)
+      })
     }).join("\n\n");
   }
 

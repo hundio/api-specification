@@ -62,7 +62,7 @@ class RequestSpecGenerator {
 
     permissionLevel = permissionLevel.extension.value.value()
 
-    return `let(:api_key) { create :api_key, :${permissionLevel} }`
+    return `let(:api_key) { create :api_key, :${permissionLevel}, user: api_key_user }`
   }
 
   idBindings(response) {
@@ -223,7 +223,8 @@ class RequestSpecGenerator {
 
     RSpec.describe "${this.basePath} (version: latest)", :timeline_simulation do
       before(:example) { DatabaseCleaner.clean }
-      let(:api_key) { create :api_key, :write }
+      let(:api_key_user) { create :user, :admin }
+      let(:api_key) { create :api_key, :write, user: api_key_user }
       let(:headers) { { accept: "application/hal+json;variant=compact", authorization: "Bearer #{api_key.token}" } }
 
       ${content}

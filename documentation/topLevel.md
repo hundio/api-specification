@@ -74,6 +74,18 @@ As a more complex example, say we are requesting `GET /issues`, the Issue index;
 
 **Note:** An expansion path may only have up to _four_ segments, to limit excessive expansion depth.
 
+# Field Projection
+
+For cases where only a fraction of the returned fields of a response is desired, the `project[]` query parameter may be used. This parameter can greatly speed up response times for large indexes, especially when only a portion of the returned data will be used.
+
+Similar to the `expand[]` parameter, each `project[]` parameter expects a dot-delimited path describing each field that should be returned in the response. To expand fields contained within a PagedArray, `data` must be included in the path to step through each element of the array.
+
+For example, to request only the `name` and `components.data.name` fields from the `GET /groups` index, which will return only Group and Component names, we can add the following `project[]` parameters: `project[]=data.name&project[]=data.components.data.name`. Again, similar to `expand[]`, the Group index returns a PagedArray, and so `data` must prefix each parameter, to project over the elements of the `data` field for both the groups, and the PagedArrays of Components within each Group.
+
+The resulting response will contain a PagedArray of Groups with only `id`, `type`, and `name` fields, as well as the PagedArray of `components`, each also containing only `id`, `type`, and `name` fields.
+
+**Note:** Certain essential fields, like the properties of PagedArrays (`has_more`, `total_count`, `data`, etc.), and fields like `id` and `type`, are always projected into responses, and cannot be suppressed.
+
 # Hypermedia (HAL) Support
 
 To facilitate discoverability, as well as compatibility with the existing hypermedia API software ecosystem, the Hund API supports [HAL](https://tools.ietf.org/html/draft-kelly-json-hal-08), a hypermedia API standard. Both API and HTML UI links are supplied by the various endpoints of this API.

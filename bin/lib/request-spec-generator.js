@@ -16,7 +16,7 @@ class RequestSpecGenerator {
   }
 
   requestBindings(operation, response, requestBodyInfo) {
-    if (!this.supportsRequestBody(operation)) return ""
+    if (!this.supportsRequestBody(operation)) return []
 
     var paramsBinding, headersBinding = 'headers.merge! "content-type" => "application/json"'
 
@@ -46,11 +46,11 @@ class RequestSpecGenerator {
       paramsBinding += ".to_json"
     }
 
-    return [paramsBinding, headersBinding].join("\n")
+    return [paramsBinding, paramsBinding && headersBinding]
   }
 
-  requestOptions(operation) {
-    if (!this.supportsRequestBody(operation)) return ", headers: headers"
+  requestOptions(operation, params) {
+    if (!this.supportsRequestBody(operation) || !params) return ", headers: headers"
 
     return ", params: params, headers: headers"
   }
@@ -106,10 +106,12 @@ class RequestSpecGenerator {
   }
 
   responseTestCase(endPoint, operation, response, code, idBindings, bodyExpectation, requestBodyInfo = {}) {
+    const bindings = this.requestBindings(operation, response, requestBodyInfo)
+
     return `
       it "${this.testCaseDescription(requestBodyInfo)}"${this.testCaseFlags(requestBodyInfo)} do
-        ${this.requestBindings(operation, response, requestBodyInfo)}
-        ${operation.method.value()} "${this.basePath}${this.endPointPath(endPoint, idBindings)}"${this.requestOptions(operation)}
+        ${bindings.join("\n")}
+        ${operation.method.value()} "${this.basePath}${this.endPointPath(endPoint, idBindings)}"${this.requestOptions(operation, bindings[0])}
 
         expect(response).to have_http_status(${code})
         ${bodyExpectation}
@@ -238,7 +240,7 @@ class RequestSpecGenerator {
   }
 
   supportsRequestBody(operation) {
-    return ["post", "put", "patch"].includes(operation.method.value())
+    return ["post", "put", "patch", "delete"].includes(operation.method.value())
   }
 
   endPointPath(endPoint, upgradeInterpolations) {

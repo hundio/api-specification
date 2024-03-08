@@ -212,9 +212,11 @@ class RequestSpecGenerator {
 
   operations() {
     return this.resolved.encodes.endPoints.map((endPoint) => {
+      const resourceTag = util.findCustomDomainProperty(endPoint, "core.tags")?.extension?.members?.[0]?.value?.value() || ""
+
       return endPoint.operations.map((operation) => {
         return `
-        describe "${operation.method.value().toUpperCase()} ${this.basePath}${endPoint.path.value()}" do
+        describe "${operation.method.value().toUpperCase()} ${this.basePath}${endPoint.path.value()}"${resourceTag && `, resource: "${resourceTag}"`} do
           ${this.responses(endPoint, operation)}
         end
         `

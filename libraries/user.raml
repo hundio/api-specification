@@ -1,0 +1,9 @@
+#%RAML 1.0 Library
+
+usage: |
+  Defines User type and forms.
+
+types:
+  User: !include /types/state/user.raml
+  User/Form/Create: !include /types/state/user/form/create.raml
+  User/Form/Update: !include /types/state/user/form/update.raml

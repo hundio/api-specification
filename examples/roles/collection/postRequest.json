@@ -1,0 +1,4 @@
+{
+  "name": "Issue Creators",
+  "permissions": { "issue": { "level": "w" } }
+}

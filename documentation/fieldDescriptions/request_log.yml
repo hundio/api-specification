@@ -1,0 +1,51 @@
+id: |
+  The UUID of this RequestLog. This is the same value that is sent in the
+  `Request-Id` [response header](#section/Request-IDs).
+created_at: |
+  The UNIX timestamp at which this RequestLog was generated.
+email: |
+  The email address associated with the User at the time this request was made.
+  This value never changes, even if the associated User changes email addresses,
+  or is deleted.
+api_key: |
+  The API key that was used to make this request, if applicable. This field is null
+  when `source` is `dashboard`.
+user: |
+  The User responsible for making this request, if applicable. This field is `null`
+  if the request was unauthenticated (e.g. public subscription requests via the
+  status page).
+domain: |
+  The status page domain at which this request was made.
+verb: |
+  The HTTP verb used to make this request.
+path: |
+  The HTTP path at which this request was made.
+query: |
+  An object containing the key-value pairs used in the query string of this request.
+  This field is null if the query string was empty.
+response_code: |
+  The HTTP response code returned by the server.
+request_body: |
+  An object representing the HTTP request body sent to the server. This field is
+  null if a request body was not present.
+response_body: |
+  An object representing the HTTP response body sent by the server. This field is
+  null when `source` is `dashboard`, or if `verb` is `GET`.
+ip_address: |
+  The IP address that this request originated from.
+user_agent: |
+  The `User-Agent` header that was sent to the server in the request.
+locale: |
+  An [IETF BCP 47 language tag](https://tools.ietf.org/rfc/bcp/bcp47.html)
+  denoting the locale of the response.
+source: |
+  The source of this request within Hund. This field takes on two values:
+
+  * `dashboard`: The request originated from the Hund dashboard.
+  * `api`: The request originated from the Hund REST API.
+api_version: |
+  The version of the REST API that this request was made under. This field is null
+  if `source` is not `api`.
+successful: |
+  When true, implies that this request had a successful response (`response_code` < 400);
+  when false, implies that this request failed (`response_code` >= 400).

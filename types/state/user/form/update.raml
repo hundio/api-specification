@@ -1,0 +1,24 @@
+#%RAML 1.0 DataType
+
+uses:
+  prelude: /libraries/prelude.raml
+  core: /libraries/core.raml
+
+(prelude.common):
+(core.fieldDescriptions): !include /documentation/fieldDescriptions/user.yml
+displayName: User
+description: |
+  User update form.
+type: [core.Form, core.NotificationPreferential/Form]
+properties:
+  email?: string
+  password?:
+    type: core.maybe-string
+    description: |
+      A password to set on this User. If this field is set to `null`, then the
+      password will be reset to a randomly generated one.
+
+      **Note:** If the User's password is changed/reset, then the User will be
+      sent an email informing them of the change. However, the new password
+      **will not** be sent to the User.
+  roles?: core.ObjectId[]

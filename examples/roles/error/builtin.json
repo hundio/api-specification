@@ -1,0 +1,5 @@
+{
+  "type": "role/error/cannot_modify_builtin_roles",
+  "logref": "018e0b49-0fcc-72a9-aef4-b740343847ba",
+  "message": "Builtin Roles cannot be modified."
+}

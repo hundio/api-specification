@@ -1,0 +1,29 @@
+{
+  "id": "018e0c06-3e69-75bd-b2a0-ae2fad58b6f2",
+  "type": "request_log",
+  "created_at": 1709598719,
+  "user": "5ad4fcb18fbb650f596df4a7",
+  "api_key": "5ec6e3f58fbb6545cc9dba5a",
+  "successful": true,
+  "source": "api",
+  "email": "user@example.com",
+  "domain": "status.example.com",
+  "path": "/api/v1/request_logs",
+  "verb": "get",
+  "response_code": 200,
+  "ip_address": "192.0.2.14",
+  "user_agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+  "locale": "en",
+  "api_version": "2021-09-01",
+  "query": null,
+  "request_body": null,
+  "response_body": null,
+  "_links": {
+    "self": {
+      "href": "https://status.example.com/api/v1/request_logs/018e0c06-3e69-75bd-b2a0-ae2fad58b6f2"
+    },
+    "user": {
+      "href": "https://status.example.com/api/v1/users/5ad4fcb18fbb650f596df4a7"
+    }
+  }
+}

@@ -1,0 +1,5 @@
+{
+  "type": "api/error/not_found",
+  "logref": "018e0b8f-1343-70c1-9590-2a612dbd58b4",
+  "message": "Role slug not found."
+}

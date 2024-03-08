@@ -23,14 +23,18 @@ uses:
   event: /libraries/event.raml
   issue: /libraries/issue.raml
   issue_template: /libraries/issue_template.raml
+  invitation: /libraries/invitation.raml
   metric_provider: /libraries/metric_provider.raml
   notifier: /libraries/notifier.raml
   reason-expansionary: /libraries/reason/expansionary.raml
+  request_log: /libraries/request_log.raml
+  role: /libraries/role.raml
   status: /libraries/status.raml
   subscription: /libraries/subscription.raml
   timeline: /libraries/timeline.raml
   update: /libraries/update.raml
   update-expansionary: /libraries/update/expansionary.raml
+  user: /libraries/user.raml
   watchdog: /libraries/watchdog.raml
 
 securedBy: [basic, bearer]
@@ -97,6 +101,14 @@ securitySchemes:
       For more information on the mechanics of the Timeline, please read [this
       knowledgebase article](https://hund.io/help/documentation/the-timeline).
     x-displayName: Timeline
+  - name: user
+    x-displayName: Users
+  - name: role
+    x-displayName: Roles
+  - name: invitation
+    x-displayName: Invitations
+  - name: request_log
+    x-displayName: RequestLogs
 
 (core.tagGroups):
   - name: Monitoring
@@ -107,6 +119,8 @@ securitySchemes:
     tags: [notifier, subscription]
   - name: History
     tags: [event, timeline]
+  - name: Administration
+    tags: [user, role, invitation, request_log]
 
 /:
   get:
@@ -136,6 +150,10 @@ securitySchemes:
                   statuses: core.HAL/Link
                   reasons: core.HAL/Link
                   timeline: core.HAL/Link
+                  users: core.HAL/Link
+                  roles: core.HAL/Link
+                  invitations: core.HAL/Link
+                  request_logs: core.HAL/Link
 
 /components:
   (core.tags): [component]
@@ -1286,3 +1304,480 @@ securitySchemes:
             timeline_item: nonexistent
           description: |
             TimelineItem not found.
+
+/users:
+  (core.tags): [user]
+  type:
+    core.collection:
+      itemType: user.User
+      postParamsType: user.User/Form/Create
+      getResponseExample: !include /examples/users/collection.json
+      postRequestExample: !include /examples/users/collection/postRequest.json
+      postResponseExample: !include /examples/users/collection/postResponse.json
+      postErrorExample: !include /examples/users/error/validation.json
+      errorNotAuthorizedExample: !include /examples/users/error/notAuthorized.json
+  get:
+    is:
+    - core.not-authorized-failable:
+        permissionLevel: read
+        errorNotAuthorizedExample: !include /examples/events/error/notAuthorized.json
+    queryParameters:
+      role?:
+        type: core.ObjectId
+        description: |
+          Return Users who are currently granted the provided Role ID.
+      roles[]?:
+        type: core.ObjectId[]
+        description: |
+          Return Users who are currently granted one or more of the provided
+          Role IDs. To use this query parameter, supply `roles[]={role_id}` for
+          each `{role_id}` to return Users for.
+      email?:
+        type: string
+        description: |
+          Return Users whose `email` matches the query parameter by substring
+          match. An incomplete email address (e.g. `@example.com`, `user`,
+          `user@example`, etc.) is an acceptable input to this parameter. This
+          field is ignored if `email!` is given.
+
+          **Note:** It is possible for email addresses like `0user@example.com`
+          to match the query `email=user@example.com` by substring match. If you
+          require **exact** matching, use `email!` as described below.
+
+          **Note:** Email addresses are *case insensitive*. Any casing given to
+          this parameter will be ignored.
+      email!?:
+        type: string
+        description: |
+          Return Users whose `email` field matches the query parameter *exactly*.
+          A valid email address must be given for this parameter to work correctly.
+
+          **Note:** Email addresses are *case insensitive*. Any casing given to
+          this parameter will be ignored.
+  /{user_id}:
+    (core.tags): [user]
+    type:
+      core.collection-item:
+        idPrefix: user
+        itemType: user.User
+        putParamsType: user.User/Form/Update
+        getResponseExample: !include /examples/users/collection-item.json
+        putRequestExample: !include /examples/users/collection-item/putRequest.json
+        putResponseExample: !include /examples/users/collection-item/putResponse.json
+        errorNotFoundExample: !include /examples/users/error/notFound.json
+        errorNotAuthorizedExample: !include /examples/users/error/notAuthorized.json
+        putErrorExample: !include /examples/users/error/validation.json
+    get:
+      is:
+      - core.not-authorized-failable:
+          permissionLevel: read
+          errorNotAuthorizedExample: !include /examples/events/error/notAuthorized.json
+      responses:
+        403:
+          (specs.bindIds):
+            user: auto
+    put:
+      responses:
+        400:
+          (specs.requestBody): '{ "email": "invalid" }'
+    delete:
+    /reset_password:
+      (core.tags): [user]
+      type:
+        core.simple-action:
+          displayName: Initiate User Password Reset
+          description: |
+            Initiates a password reset flow for the given User. The User will
+            receive an email allowing them to reset their password, similar to
+            the User requesting a reset from the Sign-in form.
+          idPrefix: user
+          itemType: user.User
+          successDescription: |
+            Successfully initiated reset.
+          notFoundDescription: |
+            User not found.
+          responseExample: !include /examples/users/collection-item.json
+          errorNotFoundExample: !include /examples/users/error/notFound.json
+          errorNotAuthorizedExample: !include /examples/users/error/notAuthorized.json
+      put:
+        responses:
+          403:
+            description: |
+              Not authorized to write Users.
+    /sign_out:
+      (core.tags): [user]
+      type:
+        core.simple-action:
+          displayName: Force User Sign-out
+          description: |
+            Forces a User to become signed out on all devices by resetting their
+            remember token.
+          idPrefix: user
+          itemType: user.User
+          successDescription: |
+            Successfully signed out User.
+          notFoundDescription: |
+            User not found.
+          responseExample: !include /examples/users/collection-item.json
+          errorNotFoundExample: !include /examples/users/error/notFound.json
+          errorNotAuthorizedExample: !include /examples/users/error/notAuthorized.json
+      put:
+        responses:
+          403:
+            description: |
+              Not authorized to write Users.
+
+/roles:
+  (core.tags): [role]
+  type:
+    core.read-collection:
+      itemType: role.Role
+      getResponseExample: !include /examples/roles/collection.json
+  get:
+    queryParameters:
+      builtin?:
+        type: boolean
+        default: false
+        description: |
+          When true, returns only Roles where `builtin` is true. When false,
+          performs no filtering.
+      custom?:
+        type: boolean
+        default: false
+        description: |
+          When true, returns only Roles where `builtin` is false (i.e. custom).
+          When false, performs no filtering.
+      scope?:
+        type: core.ROLE_SCOPE
+        description: |
+          Return Roles whose `scope` matches the provided one.
+      slug?:
+        type: string
+        description: |
+          Return Roles of this specific slug. Roles can only be modified by slug,
+          thus affecting all Role objects with the same slug.
+      user?:
+        type: core.ObjectId
+        description: |
+          Return Roles that are currently granted to the given User.
+      invitation?:
+        type: core.ObjectId
+        description: |
+          Return Roles that are currently granted to the given Invitation.
+  post:
+    is:
+    - core.not-authorized-failable:
+        permissionLevel: write
+        errorNotAuthorizedExample: !include /examples/roles/error/notAuthorized.json
+    - core.validation-failable:
+        errorExample: !include /examples/roles/error/validation.json
+    displayName: Create Custom Roles
+    description: |
+      Create a new set of custom Roles. Returns the newly created Roles. Each Role
+      in the returned set will share the same slug, derived from the given name,
+      one for each possible `scope` on your account.
+
+      If any status pages are added/removed later on, appropriately scoped roles
+      for each page are automatically provisioned for every Role slug on your account.
+    body:
+      application/json:
+        type: role.Role/Form/Create
+        examples:
+          "POST /roles": !include /examples/roles/collection/postRequest.json
+    responses:
+      201:
+        (specs.requestBody): auto:role
+        description: |
+          Successfully created new Roles.
+        body:
+          application/hal+json:
+            type: role.RoleSet
+            examples:
+              "POST /roles (201)": !include /examples/roles/collection/postResponse.json
+      400:
+        (specs.requestBody): "{}"
+        description: |
+          Failed to create Roles.
+  put:
+    is:
+    - core.bad-request-failable:
+        description: |
+          Builtin Roles cannot be updated.
+        errorBadRequestExample: !include /examples/roles/error/builtin.json
+    - core.not-authorized-failable:
+        permissionLevel: write
+        errorNotAuthorizedExample: !include /examples/roles/error/notAuthorized.json
+    - core.not-found-failable:
+        errorNotFoundExample: !include /examples/roles/error/slugNotFound.json
+    displayName: Update Custom Roles by Slug
+    description: |
+      Update the given Roles by slug. Only one slug may be updated at a time via
+      this collection-based method.
+    queryParameters:
+      slug:
+        type: string
+        description: |
+          The slug defining the set of Roles to update.
+    body:
+      application/json:
+        examples:
+          "PUT /roles": !include /examples/roles/collection/putRequest.json
+        type: role.Role/Form/Update
+    responses:
+      200:
+        (specs.createModels):
+          role:
+            count: 1
+            options:
+              name: "\"custom-slug-1\""
+        (specs.requestBody): "{slug: 'custom-slug-1'}"
+        description: |
+          Successfully updated Roles.
+        body:
+          application/hal+json:
+            examples:
+              "PUT /roles (200)": !include /examples/roles/collection/putResponse.json
+            type: role.RoleSet
+      400:
+        (specs.requestBody): "{slug: 'team_member'}"
+      404:
+        (specs.requestBody): "{slug: 'nonexistent'}"
+        description: |
+          Roles not found by given slug.
+  delete:
+    is:
+    - core.bad-request-failable:
+        description: |
+          Builtin Roles cannot be deleted.
+        errorBadRequestExample: !include /examples/roles/error/builtin.json
+    - core.not-authorized-failable:
+        permissionLevel: write
+        errorNotAuthorizedExample: !include /examples/roles/error/notAuthorized.json
+    - core.not-found-failable:
+        errorNotFoundExample: !include /examples/roles/error/slugNotFound.json
+    displayName: Delete Custom Roles by Slug
+    description: |
+      Delete the given Roles by slug. Only one slug may be deleted at a time via
+      this collection-based method.
+    queryParameters:
+      slug:
+        type: string
+        description: |
+          The slug defining the set of Roles to delete.
+    responses:
+      200:
+        (specs.createModels):
+          role:
+            count: 1
+            options:
+              name: "\"custom-slug-1\""
+        (specs.requestBody): "{slug: 'custom-slug-1'}"
+        description: |
+          Successfully deleted Roles.
+        body:
+          application/hal+json:
+            examples:
+              "DELETE /roles (200)": !include /examples/roles/collection/deleteResponse.json
+            type: role.RoleSet
+      400:
+        (specs.requestBody): "{slug: 'team_member'}"
+      404:
+        (specs.requestBody): "{slug: 'nonexistent'}"
+        description: |
+          Roles not found by given slug.
+  /{role_id}:
+    (core.tags): [role]
+    (specs.bindIds):
+      role: auto
+    (specs.factoryStrategy): create
+    type:
+      core.read-collection-item:
+        idPrefix: role
+        itemType: role.Role
+        getResponseExample: !include /examples/roles/collection-item.json
+        errorNotFoundExample: !include /examples/roles/error/notFound.json
+    get:
+      is:
+      - core.not-authorized-failable:
+          permissionLevel: read
+          errorNotAuthorizedExample: !include /examples/roles/error/notAuthorized.json
+
+/invitations:
+  (core.tags): [invitation]
+  type:
+    core.collection:
+      itemType: invitation.Invitation
+      postParamsType: invitation.Invitation/Form/Create
+      getResponseExample: !include /examples/invitations/collection.json
+      postRequestExample: !include /examples/invitations/collection/postRequest.json
+      postResponseExample: !include /examples/invitations/collection/postResponse.json
+      postErrorExample: !include /examples/invitations/error/validation.json
+      errorNotAuthorizedExample: !include /examples/invitations/error/notAuthorized.json
+  get:
+    is:
+    - core.not-authorized-failable:
+        permissionLevel: read
+        errorNotAuthorizedExample: !include /examples/invitations/error/notAuthorized.json
+    queryParameters:
+      active?:
+        type: boolean
+        default: false
+        description: |
+          When true, returns only Invitations where `redeemed` is false (i.e.
+          active). When false, performs no filtering.
+      redeemed?:
+        type: boolean
+        default: false
+        description: |
+          When true, returns only Invitations where `redeemed` is true. When
+          false, performs no filtering.
+      role?:
+        type: core.ObjectId
+        description: |
+          Return Invitations who are currently granted the provided Role ID.
+      roles[]?:
+        type: core.ObjectId[]
+        description: |
+          Return Invitations who are currently granted one or more of the provided
+          Role IDs. To use this query parameter, supply `roles[]={role_id}` for
+          each `{role_id}` to return Invitations for.
+      email?:
+        type: string
+        description: |
+          Return Invitations whose `email` matches the query parameter by substring
+          match. An incomplete email address (e.g. `@example.com`, `user`,
+          `user@example`, etc.) is an acceptable input to this parameter. This
+          field is ignored if `email!` is given.
+
+          **Note:** It is possible for email addresses like `0user@example.com`
+          to match the query `email=user@example.com` by substring match. If you
+          require **exact** matching, use `email!` as described below.
+
+          **Note:** Email addresses are *case insensitive*. Any casing given to
+          this parameter will be ignored.
+      email!?:
+        type: string
+        description: |
+          Return Invitations whose `email` field matches the query parameter *exactly*.
+          A valid email address must be given for this parameter to work correctly.
+
+          **Note:** Email addresses are *case insensitive*. Any casing given to
+          this parameter will be ignored.
+  /{invitation_id}:
+    (core.tags): [invitation]
+    type:
+      core.collection-item:
+        idPrefix: invitation
+        itemType: invitation.Invitation
+        putParamsType: invitation.Invitation/Form/Update
+        getResponseExample: !include /examples/invitations/collection-item.json
+        putRequestExample: !include /examples/invitations/collection-item/putRequest.json
+        putResponseExample: !include /examples/invitations/collection-item/putResponse.json
+        errorNotFoundExample: !include /examples/invitations/error/notFound.json
+        errorNotAuthorizedExample: !include /examples/invitations/error/notAuthorized.json
+        putErrorExample: !include /examples/invitations/error/validation.json
+    get:
+      is:
+      - core.not-authorized-failable:
+          permissionLevel: read
+          errorNotAuthorizedExample: !include /examples/invitations/error/notAuthorized.json
+      responses:
+        403:
+          (specs.bindIds):
+            invitation: auto
+    put:
+      responses:
+        400:
+          (specs.bindIds):
+            invitation: auto:redeemed
+          description: |
+            Cannot update a redeemed Invitation.
+    delete:
+
+/request_logs:
+  (core.tags): [request_log]
+  (specs.factoryStrategy): create
+  type:
+    core.read-collection:
+      getResponseExample: !include /examples/request_logs/collection.json
+      itemType: request_log.RequestLog
+  get:
+    is:
+    - core.not-authorized-failable:
+        permissionLevel: read
+        errorNotAuthorizedExample: !include /examples/request_logs/error/notAuthorized.json
+    queryParameters:
+      successful?:
+        type: boolean
+        description: |
+          When true, return only RequestLogs with success response. When false,
+          returns RequestLogs with failed response.
+      source?:
+        type: core.REQUEST_LOG_SOURCE
+        description: |
+          Return RequestLogs only from the given source.
+      response_code?:
+        type: core.nonnegative-integer
+        description: |
+          Return RequestLogs with the given response code.
+      verb?:
+        type: string
+        description: |
+          Return RequestLogs with the given HTTP verb.
+      email?:
+        type: string
+        description: |
+          Return RequestLogs whose `email` matches the query parameter by substring
+          match. An incomplete email address (e.g. `@example.com`, `user`,
+          `user@example`, etc.) is an acceptable input to this parameter. This
+          field is ignored if `email!` is given.
+
+          **Note:** Email addresses are *case insensitive*. Any casing given to
+          this parameter will be ignored.
+      email!?:
+        type: string
+        description: |
+          Return RequestLogs whose `email` field matches the query parameter *exactly*.
+          A valid email address must be given for this parameter to work correctly.
+
+          **Note:** Email addresses are *case insensitive*. Any casing given to
+          this parameter will be ignored.
+      domain?:
+        type: string
+        description: |
+          Return RequestLogs for requests made on the given domain.
+      ip_address?:
+        type: string
+        description: |
+          Return RequestLogs for requests made by the given IP address.
+      user?:
+        type: core.ObjectId
+        description: |
+          Return RequestLogs for requests made by the given User.
+      api_key?:
+        type: core.ObjectId
+        description: |
+          Return RequestLogs for requests made by the given API key.
+  /{request_log_id}:
+    (core.tags): [request_log]
+    (specs.factoryStrategy): create
+    type:
+      core.read-collection-item:
+        errorNotFoundExample: !include /examples/request_logs/error/notFound.json
+        getResponseExample: !include /examples/request_logs/collection-item.json
+        idPrefix: request_log
+        itemType: request_log.RequestLog
+    uriParameters:
+      request_log_id:
+        description: |
+          The UUID of the of the RequestLog.
+        type: core.UUID
+    get:
+      is:
+      - core.not-authorized-failable:
+          permissionLevel: read
+          errorNotAuthorizedExample: !include /examples/request_logs/error/notAuthorized.json
+      responses:
+        403:
+          (specs.bindIds):
+            request_log: auto

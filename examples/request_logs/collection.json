@@ -1,0 +1,166 @@
+{
+  "type": "paged_array",
+  "total_count": 5,
+  "has_more": true,
+  "data": [
+    {
+      "id": "018e0c06-3e69-75bd-b2a0-ae2fad58b6f2",
+      "type": "request_log",
+      "created_at": 1709598719,
+      "user": "5ad4fcb18fbb650f596df4a7",
+      "api_key": "5ec6e3f58fbb6545cc9dba5a",
+      "successful": true,
+      "source": "api",
+      "email": "user@example.com",
+      "domain": "status.example.com",
+      "path": "/api/v1/request_logs",
+      "verb": "get",
+      "response_code": 200,
+      "ip_address": "192.0.2.14",
+      "user_agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+      "locale": "en",
+      "api_version": "2021-09-01",
+      "query": null,
+      "request_body": null,
+      "response_body": null,
+      "_links": {
+        "self": {
+          "href": "https://status.example.com/api/v1/request_logs/018e0c06-3e69-75bd-b2a0-ae2fad58b6f2"
+        },
+        "user": {
+          "href": "https://status.example.com/api/v1/users/5ad4fcb18fbb650f596df4a7"
+        }
+      }
+    },
+    {
+      "id": "018e0c05-421a-70d7-9461-87bc7eeb2252",
+      "type": "request_log",
+      "created_at": 1709598655,
+      "user": "5ad4fcb18fbb650f596df4a7",
+      "api_key": "5ec6e3f58fbb6545cc9dba5a",
+      "successful": true,
+      "source": "api",
+      "email": "user@example.com",
+      "domain": "status.example.com",
+      "path": "/api/v1/request_logs",
+      "verb": "get",
+      "response_code": 200,
+      "ip_address": "192.0.2.14",
+      "user_agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+      "locale": "en",
+      "api_version": "2021-09-01",
+      "query": null,
+      "request_body": null,
+      "response_body": null,
+      "_links": {
+        "self": {
+          "href": "https://status.example.com/api/v1/request_logs/018e0c05-421a-70d7-9461-87bc7eeb2252"
+        },
+        "user": {
+          "href": "https://status.example.com/api/v1/users/5ad4fcb18fbb650f596df4a7"
+        }
+      }
+    },
+    {
+      "id": "018e0bff-86db-7cd5-881d-a4e7325915d2",
+      "type": "request_log",
+      "created_at": 1709598279,
+      "user": "5ad4fcb18fbb650f596df4a7",
+      "api_key": "5ec6e3f58fbb6545cc9dba5a",
+      "successful": false,
+      "source": "api",
+      "email": "user@example.com",
+      "domain": "status.example.com",
+      "path": "/api/v1/request_logs",
+      "verb": "get",
+      "response_code": 500,
+      "ip_address": "192.0.2.14",
+      "user_agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+      "locale": "en",
+      "api_version": "2021-09-01",
+      "query": null,
+      "request_body": null,
+      "response_body": null,
+      "_links": {
+        "self": {
+          "href": "https://status.example.com/api/v1/request_logs/018e0bff-86db-7cd5-881d-a4e7325915d2"
+        },
+        "user": {
+          "href": "https://status.example.com/api/v1/users/5ad4fcb18fbb650f596df4a7"
+        }
+      }
+    },
+    {
+      "id": "018e0bfe-46cb-70d8-a6a6-a964e31616b3",
+      "type": "request_log",
+      "created_at": 1709598197,
+      "user": "5ad4fcb18fbb650f596df4a7",
+      "api_key": "5ec6e3f58fbb6545cc9dba5a",
+      "successful": true,
+      "source": "api",
+      "email": "user@example.com",
+      "domain": "status.example.com",
+      "path": "/api/v1/invitations/65e662ad8fbb656c5c6c3d9d",
+      "verb": "put",
+      "response_code": 200,
+      "ip_address": "192.0.2.14",
+      "user_agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+      "locale": "en",
+      "api_version": "2021-09-01",
+      "query": null,
+      "request_body": "{\"roles\":[]}",
+      "response_body": "{\"id\":\"65e662ad8fbb656c5c6c3d9d\",\"type\":\"invitation\",\"created_at\":1709597357,\"updated_at\":1709598197,\"redeemed\":false,\"redeemed_at\":null,\"email\":\"new-user@example.com\",\"permissions\":{\"user\":{\"level\":\"w\",\"modifiers\":[]},\"role\":{\"level\":\"r\",\"modifiers\":[]},\"component\":{\"level\":\"r\",\"modifiers\":[]},\"group\":{\"level\":\"r\",\"modifiers\":[]},\"issue\":{\"level\":\"r\",\"modifiers\":[]},\"issue_template\":{\"level\":\"n\",\"modifiers\":[]},\"metric_provider\":{\"level\":\"n\",\"modifiers\":[]},\"notifier\":{\"level\":\"n\",\"modifiers\":[]},\"subscription\":{\"level\":\"n\",\"modifiers\":[]},\"watchdog\":{\"level\":\"n\",\"modifiers\":[]},\"status\":{\"level\":\"r\",\"modifiers\":[]},\"reason\":{\"level\":\"n\",\"modifiers\":[]},\"event\":{\"level\":\"n\",\"modifiers\":[]},\"timeline\":{\"level\":\"r\",\"modifiers\":[]},\"invitation\":{\"level\":\"n\",\"modifiers\":[]},\"request_log\":{\"level\":\"n\",\"modifiers\":[]}},\"token\":\"y34JrRpdCri-yTVswbTY_w\",\"_embedded\":{\"roles\":{\"type\":\"paged_array\",\"total_count\":0,\"has_more\":false,\"_embedded\":{\"data\":[]},\"_links\":{\"self\":{\"href\":\"https://status.example.com/api/v1/roles?invitation=65e662ad8fbb656c5c6c3d9d\\u0026limit=10\"},\"create-form\":{\"href\":\"https://status.example.com/dashboard/roles/new\"},\"prev\":{\"href\":\"https://status.example.com/api/v1/roles?invitation=65e662ad8fbb656c5c6c3d9d\\u0026limit=10\"},\"beginning\":{\"href\":\"https://status.example.com/api/v1/roles?invitation=65e662ad8fbb656c5c6c3d9d\\u0026limit=10\"}}}},\"_links\":{\"self\":{\"href\":\"https://status.example.com/api/v1/invitations/65e662ad8fbb656c5c6c3d9d\"},\"roles\":{\"href\":\"https://status.example.com/api/v1/roles?invitation=65e662ad8fbb656c5c6c3d9d\"},\"redeem-form\":{\"href\":\"https://status.example.com/team/sign_up?token=y34JrRpdCri-yTVswbTY_w\"}}}",
+      "_links": {
+        "self": {
+          "href": "https://status.example.com/api/v1/request_logs/018e0bfe-46cb-70d8-a6a6-a964e31616b3"
+        },
+        "user": {
+          "href": "https://status.example.com/api/v1/users/5ad4fcb18fbb650f596df4a7"
+        }
+      }
+    },
+    {
+      "id": "018e0bfc-7ba9-764d-9d00-91471bd44ed4",
+      "type": "request_log",
+      "created_at": 1709598080,
+      "user": "5ad4fcb18fbb650f596df4a7",
+      "api_key": "5ec6e3f58fbb6545cc9dba5a",
+      "successful": true,
+      "source": "api",
+      "email": "user@example.com",
+      "domain": "status.example.com",
+      "path": "/api/v1/invitations/65e662ad8fbb656c5c6c3d9d",
+      "verb": "get",
+      "response_code": 200,
+      "ip_address": "192.0.2.14",
+      "user_agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+      "locale": "en",
+      "api_version": "2021-09-01",
+      "query": null,
+      "request_body": null,
+      "response_body": null,
+      "_links": {
+        "self": {
+          "href": "https://status.example.com/api/v1/request_logs/018e0bfc-7ba9-764d-9d00-91471bd44ed4"
+        },
+        "user": {
+          "href": "https://status.example.com/api/v1/users/5ad4fcb18fbb650f596df4a7"
+        }
+      }
+    }
+  ],
+  "_links": {
+    "self": {
+      "href": "https://status.example.com/api/v1/request_logs?limit=5"
+    },
+    "next": {
+      "href": "https://status.example.com/api/v1/request_logs?limit=5&starting_after=018e0bfc-7ba9-764d-9d00-91471bd44ed4"
+    },
+    "prev": {
+      "href": "https://status.example.com/api/v1/request_logs?ending_before=018e0c06-3e69-75bd-b2a0-ae2fad58b6f2&limit=5"
+    },
+    "beginning": {
+      "href": "https://status.example.com/api/v1/request_logs?limit=5"
+    }
+  }
+}

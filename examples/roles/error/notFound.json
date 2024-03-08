@@ -1,0 +1,5 @@
+{
+  "type": "api/error/not_found",
+  "logref": "018e0b4a-9967-7da7-97f2-d85879c79409",
+  "message": "Role not found."
+}

@@ -156,6 +156,24 @@ types:
     properties:
       /^[a-fA-F0-9]{24}$/: nonnegative-integer
 
+  PERMISSION_LEVEL:
+    (prelude.common):
+    type: string
+    enum: ["n", r, w]
+
+  ROLE_SCOPE_GLOBAL:
+    (prelude.common):
+    type: string
+    enum: [global]
+  ROLE_SCOPE:
+    (prelude.common):
+    type: ROLE_SCOPE_GLOBAL | ObjectId
+
+  REQUEST_LOG_SOURCE:
+    (prelude.common):
+    type: string
+    enum: [dashboard, api]
+
   # Primitives
 
   maybe-string:
@@ -230,6 +248,11 @@ types:
   maybe-timestamp:
     (prelude.common):
     type: nil | timestamp
+
+  json-object:
+    (prelude.common):
+    type: object
+    additionalProperties: true
 
   NotificationEvents:
     (prelude.common):

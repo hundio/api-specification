@@ -1,0 +1,886 @@
+{
+  "type": "paged_array",
+  "total_count": 10,
+  "has_more": true,
+  "data": [
+    {
+      "id": "61cb7ccf8fbb65c9e58b4f8f",
+      "type": "role",
+      "name": "customer6 Role Admin (Porbo Labs)",
+      "slug": "role_admin",
+      "scope": "5ad4fcb08fbb650f596df4a4",
+      "builtin": true,
+      "permissions": {
+        "component": {
+          "level": "r",
+          "modifiers": []
+        },
+        "group": {
+          "level": "r",
+          "modifiers": []
+        },
+        "issue": {
+          "level": "r",
+          "modifiers": []
+        },
+        "issue_template": {
+          "level": "n",
+          "modifiers": []
+        },
+        "metric_provider": {
+          "level": "n",
+          "modifiers": []
+        },
+        "notifier": {
+          "level": "n",
+          "modifiers": []
+        },
+        "subscription": {
+          "level": "n",
+          "modifiers": []
+        },
+        "watchdog": {
+          "level": "n",
+          "modifiers": []
+        },
+        "status": {
+          "level": "r",
+          "modifiers": []
+        },
+        "reason": {
+          "level": "n",
+          "modifiers": []
+        },
+        "event": {
+          "level": "n",
+          "modifiers": []
+        },
+        "timeline": {
+          "level": "r",
+          "modifiers": []
+        },
+        "user": {
+          "level": "n",
+          "modifiers": []
+        },
+        "role": {
+          "level": "n",
+          "modifiers": []
+        },
+        "invitation": {
+          "level": "n",
+          "modifiers": []
+        },
+        "request_log": {
+          "level": "n",
+          "modifiers": []
+        }
+      },
+      "_links": {
+        "self": {
+          "href": "https://status.example.com/api/v1/roles/61cb7ccf8fbb65c9e58b4f8f"
+        },
+        "slug": {
+          "href": "https://status.example.com/api/v1/roles?slug=role_admin"
+        },
+        "users": {
+          "href": "https://status.example.com/api/v1/users?role=61cb7ccf8fbb65c9e58b4f8f"
+        }
+      }
+    },
+    {
+      "id": "61cb7ccf8fbb65c9e58b4f8e",
+      "type": "role",
+      "name": "customer6 Role Admin (Global)",
+      "slug": "role_admin",
+      "scope": "global",
+      "builtin": true,
+      "permissions": {
+        "component": {
+          "level": "r",
+          "modifiers": []
+        },
+        "group": {
+          "level": "r",
+          "modifiers": []
+        },
+        "issue": {
+          "level": "r",
+          "modifiers": []
+        },
+        "issue_template": {
+          "level": "n",
+          "modifiers": []
+        },
+        "metric_provider": {
+          "level": "n",
+          "modifiers": []
+        },
+        "notifier": {
+          "level": "n",
+          "modifiers": []
+        },
+        "subscription": {
+          "level": "n",
+          "modifiers": []
+        },
+        "watchdog": {
+          "level": "n",
+          "modifiers": []
+        },
+        "status": {
+          "level": "r",
+          "modifiers": []
+        },
+        "reason": {
+          "level": "n",
+          "modifiers": []
+        },
+        "event": {
+          "level": "n",
+          "modifiers": []
+        },
+        "timeline": {
+          "level": "r",
+          "modifiers": []
+        },
+        "user": {
+          "level": "n",
+          "modifiers": []
+        },
+        "role": {
+          "level": "n",
+          "modifiers": []
+        },
+        "invitation": {
+          "level": "n",
+          "modifiers": []
+        },
+        "request_log": {
+          "level": "n",
+          "modifiers": []
+        }
+      },
+      "_links": {
+        "self": {
+          "href": "https://status.example.com/api/v1/roles/61cb7ccf8fbb65c9e58b4f8e"
+        },
+        "slug": {
+          "href": "https://status.example.com/api/v1/roles?slug=role_admin"
+        },
+        "users": {
+          "href": "https://status.example.com/api/v1/users?role=61cb7ccf8fbb65c9e58b4f8e"
+        }
+      }
+    },
+    {
+      "id": "61cb7ccf8fbb65c9e58b4f8d",
+      "type": "role",
+      "name": "customer6 (Global)",
+      "slug": "customer6",
+      "scope": "global",
+      "builtin": false,
+      "permissions": {
+        "component": {
+          "level": "r",
+          "modifiers": []
+        },
+        "group": {
+          "level": "r",
+          "modifiers": []
+        },
+        "issue": {
+          "level": "r",
+          "modifiers": []
+        },
+        "issue_template": {
+          "level": "n",
+          "modifiers": []
+        },
+        "metric_provider": {
+          "level": "n",
+          "modifiers": []
+        },
+        "watchdog": {
+          "level": "n",
+          "modifiers": []
+        },
+        "notifier": {
+          "level": "n",
+          "modifiers": []
+        },
+        "subscription": {
+          "level": "n",
+          "modifiers": []
+        },
+        "status": {
+          "level": "r",
+          "modifiers": []
+        },
+        "reason": {
+          "level": "n",
+          "modifiers": []
+        },
+        "event": {
+          "level": "n",
+          "modifiers": []
+        },
+        "timeline": {
+          "level": "r",
+          "modifiers": []
+        },
+        "user": {
+          "level": "n",
+          "modifiers": []
+        },
+        "role": {
+          "level": "n",
+          "modifiers": []
+        },
+        "invitation": {
+          "level": "n",
+          "modifiers": []
+        },
+        "request_log": {
+          "level": "n",
+          "modifiers": []
+        }
+      },
+      "_links": {
+        "self": {
+          "href": "https://status.example.com/api/v1/roles/61cb7ccf8fbb65c9e58b4f8d"
+        },
+        "slug": {
+          "href": "https://status.example.com/api/v1/roles?slug=customer6"
+        },
+        "update-form": {
+          "href": "https://status.example.com/dashboard/roles/customer6/edit"
+        },
+        "users": {
+          "href": "https://status.example.com/api/v1/users?role=61cb7ccf8fbb65c9e58b4f8d"
+        }
+      }
+    },
+    {
+      "id": "61cb7ccf8fbb65c9e58b4f8a",
+      "type": "role",
+      "name": "customer6 (Porbo Labs)",
+      "slug": "customer6",
+      "scope": "5ad4fcb08fbb650f596df4a4",
+      "builtin": false,
+      "permissions": {
+        "component": {
+          "level": "r",
+          "modifiers": []
+        },
+        "group": {
+          "level": "r",
+          "modifiers": []
+        },
+        "issue": {
+          "level": "r",
+          "modifiers": []
+        },
+        "issue_template": {
+          "level": "n",
+          "modifiers": []
+        },
+        "metric_provider": {
+          "level": "n",
+          "modifiers": []
+        },
+        "watchdog": {
+          "level": "n",
+          "modifiers": []
+        },
+        "notifier": {
+          "level": "n",
+          "modifiers": []
+        },
+        "subscription": {
+          "level": "n",
+          "modifiers": []
+        },
+        "status": {
+          "level": "r",
+          "modifiers": []
+        },
+        "reason": {
+          "level": "n",
+          "modifiers": []
+        },
+        "event": {
+          "level": "n",
+          "modifiers": []
+        },
+        "timeline": {
+          "level": "r",
+          "modifiers": []
+        },
+        "user": {
+          "level": "n",
+          "modifiers": []
+        },
+        "role": {
+          "level": "n",
+          "modifiers": []
+        },
+        "invitation": {
+          "level": "n",
+          "modifiers": []
+        },
+        "request_log": {
+          "level": "n",
+          "modifiers": []
+        }
+      },
+      "_links": {
+        "self": {
+          "href": "https://status.example.com/api/v1/roles/61cb7ccf8fbb65c9e58b4f8a"
+        },
+        "slug": {
+          "href": "https://status.example.com/api/v1/roles?slug=customer6"
+        },
+        "update-form": {
+          "href": "https://status.example.com/dashboard/roles/customer6/edit"
+        },
+        "users": {
+          "href": "https://status.example.com/api/v1/users?role=61cb7ccf8fbb65c9e58b4f8a"
+        }
+      }
+    },
+    {
+      "id": "61cb7cb88fbb65c9e58b4f87",
+      "type": "role",
+      "name": "customer5 Role Admin (Porbo Labs)",
+      "slug": "role_admin",
+      "scope": "5ad4fcb08fbb650f596df4a4",
+      "builtin": true,
+      "permissions": {
+        "component": {
+          "level": "r",
+          "modifiers": []
+        },
+        "group": {
+          "level": "r",
+          "modifiers": []
+        },
+        "issue": {
+          "level": "r",
+          "modifiers": []
+        },
+        "issue_template": {
+          "level": "n",
+          "modifiers": []
+        },
+        "metric_provider": {
+          "level": "n",
+          "modifiers": []
+        },
+        "notifier": {
+          "level": "n",
+          "modifiers": []
+        },
+        "subscription": {
+          "level": "n",
+          "modifiers": []
+        },
+        "watchdog": {
+          "level": "n",
+          "modifiers": []
+        },
+        "status": {
+          "level": "r",
+          "modifiers": []
+        },
+        "reason": {
+          "level": "n",
+          "modifiers": []
+        },
+        "event": {
+          "level": "n",
+          "modifiers": []
+        },
+        "timeline": {
+          "level": "r",
+          "modifiers": []
+        },
+        "user": {
+          "level": "n",
+          "modifiers": []
+        },
+        "role": {
+          "level": "n",
+          "modifiers": []
+        },
+        "invitation": {
+          "level": "n",
+          "modifiers": []
+        },
+        "request_log": {
+          "level": "n",
+          "modifiers": []
+        }
+      },
+      "_links": {
+        "self": {
+          "href": "https://status.example.com/api/v1/roles/61cb7cb88fbb65c9e58b4f87"
+        },
+        "slug": {
+          "href": "https://status.example.com/api/v1/roles?slug=role_admin"
+        },
+        "users": {
+          "href": "https://status.example.com/api/v1/users?role=61cb7cb88fbb65c9e58b4f87"
+        }
+      }
+    },
+    {
+      "id": "61cb7cb88fbb65c9e58b4f86",
+      "type": "role",
+      "name": "customer5 Role Admin (Global)",
+      "slug": "role_admin",
+      "scope": "global",
+      "builtin": true,
+      "permissions": {
+        "component": {
+          "level": "r",
+          "modifiers": []
+        },
+        "group": {
+          "level": "r",
+          "modifiers": []
+        },
+        "issue": {
+          "level": "r",
+          "modifiers": []
+        },
+        "issue_template": {
+          "level": "n",
+          "modifiers": []
+        },
+        "metric_provider": {
+          "level": "n",
+          "modifiers": []
+        },
+        "notifier": {
+          "level": "n",
+          "modifiers": []
+        },
+        "subscription": {
+          "level": "n",
+          "modifiers": []
+        },
+        "watchdog": {
+          "level": "n",
+          "modifiers": []
+        },
+        "status": {
+          "level": "r",
+          "modifiers": []
+        },
+        "reason": {
+          "level": "n",
+          "modifiers": []
+        },
+        "event": {
+          "level": "n",
+          "modifiers": []
+        },
+        "timeline": {
+          "level": "r",
+          "modifiers": []
+        },
+        "user": {
+          "level": "n",
+          "modifiers": []
+        },
+        "role": {
+          "level": "n",
+          "modifiers": []
+        },
+        "invitation": {
+          "level": "n",
+          "modifiers": []
+        },
+        "request_log": {
+          "level": "n",
+          "modifiers": []
+        }
+      },
+      "_links": {
+        "self": {
+          "href": "https://status.example.com/api/v1/roles/61cb7cb88fbb65c9e58b4f86"
+        },
+        "slug": {
+          "href": "https://status.example.com/api/v1/roles?slug=role_admin"
+        },
+        "users": {
+          "href": "https://status.example.com/api/v1/users?role=61cb7cb88fbb65c9e58b4f86"
+        }
+      }
+    },
+    {
+      "id": "61cb7cb88fbb65c9e58b4f85",
+      "type": "role",
+      "name": "customer5 (Global)",
+      "slug": "customer5",
+      "scope": "global",
+      "builtin": false,
+      "permissions": {
+        "component": {
+          "level": "r",
+          "modifiers": []
+        },
+        "group": {
+          "level": "r",
+          "modifiers": []
+        },
+        "issue": {
+          "level": "r",
+          "modifiers": []
+        },
+        "issue_template": {
+          "level": "n",
+          "modifiers": []
+        },
+        "metric_provider": {
+          "level": "n",
+          "modifiers": []
+        },
+        "watchdog": {
+          "level": "n",
+          "modifiers": []
+        },
+        "notifier": {
+          "level": "n",
+          "modifiers": []
+        },
+        "subscription": {
+          "level": "n",
+          "modifiers": []
+        },
+        "status": {
+          "level": "r",
+          "modifiers": []
+        },
+        "reason": {
+          "level": "n",
+          "modifiers": []
+        },
+        "event": {
+          "level": "n",
+          "modifiers": []
+        },
+        "timeline": {
+          "level": "r",
+          "modifiers": []
+        },
+        "user": {
+          "level": "n",
+          "modifiers": []
+        },
+        "role": {
+          "level": "n",
+          "modifiers": []
+        },
+        "invitation": {
+          "level": "n",
+          "modifiers": []
+        },
+        "request_log": {
+          "level": "n",
+          "modifiers": []
+        }
+      },
+      "_links": {
+        "self": {
+          "href": "https://status.example.com/api/v1/roles/61cb7cb88fbb65c9e58b4f85"
+        },
+        "slug": {
+          "href": "https://status.example.com/api/v1/roles?slug=customer5"
+        },
+        "update-form": {
+          "href": "https://status.example.com/dashboard/roles/customer5/edit"
+        },
+        "users": {
+          "href": "https://status.example.com/api/v1/users?role=61cb7cb88fbb65c9e58b4f85"
+        }
+      }
+    },
+    {
+      "id": "61cb7cb88fbb65c9e58b4f82",
+      "type": "role",
+      "name": "customer5 (Porbo Labs)",
+      "slug": "customer5",
+      "scope": "5ad4fcb08fbb650f596df4a4",
+      "builtin": false,
+      "permissions": {
+        "component": {
+          "level": "r",
+          "modifiers": []
+        },
+        "group": {
+          "level": "r",
+          "modifiers": []
+        },
+        "issue": {
+          "level": "r",
+          "modifiers": []
+        },
+        "issue_template": {
+          "level": "n",
+          "modifiers": []
+        },
+        "metric_provider": {
+          "level": "n",
+          "modifiers": []
+        },
+        "watchdog": {
+          "level": "n",
+          "modifiers": []
+        },
+        "notifier": {
+          "level": "n",
+          "modifiers": []
+        },
+        "subscription": {
+          "level": "n",
+          "modifiers": []
+        },
+        "status": {
+          "level": "r",
+          "modifiers": []
+        },
+        "reason": {
+          "level": "n",
+          "modifiers": []
+        },
+        "event": {
+          "level": "n",
+          "modifiers": []
+        },
+        "timeline": {
+          "level": "r",
+          "modifiers": []
+        },
+        "user": {
+          "level": "n",
+          "modifiers": []
+        },
+        "role": {
+          "level": "n",
+          "modifiers": []
+        },
+        "invitation": {
+          "level": "n",
+          "modifiers": []
+        },
+        "request_log": {
+          "level": "n",
+          "modifiers": []
+        }
+      },
+      "_links": {
+        "self": {
+          "href": "https://status.example.com/api/v1/roles/61cb7cb88fbb65c9e58b4f82"
+        },
+        "slug": {
+          "href": "https://status.example.com/api/v1/roles?slug=customer5"
+        },
+        "update-form": {
+          "href": "https://status.example.com/dashboard/roles/customer5/edit"
+        },
+        "users": {
+          "href": "https://status.example.com/api/v1/users?role=61cb7cb88fbb65c9e58b4f82"
+        }
+      }
+    },
+    {
+      "id": "61cb7cab8fbb65c9e58b4f7f",
+      "type": "role",
+      "name": "customer4 Role Admin (Porbo Labs)",
+      "slug": "role_admin",
+      "scope": "5ad4fcb08fbb650f596df4a4",
+      "builtin": true,
+      "permissions": {
+        "component": {
+          "level": "r",
+          "modifiers": []
+        },
+        "group": {
+          "level": "r",
+          "modifiers": []
+        },
+        "issue": {
+          "level": "r",
+          "modifiers": []
+        },
+        "issue_template": {
+          "level": "n",
+          "modifiers": []
+        },
+        "metric_provider": {
+          "level": "n",
+          "modifiers": []
+        },
+        "notifier": {
+          "level": "n",
+          "modifiers": []
+        },
+        "subscription": {
+          "level": "n",
+          "modifiers": []
+        },
+        "watchdog": {
+          "level": "n",
+          "modifiers": []
+        },
+        "status": {
+          "level": "r",
+          "modifiers": []
+        },
+        "reason": {
+          "level": "n",
+          "modifiers": []
+        },
+        "event": {
+          "level": "n",
+          "modifiers": []
+        },
+        "timeline": {
+          "level": "r",
+          "modifiers": []
+        },
+        "user": {
+          "level": "n",
+          "modifiers": []
+        },
+        "role": {
+          "level": "n",
+          "modifiers": []
+        },
+        "invitation": {
+          "level": "n",
+          "modifiers": []
+        },
+        "request_log": {
+          "level": "n",
+          "modifiers": []
+        }
+      },
+      "_links": {
+        "self": {
+          "href": "https://status.example.com/api/v1/roles/61cb7cab8fbb65c9e58b4f7f"
+        },
+        "slug": {
+          "href": "https://status.example.com/api/v1/roles?slug=role_admin"
+        },
+        "users": {
+          "href": "https://status.example.com/api/v1/users?role=61cb7cab8fbb65c9e58b4f7f"
+        }
+      }
+    },
+    {
+      "id": "61cb7cab8fbb65c9e58b4f7e",
+      "type": "role",
+      "name": "customer4 Role Admin (Global)",
+      "slug": "role_admin",
+      "scope": "global",
+      "builtin": true,
+      "permissions": {
+        "component": {
+          "level": "r",
+          "modifiers": []
+        },
+        "group": {
+          "level": "r",
+          "modifiers": []
+        },
+        "issue": {
+          "level": "r",
+          "modifiers": []
+        },
+        "issue_template": {
+          "level": "n",
+          "modifiers": []
+        },
+        "metric_provider": {
+          "level": "n",
+          "modifiers": []
+        },
+        "notifier": {
+          "level": "n",
+          "modifiers": []
+        },
+        "subscription": {
+          "level": "n",
+          "modifiers": []
+        },
+        "watchdog": {
+          "level": "n",
+          "modifiers": []
+        },
+        "status": {
+          "level": "r",
+          "modifiers": []
+        },
+        "reason": {
+          "level": "n",
+          "modifiers": []
+        },
+        "event": {
+          "level": "n",
+          "modifiers": []
+        },
+        "timeline": {
+          "level": "r",
+          "modifiers": []
+        },
+        "user": {
+          "level": "n",
+          "modifiers": []
+        },
+        "role": {
+          "level": "n",
+          "modifiers": []
+        },
+        "invitation": {
+          "level": "n",
+          "modifiers": []
+        },
+        "request_log": {
+          "level": "n",
+          "modifiers": []
+        }
+      },
+      "_links": {
+        "self": {
+          "href": "https://status.example.com/api/v1/roles/61cb7cab8fbb65c9e58b4f7e"
+        },
+        "slug": {
+          "href": "https://status.example.com/api/v1/roles?slug=role_admin"
+        },
+        "users": {
+          "href": "https://status.example.com/api/v1/users?role=61cb7cab8fbb65c9e58b4f7e"
+        }
+      }
+    }
+  ],
+  "_links": {
+    "self": {
+      "href": "https://status.example.com/api/v1/roles?limit=10"
+    },
+    "create-form": {
+      "href": "https://status.example.com/dashboard/roles/new"
+    },
+    "next": {
+      "href": "https://status.example.com/api/v1/roles?limit=10&starting_after=61cb7cab8fbb65c9e58b4f7e"
+    },
+    "prev": {
+      "href": "https://status.example.com/api/v1/roles?ending_before=61cb7ccf8fbb65c9e58b4f8f&limit=10"
+    },
+    "beginning": {
+      "href": "https://status.example.com/api/v1/roles?limit=10"
+    }
+  }
+}

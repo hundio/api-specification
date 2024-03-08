@@ -1,0 +1,22 @@
+#%RAML 1.0 Library
+
+usage: |
+  Defines Role type and forms.
+
+uses:
+  prelude: /libraries/prelude.raml
+  core: /libraries/core.raml
+
+types:
+  Role: !include /types/state/role.raml
+  Role/Form/Create: !include /types/state/role/form/create.raml
+  Role/Form/Update: !include /types/state/role/form/update.raml
+
+  RoleSet:
+    (prelude.common):
+    type: core.PagedArray
+    properties:
+      data: Role[]
+      _links?:
+        properties:
+          create-form?: core.HAL/Link

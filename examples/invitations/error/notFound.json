@@ -1,0 +1,5 @@
+{
+  "type": "api/error/not_found",
+  "logref": "018e0bed-0b1a-7748-a87f-0dc885b19632",
+  "message": "Invitation not found."
+}

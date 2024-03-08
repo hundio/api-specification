@@ -1,0 +1,40 @@
+#%RAML 1.0 DataType
+
+uses:
+  prelude: /libraries/prelude.raml
+  core: /libraries/core.raml
+  permission: /libraries/permission.raml
+  role: /libraries/role.raml
+
+(prelude.common):
+(core.fieldDescriptions): !include /documentation/fieldDescriptions/user.yml
+displayName: User
+description: |
+  Users represent authenticated users of the status page. Each User has an
+  associated email address and Role set. Users can be created directly, or by
+  creating an Invitation for a specific email address.
+
+  Unless you have a specific provisioning strategy in mind (e.g. an existing IdP),
+  Users should be created by Invitation, so that the invited User may set
+  their password appropriately.
+
+  Depending on a User's Role set, a User may have access to the dashboard. However,
+  without a sufficient Role, a User will only be able to access the status page
+  itself.
+type: [core.TypedObject, core.Timestamps, core.NotificationPreferential, core.HAL/Linkable]
+properties:
+  id: core.ObjectId
+  type:
+    enum: [user]
+  email: string
+  roles:
+    type: core.PagedArray
+    properties:
+      data:
+        items: role.Role
+  permissions: permission.Permissions
+  _links?:
+    properties:
+      self: core.HAL/Link
+      update-form: core.HAL/Link
+      roles: core.HAL/Link

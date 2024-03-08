@@ -1,0 +1,14 @@
+{
+  "type": "api/error/validation_failed",
+  "logref": "018dfc4c-387e-777f-bf5a-e0233faa3cc1",
+  "message": "Validation failed.",
+  "_embedded": {
+    "errors": [
+      {
+        "type": "api/error/validation_failed/embedded",
+        "path": "/locale",
+        "message": "`locale` is not included in the list"
+      }
+    ]
+  }
+}

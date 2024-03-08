@@ -1,0 +1,52 @@
+id: |
+  The ObjectId of this User.
+created_at: |
+  The UNIX timestamp at which this User was created.
+updated_at: |
+  The UNIX timestamp at which this User was last updated.
+email: |
+  The email address associated with this User. Notifications sent to this User
+  will be delivered to this address.
+
+  **Note:** If this address is changed via the API, the *old* email address will
+  be informed of the change.
+roles: |
+  The Role set granted to this User. All Roles granted to this User will appear
+  here, regardless of their scope and the current API context.
+permissions: |
+  The current Permission set calculated from the User's `roles`, according to the
+  current API context. Thus, this field represents the User's Permissions under
+  either the global account, or a specific status page, depending on the API that
+  this User is retrieved from.
+listens_to: |
+  A list of notification events that this User will listen for. Prefixing
+  an event name with `-` (e.g. `-issue_reopened`) denotes that the event should
+  be explicitly suppressed (useful when including superevents like `issue_updated`
+  which implicitly includes events like `issue_reopened`).
+
+  To read more about the various notification event types encountered within Hund,
+  please [read this article](https://hund.io/help/documentation/notifications).
+listens_to_level: |
+  A string representation of the `listens_to` array, when it matches a specific
+  preset. This field can also be used to set `listens_to` according to a preset
+  in forms.
+
+  * `all`: listen to all event types.
+  * `normal`: listen to most event types, except for generic `issue_updated`
+  (listens only for `issue_resolved` instead)
+  * `custom`: the current `listens_to` array does not match one of the above
+  presets
+notification_exclusions: |
+  A list of Component ObjectIds that this User will ignore notifications
+  regarding.
+
+  A specific notification is suppressed exactly when all of the Event's
+  `component` context is excluded by this list. If any of an Event's `component`
+  context remains unexcluded by the User, then a notification will be sent.
+locale: |
+  The language in which to render notifications sent to this User. The string
+  should be a supported [IETF BCP 47 language tag](https://tools.ietf.org/rfc/bcp/bcp47.html)
+  (e.g. `en`, `de`, `pt-BR`, etc.).
+
+  When this field is `null`, the default language of your Account will be used
+  when rendering notifications.

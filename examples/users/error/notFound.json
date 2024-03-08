@@ -1,0 +1,5 @@
+{
+  "type": "api/error/not_found",
+  "logref": "018dfc4c-a731-7cbb-9f95-4e0713240f5a",
+  "message": "User not found."
+}

@@ -1,0 +1,197 @@
+{
+  "type": "paged_array",
+  "total_count": 2,
+  "has_more": false,
+  "data": [
+    {
+      "id": "65e64acd8fbb654b5a0d2ac9",
+      "type": "role",
+      "name": "Issue Creators (Global)",
+      "slug": "issue_creators",
+      "scope": "global",
+      "builtin": false,
+      "permissions": {
+        "component": {
+          "level": "r",
+          "modifiers": []
+        },
+        "group": {
+          "level": "r",
+          "modifiers": []
+        },
+        "issue": {
+          "level": "w",
+          "modifiers": []
+        },
+        "issue_template": {
+          "level": "w",
+          "modifiers": []
+        },
+        "metric_provider": {
+          "level": "n",
+          "modifiers": []
+        },
+        "notifier": {
+          "level": "n",
+          "modifiers": []
+        },
+        "subscription": {
+          "level": "n",
+          "modifiers": []
+        },
+        "watchdog": {
+          "level": "n",
+          "modifiers": []
+        },
+        "status": {
+          "level": "r",
+          "modifiers": []
+        },
+        "reason": {
+          "level": "n",
+          "modifiers": []
+        },
+        "event": {
+          "level": "n",
+          "modifiers": []
+        },
+        "timeline": {
+          "level": "r",
+          "modifiers": []
+        },
+        "user": {
+          "level": "n",
+          "modifiers": []
+        },
+        "role": {
+          "level": "n",
+          "modifiers": []
+        },
+        "invitation": {
+          "level": "n",
+          "modifiers": []
+        },
+        "request_log": {
+          "level": "n",
+          "modifiers": []
+        }
+      },
+      "_links": {
+        "self": {
+          "href": "https://status.example.com/api/v1/roles/65e64acd8fbb654b5a0d2ac9"
+        },
+        "slug": {
+          "href": "https://status.example.com/api/v1/roles?slug=issue_creators"
+        },
+        "update-form": {
+          "href": "https://status.example.com/dashboard/roles/issue_creators/edit"
+        },
+        "users": {
+          "href": "https://status.example.com/api/v1/users?role=65e64acd8fbb654b5a0d2ac9"
+        }
+      }
+    },
+    {
+      "id": "65e64acd8fbb654b5a0d2ac5",
+      "type": "role",
+      "name": "Issue Creators (Example Status)",
+      "slug": "issue_creators",
+      "scope": "5ad4fcb08fbb650f596df4a4",
+      "builtin": false,
+      "permissions": {
+        "component": {
+          "level": "r",
+          "modifiers": []
+        },
+        "group": {
+          "level": "r",
+          "modifiers": []
+        },
+        "issue": {
+          "level": "w",
+          "modifiers": []
+        },
+        "issue_template": {
+          "level": "w",
+          "modifiers": []
+        },
+        "metric_provider": {
+          "level": "n",
+          "modifiers": []
+        },
+        "notifier": {
+          "level": "n",
+          "modifiers": []
+        },
+        "subscription": {
+          "level": "n",
+          "modifiers": []
+        },
+        "watchdog": {
+          "level": "n",
+          "modifiers": []
+        },
+        "status": {
+          "level": "r",
+          "modifiers": []
+        },
+        "reason": {
+          "level": "n",
+          "modifiers": []
+        },
+        "event": {
+          "level": "n",
+          "modifiers": []
+        },
+        "timeline": {
+          "level": "r",
+          "modifiers": []
+        },
+        "user": {
+          "level": "n",
+          "modifiers": []
+        },
+        "role": {
+          "level": "n",
+          "modifiers": []
+        },
+        "invitation": {
+          "level": "n",
+          "modifiers": []
+        },
+        "request_log": {
+          "level": "n",
+          "modifiers": []
+        }
+      },
+      "_links": {
+        "self": {
+          "href": "https://status.example.com/api/v1/roles/65e64acd8fbb654b5a0d2ac5"
+        },
+        "slug": {
+          "href": "https://status.example.com/api/v1/roles?slug=issue_creators"
+        },
+        "update-form": {
+          "href": "https://status.example.com/dashboard/roles/issue_creators/edit"
+        },
+        "users": {
+          "href": "https://status.example.com/api/v1/users?role=65e64acd8fbb654b5a0d2ac5"
+        }
+      }
+    }
+  ],
+  "_links": {
+    "self": {
+      "href": "https://status.example.com/api/v1/roles?limit=10"
+    },
+    "create-form": {
+      "href": "https://status.example.com/dashboard/roles/new"
+    },
+    "prev": {
+      "href": "https://status.example.com/api/v1/roles?ending_before=65e64acd8fbb654b5a0d2ac9&limit=10"
+    },
+    "beginning": {
+      "href": "https://status.example.com/api/v1/roles?limit=10"
+    }
+  }
+}

@@ -1,0 +1,107 @@
+{
+  "id": "620d6a018fbb659701a76c64",
+  "type": "invitation",
+  "created_at": 1645046273,
+  "updated_at": 1645046273,
+  "redeemed": true,
+  "redeemed_at": 1645046301,
+  "email": "user+role105@example.com",
+  "permissions": {
+    "user": {
+      "level": "w",
+      "modifiers": []
+    },
+    "role": {
+      "level": "r",
+      "modifiers": []
+    },
+    "component": {
+      "level": "r",
+      "modifiers": []
+    },
+    "group": {
+      "level": "r",
+      "modifiers": []
+    },
+    "issue": {
+      "level": "r",
+      "modifiers": []
+    },
+    "issue_template": {
+      "level": "n",
+      "modifiers": []
+    },
+    "metric_provider": {
+      "level": "n",
+      "modifiers": []
+    },
+    "notifier": {
+      "level": "n",
+      "modifiers": []
+    },
+    "subscription": {
+      "level": "n",
+      "modifiers": []
+    },
+    "watchdog": {
+      "level": "n",
+      "modifiers": []
+    },
+    "status": {
+      "level": "r",
+      "modifiers": []
+    },
+    "reason": {
+      "level": "n",
+      "modifiers": []
+    },
+    "event": {
+      "level": "n",
+      "modifiers": []
+    },
+    "timeline": {
+      "level": "r",
+      "modifiers": []
+    },
+    "invitation": {
+      "level": "n",
+      "modifiers": []
+    },
+    "request_log": {
+      "level": "n",
+      "modifiers": []
+    }
+  },
+  "token": "3Tgb5ML__vHLaWdMcF_XXg",
+  "roles": {
+    "type": "paged_array",
+    "total_count": 0,
+    "has_more": false,
+    "data": [],
+    "_links": {
+      "self": {
+        "href": "https://status.example.com/api/v1/roles?invitation=620d6a018fbb659701a76c64&limit=10"
+      },
+      "create-form": {
+        "href": "https://status.example.com/dashboard/roles/new"
+      },
+      "prev": {
+        "href": "https://status.example.com/api/v1/roles?invitation=620d6a018fbb659701a76c64&limit=10"
+      },
+      "beginning": {
+        "href": "https://status.example.com/api/v1/roles?invitation=620d6a018fbb659701a76c64&limit=10"
+      }
+    }
+  },
+  "_links": {
+    "self": {
+      "href": "https://status.example.com/api/v1/invitations/620d6a018fbb659701a76c64"
+    },
+    "roles": {
+      "href": "https://status.example.com/api/v1/roles?invitation=620d6a018fbb659701a76c64"
+    },
+    "redeem-form": {
+      "href": "https://status.example.com/team/sign_up?token=3Tgb5ML__vHLaWdMcF_XXg"
+    }
+  }
+}

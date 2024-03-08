@@ -1,0 +1,40 @@
+#%RAML 1.0 DataType
+
+uses:
+  prelude: /libraries/prelude.raml
+  core: /libraries/core.raml
+  permission: /libraries/permission.raml
+
+(prelude.common):
+(core.fieldDescriptions): !include /documentation/fieldDescriptions/role.yml
+displayName: Role
+description: |
+  Roles represent a specific set of Permissions that are granted to Users of that
+  Role. There are two main types of Roles: "builtin" and "custom".
+
+  Builtin Roles are generated automatically, and cannot be modified nor deleted.
+  Roles like `admin` and `team_member` are examples of builtin Roles.
+
+  Custom Roles can be created via this API at any time, and may be modified or
+  deleted as necessary.
+
+  A Role may also be scoped to a specific status page, implying that Users of
+  that Role are granted the specific Permissions of the Role, but only for objects
+  associated with the scoped status page. An "unscoped" or "global" Role grants
+  the Role's Permissions across the entire account.
+type: [core.TypedObject, core.HAL/Linkable]
+properties:
+  id: core.ObjectId
+  type:
+    enum: [role]
+  name: string
+  slug: string
+  scope: core.ROLE_SCOPE
+  builtin: boolean
+  permissions: permission.Permissions
+  _links?:
+    properties:
+      self: core.HAL/Link
+      slug: core.HAL/Link
+      update-form?: core.HAL/Link
+      users: core.HAL/Link

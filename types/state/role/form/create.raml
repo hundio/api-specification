@@ -1,0 +1,16 @@
+#%RAML 1.0 DataType
+
+uses:
+  prelude: /libraries/prelude.raml
+  core: /libraries/core.raml
+  permission: /libraries/permission.raml
+
+(prelude.common):
+(core.fieldDescriptions): !include /documentation/fieldDescriptions/role.yml
+displayName: Role
+description: |
+  Role creation form.
+type: core.Form
+properties:
+  name: string
+  permissions?: permission.Permissions/Form

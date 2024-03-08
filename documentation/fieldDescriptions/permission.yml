@@ -1,0 +1,15 @@
+level: |
+  The current access level for this Permission. The possible levels are:
+
+  * `n`: No Access
+  * `r`: Read-only Access
+  * `w`: Read/Write Access
+
+  **Note:** Certain resource types (e.g. `component`, `group`, `issue`, etc.)
+  are considered to be "publicly readable" (in the sense that those objects can
+  be read from the status page itself) and thus will not be able to take on the
+  `n` access level. Instead, `r` will be the lowest possible access level for
+  those resource types.
+modifiers: |
+  An array of string modifiers that may augment the behavior of the Permission.
+  Available modifiers are specific to the resource type.

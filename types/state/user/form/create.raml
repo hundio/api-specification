@@ -1,0 +1,20 @@
+#%RAML 1.0 DataType
+
+uses:
+  prelude: /libraries/prelude.raml
+  core: /libraries/core.raml
+
+(prelude.common):
+(core.fieldDescriptions): !include /documentation/fieldDescriptions/user.yml
+displayName: User
+description: |
+  User creation form.
+type: [core.Form, core.NotificationPreferential/Form]
+properties:
+  email: string
+  password?:
+    type: core.maybe-string
+    description: |
+      A password to set on this User. If this field is not given, or set to `null`,
+      then a random one will be generated.
+  roles?: core.ObjectId[]

@@ -1,0 +1,18 @@
+id: |
+  The ObjectId of this Role.
+created_at: |
+  The UNIX timestamp at which this Role was created.
+updated_at: |
+  The UNIX timestamp at which this Role was last updated.
+name: |
+  The human-readable name of this Role.
+slug: |
+  A machine-friendly slug, unique to this Role family (i.e. unique up to `scope`).
+scope: |
+  The scope over which this Role pertains. This can be either the string `global`,
+  implying an account-wide Role, or a specific status page ID.
+builtin: |
+  Whether or not this Role is an immutable, automatically generated, builtin Role.
+  When `false`, implies that this is a "custom" Role.
+permissions: |
+  The set of Permissions that this Role grants access to, under the given `scope`.

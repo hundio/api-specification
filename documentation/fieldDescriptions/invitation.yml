@@ -1,0 +1,29 @@
+id: |
+  The ObjectId of this Invitation.
+created_at: |
+  The UNIX timestamp at which this Invitation was created.
+updated_at: |
+  The UNIX timestamp at which this Invitation was last updated.
+email: |
+  The email address associated with this Invitation. A message containing a secure
+  token will be sent to this address when an Invitation is first created.
+
+  **Note:** This field cannot be changed once the Invitation is created. In order
+  to invite a different email address, a new Invitation must be created instead.
+  If an email was invited by mistake, simply delete that Invitation.
+roles: |
+  The Role set that will be granted to the new User upon redemption of this
+  Invitation.
+permissions: |
+  The calculated set of Permissions that will be granted to the User upon
+  redemption of this Invitation, according to the configured `roles`.
+redeemed_at: |
+  The UNIX timestamp at which this Invitation was redeemed. This field is `null`
+  if the Invitation hasn't been redeemed yet.
+redeemed: |
+  Whether or not this Invitation has been redeemed.
+token: |
+  The secure token that is sent to the `email` of this Invitation. This token is
+  used to authenticate the request to provision a new User. This token is also
+  provided in the `redeem-form` link, which points to the HTML form to create a
+  new User via this Invitation.

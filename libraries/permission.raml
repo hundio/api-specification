@@ -1,0 +1,46 @@
+#%RAML 1.0 Library
+
+usage: |
+  Defines Permission types.
+
+uses:
+  prelude: /libraries/prelude.raml
+  core: /libraries/core.raml
+
+types:
+  Permission:
+    (prelude.common):
+    (core.fieldDescriptions): !include /documentation/fieldDescriptions/permission.yml
+    displayName: Permission
+    type: object
+    additionalProperties: false
+    properties:
+      level: core.PERMISSION_LEVEL
+      modifiers: string[]
+  Permissions:
+    (prelude.common):
+    displayName: Permissions
+    description: |
+      An object representing a full description of another object's permissions,
+      keyed by resource type.
+    type: object
+    additionalProperties: false
+    properties:
+      /^[a-z_]+$/: Permission
+  Permission/Form:
+    (prelude.common):
+    (core.fieldDescriptions): !include /documentation/fieldDescriptions/permission.yml
+    displayName: Permission
+    type: object
+    additionalProperties: false
+    properties:
+      level: core.PERMISSION_LEVEL
+      modifiers?: string[]
+  Permissions/Form:
+    (prelude.common):
+    displayName: Permissions
+    description: |
+      Permissions creation/update form.
+    type: object
+    properties:
+      /^[a-z_]+$/: Permission/Form

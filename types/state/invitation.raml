@@ -1,0 +1,36 @@
+#%RAML 1.0 DataType
+
+uses:
+  prelude: /libraries/prelude.raml
+  core: /libraries/core.raml
+  permission: /libraries/permission.raml
+  role: /libraries/role.raml
+
+(prelude.common):
+(core.fieldDescriptions): !include /documentation/fieldDescriptions/invitation.yml
+displayName: Invitation
+description: |
+  Invitations are one method for provisioning Users. When an Invitation object is
+  created, an email is immediately sent to the chosen address of the Invitation.
+
+  This email contains a secure token that allows the recipient to create a new User
+  object with their chosen credentials. Once the token has been used to provision
+  a User, the Invitation enters the "redeemed" state, preventing further usage of
+  the Invitation.
+type: [core.TypedObject, core.Timestamps, core.HAL/Linkable]
+properties:
+  id: core.ObjectId
+  type:
+    enum: [invitation]
+  email: string
+  roles: role.RoleSet
+  permissions: permission.Permissions
+  redeemed_at: core.maybe-timestamp
+  redeemed: boolean
+  token: string
+  _links?:
+    properties:
+      self: core.HAL/Link
+      # update-form: core.HAL/Link
+      redeem-form: core.HAL/Link
+      roles: core.HAL/Link

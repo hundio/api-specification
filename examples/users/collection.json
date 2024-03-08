@@ -1,0 +1,1391 @@
+{
+  "type": "paged_array",
+  "total_count": 10,
+  "has_more": true,
+  "data": [
+    {
+      "id": "620d6a1d8fbb659701a76c65",
+      "type": "user",
+      "created_at": 1645046301,
+      "updated_at": 1645046301,
+      "notification_exclusions": [
+        "5ad566898fbb654577715322",
+        "5c9583858fbb6575d664cf96",
+        "5c9588038fbb657c95d929e9",
+        "5c993b1f8fbb652a1e53f09c",
+        "5c993c0d8fbb652a1e53f152",
+        "5c993c168fbb652a1e53f15e",
+        "5c993c178fbb652a1e53f166",
+        "5c993c208fbb652a1e53f16e",
+        "5c993c248fbb652a1e53f176",
+        "5c993c298fbb652a1e53f17e",
+        "5c993c2a8fbb652a1e53f186",
+        "5c993c358fbb652a1e53f18e",
+        "5c993c478fbb652a1e53f196",
+        "5c993c4c8fbb652a1e53f19e",
+        "5d5c577c8fbb6552137cb5cb",
+        "5d5c597b8fbb65598c4d1673",
+        "5d5c6c498fbb657b390c5426",
+        "6091ee508fbb653b2287025e"
+      ],
+      "listens_to": [
+        "restored",
+        "degraded",
+        "issue_upcoming",
+        "issue_created",
+        "issue_updated",
+        "issue_cancelled",
+        "issue_started",
+        "issue_ended",
+        "notifier_tested"
+      ],
+      "listens_to_level": "all",
+      "locale": null,
+      "email": "user+role105@example.com",
+      "permissions": {
+        "user": {
+          "level": "w",
+          "modifiers": []
+        },
+        "role": {
+          "level": "r",
+          "modifiers": []
+        },
+        "component": {
+          "level": "r",
+          "modifiers": []
+        },
+        "group": {
+          "level": "r",
+          "modifiers": []
+        },
+        "issue": {
+          "level": "r",
+          "modifiers": []
+        },
+        "issue_template": {
+          "level": "n",
+          "modifiers": []
+        },
+        "metric_provider": {
+          "level": "n",
+          "modifiers": []
+        },
+        "notifier": {
+          "level": "n",
+          "modifiers": []
+        },
+        "subscription": {
+          "level": "n",
+          "modifiers": []
+        },
+        "watchdog": {
+          "level": "n",
+          "modifiers": []
+        },
+        "status": {
+          "level": "r",
+          "modifiers": []
+        },
+        "reason": {
+          "level": "n",
+          "modifiers": []
+        },
+        "event": {
+          "level": "n",
+          "modifiers": []
+        },
+        "timeline": {
+          "level": "r",
+          "modifiers": []
+        },
+        "invitation": {
+          "level": "n",
+          "modifiers": []
+        },
+        "request_log": {
+          "level": "n",
+          "modifiers": []
+        }
+      },
+      "roles": {
+        "type": "paged_array",
+        "total_count": 0,
+        "has_more": false,
+        "data": [],
+        "_links": {
+          "self": {
+            "href": "https://status.example.com/api/v1/roles?limit=10&user=620d6a1d8fbb659701a76c65"
+          },
+          "create-form": {
+            "href": "https://status.example.com/dashboard/roles/new"
+          },
+          "prev": {
+            "href": "https://status.example.com/api/v1/roles?limit=10&user=620d6a1d8fbb659701a76c65"
+          },
+          "beginning": {
+            "href": "https://status.example.com/api/v1/roles?limit=10&user=620d6a1d8fbb659701a76c65"
+          }
+        }
+      },
+      "_links": {
+        "self": {
+          "href": "https://status.example.com/api/v1/users/620d6a1d8fbb659701a76c65"
+        },
+        "update-form": {
+          "href": "https://status.example.com/dashboard/team/users/620d6a1d8fbb659701a76c65/edit"
+        },
+        "roles": {
+          "href": "https://status.example.com/api/v1/roles?user=620d6a1d8fbb659701a76c65"
+        }
+      }
+    },
+    {
+      "id": "620d68da8fbb659701a76c53",
+      "type": "user",
+      "created_at": 1645045978,
+      "updated_at": 1645045978,
+      "notification_exclusions": [
+        "5ad566898fbb654577715322",
+        "5c9583858fbb6575d664cf96",
+        "5c9588038fbb657c95d929e9",
+        "5c993b1f8fbb652a1e53f09c",
+        "5c993c0d8fbb652a1e53f152",
+        "5c993c168fbb652a1e53f15e",
+        "5c993c178fbb652a1e53f166",
+        "5c993c208fbb652a1e53f16e",
+        "5c993c248fbb652a1e53f176",
+        "5c993c298fbb652a1e53f17e",
+        "5c993c2a8fbb652a1e53f186",
+        "5c993c358fbb652a1e53f18e",
+        "5c993c478fbb652a1e53f196",
+        "5c993c4c8fbb652a1e53f19e",
+        "5d5c577c8fbb6552137cb5cb",
+        "5d5c597b8fbb65598c4d1673",
+        "5d5c6c498fbb657b390c5426",
+        "6091ee508fbb653b2287025e"
+      ],
+      "listens_to": [
+        "restored",
+        "degraded",
+        "issue_upcoming",
+        "issue_created",
+        "issue_updated",
+        "issue_cancelled",
+        "issue_started",
+        "issue_ended",
+        "notifier_tested"
+      ],
+      "listens_to_level": "all",
+      "locale": null,
+      "email": "user+role104@example.com",
+      "permissions": {
+        "user": {
+          "level": "w",
+          "modifiers": []
+        },
+        "role": {
+          "level": "r",
+          "modifiers": []
+        },
+        "component": {
+          "level": "r",
+          "modifiers": []
+        },
+        "group": {
+          "level": "r",
+          "modifiers": []
+        },
+        "issue": {
+          "level": "r",
+          "modifiers": []
+        },
+        "issue_template": {
+          "level": "n",
+          "modifiers": []
+        },
+        "metric_provider": {
+          "level": "n",
+          "modifiers": []
+        },
+        "notifier": {
+          "level": "n",
+          "modifiers": []
+        },
+        "subscription": {
+          "level": "n",
+          "modifiers": []
+        },
+        "watchdog": {
+          "level": "n",
+          "modifiers": []
+        },
+        "status": {
+          "level": "r",
+          "modifiers": []
+        },
+        "reason": {
+          "level": "n",
+          "modifiers": []
+        },
+        "event": {
+          "level": "n",
+          "modifiers": []
+        },
+        "timeline": {
+          "level": "r",
+          "modifiers": []
+        },
+        "invitation": {
+          "level": "n",
+          "modifiers": []
+        },
+        "request_log": {
+          "level": "n",
+          "modifiers": []
+        }
+      },
+      "roles": {
+        "type": "paged_array",
+        "total_count": 0,
+        "has_more": false,
+        "data": [],
+        "_links": {
+          "self": {
+            "href": "https://status.example.com/api/v1/roles?limit=10&user=620d68da8fbb659701a76c53"
+          },
+          "create-form": {
+            "href": "https://status.example.com/dashboard/roles/new"
+          },
+          "prev": {
+            "href": "https://status.example.com/api/v1/roles?limit=10&user=620d68da8fbb659701a76c53"
+          },
+          "beginning": {
+            "href": "https://status.example.com/api/v1/roles?limit=10&user=620d68da8fbb659701a76c53"
+          }
+        }
+      },
+      "_links": {
+        "self": {
+          "href": "https://status.example.com/api/v1/users/620d68da8fbb659701a76c53"
+        },
+        "update-form": {
+          "href": "https://status.example.com/dashboard/team/users/620d68da8fbb659701a76c53/edit"
+        },
+        "roles": {
+          "href": "https://status.example.com/api/v1/roles?user=620d68da8fbb659701a76c53"
+        }
+      }
+    },
+    {
+      "id": "620c587c8fbb6545e26dde8e",
+      "type": "user",
+      "created_at": 1644976252,
+      "updated_at": 1644976252,
+      "notification_exclusions": [
+        "5ad566898fbb654577715322",
+        "5c9583858fbb6575d664cf96",
+        "5c9588038fbb657c95d929e9",
+        "5c993b1f8fbb652a1e53f09c",
+        "5c993c0d8fbb652a1e53f152",
+        "5c993c168fbb652a1e53f15e",
+        "5c993c178fbb652a1e53f166",
+        "5c993c208fbb652a1e53f16e",
+        "5c993c248fbb652a1e53f176",
+        "5c993c298fbb652a1e53f17e",
+        "5c993c2a8fbb652a1e53f186",
+        "5c993c358fbb652a1e53f18e",
+        "5c993c478fbb652a1e53f196",
+        "5c993c4c8fbb652a1e53f19e",
+        "5d5c577c8fbb6552137cb5cb",
+        "5d5c597b8fbb65598c4d1673",
+        "5d5c6c498fbb657b390c5426",
+        "6091ee508fbb653b2287025e"
+      ],
+      "listens_to": [
+        "restored",
+        "degraded",
+        "issue_upcoming",
+        "issue_created",
+        "issue_updated",
+        "issue_cancelled",
+        "issue_started",
+        "issue_ended",
+        "notifier_tested"
+      ],
+      "listens_to_level": "all",
+      "locale": null,
+      "email": "user+role103@example.com",
+      "permissions": {
+        "user": {
+          "level": "w",
+          "modifiers": []
+        },
+        "role": {
+          "level": "r",
+          "modifiers": []
+        },
+        "component": {
+          "level": "r",
+          "modifiers": []
+        },
+        "group": {
+          "level": "r",
+          "modifiers": []
+        },
+        "issue": {
+          "level": "r",
+          "modifiers": []
+        },
+        "issue_template": {
+          "level": "n",
+          "modifiers": []
+        },
+        "metric_provider": {
+          "level": "n",
+          "modifiers": []
+        },
+        "notifier": {
+          "level": "n",
+          "modifiers": []
+        },
+        "subscription": {
+          "level": "n",
+          "modifiers": []
+        },
+        "watchdog": {
+          "level": "n",
+          "modifiers": []
+        },
+        "status": {
+          "level": "r",
+          "modifiers": []
+        },
+        "reason": {
+          "level": "n",
+          "modifiers": []
+        },
+        "event": {
+          "level": "n",
+          "modifiers": []
+        },
+        "timeline": {
+          "level": "r",
+          "modifiers": []
+        },
+        "invitation": {
+          "level": "n",
+          "modifiers": []
+        },
+        "request_log": {
+          "level": "n",
+          "modifiers": []
+        }
+      },
+      "roles": {
+        "type": "paged_array",
+        "total_count": 0,
+        "has_more": false,
+        "data": [],
+        "_links": {
+          "self": {
+            "href": "https://status.example.com/api/v1/roles?limit=10&user=620c587c8fbb6545e26dde8e"
+          },
+          "create-form": {
+            "href": "https://status.example.com/dashboard/roles/new"
+          },
+          "prev": {
+            "href": "https://status.example.com/api/v1/roles?limit=10&user=620c587c8fbb6545e26dde8e"
+          },
+          "beginning": {
+            "href": "https://status.example.com/api/v1/roles?limit=10&user=620c587c8fbb6545e26dde8e"
+          }
+        }
+      },
+      "_links": {
+        "self": {
+          "href": "https://status.example.com/api/v1/users/620c587c8fbb6545e26dde8e"
+        },
+        "update-form": {
+          "href": "https://status.example.com/dashboard/team/users/620c587c8fbb6545e26dde8e/edit"
+        },
+        "roles": {
+          "href": "https://status.example.com/api/v1/roles?user=620c587c8fbb6545e26dde8e"
+        }
+      }
+    },
+    {
+      "id": "620c57988fbb6545e26dde8a",
+      "type": "user",
+      "created_at": 1644976024,
+      "updated_at": 1644976024,
+      "notification_exclusions": [
+        "5ad566898fbb654577715322",
+        "5c9583858fbb6575d664cf96",
+        "5c9588038fbb657c95d929e9",
+        "5c993b1f8fbb652a1e53f09c",
+        "5c993c0d8fbb652a1e53f152",
+        "5c993c168fbb652a1e53f15e",
+        "5c993c178fbb652a1e53f166",
+        "5c993c208fbb652a1e53f16e",
+        "5c993c248fbb652a1e53f176",
+        "5c993c298fbb652a1e53f17e",
+        "5c993c2a8fbb652a1e53f186",
+        "5c993c358fbb652a1e53f18e",
+        "5c993c478fbb652a1e53f196",
+        "5c993c4c8fbb652a1e53f19e",
+        "5d5c577c8fbb6552137cb5cb",
+        "5d5c597b8fbb65598c4d1673",
+        "5d5c6c498fbb657b390c5426",
+        "6091ee508fbb653b2287025e"
+      ],
+      "listens_to": [
+        "restored",
+        "degraded",
+        "issue_upcoming",
+        "issue_created",
+        "issue_updated",
+        "issue_cancelled",
+        "issue_started",
+        "issue_ended",
+        "notifier_tested"
+      ],
+      "listens_to_level": "all",
+      "locale": null,
+      "email": "user+role102@example.com",
+      "permissions": {
+        "user": {
+          "level": "w",
+          "modifiers": []
+        },
+        "role": {
+          "level": "r",
+          "modifiers": []
+        },
+        "component": {
+          "level": "r",
+          "modifiers": []
+        },
+        "group": {
+          "level": "r",
+          "modifiers": []
+        },
+        "issue": {
+          "level": "r",
+          "modifiers": []
+        },
+        "issue_template": {
+          "level": "n",
+          "modifiers": []
+        },
+        "metric_provider": {
+          "level": "n",
+          "modifiers": []
+        },
+        "notifier": {
+          "level": "n",
+          "modifiers": []
+        },
+        "subscription": {
+          "level": "n",
+          "modifiers": []
+        },
+        "watchdog": {
+          "level": "n",
+          "modifiers": []
+        },
+        "status": {
+          "level": "r",
+          "modifiers": []
+        },
+        "reason": {
+          "level": "n",
+          "modifiers": []
+        },
+        "event": {
+          "level": "n",
+          "modifiers": []
+        },
+        "timeline": {
+          "level": "r",
+          "modifiers": []
+        },
+        "invitation": {
+          "level": "n",
+          "modifiers": []
+        },
+        "request_log": {
+          "level": "n",
+          "modifiers": []
+        }
+      },
+      "roles": {
+        "type": "paged_array",
+        "total_count": 0,
+        "has_more": false,
+        "data": [],
+        "_links": {
+          "self": {
+            "href": "https://status.example.com/api/v1/roles?limit=10&user=620c57988fbb6545e26dde8a"
+          },
+          "create-form": {
+            "href": "https://status.example.com/dashboard/roles/new"
+          },
+          "prev": {
+            "href": "https://status.example.com/api/v1/roles?limit=10&user=620c57988fbb6545e26dde8a"
+          },
+          "beginning": {
+            "href": "https://status.example.com/api/v1/roles?limit=10&user=620c57988fbb6545e26dde8a"
+          }
+        }
+      },
+      "_links": {
+        "self": {
+          "href": "https://status.example.com/api/v1/users/620c57988fbb6545e26dde8a"
+        },
+        "update-form": {
+          "href": "https://status.example.com/dashboard/team/users/620c57988fbb6545e26dde8a/edit"
+        },
+        "roles": {
+          "href": "https://status.example.com/api/v1/roles?user=620c57988fbb6545e26dde8a"
+        }
+      }
+    },
+    {
+      "id": "620c555f8fbb65417b700214",
+      "type": "user",
+      "created_at": 1644975455,
+      "updated_at": 1644975455,
+      "notification_exclusions": [
+        "5ad566898fbb654577715322",
+        "5c9583858fbb6575d664cf96",
+        "5c9588038fbb657c95d929e9",
+        "5c993c0d8fbb652a1e53f152",
+        "5c993c168fbb652a1e53f15e",
+        "5c993c178fbb652a1e53f166",
+        "5c993c208fbb652a1e53f16e",
+        "5c993c248fbb652a1e53f176",
+        "5c993c298fbb652a1e53f17e",
+        "5c993c2a8fbb652a1e53f186",
+        "5c993c358fbb652a1e53f18e",
+        "5c993c478fbb652a1e53f196",
+        "5c993c4c8fbb652a1e53f19e",
+        "5d5c577c8fbb6552137cb5cb",
+        "5d5c597b8fbb65598c4d1673",
+        "5d5c6c498fbb657b390c5426",
+        "6091ee508fbb653b2287025e",
+        "5c993b1f8fbb652a1e53f09c"
+      ],
+      "listens_to": [
+        "restored",
+        "degraded",
+        "issue_upcoming",
+        "issue_created",
+        "issue_updated",
+        "issue_cancelled",
+        "issue_started",
+        "issue_ended",
+        "notifier_tested"
+      ],
+      "listens_to_level": "all",
+      "locale": null,
+      "email": "user+role101@example.com",
+      "permissions": {
+        "user": {
+          "level": "w",
+          "modifiers": []
+        },
+        "role": {
+          "level": "r",
+          "modifiers": []
+        },
+        "component": {
+          "level": "r",
+          "modifiers": []
+        },
+        "group": {
+          "level": "r",
+          "modifiers": []
+        },
+        "issue": {
+          "level": "r",
+          "modifiers": []
+        },
+        "issue_template": {
+          "level": "n",
+          "modifiers": []
+        },
+        "metric_provider": {
+          "level": "n",
+          "modifiers": []
+        },
+        "notifier": {
+          "level": "n",
+          "modifiers": []
+        },
+        "subscription": {
+          "level": "n",
+          "modifiers": []
+        },
+        "watchdog": {
+          "level": "n",
+          "modifiers": []
+        },
+        "status": {
+          "level": "r",
+          "modifiers": []
+        },
+        "reason": {
+          "level": "n",
+          "modifiers": []
+        },
+        "event": {
+          "level": "n",
+          "modifiers": []
+        },
+        "timeline": {
+          "level": "r",
+          "modifiers": []
+        },
+        "invitation": {
+          "level": "n",
+          "modifiers": []
+        },
+        "request_log": {
+          "level": "n",
+          "modifiers": []
+        }
+      },
+      "roles": {
+        "type": "paged_array",
+        "total_count": 0,
+        "has_more": false,
+        "data": [],
+        "_links": {
+          "self": {
+            "href": "https://status.example.com/api/v1/roles?limit=10&user=620c555f8fbb65417b700214"
+          },
+          "create-form": {
+            "href": "https://status.example.com/dashboard/roles/new"
+          },
+          "prev": {
+            "href": "https://status.example.com/api/v1/roles?limit=10&user=620c555f8fbb65417b700214"
+          },
+          "beginning": {
+            "href": "https://status.example.com/api/v1/roles?limit=10&user=620c555f8fbb65417b700214"
+          }
+        }
+      },
+      "_links": {
+        "self": {
+          "href": "https://status.example.com/api/v1/users/620c555f8fbb65417b700214"
+        },
+        "update-form": {
+          "href": "https://status.example.com/dashboard/team/users/620c555f8fbb65417b700214/edit"
+        },
+        "roles": {
+          "href": "https://status.example.com/api/v1/roles?user=620c555f8fbb65417b700214"
+        }
+      }
+    },
+    {
+      "id": "620c46298fbb6530ef4474ae",
+      "type": "user",
+      "created_at": 1644971561,
+      "updated_at": 1644971561,
+      "notification_exclusions": [
+        "5ad566898fbb654577715322",
+        "5c9583858fbb6575d664cf96",
+        "5c9588038fbb657c95d929e9",
+        "5c993c0d8fbb652a1e53f152",
+        "5c993c168fbb652a1e53f15e",
+        "5c993c178fbb652a1e53f166",
+        "5c993c208fbb652a1e53f16e",
+        "5c993c248fbb652a1e53f176",
+        "5c993c298fbb652a1e53f17e",
+        "5c993c2a8fbb652a1e53f186",
+        "5c993c358fbb652a1e53f18e",
+        "5c993c478fbb652a1e53f196",
+        "5c993c4c8fbb652a1e53f19e",
+        "5d5c577c8fbb6552137cb5cb",
+        "5d5c597b8fbb65598c4d1673",
+        "5d5c6c498fbb657b390c5426",
+        "6091ee508fbb653b2287025e",
+        "5c993b1f8fbb652a1e53f09c"
+      ],
+      "listens_to": [
+        "restored",
+        "degraded",
+        "issue_upcoming",
+        "issue_created",
+        "issue_updated",
+        "issue_cancelled",
+        "issue_started",
+        "issue_ended",
+        "notifier_tested"
+      ],
+      "listens_to_level": "all",
+      "locale": null,
+      "email": "user+role100@example.com",
+      "permissions": {
+        "user": {
+          "level": "w",
+          "modifiers": []
+        },
+        "role": {
+          "level": "r",
+          "modifiers": []
+        },
+        "component": {
+          "level": "r",
+          "modifiers": []
+        },
+        "group": {
+          "level": "r",
+          "modifiers": []
+        },
+        "issue": {
+          "level": "r",
+          "modifiers": []
+        },
+        "issue_template": {
+          "level": "n",
+          "modifiers": []
+        },
+        "metric_provider": {
+          "level": "n",
+          "modifiers": []
+        },
+        "notifier": {
+          "level": "n",
+          "modifiers": []
+        },
+        "subscription": {
+          "level": "n",
+          "modifiers": []
+        },
+        "watchdog": {
+          "level": "n",
+          "modifiers": []
+        },
+        "status": {
+          "level": "r",
+          "modifiers": []
+        },
+        "reason": {
+          "level": "n",
+          "modifiers": []
+        },
+        "event": {
+          "level": "n",
+          "modifiers": []
+        },
+        "timeline": {
+          "level": "r",
+          "modifiers": []
+        },
+        "invitation": {
+          "level": "n",
+          "modifiers": []
+        },
+        "request_log": {
+          "level": "n",
+          "modifiers": []
+        }
+      },
+      "roles": {
+        "type": "paged_array",
+        "total_count": 0,
+        "has_more": false,
+        "data": [],
+        "_links": {
+          "self": {
+            "href": "https://status.example.com/api/v1/roles?limit=10&user=620c46298fbb6530ef4474ae"
+          },
+          "create-form": {
+            "href": "https://status.example.com/dashboard/roles/new"
+          },
+          "prev": {
+            "href": "https://status.example.com/api/v1/roles?limit=10&user=620c46298fbb6530ef4474ae"
+          },
+          "beginning": {
+            "href": "https://status.example.com/api/v1/roles?limit=10&user=620c46298fbb6530ef4474ae"
+          }
+        }
+      },
+      "_links": {
+        "self": {
+          "href": "https://status.example.com/api/v1/users/620c46298fbb6530ef4474ae"
+        },
+        "update-form": {
+          "href": "https://status.example.com/dashboard/team/users/620c46298fbb6530ef4474ae/edit"
+        },
+        "roles": {
+          "href": "https://status.example.com/api/v1/roles?user=620c46298fbb6530ef4474ae"
+        }
+      }
+    },
+    {
+      "id": "6202b6bc8fbb651015c8fafa",
+      "type": "user",
+      "created_at": 1644345020,
+      "updated_at": 1644345020,
+      "notification_exclusions": [
+        "5ad566898fbb654577715322",
+        "5c9583858fbb6575d664cf96",
+        "5c9588038fbb657c95d929e9",
+        "5c993c0d8fbb652a1e53f152",
+        "5c993c168fbb652a1e53f15e",
+        "5c993c178fbb652a1e53f166",
+        "5c993c208fbb652a1e53f16e",
+        "5c993c248fbb652a1e53f176",
+        "5c993c298fbb652a1e53f17e",
+        "5c993c2a8fbb652a1e53f186",
+        "5c993c358fbb652a1e53f18e",
+        "5c993c478fbb652a1e53f196",
+        "5c993c4c8fbb652a1e53f19e",
+        "5d5c577c8fbb6552137cb5cb",
+        "5d5c597b8fbb65598c4d1673",
+        "5d5c6c498fbb657b390c5426",
+        "6091ee508fbb653b2287025e",
+        "5c993b1f8fbb652a1e53f09c"
+      ],
+      "listens_to": [
+        "restored",
+        "degraded",
+        "issue_upcoming",
+        "issue_created",
+        "issue_updated",
+        "issue_cancelled",
+        "issue_started",
+        "issue_ended",
+        "notifier_tested"
+      ],
+      "listens_to_level": "all",
+      "locale": null,
+      "email": "user+role8@example.com",
+      "permissions": {
+        "user": {
+          "level": "w",
+          "modifiers": []
+        },
+        "role": {
+          "level": "r",
+          "modifiers": []
+        },
+        "component": {
+          "level": "r",
+          "modifiers": []
+        },
+        "group": {
+          "level": "r",
+          "modifiers": []
+        },
+        "issue": {
+          "level": "r",
+          "modifiers": []
+        },
+        "issue_template": {
+          "level": "n",
+          "modifiers": []
+        },
+        "metric_provider": {
+          "level": "n",
+          "modifiers": []
+        },
+        "notifier": {
+          "level": "n",
+          "modifiers": []
+        },
+        "subscription": {
+          "level": "n",
+          "modifiers": []
+        },
+        "watchdog": {
+          "level": "n",
+          "modifiers": []
+        },
+        "status": {
+          "level": "r",
+          "modifiers": []
+        },
+        "reason": {
+          "level": "n",
+          "modifiers": []
+        },
+        "event": {
+          "level": "n",
+          "modifiers": []
+        },
+        "timeline": {
+          "level": "r",
+          "modifiers": []
+        },
+        "invitation": {
+          "level": "n",
+          "modifiers": []
+        },
+        "request_log": {
+          "level": "n",
+          "modifiers": []
+        }
+      },
+      "roles": {
+        "type": "paged_array",
+        "total_count": 0,
+        "has_more": false,
+        "data": [],
+        "_links": {
+          "self": {
+            "href": "https://status.example.com/api/v1/roles?limit=10&user=6202b6bc8fbb651015c8fafa"
+          },
+          "create-form": {
+            "href": "https://status.example.com/dashboard/roles/new"
+          },
+          "prev": {
+            "href": "https://status.example.com/api/v1/roles?limit=10&user=6202b6bc8fbb651015c8fafa"
+          },
+          "beginning": {
+            "href": "https://status.example.com/api/v1/roles?limit=10&user=6202b6bc8fbb651015c8fafa"
+          }
+        }
+      },
+      "_links": {
+        "self": {
+          "href": "https://status.example.com/api/v1/users/6202b6bc8fbb651015c8fafa"
+        },
+        "update-form": {
+          "href": "https://status.example.com/dashboard/team/users/6202b6bc8fbb651015c8fafa/edit"
+        },
+        "roles": {
+          "href": "https://status.example.com/api/v1/roles?user=6202b6bc8fbb651015c8fafa"
+        }
+      }
+    },
+    {
+      "id": "6202b63c8fbb650d119937a4",
+      "type": "user",
+      "created_at": 1644344892,
+      "updated_at": 1644344892,
+      "notification_exclusions": [
+        "5ad566898fbb654577715322",
+        "5c9583858fbb6575d664cf96",
+        "5c9588038fbb657c95d929e9",
+        "5c993c0d8fbb652a1e53f152",
+        "5c993c168fbb652a1e53f15e",
+        "5c993c178fbb652a1e53f166",
+        "5c993c208fbb652a1e53f16e",
+        "5c993c248fbb652a1e53f176",
+        "5c993c298fbb652a1e53f17e",
+        "5c993c2a8fbb652a1e53f186",
+        "5c993c358fbb652a1e53f18e",
+        "5c993c478fbb652a1e53f196",
+        "5c993c4c8fbb652a1e53f19e",
+        "5d5c577c8fbb6552137cb5cb",
+        "5d5c597b8fbb65598c4d1673",
+        "5d5c6c498fbb657b390c5426",
+        "6091ee508fbb653b2287025e",
+        "5c993b1f8fbb652a1e53f09c"
+      ],
+      "listens_to": [
+        "restored",
+        "degraded",
+        "issue_upcoming",
+        "issue_created",
+        "issue_updated",
+        "issue_cancelled",
+        "issue_started",
+        "issue_ended",
+        "notifier_tested"
+      ],
+      "listens_to_level": "all",
+      "locale": null,
+      "email": "user+role7@example.com",
+      "permissions": {
+        "user": {
+          "level": "w",
+          "modifiers": []
+        },
+        "role": {
+          "level": "r",
+          "modifiers": []
+        },
+        "component": {
+          "level": "r",
+          "modifiers": []
+        },
+        "group": {
+          "level": "r",
+          "modifiers": []
+        },
+        "issue": {
+          "level": "r",
+          "modifiers": []
+        },
+        "issue_template": {
+          "level": "n",
+          "modifiers": []
+        },
+        "metric_provider": {
+          "level": "n",
+          "modifiers": []
+        },
+        "notifier": {
+          "level": "n",
+          "modifiers": []
+        },
+        "subscription": {
+          "level": "n",
+          "modifiers": []
+        },
+        "watchdog": {
+          "level": "n",
+          "modifiers": []
+        },
+        "status": {
+          "level": "r",
+          "modifiers": []
+        },
+        "reason": {
+          "level": "n",
+          "modifiers": []
+        },
+        "event": {
+          "level": "n",
+          "modifiers": []
+        },
+        "timeline": {
+          "level": "r",
+          "modifiers": []
+        },
+        "invitation": {
+          "level": "n",
+          "modifiers": []
+        },
+        "request_log": {
+          "level": "n",
+          "modifiers": []
+        }
+      },
+      "roles": {
+        "type": "paged_array",
+        "total_count": 0,
+        "has_more": false,
+        "data": [],
+        "_links": {
+          "self": {
+            "href": "https://status.example.com/api/v1/roles?limit=10&user=6202b63c8fbb650d119937a4"
+          },
+          "create-form": {
+            "href": "https://status.example.com/dashboard/roles/new"
+          },
+          "prev": {
+            "href": "https://status.example.com/api/v1/roles?limit=10&user=6202b63c8fbb650d119937a4"
+          },
+          "beginning": {
+            "href": "https://status.example.com/api/v1/roles?limit=10&user=6202b63c8fbb650d119937a4"
+          }
+        }
+      },
+      "_links": {
+        "self": {
+          "href": "https://status.example.com/api/v1/users/6202b63c8fbb650d119937a4"
+        },
+        "update-form": {
+          "href": "https://status.example.com/dashboard/team/users/6202b63c8fbb650d119937a4/edit"
+        },
+        "roles": {
+          "href": "https://status.example.com/api/v1/roles?user=6202b63c8fbb650d119937a4"
+        }
+      }
+    },
+    {
+      "id": "6202b5e38fbb6508dab69067",
+      "type": "user",
+      "created_at": 1644344803,
+      "updated_at": 1644344803,
+      "notification_exclusions": [
+        "5ad566898fbb654577715322",
+        "5c9583858fbb6575d664cf96",
+        "5c9588038fbb657c95d929e9",
+        "5c993c0d8fbb652a1e53f152",
+        "5c993c168fbb652a1e53f15e",
+        "5c993c178fbb652a1e53f166",
+        "5c993c208fbb652a1e53f16e",
+        "5c993c248fbb652a1e53f176",
+        "5c993c298fbb652a1e53f17e",
+        "5c993c2a8fbb652a1e53f186",
+        "5c993c358fbb652a1e53f18e",
+        "5c993c478fbb652a1e53f196",
+        "5c993c4c8fbb652a1e53f19e",
+        "5d5c577c8fbb6552137cb5cb",
+        "5d5c597b8fbb65598c4d1673",
+        "5d5c6c498fbb657b390c5426",
+        "6091ee508fbb653b2287025e",
+        "5c993b1f8fbb652a1e53f09c"
+      ],
+      "listens_to": [
+        "restored",
+        "degraded",
+        "issue_upcoming",
+        "issue_created",
+        "issue_updated",
+        "issue_cancelled",
+        "issue_started",
+        "issue_ended",
+        "notifier_tested"
+      ],
+      "listens_to_level": "all",
+      "locale": null,
+      "email": "user+role6@example.com",
+      "permissions": {
+        "user": {
+          "level": "w",
+          "modifiers": []
+        },
+        "role": {
+          "level": "r",
+          "modifiers": []
+        },
+        "component": {
+          "level": "r",
+          "modifiers": []
+        },
+        "group": {
+          "level": "r",
+          "modifiers": []
+        },
+        "issue": {
+          "level": "r",
+          "modifiers": []
+        },
+        "issue_template": {
+          "level": "n",
+          "modifiers": []
+        },
+        "metric_provider": {
+          "level": "n",
+          "modifiers": []
+        },
+        "notifier": {
+          "level": "n",
+          "modifiers": []
+        },
+        "subscription": {
+          "level": "n",
+          "modifiers": []
+        },
+        "watchdog": {
+          "level": "n",
+          "modifiers": []
+        },
+        "status": {
+          "level": "r",
+          "modifiers": []
+        },
+        "reason": {
+          "level": "n",
+          "modifiers": []
+        },
+        "event": {
+          "level": "n",
+          "modifiers": []
+        },
+        "timeline": {
+          "level": "r",
+          "modifiers": []
+        },
+        "invitation": {
+          "level": "n",
+          "modifiers": []
+        },
+        "request_log": {
+          "level": "n",
+          "modifiers": []
+        }
+      },
+      "roles": {
+        "type": "paged_array",
+        "total_count": 0,
+        "has_more": false,
+        "data": [],
+        "_links": {
+          "self": {
+            "href": "https://status.example.com/api/v1/roles?limit=10&user=6202b5e38fbb6508dab69067"
+          },
+          "create-form": {
+            "href": "https://status.example.com/dashboard/roles/new"
+          },
+          "prev": {
+            "href": "https://status.example.com/api/v1/roles?limit=10&user=6202b5e38fbb6508dab69067"
+          },
+          "beginning": {
+            "href": "https://status.example.com/api/v1/roles?limit=10&user=6202b5e38fbb6508dab69067"
+          }
+        }
+      },
+      "_links": {
+        "self": {
+          "href": "https://status.example.com/api/v1/users/6202b5e38fbb6508dab69067"
+        },
+        "update-form": {
+          "href": "https://status.example.com/dashboard/team/users/6202b5e38fbb6508dab69067/edit"
+        },
+        "roles": {
+          "href": "https://status.example.com/api/v1/roles?user=6202b5e38fbb6508dab69067"
+        }
+      }
+    },
+    {
+      "id": "6202b46f8fbb6508dab69065",
+      "type": "user",
+      "created_at": 1644344431,
+      "updated_at": 1644344431,
+      "notification_exclusions": [
+        "5ad566898fbb654577715322",
+        "5c9583858fbb6575d664cf96",
+        "5c9588038fbb657c95d929e9",
+        "5c993c0d8fbb652a1e53f152",
+        "5c993c168fbb652a1e53f15e",
+        "5c993c178fbb652a1e53f166",
+        "5c993c208fbb652a1e53f16e",
+        "5c993c248fbb652a1e53f176",
+        "5c993c298fbb652a1e53f17e",
+        "5c993c2a8fbb652a1e53f186",
+        "5c993c358fbb652a1e53f18e",
+        "5c993c478fbb652a1e53f196",
+        "5c993c4c8fbb652a1e53f19e",
+        "5d5c577c8fbb6552137cb5cb",
+        "5d5c597b8fbb65598c4d1673",
+        "5d5c6c498fbb657b390c5426",
+        "6091ee508fbb653b2287025e",
+        "5c993b1f8fbb652a1e53f09c"
+      ],
+      "listens_to": [
+        "restored",
+        "degraded",
+        "issue_upcoming",
+        "issue_created",
+        "issue_updated",
+        "issue_cancelled",
+        "issue_started",
+        "issue_ended",
+        "notifier_tested"
+      ],
+      "listens_to_level": "all",
+      "locale": null,
+      "email": "user+role5@example.com",
+      "permissions": {
+        "user": {
+          "level": "w",
+          "modifiers": []
+        },
+        "role": {
+          "level": "r",
+          "modifiers": []
+        },
+        "component": {
+          "level": "r",
+          "modifiers": []
+        },
+        "group": {
+          "level": "r",
+          "modifiers": []
+        },
+        "issue": {
+          "level": "r",
+          "modifiers": []
+        },
+        "issue_template": {
+          "level": "n",
+          "modifiers": []
+        },
+        "metric_provider": {
+          "level": "n",
+          "modifiers": []
+        },
+        "notifier": {
+          "level": "n",
+          "modifiers": []
+        },
+        "subscription": {
+          "level": "n",
+          "modifiers": []
+        },
+        "watchdog": {
+          "level": "n",
+          "modifiers": []
+        },
+        "status": {
+          "level": "r",
+          "modifiers": []
+        },
+        "reason": {
+          "level": "n",
+          "modifiers": []
+        },
+        "event": {
+          "level": "n",
+          "modifiers": []
+        },
+        "timeline": {
+          "level": "r",
+          "modifiers": []
+        },
+        "invitation": {
+          "level": "n",
+          "modifiers": []
+        },
+        "request_log": {
+          "level": "n",
+          "modifiers": []
+        }
+      },
+      "roles": {
+        "type": "paged_array",
+        "total_count": 0,
+        "has_more": false,
+        "data": [],
+        "_links": {
+          "self": {
+            "href": "https://status.example.com/api/v1/roles?limit=10&user=6202b46f8fbb6508dab69065"
+          },
+          "create-form": {
+            "href": "https://status.example.com/dashboard/roles/new"
+          },
+          "prev": {
+            "href": "https://status.example.com/api/v1/roles?limit=10&user=6202b46f8fbb6508dab69065"
+          },
+          "beginning": {
+            "href": "https://status.example.com/api/v1/roles?limit=10&user=6202b46f8fbb6508dab69065"
+          }
+        }
+      },
+      "_links": {
+        "self": {
+          "href": "https://status.example.com/api/v1/users/6202b46f8fbb6508dab69065"
+        },
+        "update-form": {
+          "href": "https://status.example.com/dashboard/team/users/6202b46f8fbb6508dab69065/edit"
+        },
+        "roles": {
+          "href": "https://status.example.com/api/v1/roles?user=6202b46f8fbb6508dab69065"
+        }
+      }
+    }
+  ],
+  "_links": {
+    "self": {
+      "href": "https://status.example.com/api/v1/users?limit=10"
+    },
+    "next": {
+      "href": "https://status.example.com/api/v1/users?limit=10&starting_after=6202b46f8fbb6508dab69065"
+    },
+    "prev": {
+      "href": "https://status.example.com/api/v1/users?ending_before=620d6a1d8fbb659701a76c65&limit=10"
+    },
+    "beginning": {
+      "href": "https://status.example.com/api/v1/users?limit=10"
+    }
+  }
+}

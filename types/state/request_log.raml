@@ -1,0 +1,40 @@
+#%RAML 1.0 DataType
+
+uses:
+  prelude: /libraries/prelude.raml
+  core: /libraries/core.raml
+  user: /libraries/user.raml
+
+(prelude.common):
+(core.fieldDescriptions): !include /documentation/fieldDescriptions/request_log.yml
+displayName: RequestLog
+description: |
+  A log of API and dashboard requests, which can serve as an audit log of actions
+  taken by Users against your account.
+type: [core.TypedObject, core.Timestamps/Created, core.HAL/Linkable]
+properties:
+  id: core.UUID
+  type:
+    enum: [request_log]
+  email: core.maybe-string
+  api_key: core.ObjectId?
+  user:
+    (core.expandable):
+    type: user.User | core.ObjectId | nil
+  domain: string
+  verb: string
+  path: string
+  query: core.json-object | nil
+  response_code: core.nonnegative-integer
+  request_body: string | nil
+  response_body: string | nil
+  ip_address: string
+  user_agent: string
+  locale: string
+  source: core.REQUEST_LOG_SOURCE
+  api_version: core.maybe-string
+  successful: boolean
+  _links?:
+    properties:
+      self: core.HAL/Link
+      user?: core.HAL/Link

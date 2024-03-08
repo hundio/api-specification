@@ -1,0 +1,14 @@
+{
+  "type": "api/error/validation_failed",
+  "logref": "018e0b91-d77d-7754-a49c-45bf51746913",
+  "message": "Validation failed.",
+  "_embedded": {
+    "errors": [
+      {
+        "type": "api/error/validation_failed/embedded",
+        "path": "/name",
+        "message": "`name` can't be blank"
+      }
+    ]
+  }
+}

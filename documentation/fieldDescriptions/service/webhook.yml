@@ -1,5 +1,5 @@
 webhook_key: |
-  The key to use for this webhook, expected in request headers.
+  The key to use for this webhook, expected in the `X-WEBHOOK-KEY` request header.
 deadman: |
   When true, turns on a "Dead Man's Switch" for the Watchdog, according to the
   configuration set by `reporting_interval` and `consecutive_checks`. The Watchdog

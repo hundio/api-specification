@@ -3,6 +3,7 @@
 uses:
   prelude: /libraries/prelude.raml
   core: /libraries/core.raml
+  issue_contentable: /libraries/issue_contentable.raml
   template: /libraries/issue_template/application.raml
 
 (prelude.common):
@@ -13,7 +14,7 @@ description: |
   have their own bodies and label, and can also change the current state override
   of the Issue. Updates are also responsible for resolving/reopening Issues, as
   well as adding addendums/postmortems to the end of an Issue.
-type: [core.TypedObject, core.Timestamps, core.IssueContentable, core.HAL/Linkable]
+type: [core.TypedObject, core.Timestamps, issue_contentable.IssueContentable, core.HAL/Linkable]
 properties:
   id: core.ObjectId
   type:
@@ -29,3 +30,4 @@ properties:
       update-form: core.HAL/Link
       issue: core.HAL/Link
       events:by-context: core.HAL/Link
+      semantic_override?: core.HAL/Link

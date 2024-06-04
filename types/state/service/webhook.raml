@@ -9,15 +9,11 @@ uses:
 displayName: Webhook
 description: |
   A [webhook](https://hund.io/help/integrations/webhooks) service.
-type: core.Service
+type: [core.Service, core.HAL/Linkable]
 properties:
   type:
     enum: [webhook]
-  webhook_key?:
-    (core.overrideFieldDescription):
-    description: |
-      The key to use for this webhook, expected in request headers.
-      <br />
-      **Note:** this field is only emitted upon service creation. It will not be
-      returned in retrievals nor updates.
-    type: string
+  webhook_key: string
+  _links?:
+    properties:
+      webhook: core.HAL/Link

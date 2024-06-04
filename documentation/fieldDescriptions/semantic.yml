@@ -1,0 +1,54 @@
+id: |
+  The ObjectId of this Semantic.
+created_at: |
+  The UNIX timestamp at which this Semantic was created.
+updated_at: |
+  The UNIX timestamp at which this Semantic was last updated.
+slug: |
+  An alphanumeric slug that can be used to reference this Semantic in place of
+  its `id` (e.g. webhook calls, integrations). Thus, this value must be unique.
+name: |
+  An I18nString representing the user-facing name of this Semantic.
+color: |
+  A 6-digit hexadecimal RGB color, used to appropriately color usages of this
+  Semantic on your status page.
+icon: |
+  A string denoting a specific icon that should be shown next to Components on
+  your status page when this Semantic occurs. When null, falls back to an
+  icon determined by the underlying state of the Component.
+severity: |
+  An integer that denotes how "severe" this Semantic is. Smaller (including negative)
+  values are considered more severe. This field is primarily used to order Semantics,
+  and choose a predominant Semantic when a Component is under multiple Semantics
+  (e.g. when multiple Issues are active with `semantic_override`s).
+historical_grouping: |
+  Whether to group events with this Semantic with other events of similar underlying
+  state (i.e. suboperational vs. operational) in your status page's historical timeline.
+operational_historical_entry: |
+  Whether to emit historical entries for events with this semantic, particularly
+  when the underlying state is Operational.
+
+  By default, operational states are not recorded explicitly in history, since
+  it is assumed that streaks of Operational status are typical and expected, and
+  therefore and do not need to be shown as events in history.
+default_state: |
+  The default underlying state that this Semantic implies in cases when a state
+  is **not supplied** in conjunction with the Semantic (e.g. a Webhook watchdog).
+
+  **Note:** This field has **no effect** on Components where the underlying state
+  is already determined, and thus the Semantic would merely rename/recolor that
+  state, whether ongoing or historical.
+status_page_heading: |
+  An I18nString representing the description of this Semantic when shown in the
+  "Status Bar" of your status page, or the page of a specific Component (e.g.
+  "Operating Normally", "Experiencing Downtime", etc.).
+historical_entry_heading: |
+  An I18nString representing the `title` of a TimelineItem where this Semantic
+  occurred. This string is also shown in heading of the historical entry
+  on your status page's History section (e.g. "Degraded Service", "Outage", etc.).
+notification_description: |
+  An I18nString representing the description of the Semantic in notifications when
+  it occurs. This string will appear in the notifications from various Notifiers,
+  including Emails, Slack, MS Teams, Web Push, and SMS (e.g. "is degraded",
+  "has gone down" for Degraded and Outage states, respectively; and "has come
+  back up" when entering Operational from a suboperational state).

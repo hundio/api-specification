@@ -22,6 +22,9 @@ properties:
   state_override?:
     type: nil | core.integer-state
     default: null
+  semantic_override?:
+    type: nil | core.slug | core.ObjectId
+    default: null
   priority?:
     type: core.ISSUE_PRIORITY
     default: 0

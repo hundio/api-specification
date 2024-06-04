@@ -1,0 +1,42 @@
+#%RAML 1.0 DataType
+
+uses:
+  prelude: /libraries/prelude.raml
+  core: /libraries/core.raml
+
+(prelude.common):
+(core.fieldDescriptions): !include /documentation/fieldDescriptions/semantic.yml
+displayName: Semantic
+description: |
+  Semantics are applied to Statuses and Issues to give additional or alternative
+  meaning to the core states within Hund (i.e. Operational, Degraded, Outage, Pending).
+
+  A Semantic can be applied to any state, which will both rename and recolor the
+  state according to the Semantic. This affects both the display of current state
+  on your status page, as well as the historical timeline.
+
+  Semantics can be applied by certain supporting Watchdogs, such as Manual and
+  Webhook.
+
+  Issues and Updates can also accept a Semantic in conjunction with their state
+  overrides. Similar to a state override, Semantic overrides will affect the display
+  of ongoing state on your status page for the duration of the overriding Issue/Update.
+type: [core.TypedObject, core.Timestamps, core.HAL/Linkable]
+properties:
+  id: core.ObjectId
+  type:
+    enum: [semantic]
+  slug: core.slug
+  name: core.i18n-string
+  color: core.hex-color
+  icon: core.SEMANTIC_ICON | nil
+  severity: integer
+  historical_grouping: boolean
+  operational_historical_entry: boolean
+  default_state: core.maybe-integer-state-or-pending
+  status_page_heading: core.i18n-string
+  historical_entry_heading: core.i18n-string
+  notification_description: core.i18n-string
+  _links?:
+    properties:
+      self: core.HAL/Link

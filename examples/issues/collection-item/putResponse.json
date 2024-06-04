@@ -5,6 +5,7 @@
   "body": "We are currently doing some spot upgrades to degraded subsystems to maintain stability.",
   "body_html": "\u003cp\u003eWe are currently doing some spot upgrades to degraded subsystems to maintain stability.\u003c/p\u003e\n",
   "state_override": null,
+  "semantic_override": null,
   "created_at": 1543958167,
   "updated_at": 1543958400,
   "title": "Unplanned maintenance",

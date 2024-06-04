@@ -14,7 +14,15 @@ body_html: |
   An HTML rendered view of the markdown in `body`.
 state_override: |
   The integer state which overrides the state of affected Components in
-  `component`. A value of `null` indicates no override is present.
+  `components`. A value of `null` indicates no override is present.
+semantic_override: |
+  An optional Semantic which overrides the Semantic of affected Components in
+  `components`. This override will be visible on the status page until the Issue
+  is updated. This field may be used in conjunction with `state_override`, in which
+  case `state_override` will set the underlying state of the selected Semantic.
+
+  A Semantic can be selected by either an ObjectId, or the `slug` of a Semantic.
+  A value of `null` indicates no override is present.
 title: |
   The title of the Issue.
 priority: |

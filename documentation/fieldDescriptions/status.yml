@@ -17,6 +17,9 @@ duration: |
 state: |
   An integer denoting the operational state of this Status. This state affects
   any related Component Timelines over the duration of this Status.
+semantic: |
+  An optional Semantic that gives further meaning to the underlying `state` of
+  this Status.
 reasons: |
   When `state` < 1 (sub-operational), this field contains a PagedArray of zero or
   more Reason objects describing the specific reasons this Status was generated,

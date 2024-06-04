@@ -1,0 +1,32 @@
+{
+  "type": "api/error/validation_failed",
+  "logref": "018fdf9c-4c02-7053-9a47-795d8e8378b7",
+  "message": "Validation failed.",
+  "errors": [
+    {
+      "type": "api/error/validation_failed/embedded",
+      "path": "/color",
+      "message": "`color` can't be blank"
+    },
+    {
+      "type": "api/error/validation_failed/embedded",
+      "path": "/color",
+      "message": "`color` is invalid"
+    },
+    {
+      "type": "api/error/validation_failed/embedded",
+      "path": "/status_page_heading",
+      "message": "`status_page_heading` can't be blank"
+    },
+    {
+      "type": "api/error/validation_failed/embedded",
+      "path": "/historical_entry_heading",
+      "message": "`historical_entry_heading` can't be blank"
+    },
+    {
+      "type": "api/error/validation_failed/embedded",
+      "path": "/notification_description",
+      "message": "`notification_description` can't be blank"
+    }
+  ]
+}

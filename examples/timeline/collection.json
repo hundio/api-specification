@@ -541,6 +541,7 @@
               }
             },
             "state": -1,
+            "semantic": null,
             "duration": 2340155,
             "began_at": 1651091720,
             "ended_at": 1653432126,

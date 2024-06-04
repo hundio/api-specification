@@ -1,0 +1,22 @@
+{
+  "id": "661066a78fbb65f9ac923714",
+  "type": "semantic",
+  "created_at": 1712350887,
+  "updated_at": 1717440636,
+  "name": "Disconnected",
+  "slug": "disconnected",
+  "color": "ff33cc",
+  "icon": "plug",
+  "severity": -1,
+  "default_state": null,
+  "historical_grouping": false,
+  "operational_historical_entry": false,
+  "status_page_heading": "Not Accepting Requests",
+  "historical_entry_heading": "Requests Denied",
+  "notification_description": "is not accepting requests",
+  "_links": {
+    "self": {
+      "href": "https://status.example.com/api/v1/semantics/661066a78fbb65f9ac923714"
+    }
+  }
+}

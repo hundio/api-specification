@@ -1,0 +1,21 @@
+#%RAML 1.0 Library
+
+usage: |
+  Defines the IssueContentable mixin.
+
+uses:
+  core: /libraries/core.raml
+  semantic: /libraries/semantic.raml
+
+types:
+  IssueContentable:
+    type: object
+    additionalProperties: false
+    properties:
+      label: core.maybe-i18n-string
+      body: core.maybe-i18n-string
+      body_html: core.i18n-string
+      state_override: nil | core.integer-state
+      semantic_override:
+        (core.expandable):
+        type: nil | core.ObjectId | semantic.Semantic

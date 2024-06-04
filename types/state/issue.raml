@@ -4,6 +4,7 @@ uses:
   prelude: /libraries/prelude.raml
   core: /libraries/core.raml
   component: /libraries/component.raml
+  issue_contentable: /libraries/issue_contentable.raml
   schedule: /libraries/schedule.raml
   template: /libraries/issue_template/application.raml
   update: /libraries/update.raml
@@ -15,7 +16,7 @@ description: |
   Issues represent an evolving incident in time. Issues have updates, which
   describe the evolution of an issue, often up to resolution. Issues may also
   set a schedule, which allows automatically starting and ending the issue.
-type: [core.TypedObject, core.Timestamps, core.IssueContentable, core.HAL/Linkable]
+type: [core.TypedObject, core.Timestamps, issue_contentable.IssueContentable, core.HAL/Linkable]
 properties:
   id: core.ObjectId
   type:
@@ -55,5 +56,6 @@ properties:
       components: core.HAL/Link
       events: core.HAL/Link
       updates: core.HAL/Link
+      semantic_override?: core.HAL/Link
       action:cancel?: core.HAL/Link
       og:image?: core.HAL/Link

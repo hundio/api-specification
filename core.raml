@@ -29,6 +29,7 @@ uses:
   reason-expansionary: /libraries/reason/expansionary.raml
   request_log: /libraries/request_log.raml
   role: /libraries/role.raml
+  semantic: /libraries/semantic.raml
   status: /libraries/status.raml
   subscription: /libraries/subscription.raml
   timeline: /libraries/timeline.raml
@@ -64,6 +65,8 @@ securitySchemes:
     x-displayName: Components
   - name: watchdog
     x-displayName: Watchdogs
+  - name: semantic
+    x-displayName: Semantics
   - name: status
     x-displayName: Statuses
   - name: reason
@@ -112,7 +115,7 @@ securitySchemes:
 
 (core.tagGroups):
   - name: Monitoring
-    tags: [component, group, metric_provider, watchdog, status, reason]
+    tags: [component, group, metric_provider, watchdog, status, reason, semantic]
   - name: Incident Reporting
     tags: [issue, update, issue_template]
   - name: Communication
@@ -149,6 +152,7 @@ securitySchemes:
                   events: core.HAL/Link
                   statuses: core.HAL/Link
                   reasons: core.HAL/Link
+                  semantics: core.HAL/Link
                   timeline: core.HAL/Link
                   users: core.HAL/Link
                   roles: core.HAL/Link
@@ -235,7 +239,7 @@ securitySchemes:
   put:
     responses:
       400:
-        (specs.requestBody): '{ "service": { "state": 5 } }'
+        (specs.requestBody): '{ "service": { "state": nil } }'
   /convert:
     (core.tags): [watchdog]
     type:
@@ -267,12 +271,42 @@ securitySchemes:
         400:
           (specs.bindIds):
             watchdog: auto
-          (specs.requestBody): '{ "service": { "type": "manual", "state": 5 } }'
+          (specs.requestBody): '{ "service": { "type": "manual", "state": nil } }'
           description: |
             Failed to convert Watchdog service.
         403:
           description: |
             Not authorized to write Watchdogs.
+
+/semantics:
+  (core.tags): [semantic]
+  type:
+    core.collection:
+      itemType: semantic.Semantic
+      postParamsType: semantic.Semantic/Form/Create
+      getResponseExample: !include /examples/semantics/collection.json
+      postRequestExample: !include /examples/semantics/collection/postRequest.json
+      postResponseExample: !include /examples/semantics/collection/postResponse.json
+      postErrorExample: !include /examples/semantics/error/validation.json
+      errorNotAuthorizedExample: !include /examples/semantics/error/notAuthorized.json
+  /{semantic_id}:
+    (core.tags): [semantic]
+    type:
+      core.collection-item:
+        idPrefix: semantic
+        itemType: semantic.Semantic
+        putParamsType: semantic.Semantic/Form/Update
+        getResponseExample: !include /examples/semantics/collection-item.json
+        putRequestExample: !include /examples/semantics/collection-item/putRequest.json
+        putResponseExample: !include /examples/semantics/collection-item/putResponse.json
+        errorNotFoundExample: !include /examples/semantics/error/notFound.json
+        errorNotAuthorizedExample: !include /examples/semantics/error/notAuthorized.json
+        putErrorExample: !include /examples/semantics/error/validation.json
+    put:
+      responses:
+        400:
+          (specs.requestBody): '{ "color": "invalid" }'
+    delete:
 
 /statuses:
   (core.tags): [status]

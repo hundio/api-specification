@@ -6,6 +6,7 @@
   "watchdog": "60932fa68fbb65f1c3be61df",
   "reasons": null,
   "state": 1,
+  "semantic": null,
   "duration": 259623,
   "began_at": 1655770855,
   "ended_at": null,

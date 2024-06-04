@@ -1,0 +1,24 @@
+#%RAML 1.0 DataType
+
+uses:
+  prelude: /libraries/prelude.raml
+  core: /libraries/core.raml
+
+(prelude.common):
+(core.fieldDescriptions): !include /documentation/fieldDescriptions/semantic.yml
+displayName: Semantic
+description: |
+  Semantic update form.
+type: core.Form
+properties:
+  slug?: core.slug
+  name?: core.i18n-string
+  color?: core.hex-color
+  icon?: core.SEMANTIC_ICON | nil
+  severity?: integer
+  historical_grouping?: boolean
+  operational_historical_entry?: boolean
+  default_state?: core.maybe-integer-state-or-pending
+  status_page_heading?: core.i18n-string
+  historical_entry_heading?: core.i18n-string
+  notification_description?: core.i18n-string

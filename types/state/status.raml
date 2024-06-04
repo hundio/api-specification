@@ -4,6 +4,7 @@ uses:
   prelude: /libraries/prelude.raml
   core: /libraries/core.raml
   reason: /libraries/reason.raml
+  semantic: /libraries/semantic.raml
   watchdog: /libraries/watchdog.raml
 
 (prelude.common):
@@ -34,6 +35,9 @@ properties:
   duration: core.nonnegative-integer
   state: core.integer-state
   reasons: reason.Reasons?
+  semantic:
+    (core.expandable):
+    type: core.ObjectId | semantic.Semantic | nil
   watchdog:
     (core.expandable):
     type: core.ObjectId | watchdog.Watchdog
@@ -42,5 +46,6 @@ properties:
       self: core.HAL/Link
       events: core.HAL/Link
       reasons?: core.HAL/Link
+      semantic?: core.HAL/Link
       watchdog: core.HAL/Link
       action:correct?: core.HAL/Link

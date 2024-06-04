@@ -74,6 +74,43 @@ types:
     type: string
     enum: [maintenance, assessed, identified, investigating, monitoring, resolved, addendum, informational]
 
+  SEMANTIC_ICON:
+    (prelude.common):
+    type: SEMANTIC_ICON_SHORTHAND | STATICON_ICON
+
+  STATICON_ICON:
+    (prelude.common):
+    type: string
+    enum: ["x", "watch", "versions", "verified", "unverified", "unmute",
+          "unfold", "triangle-up", "triangle-right", "triangle-left",
+          "triangle-down", "trashcan", "tools", "thumbsup", "thumbsdown",
+          "three-bars", "terminal", "telescope", "tag", "sync", "stop", "star",
+          "squirrel", "smiley", "sign-out", "sign-in", "shield", "settings",
+          "server", "search", "rss", "rocket", "radio-tower", "question",
+          "pulse", "primitive-square", "primitive-dot", "plus", "plug", "pin",
+          "person", "pencil", "paintcan", "package", "organization", "mute",
+          "mortar-board", "mirror", "milestone", "mention", "megaphone", "mail",
+          "mail-reply", "mail-read", "lock", "location", "link", "link-external",
+          "lightning", "light-bulb", "law", "keyboard", "key", "jersey",
+          "issue-reopened", "issue-opened", "issue-closed", "info", "inbox",
+          "home", "history", "heart", "graph", "globe", "git-pull-request",
+          "git-merge", "git-compare", "git-commit", "git-branch", "gift", "gem",
+          "gear", "fold", "flame", "eye", "diff", "diff-renamed", "diff-removed",
+          "diff-modified", "diff-ignored", "diff-added", "device-mobile",
+          "device-desktop", "device-camera", "device-camera-video",
+          "desktop-download", "database", "dashboard", "dash", "credit-card",
+          "comment", "comment-discussion", "code", "cloud-upload",
+          "cloud-download", "clock", "clipboard", "circle-slash", "chevron-up",
+          "chevron-right", "chevron-left", "chevron-down", "checklist", "check",
+          "calendar", "bug", "browser", "broadcast", "briefcase", "bookmark",
+          "book", "bell", "beaker", "arrow-up", "arrow-right", "arrow-left",
+          "arrow-down", "alert"]
+
+  SEMANTIC_ICON_SHORTHAND:
+    (prelude.common):
+    type: string
+    enum: [success, warning, failure, maintenance, unknown]
+
   PINGDOM_CHECK_TYPE:
     (prelude.common):
     type: string
@@ -174,6 +211,11 @@ types:
     type: string
     enum: [dashboard, api]
 
+  PENDING_STATE:
+    (prelude.common):
+    type: string
+    enum: [pending]
+
   # Primitives
 
   maybe-string:
@@ -207,6 +249,13 @@ types:
     displayName: State
     type: integer
     enum: [-1, 0, 1]
+  integer-state-or-pending:
+    (prelude.common):
+    displayName: State
+    type: integer-state | PENDING_STATE
+  maybe-integer-state-or-pending:
+    (prelude.common):
+    type: integer-state-or-pending | nil
   namespaced-slug:
     (prelude.common):
     description: |
@@ -215,6 +264,13 @@ types:
     displayName: Slug
     type: string
     pattern: ([a-z][a-z0-9_]*)(\.[a-z][a-z0-9_]*)*
+  slug:
+    (prelude.common):
+    description: |
+      An alphanumeric (plus underscore and hyphen) string.
+    displayName: Slug
+    type: string
+    pattern: ^[a-z][a-z0-9_\-]+$
   i18n:
     (prelude.common):
     type: object
@@ -248,6 +304,10 @@ types:
   maybe-timestamp:
     (prelude.common):
     type: nil | timestamp
+  hex-color:
+    (prelude.common):
+    type: string
+    pattern: ^[0-9a-f]{6}$
 
   json-object:
     (prelude.common):
@@ -293,14 +353,6 @@ types:
         type: maybe-i18n-string
       description_html:
         type: i18n-string
-  IssueContentable:
-    type: object
-    additionalProperties: false
-    properties:
-      label: maybe-i18n-string
-      body: maybe-i18n-string
-      body_html: i18n-string
-      state_override: nil | integer-state
   NotificationPreferential:
     type: object
     additionalProperties: false

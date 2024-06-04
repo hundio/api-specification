@@ -21,6 +21,9 @@ properties:
   state_override?:
     type: nil | core.integer-state
     default: null
+  semantic_override?:
+    type: nil | core.slug | core.ObjectId
+    default: null
   effective_after?:
     (core.overrideFieldDescription):
     description: |

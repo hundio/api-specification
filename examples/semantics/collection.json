@@ -1,0 +1,84 @@
+{
+  "type": "paged_array",
+  "total_count": 3,
+  "data": [
+    {
+      "id": "661066a78fbb65f9ac923714",
+      "type": "semantic",
+      "created_at": 1712350887,
+      "updated_at": 1717440636,
+      "name": "Disconnected",
+      "slug": "disconnected",
+      "color": "ff33cc",
+      "icon": "plug",
+      "severity": -1,
+      "default_state": null,
+      "historical_grouping": false,
+      "operational_historical_entry": false,
+      "status_page_heading": "Not Accepting Requests",
+      "historical_entry_heading": "Requests Denied",
+      "notification_description": "is not accepting requests",
+      "_links": {
+        "self": {
+          "href": "https://status.example.com/api/v1/semantics/661066a78fbb65f9ac923714"
+        }
+      }
+    },
+    {
+      "id": "661066058fbb65f9ac923713",
+      "type": "semantic",
+      "created_at": 1712350725,
+      "updated_at": 1714422124,
+      "name": "No Data",
+      "slug": "no-data",
+      "color": "aaaaaa",
+      "icon": null,
+      "severity": 1,
+      "default_state": "pending",
+      "historical_grouping": false,
+      "operational_historical_entry": false,
+      "status_page_heading": "No Data Available",
+      "historical_entry_heading": "No Data",
+      "notification_description": "not receiving data",
+      "_links": {
+        "self": {
+          "href": "https://status.example.com/api/v1/semantics/661066058fbb65f9ac923713"
+        }
+      }
+    },
+    {
+      "id": "661063f08fbb65f9ac923712",
+      "type": "semantic",
+      "created_at": 1712350192,
+      "updated_at": 1714422100,
+      "name": "Partial Outage",
+      "slug": "partial-outage",
+      "color": "ff6633",
+      "icon": null,
+      "severity": -2,
+      "default_state": 0,
+      "historical_grouping": false,
+      "operational_historical_entry": false,
+      "status_page_heading": "Experiencing Partial Outage",
+      "historical_entry_heading": "Partial Outage",
+      "notification_description": "is partially down",
+      "_links": {
+        "self": {
+          "href": "https://status.example.com/api/v1/semantics/661063f08fbb65f9ac923712"
+        }
+      }
+    }
+  ],
+  "has_more": false,
+  "_links": {
+    "self": {
+      "href": "https://status.example.com/api/v1/semantics?limit=10"
+    },
+    "prev": {
+      "href": "https://status.example.com/api/v1/semantics?ending_before=661066a78fbb65f9ac923714&limit=10"
+    },
+    "beginning": {
+      "href": "https://status.example.com/api/v1/semantics?limit=10"
+    }
+  }
+}

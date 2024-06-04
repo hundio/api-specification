@@ -1,0 +1,22 @@
+{
+  "id": "665e1c6d8fbb65080d60bd40",
+  "type": "semantic",
+  "created_at": 1717443693,
+  "updated_at": 1717443780,
+  "name": "Unavailable",
+  "slug": "unavailable",
+  "color": "ffff00",
+  "icon": "circle-slash",
+  "severity": 0,
+  "default_state": null,
+  "historical_grouping": false,
+  "operational_historical_entry": false,
+  "status_page_heading": "Service Unavailable",
+  "historical_entry_heading": "Unavailable",
+  "notification_description": "is unavailable",
+  "_links": {
+    "self": {
+      "href": "https://status.example.com/api/v1/semantics/665e1c6d8fbb65080d60bd40"
+    }
+  }
+}

@@ -1354,7 +1354,7 @@ securitySchemes:
     is:
     - core.not-authorized-failable:
         permissionLevel: read
-        errorNotAuthorizedExample: !include /examples/events/error/notAuthorized.json
+        errorNotAuthorizedExample: !include /examples/users/error/notAuthorized.json
     queryParameters:
       role?:
         type: core.ObjectId
@@ -1388,6 +1388,28 @@ securitySchemes:
 
           **Note:** Email addresses are *case insensitive*. Any casing given to
           this parameter will be ignored.
+  /current:
+    (core.tags): [user]
+    get:
+      is:
+      - core.not-authorized-failable:
+          permissionLevel: read
+          errorNotAuthorizedExample: !include /examples/users/error/notAuthorized.json
+      displayName: Retrieve Current User
+      description: |
+        Retrieve the User object for the currently authenticated API key or session.
+      responses:
+        200:
+          description: |
+            Successfully retrieved current User.
+          body:
+            application/hal+json:
+              examples:
+                "GET /users/current (200)": !include /examples/users/collection-item.json
+              type: user.User
+        403:
+          description: |
+            Not authorized to read Users.
   /{user_id}:
     (core.tags): [user]
     type:
@@ -1405,7 +1427,7 @@ securitySchemes:
       is:
       - core.not-authorized-failable:
           permissionLevel: read
-          errorNotAuthorizedExample: !include /examples/events/error/notAuthorized.json
+          errorNotAuthorizedExample: !include /examples/users/error/notAuthorized.json
       responses:
         403:
           (specs.bindIds):

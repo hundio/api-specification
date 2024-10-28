@@ -62,6 +62,10 @@ annotationTypes:
 
       The optional `vcr` property denotes a list of factory traits whose request
       tests will enable VCR to record any potential net calls (such as plugin APIs).
+
+      The optional `excludeBaseCase` property, when true, will prevent generating
+      the "base" response test case for this operation. This is particularly useful
+      when the operation cannot be tested in a trivial fashion.
     allowedTargets: Response
     type: object
     properties:
@@ -69,6 +73,9 @@ annotationTypes:
       factory: string
       mergePath?: string
       vcr?: string[]
+      excludeBaseCase?:
+        type: boolean
+        default: false
   createModels:
     description: |
       An object with model name keys and object values. By default, uses the

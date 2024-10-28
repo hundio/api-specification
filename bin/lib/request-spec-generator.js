@@ -106,6 +106,9 @@ class RequestSpecGenerator {
   }
 
   responseTestCase(endPoint, operation, response, code, idBindings, bodyExpectation, requestBodyInfo = {}) {
+    var config = response.customDomainProperties.find(c => c.name.value() === "specs.exhaustiveRequestBodies")?.extension?.properties
+    if (!requestBodyInfo.factory && config?.excludeBaseCase?.value?.value()) return ""
+
     const bindings = this.requestBindings(operation, response, requestBodyInfo)
 
     return `
@@ -130,7 +133,7 @@ class RequestSpecGenerator {
         requestSchema = util.itselfOrTraverseLink(operation.request.payloads[0].schema)
 
     var shape = source.reduce((s, path) => {
-      let pathProp = s.properties.find(n => n.name.value() === path).range
+      let pathProp = path ? s.properties.find(n => n.name.value() === path).range : s
       return util.itselfOrTraverseLink(pathProp)
     }, requestSchema);
 

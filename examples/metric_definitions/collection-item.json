@@ -1,0 +1,20 @@
+{
+  "id": "671af3fb8fbb6584e0190d32",
+  "type": "metric_definition",
+  "title": "Metric 4",
+  "x_title": "Time",
+  "y_title": "Metric 4",
+  "x_type": "time",
+  "y_type": "measure",
+  "y_supremum": 100,
+  "plot_type": "line",
+  "interpolation": "linear",
+  "aggregation": "average",
+  "slug": "metric4",
+  "builtin": false,
+  "_links": {
+    "self": {
+      "href": "https://status.example.com/api/v1/metric_definitions/671af3fb8fbb6584e0190d32"
+    }
+  }
+}

@@ -1,0 +1,443 @@
+{
+  "type": "paged_array",
+  "total_count": 10,
+  "data": [
+    {
+      "id": "671af3fb8fbb6584e0190d32",
+      "type": "metric_definition",
+      "title": "Metric 4",
+      "x_title": "Time",
+      "y_title": "Metric 4",
+      "x_type": "time",
+      "y_type": "measure",
+      "y_supremum": 100,
+      "plot_type": "line",
+      "interpolation": "linear",
+      "aggregation": "average",
+      "slug": "metric4",
+      "builtin": false,
+      "_links": {
+        "self": {
+          "href": "https://status.example.com/api/v1/metric_definitions/671af3fb8fbb6584e0190d32"
+        }
+      }
+    },
+    {
+      "id": "671aec398fbb652804ee8a1a",
+      "type": "metric_definition",
+      "title": "Metric 3",
+      "x_title": "Time",
+      "y_title": "Metric 3",
+      "x_type": "time",
+      "y_type": "measure",
+      "y_supremum": 100,
+      "plot_type": "line",
+      "interpolation": "linear",
+      "aggregation": "average",
+      "slug": "metric3",
+      "builtin": false,
+      "_links": {
+        "self": {
+          "href": "https://status.example.com/api/v1/metric_definitions/671aec398fbb652804ee8a1a"
+        }
+      }
+    },
+    {
+      "id": "656f99db8fbb65952a3ff362",
+      "type": "metric_definition",
+      "title": "Test Metric 0",
+      "x_title": "Time",
+      "y_title": "Test Metric 0",
+      "x_type": "time",
+      "y_type": "measure",
+      "y_supremum": 100,
+      "plot_type": "line",
+      "interpolation": "linear",
+      "aggregation": "average",
+      "slug": "metric0",
+      "builtin": false,
+      "_links": {
+        "self": {
+          "href": "https://status.example.com/api/v1/metric_definitions/656f99db8fbb65952a3ff362"
+        }
+      }
+    },
+    {
+      "id": "656f99db8fbb65952a3ff361",
+      "type": "metric_definition",
+      "title": "Test Metric 2",
+      "x_title": "Time",
+      "y_title": "Test Metric 2",
+      "x_type": "time",
+      "y_type": "measure",
+      "y_supremum": 100,
+      "plot_type": "line",
+      "interpolation": "linear",
+      "aggregation": "average",
+      "slug": "metric2",
+      "builtin": false,
+      "_links": {
+        "self": {
+          "href": "https://status.example.com/api/v1/metric_definitions/656f99db8fbb65952a3ff361"
+        }
+      }
+    },
+    {
+      "id": "656f99db8fbb65952a3ff360",
+      "type": "metric_definition",
+      "title": "Test Metric 1",
+      "x_title": "Time",
+      "y_title": "Test Metric 1",
+      "x_type": "time",
+      "y_type": "measure",
+      "y_supremum": 100,
+      "plot_type": "line",
+      "interpolation": "linear",
+      "aggregation": "average",
+      "slug": "metric1",
+      "builtin": false,
+      "_links": {
+        "self": {
+          "href": "https://status.example.com/api/v1/metric_definitions/656f99db8fbb65952a3ff360"
+        }
+      }
+    },
+    {
+      "id": "5c9d08b88fbb65172b45da5d",
+      "type": "metric_definition",
+      "title": "Rabbits",
+      "x_title": "Time",
+      "y_title": "Rabbits",
+      "x_type": "time",
+      "y_type": "measure",
+      "y_supremum": 100,
+      "plot_type": "line",
+      "interpolation": "linear",
+      "aggregation": "average",
+      "slug": "rabbits",
+      "builtin": false,
+      "_links": {
+        "self": {
+          "href": "https://status.example.com/api/v1/metric_definitions/5c9d08b88fbb65172b45da5d"
+        }
+      }
+    },
+    {
+      "id": "5ad4fcb18fbb650f596df4c0",
+      "type": "metric_definition",
+      "title": "Total Elapsed Time (ms)",
+      "x_title": "Time",
+      "y_title": "Total Elapsed Time (ms)",
+      "x_type": "time",
+      "y_type": "measure",
+      "y_supremum": 100,
+      "plot_type": "line",
+      "interpolation": "linear",
+      "aggregation": "average",
+      "slug": "udp.total_time",
+      "builtin": true,
+      "_links": {
+        "self": {
+          "href": "https://status.example.com/api/v1/metric_definitions/5ad4fcb18fbb650f596df4c0"
+        }
+      }
+    },
+    {
+      "id": "5ad4fcb18fbb650f596df4bf",
+      "type": "metric_definition",
+      "title": "Response Transfer Time (ms)",
+      "x_title": "Time",
+      "y_title": "Response Transfer Time (ms)",
+      "x_type": "time",
+      "y_type": "measure",
+      "y_supremum": 100,
+      "plot_type": "line",
+      "interpolation": "linear",
+      "aggregation": "average",
+      "slug": "udp.response_transfer_time",
+      "builtin": true,
+      "_links": {
+        "self": {
+          "href": "https://status.example.com/api/v1/metric_definitions/5ad4fcb18fbb650f596df4bf"
+        }
+      }
+    },
+    {
+      "id": "5ad4fcb18fbb650f596df4be",
+      "type": "metric_definition",
+      "title": "Response Time (ms)",
+      "x_title": "Time",
+      "y_title": "Response Time (ms)",
+      "x_type": "time",
+      "y_type": "measure",
+      "y_supremum": 100,
+      "plot_type": "line",
+      "interpolation": "linear",
+      "aggregation": "average",
+      "slug": "udp.response_time",
+      "builtin": true,
+      "_links": {
+        "self": {
+          "href": "https://status.example.com/api/v1/metric_definitions/5ad4fcb18fbb650f596df4be"
+        }
+      }
+    },
+    {
+      "id": "5ad4fcb18fbb650f596df4bd",
+      "type": "metric_definition",
+      "title": "Total Elapsed Time (ms)",
+      "x_title": "Time",
+      "y_title": "Total Elapsed Time (ms)",
+      "x_type": "time",
+      "y_type": "measure",
+      "y_supremum": 100,
+      "plot_type": "line",
+      "interpolation": "linear",
+      "aggregation": "average",
+      "slug": "tcp.total_time",
+      "builtin": true,
+      "_links": {
+        "self": {
+          "href": "https://status.example.com/api/v1/metric_definitions/5ad4fcb18fbb650f596df4bd"
+        }
+      }
+    }
+  ],
+  "has_more": true
+}
+
+Links
+Relation	Name	Title	HTTP Request	Doc
+self
+next
+prev
+beginning
+
+
+Response Status
+200 (OK)
+Response Headers
+cache-control	max-age=0, private, must-revalidate
+content-type	application/hal+json; variant=compact; charset=utf-8
+Response Body
+{
+  "type": "paged_array",
+  "total_count": 10,
+  "data": [
+    {
+      "id": "671af3fb8fbb6584e0190d32",
+      "type": "metric_definition",
+      "title": "Metric 4",
+      "x_title": "Time",
+      "y_title": "Metric 4",
+      "x_type": "time",
+      "y_type": "measure",
+      "y_supremum": 100,
+      "plot_type": "line",
+      "interpolation": "linear",
+      "aggregation": "average",
+      "slug": "metric4",
+      "builtin": false,
+      "_links": {
+        "self": {
+          "href": "https://status.example.com/api/v1/metric_definitions/671af3fb8fbb6584e0190d32"
+        }
+      }
+    },
+    {
+      "id": "671aec398fbb652804ee8a1a",
+      "type": "metric_definition",
+      "title": "{\"en\"=>\"Metric 3\"}",
+      "x_title": "{}",
+      "y_title": "{}",
+      "x_type": "time",
+      "y_type": "measure",
+      "y_supremum": 100,
+      "plot_type": "line",
+      "interpolation": "linear",
+      "aggregation": "average",
+      "slug": "metric3",
+      "builtin": false,
+      "_links": {
+        "self": {
+          "href": "https://status.example.com/api/v1/metric_definitions/671aec398fbb652804ee8a1a"
+        }
+      }
+    },
+    {
+      "id": "656f99db8fbb65952a3ff362",
+      "type": "metric_definition",
+      "title": "Test Metric 0",
+      "x_title": "Time",
+      "y_title": "Test Metric 0",
+      "x_type": "time",
+      "y_type": "measure",
+      "y_supremum": 100,
+      "plot_type": "line",
+      "interpolation": "linear",
+      "aggregation": "average",
+      "slug": "metric0",
+      "builtin": false,
+      "_links": {
+        "self": {
+          "href": "https://status.example.com/api/v1/metric_definitions/656f99db8fbb65952a3ff362"
+        }
+      }
+    },
+    {
+      "id": "656f99db8fbb65952a3ff361",
+      "type": "metric_definition",
+      "title": "Test Metric 2",
+      "x_title": "Time",
+      "y_title": "Test Metric 2",
+      "x_type": "time",
+      "y_type": "measure",
+      "y_supremum": 100,
+      "plot_type": "line",
+      "interpolation": "linear",
+      "aggregation": "average",
+      "slug": "metric2",
+      "builtin": false,
+      "_links": {
+        "self": {
+          "href": "https://status.example.com/api/v1/metric_definitions/656f99db8fbb65952a3ff361"
+        }
+      }
+    },
+    {
+      "id": "656f99db8fbb65952a3ff360",
+      "type": "metric_definition",
+      "title": "Test Metric 1",
+      "x_title": "Time",
+      "y_title": "Test Metric 1",
+      "x_type": "time",
+      "y_type": "measure",
+      "y_supremum": 100,
+      "plot_type": "line",
+      "interpolation": "linear",
+      "aggregation": "average",
+      "slug": "metric1",
+      "builtin": false,
+      "_links": {
+        "self": {
+          "href": "https://status.example.com/api/v1/metric_definitions/656f99db8fbb65952a3ff360"
+        }
+      }
+    },
+    {
+      "id": "5c9d08b88fbb65172b45da5d",
+      "type": "metric_definition",
+      "title": "Rabbits",
+      "x_title": "Time",
+      "y_title": "Rabbits",
+      "x_type": "time",
+      "y_type": "measure",
+      "y_supremum": 100,
+      "plot_type": "line",
+      "interpolation": "linear",
+      "aggregation": "average",
+      "slug": "rabbits",
+      "builtin": false,
+      "_links": {
+        "self": {
+          "href": "https://status.example.com/api/v1/metric_definitions/5c9d08b88fbb65172b45da5d"
+        }
+      }
+    },
+    {
+      "id": "5ad4fcb18fbb650f596df4c0",
+      "type": "metric_definition",
+      "title": "Total Elapsed Time (ms)",
+      "x_title": "Time",
+      "y_title": "Total Elapsed Time (ms)",
+      "x_type": "time",
+      "y_type": "measure",
+      "y_supremum": 100,
+      "plot_type": "line",
+      "interpolation": "linear",
+      "aggregation": "average",
+      "slug": "udp.total_time",
+      "builtin": true,
+      "_links": {
+        "self": {
+          "href": "https://status.example.com/api/v1/metric_definitions/5ad4fcb18fbb650f596df4c0"
+        }
+      }
+    },
+    {
+      "id": "5ad4fcb18fbb650f596df4bf",
+      "type": "metric_definition",
+      "title": "Response Transfer Time (ms)",
+      "x_title": "Time",
+      "y_title": "Response Transfer Time (ms)",
+      "x_type": "time",
+      "y_type": "measure",
+      "y_supremum": 100,
+      "plot_type": "line",
+      "interpolation": "linear",
+      "aggregation": "average",
+      "slug": "udp.response_transfer_time",
+      "builtin": true,
+      "_links": {
+        "self": {
+          "href": "https://status.example.com/api/v1/metric_definitions/5ad4fcb18fbb650f596df4bf"
+        }
+      }
+    },
+    {
+      "id": "5ad4fcb18fbb650f596df4be",
+      "type": "metric_definition",
+      "title": "Response Time (ms)",
+      "x_title": "Time",
+      "y_title": "Response Time (ms)",
+      "x_type": "time",
+      "y_type": "measure",
+      "y_supremum": 100,
+      "plot_type": "line",
+      "interpolation": "linear",
+      "aggregation": "average",
+      "slug": "udp.response_time",
+      "builtin": true,
+      "_links": {
+        "self": {
+          "href": "https://status.example.com/api/v1/metric_definitions/5ad4fcb18fbb650f596df4be"
+        }
+      }
+    },
+    {
+      "id": "5ad4fcb18fbb650f596df4bd",
+      "type": "metric_definition",
+      "title": "Total Elapsed Time (ms)",
+      "x_title": "Time",
+      "y_title": "Total Elapsed Time (ms)",
+      "x_type": "time",
+      "y_type": "measure",
+      "y_supremum": 100,
+      "plot_type": "line",
+      "interpolation": "linear",
+      "aggregation": "average",
+      "slug": "tcp.total_time",
+      "builtin": true,
+      "_links": {
+        "self": {
+          "href": "https://status.example.com/api/v1/metric_definitions/5ad4fcb18fbb650f596df4bd"
+        }
+      }
+    }
+  ],
+  "has_more": true,
+  "_links": {
+    "self": {
+      "href": "https://status.example.com/api/v1/metric_definitions?limit=10"
+    },
+    "next": {
+      "href": "https://status.example.com/api/v1/metric_definitions?limit=10&starting_after=5ad4fcb18fbb650f596df4bd"
+    },
+    "prev": {
+      "href": "https://status.example.com/api/v1/metric_definitions?ending_before=671af3fb8fbb6584e0190d32&limit=10"
+    },
+    "beginning": {
+      "href": "https://status.example.com/api/v1/metric_definitions?limit=10"
+    }
+  }
+}

@@ -25,6 +25,7 @@ uses:
   issue_template: /libraries/issue_template.raml
   invitation: /libraries/invitation.raml
   metric_provider: /libraries/metric_provider.raml
+  metric_definition: /libraries/metric_definition.raml
   notifier: /libraries/notifier.raml
   reason-expansionary: /libraries/reason/expansionary.raml
   request_log: /libraries/request_log.raml
@@ -73,6 +74,8 @@ securitySchemes:
     x-displayName: Reasons
   - name: metric_provider
     x-displayName: MetricProviders
+  - name: metric_definition
+    x-displayName: MetricDefinitions
   - name: group
     x-displayName: Groups
   - name: issue
@@ -115,7 +118,7 @@ securitySchemes:
 
 (core.tagGroups):
   - name: Monitoring
-    tags: [component, group, metric_provider, watchdog, status, reason, semantic]
+    tags: [component, group, metric_provider, metric_definition, watchdog, status, reason, semantic]
   - name: Incident Reporting
     tags: [issue, update, issue_template]
   - name: Communication
@@ -145,6 +148,7 @@ securitySchemes:
                   components: core.HAL/Link
                   groups: core.HAL/Link
                   metric_providers: core.HAL/Link
+                  metric_definitions: core.HAL/Link
                   issues: core.HAL/Link
                   issue_templates: core.HAL/Link
                   notifiers: core.HAL/Link
@@ -612,6 +616,37 @@ securitySchemes:
         400:
           (specs.bindIds):
             metric_provider: auto:webhook:default
+
+/metric_definitions:
+  (core.tags): [metric_definition]
+  (specs.factoryStrategy): create
+  type:
+    core.read-collection:
+      itemType: metric_definition.MetricDefinition
+      getResponseExample: !include /examples/metric_definitions/collection.json
+  get:
+    is:
+    - core.not-authorized-failable:
+        permissionLevel: read
+        errorNotAuthorizedExample: !include /examples/metric_definitions/error/notAuthorized.json
+  /{metric_definition_id}:
+    (core.tags): [metric_definition]
+    (specs.factoryStrategy): create
+    type:
+      core.read-collection-item:
+        errorNotFoundExample: !include /examples/metric_definitions/error/notFound.json
+        getResponseExample: !include /examples/metric_definitions/collection-item.json
+        idPrefix: metric_definition
+        itemType: metric_definition.MetricDefinition
+    get:
+      is:
+      - core.not-authorized-failable:
+          permissionLevel: read
+          errorNotAuthorizedExample: !include /examples/metric_definitions/error/notAuthorized.json
+      responses:
+        403:
+          (specs.bindIds):
+            metric_definition: auto
 
 /issues:
   (core.tags): [issue]

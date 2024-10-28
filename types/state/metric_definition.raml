@@ -1,0 +1,35 @@
+#%RAML 1.0 DataType
+
+uses:
+  prelude: /libraries/prelude.raml
+  core: /libraries/core.raml
+
+(prelude.common):
+(core.fieldDescriptions): !include /documentation/fieldDescriptions/metric_definition.yml
+displayName: MetricDefinition
+description: |
+  MetricDefinitions describe the particular structure of metrics that can be
+  instanced as a MetricInstance, provided by a MetricProvider.
+
+  The fields of a MetricDefinition serve as the defaults for any MetricInstance
+  that references the definition. MetricInstances reference definitions by their
+  slug (via the `definition_slug` field).
+type: [core.TypedObject, core.HAL/Linkable]
+properties:
+  id: core.ObjectId
+  type:
+    enum: [metric_definition]
+  slug: string
+  builtin: boolean
+  title: core.i18n-string
+  x_title: core.i18n-string
+  y_title: core.i18n-string
+  x_type: core.METRIC_AXIS_TYPE
+  y_type: core.METRIC_AXIS_TYPE
+  y_supremum: core.nonnegative-number
+  plot_type: core.METRIC_PLOT_TYPE
+  interpolation: core.METRIC_INTERPOLATION
+  aggregation: core.METRIC_AGGREGATION
+  _links?:
+    properties:
+      self: core.HAL/Link

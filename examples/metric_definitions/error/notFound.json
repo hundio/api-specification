@@ -1,0 +1,5 @@
+{
+  "type": "api/error/not_found",
+  "logref": "0192c5d8-52b1-7300-ac64-68acf4060874",
+  "message": "MetricDefinition not found."
+}

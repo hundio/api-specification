@@ -1,16 +1,10 @@
 id: |
-  The ObjectId of the MetricInstance.
+  The ObjectId of the MetricDefinition.
 slug: |
-  A string that uniquely identifies this MetricInstance by referencing the
-  definition slug and MetricProvider ObjectId.
-definition_slug: |
-  A descriptive string that identifies the MetricDefinition this instance
-  derives from (e.g. `http.tcp_connection_time`, `apdex`, etc.).
-enabled: |
-  Whether or not to show this metric on the Component that uses it (through
-  the Watchdog).
-top_level_enabled: |
-  Whether or not to show this metric on the status page home.
+  A string that uniquely identifies this MetricDefinition. This value is referenced
+  by MetricInstances via their `definition_slug` fields.
+builtin: |
+  Whether this MetricDefinition is built into Hund, and cannot be modified.
 title: |
   The title of the metric, displayed above its graph on the status page.
 x_title: |

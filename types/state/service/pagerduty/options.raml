@@ -1,0 +1,20 @@
+#%RAML 1.0 DataType
+
+uses:
+  prelude: /libraries/prelude.raml
+  core: /libraries/core.raml
+
+(prelude.common):
+displayName: PagerDuty
+type: prelude.TypedObject
+properties:
+  type:
+    type: string
+    enum: [pagerduty]
+  services:
+    description: |
+      A ID -> Name mapping of the PagerDuty services available via the given
+      credentials.
+    type: object
+    properties:
+      //: string

@@ -30,6 +30,8 @@ types:
   Pagerduty: !include /types/state/service/pagerduty.raml
   Pagerduty/Form/Create: !include /types/state/service/pagerduty/form/create.raml
   Pagerduty/Form/Update: !include /types/state/service/pagerduty/form/update.raml
+  Pagerduty/Form/Options: !include /types/state/service/pagerduty/form/options.raml
+  Pagerduty/Options: !include /types/state/service/pagerduty/options.raml
 
   Pingdom: !include /types/state/service/pingdom.raml
   Pingdom/Form/Create: !include /types/state/service/pingdom/form/create.raml
@@ -37,6 +39,8 @@ types:
   Pingdom/Watchdog: !include /types/state/service/pingdom/watchdog.raml
   Pingdom/Watchdog/Form/Create: !include /types/state/service/pingdom/watchdog/form/create.raml
   Pingdom/Watchdog/Form/Update: !include /types/state/service/pingdom/watchdog/form/update.raml
+  Pingdom/Form/Options: !include /types/state/service/pingdom/form/options.raml
+  Pingdom/Options: !include /types/state/service/pingdom/options.raml
 
   PingdomLegacyV2: !include /types/state/service/pingdom_legacy_v2.raml
   PingdomLegacyV2/Form/Update: !include /types/state/service/pingdom_legacy_v2/form/update.raml
@@ -44,6 +48,8 @@ types:
   Updown: !include /types/state/service/updown.raml
   Updown/Form/Create: !include /types/state/service/updown/form/create.raml
   Updown/Form/Update: !include /types/state/service/updown/form/update.raml
+  Updown/Form/Options: !include /types/state/service/updown/form/options.raml
+  Updown/Options: !include /types/state/service/updown/options.raml
 
   Uptimerobot: !include /types/state/service/uptimerobot.raml
   Uptimerobot/Form/Create: !include /types/state/service/uptimerobot/form/create.raml
@@ -67,3 +73,7 @@ types:
 
   Services/Watchdog: Manual | Updown | Uptimerobot/Watchdog | Webhook/Watchdog | Pingdom/Watchdog | PingdomLegacyV2 | Cloudwatch | Newrelic | Pagerduty | Native
   Services/MetricProvider: Builtin | Updown | Uptimerobot | Webhook | Pingdom | PingdomLegacyV2 | Native
+
+  Form/Services/Options: Pingdom/Form/Options | Pagerduty/Form/Options | Updown/Form/Options
+
+  Services/Options: Pingdom/Options | Pagerduty/Options | Updown/Options

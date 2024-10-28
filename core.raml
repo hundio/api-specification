@@ -31,6 +31,7 @@ uses:
   request_log: /libraries/request_log.raml
   role: /libraries/role.raml
   semantic: /libraries/semantic.raml
+  service: /libraries/service.raml
   status: /libraries/status.raml
   subscription: /libraries/subscription.raml
   timeline: /libraries/timeline.raml
@@ -162,6 +163,7 @@ securitySchemes:
                   roles: core.HAL/Link
                   invitations: core.HAL/Link
                   request_logs: core.HAL/Link
+                  watchdogs: core.HAL/Link
 
 /components:
   (core.tags): [component]
@@ -218,69 +220,170 @@ securitySchemes:
           (specs.requestBody): '{ "name": "" }'
     delete:
 
-/watchdogs/{watchdog_id}:
+/watchdogs:
   (core.tags): [watchdog]
   type:
-    core.collection-item:
-      idPrefix: watchdog
+    core.read-collection:
+      getResponseExample: !include /examples/watchdogs/collection.json
       itemType: watchdog.Watchdog
-      putParamsType: watchdog.Watchdog/Form/Update
-      getResponseExample: !include /examples/watchdogs/collection-item.json
-      putRequestExample: !include /examples/watchdogs/collection-item/putRequest.json
-      putResponseExample: !include /examples/watchdogs/collection-item/putResponse.json
-      errorNotFoundExample: !include /examples/watchdogs/error/notFound.json
-      errorNotAuthorizedExample: !include /examples/watchdogs/error/notAuthorized.json
-      putErrorExample: !include /examples/watchdogs/error/validation.json
   get:
-    is:
-    - core.not-authorized-failable:
-        permissionLevel: read
-        errorNotAuthorizedExample: !include /examples/watchdogs/error/notAuthorized.json
-    responses:
-      403:
-        (specs.bindIds):
-          watchdog: auto
-  put:
-    responses:
-      400:
-        (specs.requestBody): '{ "service": { "state": nil } }'
-  /convert:
+    queryParameters:
+      service.type?:
+        description: |
+          Return Watchdogs of the given `service.type`.
+
+          **Note:** This field is ignored when `service.method` is given.
+        type: string
+      service.method?:
+        description: |
+          Return Native Monitoring Watchdogs of the given `service.method`. If
+          this parameter is given, `service.type` is ignored, and assumed to be
+          `native`.
+        type: string
+      high_frequency?:
+        description: |
+          When true, returns Watchdogs where `high_frequency` is true. When false,
+          returns Watchdogs where `high_frequency` is false.
+        type: boolean
+  /preview:
     (core.tags): [watchdog]
     type:
-      core.action:
-        displayName: Convert a Watchdog's Service Type
-        description: |
-          Convert the service type of a watchdog to another service type. This
-          operation does not affect the component, nor the watchdog's statuses nor
-          metrics (unless specified). Useful for switching status providers in a
-          single low-friction request.
-        idPrefix: watchdog
+      core.collection-preview:
+        itemName: watchdog
         itemType: watchdog.Watchdog
-        paramsType: watchdog.Watchdog/Form/Convert
-        successDescription: |
-          Successfully converted watchdog service.
-        notFoundDescription: |
-          Watchdog not found.
-        requestExample: !include /examples/watchdogs/convert/putRequest.json
-        responseExample: !include /examples/watchdogs/convert/putResponse.json
-        errorNotFoundExample: !include /examples/watchdogs/error/notFound.json
+        postParamsType: watchdog.Watchdog/Form/BaseCreate
+        postRequestExample: !include /examples/watchdogs/collection/postRequest.json
+        postResponseExample: !include /examples/watchdogs/collection/postResponse.json
+        postErrorExample: !include /examples/watchdogs/error/validation.json
         errorNotAuthorizedExample: !include /examples/watchdogs/error/notAuthorized.json
-    put:
-      is:
-      - core.validation-failable:
-          errorExample: !include /examples/watchdogs/error/validation.json
+  /service_options:
+    (core.tags): [watchdog]
+    is:
+    - core.not-authorized-failable:
+        permissionLevel: write
+        errorNotAuthorizedExample: !include /examples/watchdogs/error/notAuthorized.json
+    - core.bad-request-failable:
+        description: Service type does not support option enumeration.
+        errorBadRequestExample: !include /examples/watchdogs/error/serviceOptionsUnsupported.json
+    - core.not-found-failable:
+        errorNotFoundExample: !include /examples/watchdogs/error/notFound.json
+    post:
+      displayName: Enumerate Watchdog Service Options
+      description: |
+        For supported Watchdog service types, returns a service-specific document
+        enumerating the options available for the service, with respect to the
+        given service credentials.
+
+        Service credentials can either be provided directly to this endpoint, or
+        the credentials of an existing Watchdog can be used, by providing the
+        respective ID.
+      queryParameters:
+        watchdog?:
+          description: |
+            When given, uses the credentials of this Watchdog to perform service
+            option enumeration, if supported.
+          type: core.ObjectId
+        type?:
+          description: |
+            Selects the Watchdog service type to perform service option enumeration.
+            If this field is given, then you should also pass appropriate service
+            credentials.
+
+            **Note:** this field is ignored when `watchdog` is given.
+          type: string
+          enum: [pingdom, pagerduty, updown]
+      body:
+        application/json:
+          type: service.Form/Services/Options
+          examples:
+            "POST /watchdogs/service_options": !include /examples/watchdogs/collection/service_options/postRequest.json
       responses:
         200:
-          (specs.requestBody): '{ "service": { "type": "manual", "state": 1 } }'
-        400:
-          (specs.bindIds):
-            watchdog: auto
-          (specs.requestBody): '{ "service": { "type": "manual", "state": nil } }'
+          (specs.requestBody): "{}"
+          (specs.exhaustiveRequestBodies):
+            source: "."
+            factory: service
+            vcr: [pingdom, pagerduty, updown]
+            excludeBaseCase: true
           description: |
-            Failed to convert Watchdog service.
+            Successfully enumerated Watchdog service options.
+          body:
+            application/hal+json:
+              examples:
+                "POST /watchdogs/service_options (200)": !include /examples/watchdogs/collection/service_options/postResponse.json
+              type: service.Services/Options
+        400:
+          (specs.requestBody): '{ "type": "manual" }'
         403:
           description: |
             Not authorized to write Watchdogs.
+        404:
+          (specs.requestBody): '{ "watchdog": "nonexistent" }'
+          description: |
+            Watchdog not found.
+  /{watchdog_id}:
+    (core.tags): [watchdog]
+    type:
+      core.collection-item:
+        idPrefix: watchdog
+        itemType: watchdog.Watchdog
+        putParamsType: watchdog.Watchdog/Form/Update
+        getResponseExample: !include /examples/watchdogs/collection-item.json
+        putRequestExample: !include /examples/watchdogs/collection-item/putRequest.json
+        putResponseExample: !include /examples/watchdogs/collection-item/putResponse.json
+        errorNotFoundExample: !include /examples/watchdogs/error/notFound.json
+        errorNotAuthorizedExample: !include /examples/watchdogs/error/notAuthorized.json
+        putErrorExample: !include /examples/watchdogs/error/validation.json
+    get:
+      is:
+      - core.not-authorized-failable:
+          permissionLevel: read
+          errorNotAuthorizedExample: !include /examples/watchdogs/error/notAuthorized.json
+      responses:
+        403:
+          (specs.bindIds):
+            watchdog: auto
+    put:
+      responses:
+        400:
+          (specs.requestBody): '{ "service": { "state": nil } }'
+    /convert:
+      (core.tags): [watchdog]
+      type:
+        core.action:
+          displayName: Convert a Watchdog's Service Type
+          description: |
+            Convert the service type of a watchdog to another service type. This
+            operation does not affect the component, nor the watchdog's statuses nor
+            metrics (unless specified). Useful for switching status providers in a
+            single low-friction request.
+          idPrefix: watchdog
+          itemType: watchdog.Watchdog
+          paramsType: watchdog.Watchdog/Form/Convert
+          successDescription: |
+            Successfully converted watchdog service.
+          notFoundDescription: |
+            Watchdog not found.
+          requestExample: !include /examples/watchdogs/convert/putRequest.json
+          responseExample: !include /examples/watchdogs/convert/putResponse.json
+          errorNotFoundExample: !include /examples/watchdogs/error/notFound.json
+          errorNotAuthorizedExample: !include /examples/watchdogs/error/notAuthorized.json
+      put:
+        is:
+        - core.validation-failable:
+            errorExample: !include /examples/watchdogs/error/validation.json
+        responses:
+          200:
+            (specs.requestBody): '{ "service": { "type": "manual", "state": 1 } }'
+          400:
+            (specs.bindIds):
+              watchdog: auto
+            (specs.requestBody): '{ "service": { "type": "manual", "state": nil } }'
+            description: |
+              Failed to convert Watchdog service.
+          403:
+            description: |
+              Not authorized to write Watchdogs.
 
 /semantics:
   (core.tags): [semantic]

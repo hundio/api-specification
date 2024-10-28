@@ -1,0 +1,20 @@
+#%RAML 1.0 DataType
+
+uses:
+  prelude: /libraries/prelude.raml
+  core: /libraries/core.raml
+
+(prelude.common):
+displayName: Updown
+type: prelude.TypedObject
+properties:
+  type:
+    type: string
+    enum: [updown]
+  monitors:
+    description: |
+      A Token -> Name mapping of the Updown.io monitors available via the given
+      credentials.
+    type: object
+    properties:
+      //: string

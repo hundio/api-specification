@@ -1,0 +1,27 @@
+#%RAML 1.0 DataType
+
+uses:
+  prelude: /libraries/prelude.raml
+  core: /libraries/core.raml
+
+(prelude.common):
+displayName: Pingdom
+type: prelude.TypedObject
+properties:
+  type:
+    type: string
+    enum: [pingdom]
+  checks:
+    description: |
+      A Check Id -> Name mapping of the Pingdom checks available via the given
+      credentials.
+    type: object
+    properties:
+      //: string
+  transactionals:
+    description: |
+      A Check Id -> Name mapping of the Pingdom TMS checks available via the
+      given credentials.
+    type: object
+    properties:
+      //: string

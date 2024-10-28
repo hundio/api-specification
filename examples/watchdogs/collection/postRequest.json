@@ -1,0 +1,10 @@
+{
+  "service": {
+    "type": "native",
+    "method": "icmp",
+    "regions": [
+      "wa-us-1"
+    ],
+    "target": "example.com"
+  }
+}

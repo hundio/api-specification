@@ -1,0 +1,5 @@
+{
+  "type": "service/error/enumeration_unsupported",
+  "logref": "0192592c-3a8c-7ea9-b0a0-447aa87c024e",
+  "message": "The given service type does not support options enumeration."
+}

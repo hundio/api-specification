@@ -1,0 +1,9 @@
+{
+  "type": "pingdom",
+  "transactionals": {
+    "10000": "example.com TMS"
+  },
+  "checks": {
+    "5800000": "Example"
+  }
+}

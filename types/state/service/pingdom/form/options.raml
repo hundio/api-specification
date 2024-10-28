@@ -1,0 +1,16 @@
+#%RAML 1.0 DataType
+
+uses:
+  prelude: /libraries/prelude.raml
+  core: /libraries/core.raml
+
+(prelude.common):
+(core.fieldDescriptions): !include /documentation/fieldDescriptions/service/pingdom.yml
+displayName: Pingdom
+description: |
+  Pingdom service options enumeration form.
+type: core.Form
+properties:
+  type?:
+    enum: [pingdom]
+  api_token: string

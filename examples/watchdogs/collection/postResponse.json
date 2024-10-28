@@ -1,0 +1,58 @@
+{
+  "id": "67004b0c8fbb6563652002ec",
+  "type": "watchdog",
+  "service": {
+    "type": "native",
+    "method": "icmp",
+    "target": "example.com",
+    "regions": [
+      "wa-us-1"
+    ],
+    "frequency": 60000,
+    "timeout": 10000,
+    "consecutive_check_degraded_threshold": null,
+    "consecutive_check_outage_threshold": 1,
+    "percentage_regions_failed_threshold": 0.25,
+    "percentage_failed_threshold": 0.5,
+    "ip_version": "inet"
+  },
+  "latest_status": {
+    "id": "67004b0c8fbb6563652002f0",
+    "type": "status",
+    "created_at": null,
+    "updated_at": null,
+    "watchdog": "67004b0c8fbb6563652002ec",
+    "semantic": null,
+    "reasons": null,
+    "state": 1,
+    "duration": 0,
+    "began_at": null,
+    "ended_at": null,
+    "_links": {
+      "self": {
+        "href": "https://status.example.com/api/v1/statuses/67004b0c8fbb6563652002f0"
+      },
+      "events": {
+        "href": "https://status.example.com/api/v1/events?eventable=67004b0c8fbb6563652002f0"
+      },
+      "watchdog": {
+        "href": "https://status.example.com/api/v1/watchdogs/67004b0c8fbb6563652002ec"
+      }
+    }
+  },
+  "high_frequency": false,
+  "_links": {
+    "self": {
+      "href": "https://status.example.com/api/v1/watchdogs/67004b0c8fbb6563652002ec"
+    },
+    "metric_providers": {
+      "href": "https://status.example.com/api/v1/metric_providers?watchdog=67004b0c8fbb6563652002ec"
+    },
+    "statuses": {
+      "href": "https://status.example.com/api/v1/statuses?watchdog=67004b0c8fbb6563652002ec"
+    },
+    "action:convert": {
+      "href": "https://status.example.com/api/v1/watchdogs/67004b0c8fbb6563652002ec/convert"
+    }
+  }
+}
